@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "Open Making and Building Standard",
+  "acronym": "OMBS",
+  "version": "0.1.0",
+  "status": "draft",
+  "released": "2026-04-30",
+  "license": "CC-BY-SA-4.0",
+  "homepage": "https://github.com/sunnypatneedi/ombs",
+  "codeFormat": "OMBS.<domain>.<dimension>.<gradeBand>.<component>",
+  "gradeBands": [
+    { "id": "K2", "label": "Grades K–2", "ageRange": [5, 8] },
+    { "id": "35", "label": "Grades 3–5", "ageRange": [8, 11] },
+    { "id": "68", "label": "Grades 6–8", "ageRange": [11, 14] },
+    { "id": "912", "label": "Grades 9–12", "ageRange": [14, 19] }
+  ],
+  "domains": [
+    {
+      "id": "S",
+      "name": "Shared Practices",
+      "description": "Practices common to both making and building. Every project worth assessing exercises at least three.",
+      "dimensions": [
+        {
+          "id": "DF",
+          "anchor": "OMBS.S.DF",
+          "name": "Define",
+          "anchorStatement": "The learner identifies what they intend to make or build, for whom, and against what success criteria, before significant work begins.",
+          "components": [
+            { "id": "OMBS.S.DF.K2.1", "gradeBand": "K2", "descriptor": "With prompting, the learner states what they will make or build and names at least one person who will see or use it." },
+            { "id": "OMBS.S.DF.35.1", "gradeBand": "35", "descriptor": "The learner records, before substantial work begins, a written or spoken statement naming (a) the artifact, (b) the intended audience or user, and (c) at least one criterion for success." },
+            { "id": "OMBS.S.DF.68.1", "gradeBand": "68", "descriptor": "The learner produces a written intent statement with two or more success criteria, and revises that statement at least once during the project, with the revision dated or otherwise traceable." },
+            { "id": "OMBS.S.DF.912.1", "gradeBand": "912", "descriptor": "The learner frames the intent in tension with stated constraints (time, budget, materials, audience access) and defends scope choices in writing or in conversation against at least one feasible alternative scope considered and rejected." }
+          ]
+        },
+        {
+          "id": "DR",
+          "anchor": "OMBS.S.DR",
+          "name": "Draft",
+          "anchorStatement": "The learner produces preliminary, low-stakes versions of the artifact that make assumptions visible before commitment to final form.",
+          "components": [
+            { "id": "OMBS.S.DR.K2.1", "gradeBand": "K2", "descriptor": "The learner produces a sketch, model, or rough version before producing the final artifact, when prompted." },
+            { "id": "OMBS.S.DR.35.1", "gradeBand": "35", "descriptor": "The learner produces at least two distinct drafts and can point to specific differences between them." },
+            { "id": "OMBS.S.DR.68.1", "gradeBand": "68", "descriptor": "The learner produces drafts at multiple grain sizes (e.g., outline before paragraph, rough cardboard before final material) and annotates points where decisions were made." },
+            { "id": "OMBS.S.DR.912.1", "gradeBand": "912", "descriptor": "The learner produces drafts that include explicit alternatives carried forward into testing, not only the path eventually chosen, and documents which alternatives were eliminated and on what evidence." }
+          ]
+        },
+        {
+          "id": "TS",
+          "anchor": "OMBS.S.TS",
+          "name": "Test",
+          "anchorStatement": "The learner exposes the work to evidence and treats the result as information, not judgment.",
+          "components": [
+            { "id": "OMBS.S.TS.K2.1", "gradeBand": "K2", "descriptor": "The learner shows the work to at least one person other than the teacher and reports what that person did or said." },
+            { "id": "OMBS.S.TS.35.1", "gradeBand": "35", "descriptor": "The learner tests the artifact against the success criterion stated in S.DF and records what happened in writing, sketch, or recording." },
+            { "id": "OMBS.S.TS.68.1", "gradeBand": "68", "descriptor": "The learner designs tests that exercise at least two of the success criteria, conducts them with a real audience or in a realistic use scenario, and distinguishes findings driven by the test from confounds." },
+            { "id": "OMBS.S.TS.912.1", "gradeBand": "912", "descriptor": "The learner designs at least one test capable of falsifying a key assumption of the work, conducts it, and reports negative results faithfully." }
+          ]
+        },
+        {
+          "id": "IT",
+          "anchor": "OMBS.S.IT",
+          "name": "Iterate",
+          "anchorStatement": "The learner uses test results to revise, defending which feedback is acted on and which is set aside, with reasons.",
+          "components": [
+            { "id": "OMBS.S.IT.K2.1", "gradeBand": "K2", "descriptor": "After receiving feedback, the learner tries the work again with at least one observable change." },
+            { "id": "OMBS.S.IT.35.1", "gradeBand": "35", "descriptor": "The learner names one change made between drafts and the feedback or test result that drove it." },
+            { "id": "OMBS.S.IT.68.1", "gradeBand": "68", "descriptor": "The learner explains, in writing or conversation, which feedback was acted on, which was set aside, and the reason for each decision." },
+            { "id": "OMBS.S.IT.912.1", "gradeBand": "912", "descriptor": "The learner iterates across structurally distinct alternatives (not only polish or refinement of one direction) and documents abandoned directions with the evidence that led to abandonment." }
+          ]
+        },
+        {
+          "id": "SH",
+          "anchor": "OMBS.S.SH",
+          "name": "Share",
+          "anchorStatement": "The learner makes the artifact and the process behind it accessible to an audience beyond the assessor, in a form appropriate to that audience.",
+          "components": [
+            { "id": "OMBS.S.SH.K2.1", "gradeBand": "K2", "descriptor": "The learner presents the artifact to an audience beyond the teacher (classmates, family, school community), with adult support as needed." },
+            { "id": "OMBS.S.SH.35.1", "gradeBand": "35", "descriptor": "The learner adapts the artifact or its presentation for an audience beyond the teacher and explains one adaptation made." },
+            { "id": "OMBS.S.SH.68.1", "gradeBand": "68", "descriptor": "The learner reaches an audience they identified in S.DF and documents the audience's response in a form appropriate to the audience." },
+            { "id": "OMBS.S.SH.912.1", "gradeBand": "912", "descriptor": "The learner publishes the artifact to a sustained public or community audience with attention to access, rights, and provision for follow-on use or remixing." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M",
+      "name": "Making",
+      "description": "Practice of bringing into existence an artifact intended for an audience and shaped by a purpose.",
+      "dimensions": [
+        {
+          "id": "AU",
+          "anchor": "OMBS.M.AU",
+          "name": "Audience awareness",
+          "anchorStatement": "The learner identifies a specific audience, characterizes the audience by relevant traits, and adapts the work to fit.",
+          "components": [
+            { "id": "OMBS.M.AU.K2.1", "gradeBand": "K2", "descriptor": "The learner names a specific person, group, or class as the intended audience for the artifact." },
+            { "id": "OMBS.M.AU.35.1", "gradeBand": "35", "descriptor": "The learner names at least one audience trait (age, prior knowledge, interest) and points to a choice in the artifact shaped by that trait." },
+            { "id": "OMBS.M.AU.68.1", "gradeBand": "68", "descriptor": "The learner distinguishes the intended audience from at least one adjacent audience and articulates what each would prefer differently." },
+            { "id": "OMBS.M.AU.68.2", "gradeBand": "68", "descriptor": "The learner adapts vocabulary, examples, format, or length in ways visible in the artifact (not only described in reflection) to fit the named audience." },
+            { "id": "OMBS.M.AU.912.1", "gradeBand": "912", "descriptor": "The learner designs for a defined primary audience while accounting for foreseeable secondary audiences and notes choices that serve or fail to serve secondaries." }
+          ]
+        },
+        {
+          "id": "PU",
+          "anchor": "OMBS.M.PU",
+          "name": "Purpose and intent",
+          "anchorStatement": "The learner names the change they want the artifact to produce in the audience and structures the artifact around that intent.",
+          "components": [
+            { "id": "OMBS.M.PU.K2.1", "gradeBand": "K2", "descriptor": "The learner names in one phrase what the artifact is for." },
+            { "id": "OMBS.M.PU.35.1", "gradeBand": "35", "descriptor": "The learner names purpose and points to at least one form choice shaped by that purpose." },
+            { "id": "OMBS.M.PU.68.1", "gradeBand": "68", "descriptor": "The learner defends two or more form choices by reference to purpose and can describe how a different purpose would have produced different choices." },
+            { "id": "OMBS.M.PU.912.1", "gradeBand": "912", "descriptor": "The learner holds purpose stable while exploring multiple possible forms, selects among them with explicit tradeoff analysis, and articulates why the chosen form serves the purpose better than alternatives." }
+          ]
+        },
+        {
+          "id": "EX",
+          "anchor": "OMBS.M.EX",
+          "name": "Expression and medium",
+          "anchorStatement": "The learner uses the medium's specific affordances rather than treating the medium as a neutral container.",
+          "components": [
+            { "id": "OMBS.M.EX.K2.1", "gradeBand": "K2", "descriptor": "The learner tries a medium and notices, with prompting, something the medium can do." },
+            { "id": "OMBS.M.EX.35.1", "gradeBand": "35", "descriptor": "The learner uses at least one medium-specific affordance intentionally and can name why." },
+            { "id": "OMBS.M.EX.68.1", "gradeBand": "68", "descriptor": "The learner uses medium-specific affordances in service of stated purpose and audience, not for novelty alone." },
+            { "id": "OMBS.M.EX.912.1", "gradeBand": "912", "descriptor": "The learner combines affordances across mediums or sub-mediums and defends the combination as serving purpose better than either alone." }
+          ]
+        },
+        {
+          "id": "CR",
+          "anchor": "OMBS.M.CR",
+          "name": "Critique and response",
+          "anchorStatement": "The learner solicits, receives, and acts on critique without collapsing into compliance or defensiveness, and gives critique in terms that serve the work.",
+          "components": [
+            { "id": "OMBS.M.CR.K2.1", "gradeBand": "K2", "descriptor": "The learner receives feedback without distress and tries at least one suggestion." },
+            { "id": "OMBS.M.CR.35.1", "gradeBand": "35", "descriptor": "The learner asks for feedback on a specific aspect of the work and acts on at least one piece received." },
+            { "id": "OMBS.M.CR.68.1", "gradeBand": "68", "descriptor": "The learner distinguishes compliance, defense, and negotiation in their own responses to critique and can name a recent instance of each." },
+            { "id": "OMBS.M.CR.912.1", "gradeBand": "912", "descriptor": "The learner gives critique to peers that names what is working and what is not, in terms the maker can act on, distinct from praise or correction." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "name": "Building",
+      "description": "Practice of constructing a structure or system from components such that it functions reliably under specified conditions.",
+      "dimensions": [
+        {
+          "id": "MT",
+          "anchor": "OMBS.B.MT",
+          "name": "Materials and medium reasoning",
+          "anchorStatement": "The learner selects materials based on the demands of the build, names tradeoffs, and revises in response to test results.",
+          "components": [
+            { "id": "OMBS.B.MT.K2.1", "gradeBand": "K2", "descriptor": "The learner picks from offered materials and explains, when asked, why the choice was made." },
+            { "id": "OMBS.B.MT.35.1", "gradeBand": "35", "descriptor": "The learner compares at least two materials on one trait before selecting." },
+            { "id": "OMBS.B.MT.68.1", "gradeBand": "68", "descriptor": "The learner selects materials by at least two tradeoffs and revises material choice in response to test results." },
+            { "id": "OMBS.B.MT.912.1", "gradeBand": "912", "descriptor": "The learner documents material choices with quantitative or comparative evidence and considers lifecycle factors appropriate to the project." }
+          ]
+        },
+        {
+          "id": "ST",
+          "anchor": "OMBS.B.ST",
+          "name": "Structure and systems thinking",
+          "anchorStatement": "The learner organizes components into a structure with named relationships, identifies points of stress, and uses that structure to predict behavior before testing.",
+          "components": [
+            { "id": "OMBS.B.ST.K2.1", "gradeBand": "K2", "descriptor": "The learner names at least two parts of the build and how they connect." },
+            { "id": "OMBS.B.ST.35.1", "gradeBand": "35", "descriptor": "The learner produces a diagram of the build with parts and connections labeled." },
+            { "id": "OMBS.B.ST.68.1", "gradeBand": "68", "descriptor": "The learner identifies at least one stress point, fragile coupling, or single point of failure in the structure and addresses it in the design." },
+            { "id": "OMBS.B.ST.912.1", "gradeBand": "912", "descriptor": "The learner predicts system behavior from structure before test and explains any observed deviation in terms of the structure post-test." }
+          ]
+        },
+        {
+          "id": "DR",
+          "anchor": "OMBS.B.DR",
+          "name": "Durability and robustness",
+          "anchorStatement": "The learner anticipates conditions of use including misuse and edge cases, designs for them, and tests against them.",
+          "components": [
+            { "id": "OMBS.B.DR.K2.1", "gradeBand": "K2", "descriptor": "The learner uses the build more than once and notices when something breaks or fails." },
+            { "id": "OMBS.B.DR.35.1", "gradeBand": "35", "descriptor": "The learner tests the build under at least one non-trivial condition." },
+            { "id": "OMBS.B.DR.68.1", "gradeBand": "68", "descriptor": "The learner tests against at least one misuse case the learner imagined and reports the result." },
+            { "id": "OMBS.B.DR.912.1", "gradeBand": "912", "descriptor": "The learner designs and reports failure tests, specifies the operating envelope, and notes boundary conditions." }
+          ]
+        },
+        {
+          "id": "FN",
+          "anchor": "OMBS.B.FN",
+          "name": "Function and fit-for-use",
+          "anchorStatement": "The learner evaluates the build against its stated function in the hands of intended users and accepts the gap between intent and result as data.",
+          "components": [
+            { "id": "OMBS.B.FN.K2.1", "gradeBand": "K2", "descriptor": "The learner gives the build to a user and watches what happens." },
+            { "id": "OMBS.B.FN.35.1", "gradeBand": "35", "descriptor": "The learner records whether the user could use the build as intended and names at least one gap between intent and use." },
+            { "id": "OMBS.B.FN.68.1", "gradeBand": "68", "descriptor": "The learner iterates on observed-not-asked evidence and distinguishes user error from design error." },
+            { "id": "OMBS.B.FN.912.1", "gradeBand": "912", "descriptor": "The learner defines fit-for-use criteria before testing, reports against them after, and recommends specific next-revision changes with reasons." }
+          ]
+        }
+      ]
+    }
+  ]
+}
