@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+.ombs-scholarly {
+  --bg-parchment: #fdfaf5;
+  --bg-paper: #ffffff;
+  --text-ink: #2c2b29;
+  --text-dim: #605f5b;
+  --border-hairline: #e8e4db;
+  --accent-sage: #818a7a;
+  --accent-terracotta: #b56c54;
+  --accent-amber: #cba052;
+  --accent-slate: #6b7a8f;
+
+  /* Domain Colors - Muted */
+  --domain-s: var(--accent-slate);
+  --domain-m: var(--accent-amber);
+  --domain-b: var(--accent-sage);
+
+  background-color: var(--bg-parchment);
+  color: var(--text-ink);
+  font-family: 'Lora', serif;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+.ombs-scholarly-heading {
+  font-family: 'Playfair Display', serif;
+}
+
+.ombs-scholarly-paper {
+  background-color: var(--bg-paper);
+  border: 1px solid var(--border-hairline);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.ombs-scholarly-nav-item {
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.ombs-scholarly-nav-item:hover {
+  color: var(--text-ink);
+  border-bottom-color: var(--border-hairline);
+}
+
+.ombs-scholarly-nav-item.active {
+  color: var(--text-ink);
+  border-bottom-color: var(--accent-terracotta);
+}
+
+.ombs-scholarly-pill {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
