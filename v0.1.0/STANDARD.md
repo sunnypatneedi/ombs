@@ -79,6 +79,7 @@ OMBS synthesizes prior work rather than inventing from scratch. Principal source
 - **P21 / Battelle for Kids 4Cs** (Creativity, Critical Thinking, Communication, Collaboration): informs the cross-cutting framing.
 - **Resnick, *Lifelong Kindergarten*** (MIT, 2017): the Projects–Passion–Peers–Play frame informs the role of audience and iteration.
 - **Dweck, mindset research**: informs the failure-positive design principle.
+- **Maker-mindset literature** (Dougherty, *Free to Make*, 2016; Regalla, "Developing a Maker Mindset," 2016): informs the dispositional framing — that sustained engagement in making cultivates curiosity, playfulness, collaboration, resilience under frustration, and identity-as-maker. OMBS treats these as dispositions developed *through* the practices it assesses, not as separate constructs to score.
 
 This standard is not derivative of any single source and may be used independently of all of them. Crosswalks (§9) make alignment explicit where it exists.
 
@@ -522,6 +523,7 @@ Selected works that informed this standard. This is not an exhaustive review.
 - OECD. *Learning Compass 2030.* OECD Publishing (2019).
 - Papert, Seymour. *Mindstorms: Children, Computers, and Powerful Ideas.* Basic Books (1980).
 - Partnership for 21st Century Learning / Battelle for Kids. *Framework for 21st Century Learning Definitions.* (2019).
+- Regalla, Lisa. "Developing a Maker Mindset." In K. Peppler, E. R. Halverson, & Y. B. Kafai (Eds.), *Makeology: Makerspaces as Learning Environments* (Vol. 1). Routledge (2016).
 - Resnick, Mitchel. *Lifelong Kindergarten: Cultivating Creativity through Projects, Passion, Peers, and Play.* MIT Press (2017).
 - UNESCO. *AI Competency Framework for Students.* (2024).
 

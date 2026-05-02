@@ -2,6 +2,12 @@
 
 All notable changes to OMBS are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning follows semver as defined in README.md.
 
+## [Unreleased]
+
+### Added
+
+- Reference to the maker-mindset literature (Dougherty 2016; Regalla 2016) in §1.5 Theoretical grounding and §11 Bibliography. No code IDs or evidence descriptors changed.
+
 ## [0.1.0] — 2026-04-30
 
 ### Added
