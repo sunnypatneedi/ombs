@@ -80,6 +80,9 @@ OMBS synthesizes prior work rather than inventing from scratch. Principal source
 - **Resnick, *Lifelong Kindergarten*** (MIT, 2017): the Projects–Passion–Peers–Play frame informs the role of audience and iteration.
 - **Dweck, mindset research**: informs the failure-positive design principle.
 - **Maker-mindset literature** (Dougherty, *Free to Make*, 2016; Regalla, "Developing a Maker Mindset," 2016): informs the dispositional framing — that sustained engagement in making cultivates curiosity, playfulness, collaboration, resilience under frustration, and identity-as-maker. OMBS treats these as dispositions developed *through* the practices it assesses, not as separate constructs to score.
+- **Empirical research on makerspaces as learning environments** (Halverson & Sheridan, 2014; Sheridan et al., 2014; Peppler, Halverson, & Kafai, eds., *Makeology* Vol. 2, 2016): grounds the stance that making is a *practice* observable across spaces, not a property of a particular tool stack or room. OMBS evidence descriptors are written so they can be satisfied in a classroom, a kitchen, a community center, or a fab lab.
+- **Equity-critical maker scholarship** (Vossoughi, Hooper, & Escudé, 2016): grounds the audience-real and process-visible design principles by naming how unexamined "making" can reproduce class- and culture-coded notions of legitimate creativity. OMBS treats this as a constraint on evidence-descriptor language, not as a separate dimension.
+- **Practitioner translation of constructionist making** (Martinez & Stager, *Invent to Learn*, 2nd ed. 2019; Honey & Kanter, eds., *Design, Make, Play*, 2013): grounds the classroom-realistic stance — that the standard describes what teachers and learners actually do during making and building, not an idealized lab.
 
 This standard is not derivative of any single source and may be used independently of all of them. Crosswalks (§9) make alignment explicit where it exists.
 
@@ -517,15 +520,21 @@ Selected works that informed this standard. This is not an exhaustive review.
 - Common Core State Standards Initiative. *English Language Arts Standards — Writing.* (2010).
 - Dougherty, Dale. *Free to Make: How the Maker Movement Is Changing Our Schools, Our Jobs, and Our Minds.* North Atlantic Books (2016).
 - Dweck, Carol S. *Mindset: The New Psychology of Success.* Random House (2006).
+- Halverson, Erica R., and Kimberly Sheridan. "The Maker Movement in Education." *Harvard Educational Review* 84, no. 4 (2014): 495–504.
+- Honey, Margaret, and David E. Kanter, eds. *Design, Make, Play: Growing the Next Generation of STEM Innovators.* Routledge (2013).
 - ISTE. *Standards for Students (2024 Refresh).* International Society for Technology in Education.
+- Martinez, Sylvia Libow, and Gary Stager. *Invent to Learn: Making, Tinkering, and Engineering in the Classroom.* 2nd ed. Constructing Modern Knowledge Press (2019).
 - National Research Council. *A Framework for K–12 Science Education: Practices, Crosscutting Concepts, and Core Ideas.* National Academies Press (2012).
 - NGSS Lead States. *Next Generation Science Standards: For States, By States.* National Academies Press (2013).
 - OECD. *Learning Compass 2030.* OECD Publishing (2019).
 - Papert, Seymour. *Mindstorms: Children, Computers, and Powerful Ideas.* Basic Books (1980).
 - Partnership for 21st Century Learning / Battelle for Kids. *Framework for 21st Century Learning Definitions.* (2019).
+- Peppler, Kylie, Erica Halverson, and Yasmin B. Kafai, eds. *Makeology: Makers as Learners* (Vol. 2). Routledge (2016).
 - Regalla, Lisa. "Developing a Maker Mindset." In K. Peppler, E. R. Halverson, & Y. B. Kafai (Eds.), *Makeology: Makerspaces as Learning Environments* (Vol. 1). Routledge (2016).
 - Resnick, Mitchel. *Lifelong Kindergarten: Cultivating Creativity through Projects, Passion, Peers, and Play.* MIT Press (2017).
+- Sheridan, Kimberly, Erica Rosenfeld Halverson, Breanne K. Litts, Lisa Brahms, Lynette Jacobs-Priebe, and Trevor Owens. "Learning in the Making: A Comparative Case Study of Three Makerspaces." *Harvard Educational Review* 84, no. 4 (2014): 505–531.
 - UNESCO. *AI Competency Framework for Students.* (2024).
+- Vossoughi, Shirin, Paula K. Hooper, and Meg Escudé. "Making Through the Lens of Culture and Power: Toward Transformative Visions for Educational Equity." *Harvard Educational Review* 86, no. 2 (2016): 206–232.
 
 ---
 
