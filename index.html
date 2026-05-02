@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open Making and Building Standard (OMBS)</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f7f8fa;
+      color: #1a1a2e;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: white;
+      padding: 2.5rem 2rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    header .subtitle {
+      font-size: 0.85rem;
+      opacity: 0.75;
+      margin-top: 0.25rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px;
+      padding: 0.2rem 0.7rem;
+      font-size: 0.75rem;
+      margin-top: 0.5rem;
+      margin-right: 0.4rem;
+    }
+
+    nav.tabs {
+      background: white;
+      border-bottom: 2px solid #e8eaf0;
+      display: flex;
+      padding: 0 2rem;
+      gap: 0;
+      overflow-x: auto;
+    }
+
+    nav.tabs button {
+      background: none;
+      border: none;
+      padding: 0.85rem 1.2rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #666;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    nav.tabs button:hover { color: #0f3460; }
+    nav.tabs button.active {
+      color: #0f3460;
+      border-bottom-color: #0f3460;
+      font-weight: 600;
+    }
+
+    main { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+      border: 1px solid #e8eaf0;
+    }
+
+    .card h3 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #888;
+      margin-bottom: 0.5rem;
+    }
+
+    .card .value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0f3460;
+    }
+
+    .card p {
+      font-size: 0.85rem;
+      color: #555;
+      margin-top: 0.25rem;
+    }
+
+    .domain-card {
+      background: white;
+      border-radius: 12px;
+      border: 1px solid #e8eaf0;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    }
+
+    .domain-header {
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .domain-header:hover { background: #f9fafc; }
+
+    .domain-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .domain-S .domain-icon { background: #e8f4fd; }
+    .domain-M .domain-icon { background: #fdf0e8; }
+    .domain-B .domain-icon { background: #e8fdf0; }
+
+    .domain-header h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      flex: 1;
+    }
+
+    .domain-header .domain-desc {
+      font-size: 0.82rem;
+      color: #666;
+      margin-top: 0.2rem;
+    }
+
+    .chevron {
+      font-size: 1rem;
+      color: #aaa;
+      transition: transform 0.2s;
+    }
+
+    .domain-card.open .chevron { transform: rotate(90deg); }
+
+    .dimensions { display: none; border-top: 1px solid #e8eaf0; }
+    .domain-card.open .dimensions { display: block; }
+
+    .dimension-row {
+      border-bottom: 1px solid #f0f2f5;
+      padding: 1.25rem 1.5rem;
+    }
+
+    .dimension-row:last-child { border-bottom: none; }
+
+    .dim-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .dim-code {
+      font-family: 'SFMono-Regular', Consolas, monospace;
+      font-size: 0.75rem;
+      background: #f0f2f5;
+      color: #0f3460;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      font-weight: 600;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .dim-name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1a1a2e;
+    }
+
+    .dim-anchor {
+      font-size: 0.83rem;
+      color: #555;
+      margin-bottom: 1rem;
+      padding-left: calc(1rem + 4px);
+      border-left: 3px solid #e0e4f0;
+      font-style: italic;
+    }
+
+    .grade-bands {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+    }
+
+    @media (max-width: 700px) {
+      .grade-bands { grid-template-columns: 1fr 1fr; }
+    }
+
+    .grade-cell {
+      background: #f7f8fa;
+      border-radius: 8px;
+      padding: 0.75rem;
+      border: 1px solid #e8eaf0;
+    }
+
+    .grade-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #888;
+      margin-bottom: 0.5rem;
+    }
+
+    .component-code {
+      font-family: 'SFMono-Regular', Consolas, monospace;
+      font-size: 0.65rem;
+      background: #dde3f0;
+      color: #0f3460;
+      padding: 0.15rem 0.35rem;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 0.35rem;
+    }
+
+    .component-text {
+      font-size: 0.8rem;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    .search-bar {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .search-bar input {
+      flex: 1;
+      padding: 0.7rem 1rem;
+      border: 1px solid #dde0e8;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-bar input:focus { border-color: #0f3460; }
+
+    .filter-bar {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .filter-btn {
+      padding: 0.4rem 0.9rem;
+      border: 1px solid #dde0e8;
+      border-radius: 20px;
+      background: white;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: all 0.15s;
+      color: #555;
+    }
+
+    .filter-btn:hover { border-color: #0f3460; color: #0f3460; }
+    .filter-btn.active { background: #0f3460; color: white; border-color: #0f3460; }
+
+    .results-list { list-style: none; }
+
+    .result-item {
+      background: white;
+      border: 1px solid #e8eaf0;
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.75rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      transition: box-shadow 0.15s;
+    }
+
+    .result-item:hover { box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+
+    .result-code {
+      font-family: monospace;
+      font-size: 0.75rem;
+      background: #e8f0fd;
+      color: #0f3460;
+      padding: 0.2rem 0.5rem;
+      border-radius: 5px;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      display: inline-block;
+    }
+
+    .result-meta {
+      font-size: 0.78rem;
+      color: #888;
+      margin-bottom: 0.3rem;
+    }
+
+    .result-text { font-size: 0.875rem; color: #333; line-height: 1.55; }
+
+    highlight { background: #fff3cd; border-radius: 2px; }
+
+    .crosswalk-section {
+      background: white;
+      border-radius: 12px;
+      border: 1px solid #e8eaf0;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    }
+
+    .crosswalk-header {
+      background: #f7f8fa;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid #e8eaf0;
+    }
+
+    .crosswalk-header h3 { font-size: 1rem; font-weight: 600; }
+    .crosswalk-header .cw-meta { font-size: 0.8rem; color: #888; margin-top: 0.2rem; }
+
+    .crosswalk-table { width: 100%; border-collapse: collapse; }
+
+    .crosswalk-table th {
+      background: #f0f2f7;
+      text-align: left;
+      padding: 0.6rem 1rem;
+      font-size: 0.8rem;
+      color: #555;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .crosswalk-table td {
+      padding: 0.6rem 1rem;
+      font-size: 0.85rem;
+      border-bottom: 1px solid #f0f2f5;
+      vertical-align: top;
+    }
+
+    .crosswalk-table tr:last-child td { border-bottom: none; }
+
+    .relation-badge {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .relation-overlaps { background: #e8f4fd; color: #1565c0; }
+    .relation-supports { background: #e8fdf0; color: #1b5e20; }
+
+    .no-results {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    section.about-section {
+      background: white;
+      border-radius: 12px;
+      padding: 1.75rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid #e8eaf0;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    }
+
+    section.about-section h2 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #0f3460;
+      margin-bottom: 0.75rem;
+      border-bottom: 2px solid #e8eaf0;
+      padding-bottom: 0.5rem;
+    }
+
+    section.about-section p { font-size: 0.9rem; color: #444; margin-bottom: 0.6rem; }
+    section.about-section ul { padding-left: 1.25rem; }
+    section.about-section li { font-size: 0.875rem; color: #444; margin-bottom: 0.35rem; }
+
+    .principle-card {
+      background: #f7f8fa;
+      border-radius: 8px;
+      padding: 0.9rem 1.1rem;
+      margin-bottom: 0.6rem;
+      border-left: 4px solid #0f3460;
+    }
+
+    .principle-card strong { color: #0f3460; }
+
+    a { color: #0f3460; }
+
+    @media (max-width: 600px) {
+      header { padding: 1.5rem 1rem; }
+      nav.tabs { padding: 0 0.5rem; }
+      main { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Open Making and Building Standard</h1>
+  <div class="subtitle">OMBS — A cross-domain K–12 practice standard for making and building</div>
+  <div>
+    <span class="badge">v0.1.0 Draft</span>
+    <span class="badge">CC BY-SA 4.0</span>
+    <span class="badge">April 2026</span>
+  </div>
+</header>
+
+<nav class="tabs">
+  <button class="active" onclick="switchTab('overview', this)">Overview</button>
+  <button onclick="switchTab('standards', this)">Standards Browser</button>
+  <button onclick="switchTab('search', this)">Search Codes</button>
+  <button onclick="switchTab('crosswalks', this)">Crosswalks</button>
+  <button onclick="switchTab('about', this)">About</button>
+</nav>
+
+<main>
+
+  <!-- OVERVIEW TAB -->
+  <div id="tab-overview" class="tab-content active">
+    <div class="hero-grid" id="stats-grid"></div>
+
+    <div id="overview-domains"></div>
+  </div>
+
+  <!-- STANDARDS BROWSER TAB -->
+  <div id="tab-standards" class="tab-content">
+    <div class="filter-bar" id="domain-filters"></div>
+    <div id="standards-content"></div>
+  </div>
+
+  <!-- SEARCH TAB -->
+  <div id="tab-search" class="tab-content">
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Search codes or descriptors… e.g. S.DF or audience" oninput="doSearch()">
+    </div>
+    <div class="filter-bar" id="grade-filters"></div>
+    <ul class="results-list" id="search-results"></ul>
+  </div>
+
+  <!-- CROSSWALKS TAB -->
+  <div id="tab-crosswalks" class="tab-content">
+    <div id="crosswalks-content"></div>
+  </div>
+
+  <!-- ABOUT TAB -->
+  <div id="tab-about" class="tab-content">
+    <section class="about-section">
+      <h2>Purpose</h2>
+      <p>The Open Making and Building Standard (OMBS) describes the practices learners use when they originate artifacts (making) and construct structures and systems (building). It gives educators, curriculum designers, assessment authors, ed-tech tools, and researchers a shared vocabulary — independent of subject area, medium, or pedagogy.</p>
+      <p>OMBS is <strong>not</strong> a content standard. It specifies what good making and building look like, so that any subject's projects can be assessed for the practices they exercise.</p>
+    </section>
+
+    <section class="about-section">
+      <h2>Five Design Principles</h2>
+      <div class="principle-card"><strong>1. Practice over outcome.</strong> OMBS describes what learners <em>do</em>, not what they produce. A polished artifact made through copying does not satisfy the standard.</div>
+      <div class="principle-card"><strong>2. Medium-agnostic.</strong> The same code applies whether the artifact is a poem, a circuit, a community event, a research argument, or a Minecraft world.</div>
+      <div class="principle-card"><strong>3. Process-visible.</strong> Evidence descriptors reward learners who make their thinking observable: drafts kept, choices defended, revisions documented.</div>
+      <div class="principle-card"><strong>4. Audience-real.</strong> Both making and building presuppose someone the work is for. OMBS expects learners to identify and respond to a real audience.</div>
+      <div class="principle-card"><strong>5. Failure-positive.</strong> A learner who tested, failed, and revised demonstrates more of the standard than one whose first attempt happened to work.</div>
+    </section>
+
+    <section class="about-section">
+      <h2>Code Format</h2>
+      <p style="font-family: monospace; background: #f0f2f7; padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.9rem;">OMBS.&lt;domain&gt;.&lt;dimension&gt;.&lt;gradeBand&gt;.&lt;component&gt;</p>
+      <ul style="margin-top: 0.75rem;">
+        <li><strong>Domain:</strong> S (Shared), M (Making), B (Building)</li>
+        <li><strong>Grade Bands:</strong> K2, 35, 68, 912</li>
+        <li><strong>Example:</strong> <code>OMBS.S.DF.35.1</code> — Shared, Define, grades 3–5, component 1</li>
+      </ul>
+    </section>
+
+    <section class="about-section">
+      <h2>License &amp; Citation</h2>
+      <p>This standard is published under <strong>CC BY-SA 4.0</strong>. You are free to share and adapt it with attribution.</p>
+      <p style="font-family: monospace; background: #f0f2f7; padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.85rem; margin-top: 0.5rem;">Open Making and Building Standard (OMBS), v0.1.0. 2026. CC BY-SA 4.0.</p>
+      <p style="margin-top: 0.75rem;">Source: <a href="https://github.com/sunnypatneedi/ombs" target="_blank">github.com/sunnypatneedi/ombs</a></p>
+    </section>
+  </div>
+
+</main>
+
+<script>
+let standardsData = null;
+let crosswalksData = null;
+let allComponents = [];
+
+const domainColors = { S: '#1565c0', M: '#e65100', B: '#2e7d32' };
+const domainIcons = { S: '🔗', M: '🎨', B: '🏗️' };
+const gradeBandLabels = { K2: 'K–2', '35': '3–5', '68': '6–8', '912': '9–12' };
+
+async function init() {
+  const [sRes, cRes] = await Promise.all([
+    fetch('/standards.json'),
+    fetch('/crosswalks.json')
+  ]);
+  standardsData = await sRes.json();
+  crosswalksData = await cRes.json();
+
+  buildAllComponents();
+  renderStats();
+  renderOverview();
+  renderStandards();
+  renderSearch();
+  renderCrosswalks();
+}
+
+function buildAllComponents() {
+  allComponents = [];
+  for (const domain of standardsData.domains) {
+    for (const dim of domain.dimensions) {
+      for (const comp of dim.components) {
+        allComponents.push({
+          ...comp,
+          domainId: domain.id,
+          domainName: domain.name,
+          dimId: dim.id,
+          dimName: dim.name,
+          anchor: dim.anchor,
+        });
+      }
+    }
+  }
+}
+
+function renderStats() {
+  const dimCount = standardsData.domains.reduce((a, d) => a + d.dimensions.length, 0);
+  const grid = document.getElementById('stats-grid');
+  grid.innerHTML = `
+    <div class="card">
+      <h3>Domains</h3>
+      <div class="value">3</div>
+      <p>Shared Practices, Making, Building</p>
+    </div>
+    <div class="card">
+      <h3>Dimensions</h3>
+      <div class="value">${dimCount}</div>
+      <p>Across all three domains</p>
+    </div>
+    <div class="card">
+      <h3>Evidence Descriptors</h3>
+      <div class="value">${allComponents.length}</div>
+      <p>Leaf-level standard statements</p>
+    </div>
+    <div class="card">
+      <h3>Grade Bands</h3>
+      <div class="value">4</div>
+      <p>K–2, 3–5, 6–8, 9–12</p>
+    </div>
+  `;
+}
+
+function renderOverview() {
+  const el = document.getElementById('overview-domains');
+  el.innerHTML = standardsData.domains.map(domain => `
+    <div class="domain-card domain-${domain.id}" id="ov-domain-${domain.id}">
+      <div class="domain-header" onclick="toggleDomain('ov-domain-${domain.id}')">
+        <div class="domain-icon">${domainIcons[domain.id]}</div>
+        <div>
+          <div class="domain-header" style="padding:0; display:block;">
+            <h2 style="color:${domainColors[domain.id]}">${domain.name}</h2>
+          </div>
+          <div class="domain-desc">${domain.description}</div>
+        </div>
+        <span class="chevron">›</span>
+      </div>
+      <div class="dimensions">
+        ${domain.dimensions.map(dim => renderDimension(dim)).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderDimension(dim) {
+  const byBand = {};
+  for (const comp of dim.components) {
+    if (!byBand[comp.gradeBand]) byBand[comp.gradeBand] = [];
+    byBand[comp.gradeBand].push(comp);
+  }
+  const bands = ['K2', '35', '68', '912'];
+
+  return `
+    <div class="dimension-row">
+      <div class="dim-header">
+        <span class="dim-code">${dim.anchor}</span>
+        <span class="dim-name">${dim.name}</span>
+      </div>
+      <div class="dim-anchor">${dim.anchorStatement}</div>
+      <div class="grade-bands">
+        ${bands.map(band => `
+          <div class="grade-cell">
+            <div class="grade-label">${gradeBandLabels[band]}</div>
+            ${(byBand[band] || []).map(c => `
+              <div><span class="component-code">${c.id}</span></div>
+              <div class="component-text">${c.descriptor}</div>
+            `).join('<br>')}
+            ${!byBand[band] ? '<div class="component-text" style="color:#bbb;font-style:italic;">—</div>' : ''}
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function renderStandards() {
+  const filterBar = document.getElementById('domain-filters');
+  filterBar.innerHTML = ['All', ...standardsData.domains.map(d => d.name)].map((name, i) => `
+    <button class="filter-btn ${i === 0 ? 'active' : ''}" onclick="filterDomain(this, '${i === 0 ? 'all' : standardsData.domains[i-1].id}')">${name}</button>
+  `).join('');
+
+  const content = document.getElementById('standards-content');
+  content.innerHTML = standardsData.domains.map(domain => `
+    <div class="domain-card domain-${domain.id} std-domain" data-domain="${domain.id}" id="std-domain-${domain.id}" style="display:block">
+      <div class="domain-header" onclick="toggleDomain('std-domain-${domain.id}')">
+        <div class="domain-icon">${domainIcons[domain.id]}</div>
+        <div>
+          <h2 style="color:${domainColors[domain.id]}">${domain.name}</h2>
+          <div class="domain-desc">${domain.description}</div>
+        </div>
+        <span class="chevron">›</span>
+      </div>
+      <div class="dimensions">
+        ${domain.dimensions.map(dim => renderDimension(dim)).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterDomain(btn, domainId) {
+  document.querySelectorAll('#domain-filters .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.std-domain').forEach(el => {
+    el.style.display = (domainId === 'all' || el.dataset.domain === domainId) ? 'block' : 'none';
+  });
+}
+
+function renderSearch() {
+  const filterBar = document.getElementById('grade-filters');
+  filterBar.innerHTML = ['All Grades', ...Object.entries(gradeBandLabels).map(([k, v]) => `${v}`)].map((label, i) => `
+    <button class="filter-btn ${i === 0 ? 'active' : ''}" onclick="filterGrade(this, '${i === 0 ? 'all' : Object.keys(gradeBandLabels)[i-1]}')" data-grade="${i === 0 ? 'all' : Object.keys(gradeBandLabels)[i-1]}">${label}</button>
+  `).join('');
+
+  doSearch();
+}
+
+let activeGrade = 'all';
+
+function filterGrade(btn, grade) {
+  document.querySelectorAll('#grade-filters .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  activeGrade = grade;
+  doSearch();
+}
+
+function doSearch() {
+  const query = document.getElementById('search-input').value.toLowerCase().trim();
+  const results = document.getElementById('search-results');
+
+  let filtered = allComponents.filter(c => {
+    const matchGrade = activeGrade === 'all' || c.gradeBand === activeGrade;
+    if (!matchGrade) return false;
+    if (!query) return true;
+    return c.id.toLowerCase().includes(query) ||
+           c.descriptor.toLowerCase().includes(query) ||
+           c.dimName.toLowerCase().includes(query) ||
+           c.domainName.toLowerCase().includes(query);
+  });
+
+  if (filtered.length === 0) {
+    results.innerHTML = `<div class="no-results">No standards found matching your search.</div>`;
+    return;
+  }
+
+  function highlight(text) {
+    if (!query) return text;
+    const re = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+    return text.replace(re, '<mark style="background:#fff3cd;border-radius:2px;">$1</mark>');
+  }
+
+  results.innerHTML = filtered.map(c => `
+    <li class="result-item">
+      <div class="result-code">${highlight(c.id)}</div>
+      <div class="result-meta">${c.domainName} › ${c.dimName} › ${gradeBandLabels[c.gradeBand]}</div>
+      <div class="result-text">${highlight(c.descriptor)}</div>
+    </li>
+  `).join('');
+}
+
+function renderCrosswalks() {
+  const el = document.getElementById('crosswalks-content');
+  el.innerHTML = crosswalksData.frameworks.map(fw => `
+    <div class="crosswalk-section">
+      <div class="crosswalk-header">
+        <h3>${fw.name}</h3>
+        <div class="cw-meta">Version ${fw.version} &nbsp;·&nbsp; <a href="${fw.url}" target="_blank">${fw.url}</a></div>
+      </div>
+      <table class="crosswalk-table">
+        <thead>
+          <tr>
+            <th>OMBS Code</th>
+            <th>External Standard(s)</th>
+            <th>Relation</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${fw.mappings.map(m => `
+            <tr>
+              <td><code style="font-size:0.82rem;color:#0f3460">${m.ombs}</code></td>
+              <td>${m.external.map(e => `<code style="font-size:0.82rem;background:#f0f2f7;padding:0.1rem 0.35rem;border-radius:4px">${e}</code>`).join(' ')}</td>
+              <td><span class="relation-badge relation-${m.relation}">${m.relation}</span></td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    </div>
+  `).join('');
+}
+
+function toggleDomain(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('open');
+}
+
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('nav.tabs button').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+
+init();
+</script>
+</body>
+</html>
