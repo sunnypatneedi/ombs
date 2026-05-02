@@ -7,6 +7,7 @@ All notable changes to OMBS are documented here. Format follows [Keep a Changelo
 ### Added
 
 - Reference to the maker-mindset literature (Dougherty 2016; Regalla 2016) in §1.5 Theoretical grounding and §11 Bibliography. No code IDs or evidence descriptors changed.
+- Additional maker-education references in §1.5 Theoretical grounding and §11 Bibliography: Halverson & Sheridan 2014; Sheridan et al. 2014; Peppler, Halverson, & Kafai (eds.) *Makeology* Vol. 2 (2016); Vossoughi, Hooper, & Escudé 2016; Martinez & Stager 2019; Honey & Kanter (eds.) 2013. No code IDs, evidence descriptors, dimensions, or crosswalks changed.
 
 ## [0.1.0] — 2026-04-30
 
