@@ -1,0 +1,83 @@
+{
+  "ombsVersion": "0.1.0",
+  "note": "Crosswalks indicate substantial overlap, not 1:1 equivalence. See STANDARD.md §9 for context.",
+  "frameworks": [
+    {
+      "id": "ngss-eng-design",
+      "name": "Next Generation Science Standards — Engineering Design",
+      "version": "2013",
+      "url": "https://www.nextgenscience.org/",
+      "mappings": [
+        { "ombs": "OMBS.S.DF", "external": ["K-2-ETS1-1", "3-5-ETS1-1", "MS-ETS1-1", "HS-ETS1-1"], "relation": "overlaps" },
+        { "ombs": "OMBS.S.DR", "external": ["3-5-ETS1-2", "MS-ETS1-3"], "relation": "overlaps" },
+        { "ombs": "OMBS.S.IT", "external": ["3-5-ETS1-2", "MS-ETS1-3"], "relation": "overlaps" },
+        { "ombs": "OMBS.S.TS", "external": ["3-5-ETS1-3", "MS-ETS1-4", "HS-ETS1-3"], "relation": "overlaps" },
+        { "ombs": "OMBS.B.DR", "external": ["3-5-ETS1-3", "MS-ETS1-4", "HS-ETS1-3"], "relation": "overlaps" },
+        { "ombs": "OMBS.B.ST", "external": ["MS-ETS1-2", "HS-ETS1-2"], "relation": "overlaps" }
+      ]
+    },
+    {
+      "id": "iste-students-2024",
+      "name": "ISTE Standards for Students (2024 refresh)",
+      "version": "2024",
+      "url": "https://iste.org/standards/students",
+      "mappings": [
+        { "ombs": "OMBS.M.AU", "external": ["1.6.a", "1.6.b"], "relation": "overlaps" },
+        { "ombs": "OMBS.M.PU", "external": ["1.6.a", "1.6.b"], "relation": "overlaps" },
+        { "ombs": "OMBS.M.EX", "external": ["1.6.c", "1.6.d"], "relation": "overlaps" },
+        { "ombs": "OMBS.S.DF", "external": ["1.4.a"], "relation": "overlaps" },
+        { "ombs": "OMBS.S.DR", "external": ["1.4.b"], "relation": "overlaps" },
+        { "ombs": "OMBS.S.TS", "external": ["1.4.c"], "relation": "overlaps" },
+        { "ombs": "OMBS.S.IT", "external": ["1.4.d"], "relation": "overlaps" },
+        { "ombs": "OMBS.B.ST", "external": ["1.5.a", "1.5.b"], "relation": "overlaps" },
+        { "ombs": "OMBS.B.DR", "external": ["1.5.c"], "relation": "overlaps" },
+        { "ombs": "OMBS.S.SH", "external": ["1.7.b", "1.7.c"], "relation": "overlaps" }
+      ]
+    },
+    {
+      "id": "p21-4cs",
+      "name": "P21 / Battelle for Kids — Framework for 21st Century Learning (4Cs)",
+      "version": "2019",
+      "url": "https://www.battelleforkids.org/networks/p21",
+      "mappings": [
+        { "ombs": "OMBS.M.PU", "external": ["Creativity"], "relation": "supports" },
+        { "ombs": "OMBS.M.EX", "external": ["Creativity"], "relation": "supports" },
+        { "ombs": "OMBS.S.DR", "external": ["Creativity"], "relation": "supports" },
+        { "ombs": "OMBS.S.DF", "external": ["Critical Thinking"], "relation": "supports" },
+        { "ombs": "OMBS.S.TS", "external": ["Critical Thinking"], "relation": "supports" },
+        { "ombs": "OMBS.B.ST", "external": ["Critical Thinking"], "relation": "supports" },
+        { "ombs": "OMBS.M.AU", "external": ["Communication"], "relation": "supports" },
+        { "ombs": "OMBS.S.SH", "external": ["Communication"], "relation": "supports" },
+        { "ombs": "OMBS.M.CR", "external": ["Collaboration"], "relation": "supports" },
+        { "ombs": "OMBS.S.IT", "external": ["Collaboration"], "relation": "supports" }
+      ]
+    },
+    {
+      "id": "agency-by-design",
+      "name": "Agency by Design — Maker-Centered Learning",
+      "version": "2017",
+      "url": "https://www.agencybydesign.org/",
+      "mappings": [
+        { "ombs": "OMBS.B.ST", "external": ["Look Closely"], "relation": "supports" },
+        { "ombs": "OMBS.B.MT", "external": ["Explore Complexity"], "relation": "supports" },
+        { "ombs": "OMBS.B.DR", "external": ["Explore Complexity"], "relation": "supports" },
+        { "ombs": "OMBS.M.AU", "external": ["Find Opportunity"], "relation": "supports" },
+        { "ombs": "OMBS.M.PU", "external": ["Find Opportunity"], "relation": "supports" },
+        { "ombs": "OMBS.S.DF", "external": ["Find Opportunity"], "relation": "supports" }
+      ]
+    },
+    {
+      "id": "ccss-ela-writing",
+      "name": "CCSS English Language Arts — Writing Standards",
+      "version": "2010",
+      "url": "https://www.thecorestandards.org/ELA-Literacy/W/",
+      "mappings": [
+        { "ombs": "OMBS.M.AU", "external": ["W.x.4"], "relation": "overlaps", "note": "x denotes any grade" },
+        { "ombs": "OMBS.M.PU", "external": ["W.x.4"], "relation": "overlaps" },
+        { "ombs": "OMBS.S.DR", "external": ["W.x.5"], "relation": "overlaps" },
+        { "ombs": "OMBS.S.IT", "external": ["W.x.5"], "relation": "overlaps" },
+        { "ombs": "OMBS.S.SH", "external": ["W.x.6"], "relation": "overlaps" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open Making and Building Standard (OMBS)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" media="print" onload="this.media='all'"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <style>
+    :root {
+      --blue:        #2563EB;
+      --blue-dark:   #1E40AF;
+      --blue-light:  #EFF6FF;
+      --orange:      #EA580C;
+      --orange-dark: #C2410C;
+      --green:       #16A34A;
+      --green-dark:  #15803D;
+      --bg:          #F8FAFC;
+      --white:       #FFFFFF;
+      --s900:        #0F172A;
+      --s700:        #334155;
+      --s600:        #475569;
+      --s500:        #64748B;
+      --s400:        #94A3B8;
+      --s300:        #CBD5E1;
+      --s200:        #E2E8F0;
+      --s100:        #F1F5F9;
+      --s50:         #F8FAFC;
+      --font: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--s900);
+      line-height: 1.6;
+    }
+
+    /* ── HEADER ───────────────────────────────────────────── */
+    header {
+      background: var(--white);
+      border-bottom: 4px solid var(--s200);
+      padding: 0.875rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+    }
+
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand { display: flex; align-items: center; gap: 0.75rem; }
+
+    .logo {
+      width: 48px; height: 48px;
+      background: var(--s900); color: white;
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 0.7rem; letter-spacing: -0.5px;
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.1);
+      flex-shrink: 0; line-height: 1.2; text-align: center;
+    }
+
+    .brand-name {
+      font-weight: 800; font-size: 1.2rem;
+      letter-spacing: -0.4px; line-height: 1.2;
+    }
+
+    .brand-meta { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.2rem; }
+
+    .v-badge {
+      background: var(--s200); color: var(--s700);
+      font-size: 0.68rem; font-weight: 700;
+      padding: 0.15rem 0.5rem; border-radius: 20px;
+    }
+
+    .brand-sub { font-size: 0.78rem; color: var(--s500); font-weight: 500; }
+
+    /* ── TAB NAV ──────────────────────────────────────────── */
+    .tab-nav {
+      background: var(--s100);
+      padding: 6px; border-radius: 20px;
+      display: flex; gap: 2px;
+      overflow-x: auto;
+    }
+
+    .tab-nav button {
+      display: flex; align-items: center; gap: 0.35rem;
+      padding: 0.5rem 1.1rem;
+      border: none; background: none; border-radius: 14px;
+      font-family: var(--font); font-size: 0.84rem; font-weight: 700;
+      color: var(--s500); cursor: pointer; white-space: nowrap;
+      transition: all 0.15s;
+    }
+
+    .tab-nav button:hover { color: var(--s900); background: rgba(255,255,255,0.5); }
+    .tab-nav button.active {
+      background: var(--white); color: var(--s900);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+    /* ── MAIN ─────────────────────────────────────────────── */
+    main { max-width: 1280px; margin: 0 auto; padding: 3rem 1.5rem; }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    /* ── HERO ─────────────────────────────────────────────── */
+    .hero { text-align: center; max-width: 720px; margin: 0 auto 3.5rem; }
+
+    .hero h2 {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 800; line-height: 1.15;
+      letter-spacing: -1px; margin-bottom: 1.2rem;
+    }
+
+    .hero h2 .c-blue { color: var(--blue); }
+    .hero h2 .c-green { color: var(--green); }
+
+    .hero p {
+      font-size: 1.1rem; color: var(--s600);
+      font-weight: 500; line-height: 1.65; margin-bottom: 2rem;
+    }
+
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--s900); color: white;
+      padding: 1rem 2rem; border: none; border-radius: 16px;
+      font-family: var(--font); font-size: 1rem; font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 0 #0a0f1a;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 0 #0a0f1a; }
+    .cta-btn:active { transform: translateY(3px); box-shadow: none; }
+
+    /* ── STATS ────────────────────────────────────────────── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem; margin-bottom: 2.5rem;
+    }
+
+    .stat-card {
+      background: var(--white);
+      border-radius: 20px; padding: 1.5rem;
+      border: 2px solid var(--s200);
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.04);
+    }
+
+    .stat-label {
+      font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px;
+      color: var(--s400); margin-bottom: 0.35rem;
+    }
+
+    .stat-value {
+      font-size: 2.5rem; font-weight: 800;
+      color: var(--s900); line-height: 1; margin-bottom: 0.3rem;
+    }
+
+    .stat-desc { font-size: 0.78rem; color: var(--s500); font-weight: 500; }
+
+    /* ── DOMAIN BIG CARDS (overview) ──────────────────────── */
+    .domains-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .domain-big-card {
+      border-radius: 32px; border: 4px solid transparent;
+      padding: 2rem; display: flex; flex-direction: column;
+      box-shadow: 8px 8px 0 rgba(0,0,0,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+
+    .domain-big-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 12px 12px 0 rgba(0,0,0,0.1);
+    }
+
+    .domain-S-card { background: var(--blue);   color: white; border-color: var(--blue-dark); }
+    .domain-M-card { background: var(--orange); color: white; border-color: var(--orange-dark); }
+    .domain-B-card { background: var(--green);  color: white; border-color: var(--green-dark); }
+
+    .domain-letter {
+      width: 64px; height: 64px;
+      background: rgba(255,255,255,0.2);
+      border: 2px solid rgba(255,255,255,0.25);
+      border-radius: 18px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.75rem; font-weight: 800;
+      margin-bottom: 1.5rem; flex-shrink: 0;
+    }
+
+    .domain-big-card h3 {
+      font-size: 1.4rem; font-weight: 800; margin-bottom: 0.75rem;
+    }
+
+    .domain-big-card .domain-desc {
+      color: rgba(255,255,255,0.88); font-weight: 500;
+      line-height: 1.6; flex-grow: 1;
+    }
+
+    .domain-dims-section {
+      margin-top: 2rem; padding-top: 1.25rem;
+      border-top: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .domain-dims-label {
+      font-size: 0.68rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.65); margin-bottom: 0.6rem;
+    }
+
+    .dims-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+    .dim-pill {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px; padding: 0.3rem 0.75rem;
+      font-size: 0.8rem; font-weight: 700;
+    }
+
+    /* ── STANDARDS BROWSER ─────────────────────────────────── */
+    .browser-layout {
+      display: flex; gap: 2rem; align-items: flex-start;
+    }
+
+    .browser-sidebar {
+      width: 256px; flex-shrink: 0;
+      background: var(--white);
+      border-radius: 24px; padding: 1.5rem;
+      border: 2px solid var(--s200);
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.04);
+      position: sticky; top: 90px;
+    }
+
+    .browser-sidebar h3 {
+      font-size: 1rem; font-weight: 800; margin-bottom: 1rem;
+    }
+
+    .domain-filter-btn {
+      width: 100%; display: flex;
+      align-items: center; justify-content: space-between;
+      padding: 0.8rem 1rem;
+      border: 2px solid var(--s200); border-radius: 16px;
+      background: var(--white); font-family: var(--font);
+      font-size: 0.85rem; font-weight: 700;
+      color: var(--s600); cursor: pointer;
+      margin-bottom: 0.5rem; text-align: left;
+      transition: all 0.15s;
+    }
+
+    .domain-filter-btn:last-child { margin-bottom: 0; }
+    .domain-filter-btn:hover { border-color: var(--s300); }
+
+    .domain-filter-btn.active-all { background: var(--s100); color: var(--s900); border-color: var(--s200); }
+    .domain-filter-btn.active-S   { background: var(--blue-light); color: var(--blue-dark); border-color: #bfdbfe; }
+    .domain-filter-btn.active-M   { background: #fff7ed; color: var(--orange-dark); border-color: #fed7aa; }
+    .domain-filter-btn.active-B   { background: #f0fdf4; color: var(--green-dark); border-color: #bbf7d0; }
+
+    .dfb-left { display: flex; align-items: center; gap: 0.6rem; }
+
+    .dfb-icon {
+      width: 32px; height: 32px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.78rem; font-weight: 800; color: white; flex-shrink: 0;
+    }
+
+    .dfb-icon-all { background: var(--s500); }
+    .dfb-icon-S   { background: var(--blue); }
+    .dfb-icon-M   { background: var(--orange); }
+    .dfb-icon-B   { background: var(--green); }
+
+    .dfb-chevron { font-size: 1rem; color: var(--s300); }
+
+    .browser-content { flex: 1; min-width: 0; }
+
+    /* ── ACCORDION ─────────────────────────────────────────── */
+    .domain-accordion {
+      background: var(--white);
+      border-radius: 24px; border: 2px solid var(--s200);
+      overflow: hidden; margin-bottom: 1.25rem;
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.04);
+    }
+
+    .accordion-header {
+      padding: 1.25rem 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+      cursor: pointer; user-select: none;
+      transition: background 0.15s;
+    }
+
+    .accordion-header:hover { background: var(--s50); }
+
+    .acc-icon {
+      width: 44px; height: 44px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; font-weight: 800; color: white; flex-shrink: 0;
+    }
+
+    .acc-icon-S { background: var(--blue); }
+    .acc-icon-M { background: var(--orange); }
+    .acc-icon-B { background: var(--green); }
+
+    .acc-title { flex: 1; }
+    .acc-title h2 { font-size: 1rem; font-weight: 800; }
+    .acc-title p { font-size: 0.8rem; color: var(--s500); font-weight: 500; margin-top: 0.1rem; }
+
+    .acc-chevron {
+      font-size: 1.1rem; color: var(--s400);
+      transition: transform 0.2s;
+    }
+
+    .domain-accordion.open .acc-chevron { transform: rotate(90deg); }
+
+    .accordion-body { display: none; border-top: 2px solid var(--s100); }
+    .domain-accordion.open .accordion-body { display: block; }
+
+    /* ── DIMENSION ROWS ────────────────────────────────────── */
+    .dimension-row {
+      border-bottom: 2px solid var(--s100); padding: 1.5rem;
+    }
+
+    .dimension-row:last-child { border-bottom: none; }
+
+    .dim-head { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.75rem; }
+
+    .dim-code-tag {
+      font-family: 'SFMono-Regular', Consolas, monospace;
+      font-size: 0.7rem; background: var(--s100); color: var(--s700);
+      padding: 0.25rem 0.6rem; border-radius: 8px; font-weight: 700;
+      white-space: nowrap; flex-shrink: 0; margin-top: 2px;
+    }
+
+    .dim-name-text { font-size: 1rem; font-weight: 800; }
+
+    .dim-anchor-stmt {
+      font-size: 0.82rem; color: var(--s500); font-weight: 500;
+      font-style: italic; margin-bottom: 1.25rem;
+      padding-left: 1rem; border-left: 3px solid var(--s200);
+    }
+
+    .grade-bands-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem;
+    }
+
+    .grade-cell {
+      background: var(--s50); border-radius: 12px;
+      padding: 0.85rem; border: 2px solid var(--s100);
+    }
+
+    .grade-pill {
+      display: inline-block; padding: 0.2rem 0.6rem;
+      border-radius: 8px; font-size: 0.72rem; font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+
+    .grade-K2  { background: #ede9fe; color: #6d28d9; }
+    .grade-35  { background: #d1fae5; color: #065f46; }
+    .grade-68  { background: #fef3c7; color: #92400e; }
+    .grade-912 { background: #ffe4e6; color: #9f1239; }
+
+    .comp-code {
+      font-family: monospace; font-size: 0.65rem;
+      background: var(--s200); color: var(--s700);
+      padding: 0.1rem 0.4rem; border-radius: 5px;
+      font-weight: 700; display: inline-block; margin-bottom: 0.35rem;
+    }
+
+    .comp-text {
+      font-size: 0.8rem; color: var(--s700);
+      line-height: 1.55; font-weight: 500;
+    }
+
+    /* ── SEARCH ────────────────────────────────────────────── */
+    .search-wrapper { max-width: 760px; margin: 0 auto; }
+
+    .search-title {
+      font-size: 2rem; font-weight: 800;
+      text-align: center; margin-bottom: 2rem;
+    }
+
+    .search-input-wrap { position: relative; margin-bottom: 1.5rem; }
+
+    .search-icon {
+      position: absolute; left: 1.35rem; top: 50%;
+      transform: translateY(-50%);
+      color: var(--s400); font-size: 1.3rem; pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 1.2rem 1.25rem 1.2rem 3.75rem;
+      border: 4px solid var(--s200); border-radius: 24px;
+      font-family: 'SFMono-Regular', Consolas, monospace;
+      font-size: 1.1rem; font-weight: 700; color: var(--s900);
+      background: var(--white);
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.04);
+      outline: none; transition: border-color 0.15s;
+    }
+
+    .search-input:focus { border-color: var(--blue); }
+
+    .grade-filter-bar {
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+      margin-bottom: 2rem; justify-content: center;
+    }
+
+    .grade-filter-btn {
+      padding: 0.45rem 1rem;
+      border: 2px solid var(--s200); border-radius: 20px;
+      background: var(--white); font-family: var(--font);
+      font-size: 0.82rem; font-weight: 700; color: var(--s500);
+      cursor: pointer; transition: all 0.15s;
+    }
+
+    .grade-filter-btn:hover { border-color: var(--s400); color: var(--s700); }
+    .grade-filter-btn.active { background: var(--s900); color: white; border-color: var(--s900); }
+
+    .results-list { list-style: none; }
+
+    .result-item {
+      background: var(--white); border: 2px solid var(--s200);
+      border-radius: 16px; padding: 1.1rem 1.25rem;
+      margin-bottom: 0.75rem;
+      box-shadow: 2px 2px 0 rgba(0,0,0,0.04);
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .result-item:hover {
+      border-color: var(--blue);
+      box-shadow: 4px 4px 0 rgba(37,99,235,0.1);
+    }
+
+    .result-code-tag {
+      font-family: monospace; font-size: 0.75rem;
+      background: var(--blue-light); color: var(--blue);
+      padding: 0.2rem 0.5rem; border-radius: 6px;
+      font-weight: 700; display: inline-block; margin-bottom: 0.35rem;
+    }
+
+    .result-meta {
+      font-size: 0.78rem; color: var(--s400);
+      font-weight: 600; margin-bottom: 0.35rem;
+    }
+
+    .result-text {
+      font-size: 0.875rem; color: var(--s700);
+      line-height: 1.6; font-weight: 500;
+    }
+
+    .search-empty {
+      text-align: center; padding: 3rem 1rem;
+      border: 2px dashed var(--s200); border-radius: 24px;
+      background: var(--white);
+    }
+
+    .search-empty-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+    .search-empty p { font-size: 1rem; font-weight: 700; color: var(--s400); }
+
+    /* ── CROSSWALKS ─────────────────────────────────────────── */
+    .cw-title { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .cw-subtitle { font-size: 1rem; color: var(--s500); font-weight: 500; margin-bottom: 2rem; }
+
+    .cw-block {
+      background: var(--white); border-radius: 24px;
+      overflow: hidden; border: 2px solid var(--s200);
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.04); margin-bottom: 1.5rem;
+    }
+
+    .cw-block-header {
+      padding: 1rem 1.5rem; border-bottom: 2px solid var(--s100);
+    }
+
+    .cw-block-header h3 { font-size: 1rem; font-weight: 800; }
+
+    .cw-block-meta {
+      font-size: 0.78rem; color: var(--s400); font-weight: 500; margin-top: 0.15rem;
+    }
+
+    .cw-table { width: 100%; border-collapse: collapse; }
+
+    .cw-table thead { background: var(--s50); }
+
+    .cw-table th {
+      text-align: left; padding: 0.7rem 1.25rem;
+      font-size: 0.7rem; font-weight: 800; color: var(--s500);
+      text-transform: uppercase; letter-spacing: 0.5px;
+      border-bottom: 2px solid var(--s100);
+    }
+
+    .cw-table td {
+      padding: 0.75rem 1.25rem; font-size: 0.85rem;
+      font-weight: 500; border-bottom: 2px solid var(--s50);
+      vertical-align: top; color: var(--s700);
+    }
+
+    .cw-table tr:last-child td { border-bottom: none; }
+    .cw-table tr:hover td { background: var(--s50); }
+
+    .ext-code {
+      font-family: monospace; font-size: 0.8rem; background: var(--s100);
+      padding: 0.15rem 0.4rem; border-radius: 6px;
+      font-weight: 700; display: inline-block; margin: 0.1rem;
+    }
+
+    .rel-badge {
+      display: inline-block; padding: 0.2rem 0.65rem;
+      border-radius: 20px; font-size: 0.72rem;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px;
+    }
+
+    .relation-overlaps { background: #dbeafe; color: #1e40af; }
+    .relation-supports { background: #dcfce7; color: #166534; }
+
+    /* ── ABOUT ──────────────────────────────────────────────── */
+    .about-wrapper { max-width: 760px; margin: 0 auto; }
+
+    .about-header-card {
+      background: var(--white); border: 2px solid var(--s200);
+      border-radius: 32px; padding: 3rem; text-align: center;
+      margin-bottom: 1.5rem; box-shadow: 4px 4px 0 rgba(0,0,0,0.04);
+    }
+
+    .about-logo {
+      width: 80px; height: 80px;
+      background: var(--s900); color: white;
+      border-radius: 24px; display: flex;
+      align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1rem;
+      letter-spacing: -0.5px; line-height: 1.2; text-align: center;
+      margin: 0 auto 1.5rem;
+      box-shadow: 6px 6px 0 rgba(0,0,0,0.1);
+      transform: rotate(-3deg); transition: transform 0.2s; cursor: default;
+    }
+
+    .about-logo:hover { transform: rotate(0deg); }
+
+    .about-header-card h2 { font-size: 2rem; font-weight: 800; margin-bottom: 0.75rem; }
+
+    .about-header-card > p {
+      font-size: 1rem; color: var(--s600); font-weight: 500;
+      max-width: 480px; margin: 0 auto 2rem; line-height: 1.65;
+    }
+
+    .about-meta-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem; text-align: left;
+    }
+
+    .about-meta-cell {
+      background: var(--s50); border: 2px solid var(--s100);
+      border-radius: 16px; padding: 1rem 1.25rem;
+    }
+
+    .about-meta-label {
+      font-size: 0.68rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 1px;
+      color: var(--s400); margin-bottom: 0.3rem;
+    }
+
+    .about-meta-val { font-weight: 800; font-size: 1rem; }
+
+    .about-section {
+      background: var(--white); border: 2px solid var(--s200);
+      border-radius: 24px; padding: 1.75rem;
+      margin-bottom: 1.25rem; box-shadow: 4px 4px 0 rgba(0,0,0,0.04);
+    }
+
+    .about-section h3 {
+      font-size: 1.05rem; font-weight: 800;
+      margin-bottom: 1rem; padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--s100);
+    }
+
+    .about-section p {
+      font-size: 0.9rem; color: var(--s600);
+      font-weight: 500; line-height: 1.65; margin-bottom: 0.6rem;
+    }
+
+    .about-section p:last-child { margin-bottom: 0; }
+
+    .principle-block {
+      background: var(--s50); border: 2px solid var(--s100);
+      border-left: 4px solid var(--blue);
+      border-radius: 0 12px 12px 0;
+      padding: 0.85rem 1rem; margin-bottom: 0.6rem;
+    }
+
+    .principle-block:last-child { margin-bottom: 0; }
+    .principle-block p { margin: 0; font-size: 0.875rem; color: var(--s700); }
+    .principle-block strong { color: var(--s900); font-weight: 800; }
+
+    .code-block {
+      font-family: 'SFMono-Regular', Consolas, monospace;
+      background: var(--s100); color: var(--s700);
+      padding: 0.85rem 1rem; border-radius: 12px;
+      font-size: 0.875rem; font-weight: 600; margin-bottom: 0.75rem;
+    }
+
+    .about-section ul { padding-left: 1.25rem; }
+
+    .about-section li {
+      font-size: 0.875rem; color: var(--s600);
+      font-weight: 500; margin-bottom: 0.35rem;
+    }
+
+    a { color: var(--blue); text-decoration: none; font-weight: 600; }
+    a:hover { text-decoration: underline; }
+
+    .no-results {
+      text-align: center; padding: 3rem 1rem;
+      color: var(--s400); font-weight: 700; font-size: 0.9rem;
+    }
+
+    /* ── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .browser-layout { flex-direction: column; }
+      .browser-sidebar { width: 100%; position: static; }
+      .domains-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 700px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .grade-bands-grid { grid-template-columns: 1fr 1fr; }
+      .about-meta-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      header { padding: 0.75rem 1rem; }
+      .brand-name { font-size: 0.95rem; }
+      .tab-nav { display: none; }
+      main { padding: 1.5rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="logo">OMBS</div>
+      <div>
+        <div class="brand-name">Open Making &amp; Building Standard</div>
+        <div class="brand-meta">
+          <span class="v-badge">v0.1.0</span>
+          <span class="brand-sub">K–12 Cross-Domain Framework</span>
+        </div>
+      </div>
+    </div>
+
+    <nav class="tab-nav">
+      <button class="active" onclick="switchTab('overview', this)">⊞ Overview</button>
+      <button onclick="switchTab('standards', this)">⊟ Standards</button>
+      <button onclick="switchTab('search', this)">⌕ Search</button>
+      <button onclick="switchTab('crosswalks', this)"># Crosswalks</button>
+      <button onclick="switchTab('about', this)">ⓘ About</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- OVERVIEW -->
+  <div id="tab-overview" class="tab-content active">
+    <div class="hero">
+      <h2>Assess <span class="c-blue">making</span> and <span class="c-green">building</span> with confidence.</h2>
+      <p>A common language for K–12 educators to evaluate craft, systems, and shared practices in project-based learning.</p>
+      <button class="cta-btn" onclick="switchTab('standards', document.querySelector('.tab-nav button:nth-child(2)'))">
+        Browse Standards &rarr;
+      </button>
+    </div>
+
+    <div class="stats-grid" id="stats-grid"></div>
+    <div class="domains-grid" id="overview-domains"></div>
+  </div>
+
+  <!-- STANDARDS BROWSER -->
+  <div id="tab-standards" class="tab-content">
+    <div class="browser-layout">
+      <aside class="browser-sidebar">
+        <h3>Filter Domains</h3>
+        <div id="domain-filters"></div>
+      </aside>
+      <div class="browser-content" id="standards-content"></div>
+    </div>
+  </div>
+
+  <!-- SEARCH -->
+  <div id="tab-search" class="tab-content">
+    <div class="search-wrapper">
+      <h2 class="search-title">Look up a Code</h2>
+      <div class="search-input-wrap">
+        <span class="search-icon">⌕</span>
+        <input type="text" id="search-input" class="search-input"
+               placeholder="e.g. OMBS.S.DF.K2.1 or &quot;audience&quot;"
+               oninput="doSearch()">
+      </div>
+      <div class="grade-filter-bar" id="grade-filters"></div>
+      <ul class="results-list" id="search-results">
+        <li>
+          <div class="search-empty">
+            <div class="search-empty-icon">#</div>
+            <p>Enter a full or partial OMBS code to see its details.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CROSSWALKS -->
+  <div id="tab-crosswalks" class="tab-content">
+    <h2 class="cw-title">Crosswalk Mappings</h2>
+    <p class="cw-subtitle">Alignments between OMBS dimensions and other national standards.</p>
+    <div id="crosswalks-content"></div>
+  </div>
+
+  <!-- ABOUT -->
+  <div id="tab-about" class="tab-content">
+    <div class="about-wrapper">
+      <div class="about-header-card">
+        <div class="about-logo">OMBS</div>
+        <h2>About OMBS</h2>
+        <p>The Open Making and Building Standard (OMBS) is a framework to assess making and building across K–12 education.</p>
+        <div class="about-meta-grid">
+          <div class="about-meta-cell">
+            <div class="about-meta-label">Version</div>
+            <div class="about-meta-val" style="font-family:monospace">v0.1.0 (Draft)</div>
+          </div>
+          <div class="about-meta-cell">
+            <div class="about-meta-label">Released</div>
+            <div class="about-meta-val">April 2026</div>
+          </div>
+          <div class="about-meta-cell">
+            <div class="about-meta-label">License</div>
+            <div class="about-meta-val">CC BY-SA 4.0</div>
+          </div>
+          <div class="about-meta-cell">
+            <div class="about-meta-label">Status</div>
+            <div class="about-meta-val">Public Draft</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-section">
+        <h3>Purpose</h3>
+        <p>The Open Making and Building Standard (OMBS) describes the practices learners use when they originate artifacts (making) and construct structures and systems (building). It gives educators, curriculum designers, assessment authors, ed-tech tools, and researchers a shared vocabulary — independent of subject area, medium, or pedagogy.</p>
+        <p>OMBS is <strong>not</strong> a content standard. It specifies what good making and building look like, so that any subject's projects can be assessed for the practices they exercise.</p>
+      </div>
+
+      <div class="about-section">
+        <h3>Five Design Principles</h3>
+        <div class="principle-block"><p><strong>1. Practice over outcome.</strong> OMBS describes what learners <em>do</em>, not what they produce. A polished artifact made through copying does not satisfy the standard.</p></div>
+        <div class="principle-block"><p><strong>2. Medium-agnostic.</strong> The same code applies whether the artifact is a poem, a circuit, a community event, a research argument, or a Minecraft world.</p></div>
+        <div class="principle-block"><p><strong>3. Process-visible.</strong> Evidence descriptors reward learners who make their thinking observable: drafts kept, choices defended, revisions documented.</p></div>
+        <div class="principle-block"><p><strong>4. Audience-real.</strong> Both making and building presuppose someone the work is for. OMBS expects learners to identify and respond to a real audience.</p></div>
+        <div class="principle-block"><p><strong>5. Failure-positive.</strong> A learner who tested, failed, and revised demonstrates more of the standard than one whose first attempt happened to work.</p></div>
+      </div>
+
+      <div class="about-section">
+        <h3>Code Format</h3>
+        <div class="code-block">OMBS.&lt;domain&gt;.&lt;dimension&gt;.&lt;gradeBand&gt;.&lt;component&gt;</div>
+        <ul>
+          <li><strong>Domain:</strong> S (Shared Practices), M (Making), B (Building)</li>
+          <li><strong>Grade Bands:</strong> K2, 35, 68, 912</li>
+          <li><strong>Example:</strong> <code>OMBS.S.DF.35.1</code> — Shared, Define, grades 3–5, component 1</li>
+        </ul>
+      </div>
+
+      <div class="about-section">
+        <h3>License &amp; Citation</h3>
+        <p>This standard is published under <strong>CC BY-SA 4.0</strong>. You are free to share and adapt it with attribution.</p>
+        <div class="code-block">Open Making and Building Standard (OMBS), v0.1.0. 2026. CC BY-SA 4.0.</div>
+        <p>Source: <a href="https://github.com/sunnypatneedi/ombs" target="_blank">github.com/sunnypatneedi/ombs</a></p>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+let standardsData = null;
+let crosswalksData = null;
+let allComponents  = [];
+
+const domainCardClass   = { S: 'domain-S-card', M: 'domain-M-card', B: 'domain-B-card' };
+const domainAccClass    = { S: 'acc-icon-S',    M: 'acc-icon-M',    B: 'acc-icon-B' };
+const gradeBandLabels   = { K2: 'K–2', '35': '3–5', '68': '6–8', '912': '9–12' };
+const gradePillClass    = { K2: 'grade-K2', '35': 'grade-35', '68': 'grade-68', '912': 'grade-912' };
+
+async function init() {
+  try {
+    const [sRes, cRes] = await Promise.all([
+      fetch('./standards.json'),
+      fetch('./crosswalks.json')
+    ]);
+    standardsData  = await sRes.json();
+    crosswalksData = await cRes.json();
+
+    buildAllComponents();
+    renderStats();
+    renderOverview();
+    renderStandards();
+    renderSearch();
+    renderCrosswalks();
+  } catch(e) {
+    console.error('Failed to load standards data', e);
+  }
+}
+
+function buildAllComponents() {
+  allComponents = [];
+  for (const domain of standardsData.domains) {
+    for (const dim of domain.dimensions) {
+      for (const comp of dim.components) {
+        allComponents.push({
+          ...comp,
+          domainId:   domain.id,
+          domainName: domain.name,
+          dimId:      dim.id,
+          dimName:    dim.name,
+          anchor:     dim.anchor,
+        });
+      }
+    }
+  }
+}
+
+function renderStats() {
+  const dimCount = standardsData.domains.reduce((a, d) => a + d.dimensions.length, 0);
+  document.getElementById('stats-grid').innerHTML = `
+    <div class="stat-card">
+      <div class="stat-label">Domains</div>
+      <div class="stat-value">3</div>
+      <div class="stat-desc">Shared Practices, Making, Building</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Dimensions</div>
+      <div class="stat-value">${dimCount}</div>
+      <div class="stat-desc">Across all three domains</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Evidence Descriptors</div>
+      <div class="stat-value">${allComponents.length}</div>
+      <div class="stat-desc">Leaf-level standard statements</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Grade Bands</div>
+      <div class="stat-value">4</div>
+      <div class="stat-desc">K–2, 3–5, 6–8, 9–12</div>
+    </div>
+  `;
+}
+
+function renderOverview() {
+  document.getElementById('overview-domains').innerHTML =
+    standardsData.domains.map(domain => `
+      <div class="domain-big-card ${domainCardClass[domain.id]}"
+           onclick="switchTab('standards', document.querySelector('.tab-nav button:nth-child(2)'))">
+        <div class="domain-letter">${domain.id}</div>
+        <h3>${domain.name}</h3>
+        <div class="domain-desc">${domain.description}</div>
+        <div class="domain-dims-section">
+          <div class="domain-dims-label">Dimensions</div>
+          <div class="dims-pills">
+            ${domain.dimensions.map(d => `<span class="dim-pill">${d.name}</span>`).join('')}
+          </div>
+        </div>
+      </div>
+    `).join('');
+}
+
+function renderDimension(dim) {
+  const byBand = {};
+  for (const comp of dim.components) {
+    if (!byBand[comp.gradeBand]) byBand[comp.gradeBand] = [];
+    byBand[comp.gradeBand].push(comp);
+  }
+  const bands = ['K2', '35', '68', '912'];
+
+  return `
+    <div class="dimension-row">
+      <div class="dim-head">
+        <span class="dim-code-tag">${dim.anchor}</span>
+        <span class="dim-name-text">${dim.name}</span>
+      </div>
+      <div class="dim-anchor-stmt">${dim.anchorStatement}</div>
+      <div class="grade-bands-grid">
+        ${bands.map(band => `
+          <div class="grade-cell">
+            <div class="grade-pill ${gradePillClass[band]}">${gradeBandLabels[band]}</div>
+            ${(byBand[band] || []).map(c => `
+              <div><span class="comp-code">${c.id}</span></div>
+              <div class="comp-text">${c.descriptor}</div>
+            `).join('<br>')}
+            ${!byBand[band] ? '<div class="comp-text" style="color:#cbd5e1;font-style:italic">—</div>' : ''}
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function renderStandards() {
+  document.getElementById('domain-filters').innerHTML = `
+    <button class="domain-filter-btn active-all" onclick="filterDomain(this,'all')" data-domain="all">
+      <div class="dfb-left">
+        <div class="dfb-icon dfb-icon-all">✦</div> All Domains
+      </div>
+      <span class="dfb-chevron">›</span>
+    </button>
+    ${standardsData.domains.map(d => `
+      <button class="domain-filter-btn" onclick="filterDomain(this,'${d.id}')" data-domain="${d.id}">
+        <div class="dfb-left">
+          <div class="dfb-icon dfb-icon-${d.id}">${d.id}</div> ${d.name}
+        </div>
+        <span class="dfb-chevron">›</span>
+      </button>
+    `).join('')}
+  `;
+
+  document.getElementById('standards-content').innerHTML =
+    standardsData.domains.map(domain => `
+      <div class="domain-accordion std-domain" data-domain="${domain.id}" id="std-domain-${domain.id}">
+        <div class="accordion-header" onclick="toggleDomain('std-domain-${domain.id}')">
+          <div class="acc-icon ${domainAccClass[domain.id]}">${domain.id}</div>
+          <div class="acc-title">
+            <h2>${domain.name}</h2>
+            <p>${domain.description}</p>
+          </div>
+          <span class="acc-chevron">›</span>
+        </div>
+        <div class="accordion-body">
+          ${domain.dimensions.map(dim => renderDimension(dim)).join('')}
+        </div>
+      </div>
+    `).join('');
+}
+
+function filterDomain(btn, domainId) {
+  document.querySelectorAll('.domain-filter-btn').forEach(b => { b.className = 'domain-filter-btn'; });
+  btn.classList.add(domainId === 'all' ? 'active-all' : `active-${domainId}`);
+  document.querySelectorAll('.std-domain').forEach(el => {
+    el.style.display = (domainId === 'all' || el.dataset.domain === domainId) ? '' : 'none';
+  });
+}
+
+function renderSearch() {
+  const entries = [
+    { id: 'all', label: 'All Grades' },
+    ...Object.entries(gradeBandLabels).map(([k, v]) => ({ id: k, label: v }))
+  ];
+  document.getElementById('grade-filters').innerHTML =
+    entries.map((g, i) => `
+      <button class="grade-filter-btn${i === 0 ? ' active' : ''}"
+              onclick="filterGrade(this,'${g.id}')">${g.label}</button>
+    `).join('');
+}
+
+let activeGrade = 'all';
+
+function filterGrade(btn, grade) {
+  document.querySelectorAll('.grade-filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  activeGrade = grade;
+  doSearch();
+}
+
+function doSearch() {
+  const query   = document.getElementById('search-input').value.toLowerCase().trim();
+  const results = document.getElementById('search-results');
+
+  if (!query) {
+    results.innerHTML = `<li><div class="search-empty">
+      <div class="search-empty-icon">#</div>
+      <p>Enter a full or partial OMBS code to see its details.</p>
+    </div></li>`;
+    return;
+  }
+
+  const filtered = allComponents.filter(c => {
+    if (activeGrade !== 'all' && c.gradeBand !== activeGrade) return false;
+    return c.id.toLowerCase().includes(query) ||
+           c.descriptor.toLowerCase().includes(query) ||
+           c.dimName.toLowerCase().includes(query) ||
+           c.domainName.toLowerCase().includes(query);
+  });
+
+  if (filtered.length === 0) {
+    results.innerHTML = `<li><div class="search-empty">
+      <div class="search-empty-icon">⌕</div>
+      <p>No standards found matching your search.</p>
+    </div></li>`;
+    return;
+  }
+
+  function hl(text) {
+    const re = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+    return text.replace(re, '<mark style="background:#fef3c7;border-radius:3px;padding:0 2px">$1</mark>');
+  }
+
+  results.innerHTML = filtered.map(c => `
+    <li class="result-item">
+      <div class="result-code-tag">${hl(c.id)}</div>
+      <div class="result-meta">${c.domainName} › ${c.dimName} › ${gradeBandLabels[c.gradeBand]}</div>
+      <div class="result-text">${hl(c.descriptor)}</div>
+    </li>
+  `).join('');
+}
+
+function renderCrosswalks() {
+  document.getElementById('crosswalks-content').innerHTML =
+    crosswalksData.frameworks.map(fw => `
+      <div class="cw-block">
+        <div class="cw-block-header">
+          <h3>${fw.name}</h3>
+          <div class="cw-block-meta">Version ${fw.version} &nbsp;·&nbsp; <a href="${fw.url}" target="_blank">${fw.url}</a></div>
+        </div>
+        <table class="cw-table">
+          <thead>
+            <tr>
+              <th>OMBS Code</th>
+              <th>External Standard(s)</th>
+              <th>Relation</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${fw.mappings.map(m => `
+              <tr>
+                <td><code style="font-family:monospace;font-weight:700;color:var(--blue)">${m.ombs}</code></td>
+                <td>${m.external.map(e => `<span class="ext-code">${e}</span>`).join(' ')}</td>
+                <td><span class="rel-badge relation-${m.relation}">${m.relation}</span></td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    `).join('');
+}
+
+function toggleDomain(id) {
+  document.getElementById(id).classList.toggle('open');
+}
+
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-nav button').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  if (btn) btn.classList.add('active');
+}
+
+init();
+</script>
+</body>
+</html>
