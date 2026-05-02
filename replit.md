@@ -8,6 +8,7 @@ A web-based viewer for the Open Making and Building Standard (OMBS) v0.1.0 — a
 - **Server:** `server.js` — a lightweight built-in `http` module server serving static files on port 5000
 - **Frontend:** `index.html` — a single-page app with tabs for browsing the standard, searching codes, and viewing crosswalks
 - **Data:** `v0.1.0/standards.json` and `v0.1.0/crosswalks.json` — machine-readable standard data loaded at runtime by the frontend via fetch
+- **Design:** Bold & Vibrant — Plus Jakarta Sans font, strong domain color blocking (S=blue #2563EB, M=orange #EA580C, B=green #16A34A), chunky rounded cards, pill nav in header
 
 ## Key Files
 - `server.js` — HTTP server (port 5000, host 0.0.0.0)
