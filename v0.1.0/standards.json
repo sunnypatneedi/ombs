@@ -79,6 +79,19 @@
             { "id": "OMBS.S.SH.68.1", "gradeBand": "68", "descriptor": "The learner reaches an audience they identified in S.DF and documents the audience's response in a form appropriate to the audience." },
             { "id": "OMBS.S.SH.912.1", "gradeBand": "912", "descriptor": "The learner publishes the artifact to a sustained public or community audience with attention to access, rights, and provision for follow-on use or remixing." }
           ]
+        },
+        {
+          "id": "AI",
+          "anchor": "OMBS.S.AI",
+          "name": "AI-Independence",
+          "anchorStatement": "Where AI tools were used in producing the artifact, the learner can show what they kept, what they changed, and what they rejected, with reasons. Intention, voice, and the judgment behind tradeoffs remain the learner's.",
+          "appliesWhen": "AI tools were used in any substantive way (drafting, ideation, rendering, code generation, translation, summarization). Reported as not applicable when no AI tools were used.",
+          "components": [
+            { "id": "OMBS.S.AI.K2.1", "gradeBand": "K2", "descriptor": "The learner points to at least one part of the work they decided themselves and at least one part the tool produced, with adult support as needed for the disclosure." },
+            { "id": "OMBS.S.AI.35.1", "gradeBand": "35", "descriptor": "The learner discloses where AI tools were used, names at least one output they kept and at least one they changed or rejected, and gives a reason for each in their own words." },
+            { "id": "OMBS.S.AI.68.1", "gradeBand": "68", "descriptor": "The learner maintains a record across the project that, for each substantive AI use, includes the prompt or request made, the output received, and what was kept, changed, or rejected — each kept or changed item paired with a reason in the learner's own words." },
+            { "id": "OMBS.S.AI.912.1", "gradeBand": "912", "descriptor": "The learner can defend, in writing or conversation, that the artifact's intention, voice, and key tradeoffs would still stand if the AI-generated portions were removed; or, where they would not, names specifically what would be lost and why the loss is acceptable for the stated audience and purpose." }
+          ]
         }
       ]
     },

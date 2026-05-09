@@ -199,6 +199,12 @@ Iteration is not "make it again." It is *informed change*. The standard expects 
 
 Sharing is what makes the work real. A standard that lets learners hand work only to the teacher reproduces the dynamic of school as a closed economy. Audiences may be other classes, families, online communities, clients of a community partner, or future learners — but must be specified and reached.
 
+### 4.6 S.AI — AI-Independence
+
+**Anchor:** Where AI tools were used in producing the artifact, the learner can show what they kept, what they changed, and what they rejected, with reasons. Intention, voice, and the judgment behind tradeoffs remain the learner's.
+
+The standard does not prohibit AI use; it asks whether the learner remained the source of choice. In an environment where polished artifacts are cheap, AI use can silently inflate other dimensions — an audience adaptation that reads well may be the tool's; a tradeoff defended in writing may be paraphrased back from a chat. S.AI is what holds the rest of the standard honest. It does not measure *how much* AI was used; it measures whether the learner can point to specific kept, changed, and rejected outputs and say why. Where no AI was used, the dimension is reported as not applicable rather than scored.
+
 ---
 
 ## 5. Making Domain (M)
@@ -274,6 +280,7 @@ Each table cell names what evidence looks like in that band. Cells include 1–3
 | **S.TS Test** | Shows work to a person and notices a reaction. | Tests against the success criterion from S.DF; records what happened. | Tests against ≥2 criteria with a real audience or use scenario; distinguishes signal from noise. | Designs tests that could falsify the work; reports negative results faithfully. |
 | **S.IT Iterate** | Tries again after feedback, with help. | Names one change made and what feedback drove it. | Defends which feedback was acted on and which was set aside, with reasons. | Iterates across structural alternatives (not just polish); documents what was abandoned and why. |
 | **S.SH Share** | Presents to the class or family with support. | Adapts the artifact for an audience beyond the teacher. | Reaches an audience the learner identified; documents the audience's response. | Publishes to a sustained public audience with attention to access, rights, and follow-on use. |
+| **S.AI AI-Independence** | Points to one part the learner decided and one part a tool produced, with adult support. | Discloses where AI was used; names one kept and one changed-or-rejected output, each with a reason. | Keeps a record of prompts, outputs, and kept/changed/rejected decisions, with the reason in the learner's own words. | Defends that intent, voice, and key tradeoffs would still stand without the AI portion — or names what would be lost and why that loss is acceptable. |
 
 ### 7.3 Making Domain (M) progression summary
 
@@ -339,6 +346,15 @@ Format: `<CODE> — <descriptor>`
 - `OMBS.S.SH.35.1` — The learner adapts the artifact or its presentation for an audience beyond the teacher and explains one adaptation made.
 - `OMBS.S.SH.68.1` — The learner reaches an audience they identified in S.DF and documents the audience's response in a form appropriate to the audience.
 - `OMBS.S.SH.912.1` — The learner publishes the artifact to a sustained public or community audience with attention to access (who can find it, who can use it), rights (attribution, licensing), and provision for follow-on use or remixing.
+
+#### S.AI — AI-Independence
+
+> Reported as not applicable when no AI tools were used. Where AI tools were used in any substantive way (drafting, ideation, rendering, code generation, translation, summarization), the descriptors below apply.
+
+- `OMBS.S.AI.K2.1` — The learner points to at least one part of the work they decided themselves and at least one part the tool produced, with adult support as needed for the disclosure.
+- `OMBS.S.AI.35.1` — The learner discloses where AI tools were used, names at least one output they kept and at least one they changed or rejected, and gives a reason for each in their own words.
+- `OMBS.S.AI.68.1` — The learner maintains a record across the project that, for each substantive AI use, includes the prompt or request made, the output received, and what was kept, changed, or rejected — each kept or changed item paired with a reason in the learner's own words.
+- `OMBS.S.AI.912.1` — The learner can defend, in writing or conversation, that the artifact's intention, voice, and key tradeoffs would still stand if the AI-generated portions were removed; or, where they would not, names specifically what would be lost and why the loss is acceptable for the stated audience and purpose.
 
 ### 8.2 Making Domain
 
