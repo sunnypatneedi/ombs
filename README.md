@@ -2,10 +2,10 @@
 
 A research-grounded, openly licensed standard describing what it means to make and build well — across grade bands, mediums, and domains.
 
-**Status:** Draft v0.1.0 (April 2026)
+**Status:** Draft v0.2.0 (May 2026)
 **License:** CC BY-SA 4.0
-**Latest version:** [v0.1.0/STANDARD.md](v0.1.0/STANDARD.md)
-**Machine-readable:** [v0.1.0/standards.json](v0.1.0/standards.json)
+**Latest version:** [v0.2.0/STANDARD.md](v0.2.0/STANDARD.md)
+**Machine-readable:** [v0.2.0/standards.json](v0.2.0/standards.json)
 
 ## Why this exists
 
@@ -30,10 +30,10 @@ These practices appear in every domain — a poem, a robot, a science fair displ
 
 ## How to use
 
-- **Educators:** see [STANDARD.md](v0.1.0/STANDARD.md) §7 (Progressions) and §8 (Evidence Descriptors).
-- **Curriculum designers:** map units to OMBS codes; use [crosswalks.json](v0.1.0/crosswalks.json) to align with adopted standards.
-- **AI / ed-tech tools:** ingest [standards.json](v0.1.0/standards.json); cite codes in tags and recommendations.
-- **Researchers:** the standard is versioned; cite as `OMBS v0.1.0 (2026)`.
+- **Educators:** see [STANDARD.md](v0.2.0/STANDARD.md) §7 (Progressions) and §8 (Evidence Descriptors).
+- **Curriculum designers:** map units to OMBS codes; use [crosswalks.json](v0.2.0/crosswalks.json) to align with adopted standards.
+- **AI / ed-tech tools:** ingest [standards.json](v0.2.0/standards.json); cite codes in tags and recommendations.
+- **Researchers:** the standard is versioned; cite as `OMBS v0.2.0 (2026)`.
 
 ## Governance
 
@@ -45,4 +45,4 @@ Semantic versioning. **Breaking changes** (rename/remove codes, change ID format
 
 ## Citation
 
-> Open Making and Building Standard (OMBS), v0.1.0. 2026. CC BY-SA 4.0.
+> Open Making and Building Standard (OMBS), v0.2.0. 2026. CC BY-SA 4.0.

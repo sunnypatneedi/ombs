@@ -1,7 +1,7 @@
 # Open Making and Building Standard (OMBS)
 
-**Version:** 0.1.0 (Draft)
-**Date:** 2026-04-30
+**Version:** 0.2.0 (Draft)
+**Date:** 2026-05-11
 **License:** CC BY-SA 4.0
 **Status:** Draft for community review
 
@@ -161,7 +161,7 @@ Anchor codes are used when describing a competency without committing to a grade
 
 - Codes, once published in a stable minor version (≥ v1.0), are **never reused**. If a code is deprecated, it is permanently retired; replacements receive new component numbers.
 - Code IDs are stable across patch versions. Minor versions may add codes but not rename or remove. Major versions may rename or remove codes with a one-version deprecation alias.
-- Pre-1.0 versions (including this v0.1.0 draft) **may break code IDs**. Implementers should treat v0.x as unstable.
+- Pre-1.0 versions (including v0.x drafts) **may break code IDs**. Implementers should treat v0.x as unstable.
 
 ---
 
@@ -589,8 +589,8 @@ When OMBS-tagged evidence includes student work, tools must comply with applicab
 
 ### A.5 Versioning in tools
 
-Tools should record the OMBS version they were aligned to (e.g., `OMBS@0.1.0`). When OMBS bumps minor or major versions, tools should provide a visible upgrade path rather than silently migrating tagged evidence.
+Tools should record the OMBS version they were aligned to (e.g., `OMBS@0.2.0`). When OMBS bumps minor or major versions, tools should provide a visible upgrade path rather than silently migrating tagged evidence.
 
 ---
 
-*End of OMBS v0.1.0*
+*End of OMBS v0.2.0*
