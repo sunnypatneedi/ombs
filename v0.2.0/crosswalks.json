@@ -1,5 +1,5 @@
 {
-  "ombsVersion": "0.1.0",
+  "ombsVersion": "0.2.0",
   "note": "Crosswalks indicate substantial overlap, not 1:1 equivalence. See STANDARD.md §9 for context.",
   "frameworks": [
     {
