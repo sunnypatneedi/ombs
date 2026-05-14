@@ -4,6 +4,12 @@ All notable changes to OMBS are documented here. Format follows [Keep a Changelo
 
 ## [Unreleased]
 
+### Changed
+
+- Strengthened theoretical grounding in §1.5 with two new source bullets: Blikstein (2013) names the three foundational pillars of making as a learning practice (Constructionism/Papert, experiential education/Dewey, critical pedagogy/Freire) and grounds the keychain syndrome as the empirical basis for the Practice-over-outcome and Failure-positive design principles; Blikstein & Worsley (2016) maps four maker-culture failure modes to specific OMBS design choices and adds Wilensky's reframing of the concrete/abstract dichotomy as the basis for the medium-agnostic principle.
+- §1.2 Design principles: *Practice over outcome* now cites the keychain syndrome from makerspace research; *Failure-positive* now incorporates Papert's "hard fun" to distinguish productive difficulty from mere frustration.
+- §11 Bibliography: added Blikstein (2013), Blikstein & Worsley (2016), Papert (2002), and Wilensky (1991).
+
 ## [0.2.0] — 2026-05-11
 
 Standard files now live in `v0.2.0/`. The `v0.1.0/` directory has been moved (not duplicated) — `v0.1.0` remains citable via the tagged release / git history.
