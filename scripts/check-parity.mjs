@@ -229,11 +229,56 @@ for (const form of evidenceLayer.forms ?? []) {
   if (!form.id?.startsWith("OMBS.EF.")) fail("evidence-layer", `evidence form id "${form.id}" must be namespaced OMBS.EF.<XX>`);
   if (!form.name || !form.definition) fail("evidence-layer", `${form.id} needs both a name and a definition`);
 }
+// OMBS.EV.STAND in one machine-checkable sentence: exactly one observer type
+// warrants band attainment, and it is the attester. Without this, a JSON-only
+// edit could hand a self, witness or automated observer the power to produce an
+// attested claim — the relabelling attack the rule exists to stop.
+const BAND_ATTAINMENT = "that the descriptor is satisfied at the named band";
+const ATTESTER = "OMBS.OB.AT";
+const holds = (xs) => (xs ?? []).some((x) => x.toLowerCase().includes(BAND_ATTAINMENT));
+
 for (const obs of evidenceLayer.observers ?? []) {
   if (!obs.id?.startsWith("OMBS.OB.")) fail("evidence-layer", `observer type id "${obs.id}" must be namespaced OMBS.OB.<XX>`);
   if (!obs.name || !obs.definition) fail("evidence-layer", `${obs.id} needs both a name and a definition`);
   if (!obs.warrants?.length) fail("evidence-layer", `${obs.id} does not say what it warrants`);
   if (!obs.doesNotWarrant?.length) fail("evidence-layer", `${obs.id} does not say what it does NOT warrant`);
+
+  const isAttester = obs.id === ATTESTER;
+  if (obs.warrantsBandAttainment !== isAttester) {
+    fail(
+      "standing",
+      `${obs.id} declares warrantsBandAttainment=${obs.warrantsBandAttainment}; only ${ATTESTER} may warrant band attainment (OMBS.EV.STAND)`,
+    );
+  }
+  if (holds(obs.warrants) !== isAttester) {
+    fail(
+      "standing",
+      isAttester
+        ? `${obs.id} no longer warrants band attainment — the attested tier would have no observer (OMBS.EV.STAND)`
+        : `${obs.id} warrants "${BAND_ATTAINMENT}"; only ${ATTESTER} may (OMBS.EV.STAND)`,
+    );
+  }
+  if (holds(obs.doesNotWarrant) === isAttester) {
+    fail(
+      "standing",
+      isAttester
+        ? `${obs.id} lists band attainment under doesNotWarrant, contradicting its own warrants (OMBS.EV.STAND)`
+        : `${obs.id} must state that it does NOT warrant "${BAND_ATTAINMENT}" (OMBS.EV.STAND)`,
+    );
+  }
+}
+
+// The load-bearing ids, pinned. Deleting a code from BOTH the prose and the
+// JSON is otherwise invisible (see the header note); for the rules and observer
+// types that carry the warrant model, silent removal is not an acceptable
+// failure mode. Additions are free; these five and four may not vanish.
+const REQUIRED_RULES = ["OMBS.EV.DISC", "OMBS.EV.SEQ", "OMBS.EV.WARR", "OMBS.EV.CONS", "OMBS.EV.STAND"];
+const REQUIRED_OBSERVERS = ["OMBS.OB.SF", "OMBS.OB.WT", "OMBS.OB.AT", "OMBS.OB.AD"];
+for (const id of REQUIRED_RULES) {
+  if (!RULE_IDS.has(id)) fail("standing", `${id} is missing from evidenceLayer.admissibility — the warrant model depends on it`);
+}
+for (const id of REQUIRED_OBSERVERS) {
+  if (!OBSERVER_IDS.has(id)) fail("standing", `${id} is missing from evidenceLayer.observers — the warrant model depends on it`);
 }
 for (const rule of evidenceLayer.admissibility ?? []) {
   if (!rule.id?.startsWith("OMBS.EV.")) fail("evidence-layer", `admissibility rule id "${rule.id}" must be namespaced OMBS.EV.<XXX>`);
@@ -258,7 +303,7 @@ for (const [key, entry] of Object.entries(BIBLIOGRAPHY)) {
 // lookahead drops namespace notation rather than codes: format templates
 // (`OMBS.EF.<form>`) and wildcards (`OMBS.OB.*`) name a namespace, and a
 // namespace has no entry of its own in standards.json.
-const CODE_IN_PROSE = /\bOMBS(?:\.[A-Z0-9]{1,4})+\b(?!\.[<*])/g;
+const CODE_IN_PROSE = /\bOMBS(?:\.[A-Z0-9]{1,5})+\b(?!\.[<*])/g;
 const proseCodes = new Set(prose.match(CODE_IN_PROSE) ?? []);
 
 const missingFromJson = [...proseCodes].filter((c) => !allJsonCodes.has(c)).sort();
@@ -457,6 +502,7 @@ const CHECKS = [
     "evidence-parity",
     `${FORM_IDS.size + OBSERVER_IDS.size + RULE_IDS.size} evidence-layer definitions and ${units.length} anchor statements identical between prose and JSON`,
   ],
+  ["standing", `only ${ATTESTER} warrants band attainment; the warrant model's ${REQUIRED_RULES.length} rules and ${REQUIRED_OBSERVERS.length} observer types are present`],
   ["refs", "crosswalk and boundary references resolve"],
   ["evidence-layer", `${FORM_IDS.size} evidence forms, ${OBSERVER_IDS.size} observer types, ${RULE_IDS.size} admissibility rules`],
   [

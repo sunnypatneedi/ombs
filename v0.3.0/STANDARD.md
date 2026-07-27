@@ -188,7 +188,7 @@ The evidence and provenance layer (§8.1) uses three namespaces that are not pra
 |---|---|---|
 | `OMBS.EF.<XX>` | Evidence form — a shape a trace of practice may take | `OMBS.EF.SR` |
 | `OMBS.OB.<XX>` | Observer type — who recorded it and what that record warrants | `OMBS.OB.WT` |
-| `OMBS.EV.<XXX>` | Admissibility rule — when a form satisfies a descriptor | `OMBS.EV.SEQ` |
+| `OMBS.EV.<rule>` | Admissibility rule — when a form satisfies a descriptor | `OMBS.EV.SEQ` |
 
 `EF`, `OB`, and `EV` are reserved and will never be issued as domain identifiers.
 
@@ -260,7 +260,9 @@ Direction is the forethought phase of self-regulated learning applied to a colla
 
 This is the kept/changed/rejected core of v0.2.0's `S.AI`, separated from disclosure and made criterion-referenced. It is the evaluative-judgment capability — deciding about the quality of work — exercised on work the learner did not write (Tai et al., 2018). Two constraints keep it honest:
 
-- **A keep counts, but only a reasoned one.** Accepting a good output for a stated reason is appraisal. An undocumented keep is not evidence of anything and must not be tagged. Adopters that treat "changed" as evidence and "kept" as absence will mis-score learners who correctly judged a good output — and will reward pointless edits.
+- **A keep counts, but only a reasoned one.** The standard distinguishes two things adopters have tended to collapse. A **reasoned keep** — the learner kept the output *and* recorded why, referenced to their own audience, purpose, or success criterion — is appraisal, and is evidence for `S.AI.AP`. A **silent keep** — the output was used with no recorded judgment of it — is not, and must not be tagged. The distinction is a condition on the descriptors below rather than a code of its own: a silent keep is the *absence* of a recorded judgment, and OMBS does not issue codes for absences (§8, and Appendix A.2.3 on not reasoning from absent codes). It is a gap in the evidence, never a finding about the learner.
+
+  Two failure modes this rules out. Adopters that treat "changed" as evidence and "kept" as absence mis-score learners who correctly judged a good output, and reward pointless edits. Adopters that treat any keep as evidence score the learner who accepted everything without looking.
 - **The reason must reference the learner's own criteria**, not the output's apparent quality. "It was good" is not appraisal. "It was too long for a six-year-old" is.
 
 The failure mode this dimension exists to catch is documented outside education: over-reliance on an automated aid whose output is treated as more authoritative than its inputs support (Parasuraman & Riley, 1997).
@@ -436,12 +438,16 @@ An observer type says who recorded the evidence and — more importantly — wha
 
 | Code | Observer | Warrants | Does **not** warrant |
 |---|---|---|---|
-| `OMBS.OB.SF` | Self | What the learner did, as the learner represents it; the learner's reasons for a choice. | That the practice met the band descriptor; that the account is complete. |
-| `OMBS.OB.WT` | Witness | That the practice occurred; who did the work (authorship and presence). | That the practice met the band descriptor; the quality or level of the practice. |
+| `OMBS.OB.SF` | Self | What the learner did, as the learner represents it; the learner's reasons for a choice. | That the descriptor is satisfied at the named band; that the account is complete. |
+| `OMBS.OB.WT` | Witness | That the practice occurred; who did the work (authorship and presence). | That the descriptor is satisfied at the named band; the quality or level of the practice. |
 | `OMBS.OB.AT` | Attester | That the descriptor is satisfied at the named band; everything a witness warrants. | Practices outside the attester's own observation or the retained record. |
 | `OMBS.OB.AD` | Automated derivation | Only what its inputs warrant, never more. | That the descriptor is satisfied at the named band; anything its inputs do not contain. |
 
 The witness/attester split is the load-bearing distinction. A parent who watched their child build something can say *that the child built it* — authorship and presence — and cannot say the child's Structure practice met the 6–8 band. Both are useful; treating the first as the second is how a family-facing report ends up claiming more than it knows.
+
+Exactly one observer type warrants band attainment: `OMBS.OB.AT`. What confers the standing to occupy it is stated normatively in `OMBS.EV.STAND` (§8.1.3) rather than left to each adopter, because a tool that may nominate its own attesters can reach an attested claim by relabelling — which would make the whole tier decorative.
+
+**A deliberate consequence, stated so it is not discovered later.** `OMBS.EV.STAND` excludes the parent-educator case: where a parent is the assessor of record — home education, some microschools — their judgment about their own child is still recorded as a witness record for OMBS purposes. The standard is not denying that judgment's validity in its own jurisdiction. It is declining to carry it as an *attested OMBS claim*, because the independence the attested tier represents is precisely what is absent when the assessor and the household are the same. Such a setting can record every practice at the self and witness tiers, and should seek an outside reader when an attested claim is wanted.
 
 #### 8.1.3 Admissibility rules
 
@@ -452,10 +458,13 @@ The witness/attester split is the load-bearing distinction. A parent who watched
 | `OMBS.EV.RESP` | Response | A descriptor claiming something about what an audience or user did requires `OMBS.EF.AC`. The learner's report of an audience reaction is a retrospective account and does not satisfy it alone. |
 | `OMBS.EV.WARR` | No inflation | A claim is reported at the weakest warrant in its chain. Witness records and automated derivations may support an attested claim but cannot produce one; only `OMBS.OB.AT` yields an attested claim. Reports must name which warrant a claim carries. |
 | `OMBS.EV.CONS` | Conservative derivation | An automated derivation (`OMBS.OB.AD`) emits no tag when its inputs are ambiguous, records the deriving system's identifier and version, and is reproducible from the retained record. A missed tag is a tolerable error; an unearned tag is not. |
+| `OMBS.EV.STAND` | Standing | An attested claim MUST record the assessment role under which it was made and the basis the judgment rests on. Assessment standing is conferred by that role in the context; it is never conferred by presence, by household relationship, or by having done the work. A learner judging their own practice (`OMBS.OB.SF`) and a parent or guardian judging their own child's (`OMBS.OB.WT`) MUST NOT be recorded as `OMBS.OB.AT` whatever role a system assigns them: their records may support an attested claim but MUST NOT be reported as one. |
 
 `OMBS.EV.WARR` is the rule that protects construct validity across adopters. Reporting a witnessed observation as an attested one introduces variance that has nothing to do with the practice being measured and everything to do with who happened to be in the room (Messick, 1995).
 
 `OMBS.EV.CONS` states for automated taggers what human-automation research established for automated aids generally: the failure mode is *misuse* — treating output as more authoritative than its inputs support (Parasuraman & Riley, 1997). A deterministic tagger that fires only on affirmative evidence in the learner's own record, and stays silent when unsure, satisfies this rule; a model that guesses a tag to fill a gap does not.
+
+`OMBS.EV.STAND` and `OMBS.EV.WARR` are complementary, not redundant: `EV.WARR` governs the *chain* (a claim is reported at its weakest link), while `EV.STAND` governs *entry* to the chain (who may be an attester at all). Without `EV.STAND`, `EV.WARR` is satisfiable by a system that simply calls its own users attesters. Together they make the attested tier mean something an outside reader can rely on.
 
 #### 8.1.4 Reading the evidence block on a node
 
@@ -532,10 +541,10 @@ Every component in `standards.json` carries an inline evidence block:
 
 ##### OMBS.S.AI.AP — Appraisal
 
-- `OMBS.S.AI.AP.K2.1` — Shown an output from the tool, the learner says whether it is what they wanted and gives one reason ("too long," "that isn't my dog"), and an adult records the exchange.
-- `OMBS.S.AI.AP.35.1` — For at least one AI output the learner records a decision — kept, changed, or rejected — with a reason that refers to their audience, purpose, or success criterion rather than to whether the output was good.
-- `OMBS.S.AI.AP.68.1` — Every substantive AI output in the retained record carries a kept, changed, or rejected decision with a reason in the learner's own words, and at least one reason cites evidence from testing (S.TS) rather than preference alone.
-- `OMBS.S.AI.AP.912.1` — The learner identifies at least one AI output they first accepted and later revised or rejected, names the evidence that changed their judgment, and states the criterion the output had failed.
+- `OMBS.S.AI.AP.K2.1` — Shown an output from the tool, the learner says whether it is what they wanted and gives one reason ("too long," "that isn't my dog"), and an adult records the exchange. Using the output without saying anything about it does not satisfy this descriptor.
+- `OMBS.S.AI.AP.35.1` — For at least one AI output the learner records a decision — kept, changed, or rejected — with a reason that refers to their audience, purpose, or success criterion rather than to whether the output was good. A keep recorded without a reason — a silent keep — does not satisfy this descriptor; a reasoned keep does.
+- `OMBS.S.AI.AP.68.1` — Every substantive AI output in the retained record carries a kept, changed, or rejected decision with a reason in the learner's own words, and at least one reason cites evidence from testing (S.TS) rather than preference alone. An output kept silently counts as carrying no decision.
+- `OMBS.S.AI.AP.912.1` — The learner identifies at least one AI output they first accepted and later revised or rejected, names the evidence that changed their judgment, and states the criterion the output had failed. Where the earlier acceptance was a silent keep, the learner says so and names what they had not checked at the time.
 
 ##### OMBS.S.AI.AB — Attribution
 
@@ -710,6 +719,8 @@ A crosswalk says where OMBS meets another framework. A boundary says where it de
 
 **Admissibility rule.** A rule stating when an evidence form satisfies a descriptor (`OMBS.EV.*`). See §8.1.3.
 
+**Assessment standing.** The property that qualifies an observer to make an attested claim. Conferred by a stated assessment role in the context, together with a recorded basis for the judgment — never by presence, household relationship, or having done the work. Governed normatively by `OMBS.EV.STAND`.
+
 **Attester.** An observer with assessment standing in the context — teacher, coach, assessor — who judges that a descriptor is satisfied and is accountable for that judgment (`OMBS.OB.AT`). Distinct from a witness.
 
 **Automated derivation.** A rule or model that infers a tag from retained records with no human observer in the loop (`OMBS.OB.AD`). Warrants only what its inputs warrant.
@@ -740,7 +751,11 @@ A crosswalk says where OMBS meets another framework. A boundary says where it de
 
 **Purpose.** The change the learner wants the artifact to produce in the audience (inform, persuade, move, entertain, instruct, provoke).
 
+**Reasoned keep.** An AI output the learner kept *and* recorded a reason for, referenced to their own audience, purpose, or success criterion. Evidences `OMBS.S.AI.AP`. Contrast *silent keep*.
+
 **Shared Practice.** A practice common to both making and building (Define, Draft, Test, Iterate, Share).
+
+**Silent keep.** An AI output the learner used without recording any judgment of it. Not evidence of appraisal and never tagged. A silent keep is a gap in the evidence, not a finding about the learner — OMBS issues no codes for absences.
 
 **Structure.** The named relationships among the parts of a build. Distinct from a list of parts.
 
