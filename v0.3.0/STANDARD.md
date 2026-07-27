@@ -55,8 +55,9 @@ The standard is governed by five design principles, in order of precedence:
 - Subject-specific content knowledge — covered by CCSS, NGSS, state academic standards, and equivalents.
 - Social-emotional learning — covered by CASEL.
 - Digital citizenship and information literacy — covered by ISTE Standards for Students (2024 refresh) and AASL.
+- Understanding of AI as subject matter — how models work, where they fail, their societal effects — covered by the UNESCO *AI Competency Framework for Students* (2024). This is AI literacy, and it is distinct from `OMBS.S.AI` (§4.6), which assesses only whether the learner remained the source of choice while making something.
 - Career-specific technical skills — covered by industry frameworks.
-- Early childhood pre-K practice — a future v0.2 may add a Pre-K band.
+- Early childhood pre-K practice — a future version may add a Pre-K band.
 
 ### 1.4 Audiences and uses
 
@@ -175,7 +176,9 @@ OMBS.<domain>.<dimension>.<sub-dimension>.<grade-band>.<component>
 - `OMBS.S.AI.AP.68.1` — Shared Practices, AI-Independence, Appraisal, grades 6–8, component 1.
 - `OMBS.S.AI.AP` — the anchor for the Appraisal sub-dimension.
 
-Sub-dimensions are additive: the parent dimension keeps its own band components, which are **composite** — satisfied when the sub-dimension components for that band are satisfied. An adopter may report at whichever level their evidence supports. `S.AI` is the only dimension with sub-dimensions in v0.3.0.
+Sub-dimensions are additive: the parent dimension keeps its own band components. The relationship between them is **one-directional**. Evidence gathered for a sub-dimension MAY be reported at the parent level where it satisfies the parent descriptor; satisfying every sub-dimension at a band does NOT by itself satisfy the parent component. At 9–12 it demonstrably does not — `OMBS.S.AI.912.1` requires a counterfactual defense that none of the four 9–12 sub-descriptors produces. A parent band component is satisfied only by its own descriptor, on its own evidence, like any other component.
+
+An adopter may report at whichever level their evidence supports. `S.AI` is the only dimension with sub-dimensions in v0.3.0.
 
 ### 3.2 Auxiliary code namespaces
 
@@ -249,7 +252,7 @@ It is also not a compliance check. A learner who followed every disclosure rule 
 
 **Anchor:** The learner, not the tool, decides what is to be made and what is asked of the tool. Requests made to an AI trace back to the learner's own stated intent.
 
-Direction is the forethought half of self-regulated learning applied to a collaborator that will happily supply goals as well as outputs (Zimmerman, 2002). The question is not whether the learner writes good prompts — that is craft, and it is not what OMBS measures. The question is whose task it is. A learner who asks "what should I make" and builds the answer has produced an artifact without exercising Define. The 9–12 descriptor is the sharpest instrument here: naming what you deliberately *did not* delegate is the observable that separates a learner using a tool from a learner supervising one.
+Direction is the forethought phase of self-regulated learning applied to a collaborator that will happily supply goals as well as outputs (Zimmerman, 2002). The question is not whether the learner writes good prompts — that is craft, and it is not what OMBS measures. The question is whose task it is. A learner who asks "what should I make" and builds the answer has produced an artifact without exercising Define. The 9–12 descriptor is the sharpest instrument here: naming what you deliberately *did not* delegate is the observable that separates a learner using a tool from a learner supervising one.
 
 #### 4.6.3 S.AI.AP — Appraisal
 
@@ -280,6 +283,8 @@ Two guards apply:
 
 - **Trajectory needs two observation points.** Where the work contains only one substantive AI use, `S.AI.TJ` is reported as not applicable — the same convention as the parent dimension. It is not an absent code.
 - **Direction of travel is not prescribed.** A learner who takes over a part they previously delegated demonstrates trajectory; so does a learner who delegates a part they had been doing by hand *and can say why that is now the right call*. What is assessed is whether the learner is steering the boundary, not which side of it grows.
+
+**Epistemic status — read before adopting.** The constructs Trajectory rests on are well established; *this observable* is not. The works cited above support transfer after scaffolding withdrawal and the with/of distinction, but none of them measures trajectory of AI delegation in K–12 makers, and no study validates the descriptors below. `OMBS.S.AI.TJ` is offered as a proposed observable rather than a validated one, and it is the code most in need of comment. Adopters should treat evidence tagged to it as exploratory.
 
 ---
 
@@ -358,7 +363,7 @@ Each table cell names what evidence looks like in that band. Cells include 1–3
 | **S.SH Share** | Presents to the class or family with support. | Adapts the artifact for an audience beyond the teacher. | Reaches an audience the learner identified; documents the audience's response. | Publishes to a sustained public audience with attention to access, rights, and follow-on use. |
 | **S.AI AI-Independence** | Points to one part the learner decided and one part a tool produced, with adult support. | Discloses where AI was used; names one kept and one changed-or-rejected output, each with a reason. | Keeps a record of prompts, outputs, and kept/changed/rejected decisions, with the reason in the learner's own words. | Defends that intent, voice, and key tradeoffs would still stand without the AI portion — or names what would be lost and why that loss is acceptable. |
 
-The `S.AI` row is composite. Where an adopter's evidence supports it, report the four sub-dimensions instead — the same evidence, separated so the four questions can come apart.
+The `S.AI` row above is the parent. Where an adopter's evidence supports it, report the four sub-dimensions instead — the same evidence, separated so the four questions can come apart. Reporting all four does not by itself satisfy the parent row (§3.1).
 
 | Sub-dimension | K–2 | 3–5 | 6–8 | 9–12 |
 |---|---|---|---|---|
@@ -403,6 +408,8 @@ This section closes that gap by naming three coded objects: the **forms** a trac
 
 The design follows evidence-centered design's separation of the claim, the observations that warrant it, and the situations that elicit them (Mislevy, Steinberg, & Almond, 2003).
 
+**Minimization is normative.** Naming a form is permission to count a trace, never an instruction to collect one. An adopter retains the minimum record that satisfies a named form and no more: one admissible form recorded by one competent observer satisfies a node (§8.1.4), so an excerpt suffices wherever a complete record is not itself the evidence. OMBS never requires a learner to be identifiable beyond what the holding portfolio already requires, and never requires that a record be retained longer than the claim it supports is in use. Evidence linked to OMBS codes is typically subject to child-privacy law even though the codes are not (Appendix A.4).
+
 #### 8.1.1 Evidence forms
 
 Forms are defined by what makes a trace *count as evidence*, not by medium. A form is not a file type: `OMBS.EF.LA` is satisfied by a notebook page, a voice memo, a commit message, or a chalk drawing photographed before it was erased. This is deliberate — a medium taxonomy would contradict the medium-agnostic design principle (§1.2).
@@ -422,24 +429,29 @@ Forms are defined by what makes a trace *count as evidence*, not by medium. A fo
 
 An observer type says who recorded the evidence and — more importantly — what their record does and does not warrant. Conflating these is the most common way an evidence claim gets inflated.
 
+- **`OMBS.OB.SF` — Self.** The learner is the observer of their own practice. Records: the learner's identity as observer.
+- **`OMBS.OB.WT` — Witness.** An adult or peer who was present while the work happened and records what they saw. A parent, a family member, a classmate, a teacher acting in a presence role rather than an assessment role. Records: the witness's relationship to the learner; when the observation was made.
+- **`OMBS.OB.AT` — Attester.** An observer with assessment standing in the context — teacher, coach, assessor, reviewer — who judges that a descriptor is satisfied and is accountable for that judgment. Records: the attester's identity and role; the evidence the judgment rests on; when the judgment was made.
+- **`OMBS.OB.AD` — Automated derivation.** A rule or model that infers a tag from retained records with no human observer in the loop. Records: the deriving system's identifier and version; the records the derivation read; a confidence value where the derivation is not deterministic.
+
 | Code | Observer | Warrants | Does **not** warrant |
 |---|---|---|---|
-| `OMBS.OB.SF` | Self — the learner | What the learner did, as they represent it; their reasons for a choice. | That the practice met the band descriptor; that the account is complete. |
-| `OMBS.OB.WT` | Witness — someone present | That the practice occurred; who did the work (authorship and presence). | That the practice met the band descriptor; the quality or level of the practice. |
-| `OMBS.OB.AT` | Attester — an observer with assessment standing | That the descriptor is satisfied at the named band; everything a witness warrants. | Practices outside the attester's own observation or the retained record. |
-| `OMBS.OB.AD` | Automated derivation — a rule or model, no human in the loop | Only what its inputs warrant, never more. | That the descriptor is satisfied at the named band; anything its inputs do not contain. |
+| `OMBS.OB.SF` | Self | What the learner did, as the learner represents it; the learner's reasons for a choice. | That the practice met the band descriptor; that the account is complete. |
+| `OMBS.OB.WT` | Witness | That the practice occurred; who did the work (authorship and presence). | That the practice met the band descriptor; the quality or level of the practice. |
+| `OMBS.OB.AT` | Attester | That the descriptor is satisfied at the named band; everything a witness warrants. | Practices outside the attester's own observation or the retained record. |
+| `OMBS.OB.AD` | Automated derivation | Only what its inputs warrant, never more. | That the descriptor is satisfied at the named band; anything its inputs do not contain. |
 
-The witness/attester split is the load-bearing distinction. A parent who watched their child build something can say *that the child built it* — authorship and presence — and cannot say the child's Structure practice met the 6–8 band. Both are useful; treating the first as the second is how a family-facing report ends up claiming more than it knows. Each observer type carries recording requirements: a witness records their relationship to the learner and when they observed; an attester records their role, the evidence the judgment rests on, and when it was made; an automated derivation records the deriving system's identifier and version.
+The witness/attester split is the load-bearing distinction. A parent who watched their child build something can say *that the child built it* — authorship and presence — and cannot say the child's Structure practice met the 6–8 band. Both are useful; treating the first as the second is how a family-facing report ends up claiming more than it knows.
 
 #### 8.1.3 Admissibility rules
 
 | Code | Rule | Statement |
 |---|---|---|
-| `OMBS.EV.DISC` | Disclosure | Every claim that a code was demonstrated records at least one evidence form and exactly one observer type. A tag carrying neither is not OMBS-conformant and must not be reported as OMBS evidence. |
-| `OMBS.EV.SEQ` | Sequence | A descriptor making a temporal claim — *before*, *revises*, *predicts before test*, *later* — requires at least one form that existed during the work (`EF.LA`, `EF.AR`, `EF.SR`, `EF.OB`). A retrospective account alone (`EF.LR`) does not establish sequence. |
-| `OMBS.EV.RESP` | Response | A descriptor claiming something about what an audience or user *did* requires `EF.AC`. The learner's report of an audience reaction is a retrospective account and does not satisfy it alone. |
-| `OMBS.EV.WARR` | No inflation | A claim is reported at the weakest warrant in its chain. Witness records and automated derivations may support an attested claim but cannot produce one; only `OB.AT` yields an attested claim. Reports must name which warrant a claim carries. |
-| `OMBS.EV.CONS` | Conservative derivation | An automated derivation emits no tag when its inputs are ambiguous, records the deriving system's identifier and version, and is reproducible from the retained record. A missed tag is a tolerable error; an unearned tag is not. |
+| `OMBS.EV.DISC` | Disclosure | Every claim that a code was demonstrated records at least one evidence form and exactly one observer type. A tag missing either is not OMBS-conformant and must not be reported as OMBS evidence. |
+| `OMBS.EV.SEQ` | Sequence | A descriptor making a temporal claim — before, revises, predicts before test, later — requires at least one evidence form that existed during the work (`OMBS.EF.LA`, `OMBS.EF.AR`, `OMBS.EF.SR`, `OMBS.EF.OB`). A learner retrospective account alone (`OMBS.EF.LR`) does not establish sequence. |
+| `OMBS.EV.RESP` | Response | A descriptor claiming something about what an audience or user did requires `OMBS.EF.AC`. The learner's report of an audience reaction is a retrospective account and does not satisfy it alone. |
+| `OMBS.EV.WARR` | No inflation | A claim is reported at the weakest warrant in its chain. Witness records and automated derivations may support an attested claim but cannot produce one; only `OMBS.OB.AT` yields an attested claim. Reports must name which warrant a claim carries. |
+| `OMBS.EV.CONS` | Conservative derivation | An automated derivation (`OMBS.OB.AD`) emits no tag when its inputs are ambiguous, records the deriving system's identifier and version, and is reproducible from the retained record. A missed tag is a tolerable error; an unearned tag is not. |
 
 `OMBS.EV.WARR` is the rule that protects construct validity across adopters. Reporting a witnessed observation as an attested one introduces variance that has nothing to do with the practice being measured and everything to do with who happened to be in the room (Messick, 1995).
 
@@ -746,10 +758,9 @@ A crosswalk says where OMBS meets another framework. A boundary says where it de
 
 Selected works that informed this standard. This is not an exhaustive review. Works cited by a specific code carry a DOI; those DOIs are the machine-readable `bibliography` block in [standards.json](standards.json), and `scripts/check-parity.mjs` asserts that every cited key resolves to an entry here.
 
-- Achievement First. *Engineering Design at Scale: Implementation Notes from K–8 Programs.* (2024).
 - Agency by Design / Project Zero. *Maker-Centered Learning: Empowering Young People to Shape Their Worlds.* Clapp, Ross, Ryan, Tishman. Jossey-Bass (2017).
-- Blikstein, Paulo. "Digital Fabrication and 'Making' in Education: The Democratization of Invention." In *FabLabs: Of Machines, Makers and Inventors*, edited by J. Walter-Herrmann and C. Büching. Bielefeld: Transcript Publishers, 2013.
-- Blikstein, Paulo, and Marcelo Worsley. "Children Are Not Hackers: Building a Culture of Powerful Ideas, Deep Learning, and Equity in the Maker Movement." In *Makeology: Makers as Learners* (Vol. 2), edited by K. Peppler, E. Halverson, and Y. B. Kafai. New York: Routledge, 2016.
+- Blikstein, Paulo. "Digital Fabrication and 'Making' in Education: The Democratization of Invention." In *FabLab: Of Machines, Makers and Inventors*, edited by J. Walter-Herrmann and C. Büching. Bielefeld: Transcript Publishers, 2013.
+- Blikstein, Paulo, and Marcelo Worsley. "Children Are Not Hackers: Building a Culture of Powerful Ideas, Deep Learning, and Equity in the Maker Movement." In *Makeology: Makerspaces as Learning Environments* (Vol. 1), edited by K. Peppler, E. Halverson, and Y. B. Kafai. New York: Routledge, 2016, 64–79. doi:10.4324/9781315726519-5.
 - CASEL. *Core SEL Competencies Framework.* (2020).
 - Common Core State Standards Initiative. *English Language Arts Standards — Writing.* (2010).
 - Dougherty, Dale. *Free to Make: How the Maker Movement Is Changing Our Schools, Our Jobs, and Our Minds.* North Atlantic Books (2016).
@@ -798,7 +809,7 @@ Tools that tag evidence (student work, observation notes, project artifacts) wit
 4. Preserve the artifact or excerpt that supports the tag, subject to applicable privacy and retention requirements.
 5. Never report a tag at a stronger warrant than its observer type supports (`OMBS.EV.WARR`).
 
-**Worked example.** A portfolio tool derives tags from two sources with no human in the loop: system records (an upload exists; a reflection was submitted at a timestamp; visibility was widened beyond the household) and the learner's own reflection text. Its `S.SH` tag rests on `OMBS.EF.SR` observed by `OMBS.OB.AD` — a system fact, conservatively derived, and correctly reported as *practiced*, never as *met the 6–8 band*. When an adult who was present confirms the child made the thing, that adds `OMBS.OB.WT`: authorship and presence, still not attainment. Only when a coach with assessment standing judges the descriptor satisfied does the claim become attested (`OMBS.OB.AT`). Three tiers, three different sentences a report may write — and `OMBS.EV.WARR` is what stops the first from being printed as the third.
+**Worked example.** A portfolio tool derives tags from two sources with no human in the loop: system records (an upload exists; a reflection was submitted at a timestamp; visibility was widened beyond the household) and the learner's own reflection text. Its `S.SH` tag rests on `OMBS.EF.SR` observed by `OMBS.OB.AD` — a system fact, conservatively derived, and correctly reported as *practiced*, never as *met the 6–8 band*. When an adult who was present confirms the child made the thing, that is a second claim, recorded by `OMBS.OB.WT`: authorship and presence, still not attainment. It is a separate tag — `OMBS.EV.DISC` allows exactly one observer type per claim. Only when a coach with assessment standing judges the descriptor satisfied does the claim become attested (`OMBS.OB.AT`). Three tiers, three different sentences a report may write — and `OMBS.EV.WARR` is what stops the first from being printed as the third.
 
 ### A.2 Recommendations and next steps
 

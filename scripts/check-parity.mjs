@@ -15,9 +15,19 @@
 //   bands           every dimension covers all four grade bands
 //   parity          codes match prose -> JSON and JSON -> prose, both directions
 //   descriptors     descriptor TEXT is identical between §8 prose and the JSON
+//   evidence-parity evidence-layer definitions, warrants, rules and anchor
+//                   statements are identical between the prose and the JSON
 //   refs            crosswalk and boundary references resolve to real codes
 //   evidence-layer  forms, observer types and admissibility rules are well-formed
-//   citations       codes introduced in the current version carry a resolvable citation
+//   citations       codes introduced in the current version cite an entry that
+//                   carries a DOI or URL. NOTE: the checker never fetches a DOI.
+//                   It checks that one is present and that the entry appears in
+//                   §11. Whether a reference is real is human review's job.
+//
+// What this CANNOT catch, by construction: a code removed from BOTH the prose
+// and the JSON in the same change. An internal-consistency checker has no
+// baseline to compare against, so green never means "nothing was deleted."
+// That remains PR review's job, permanently.
 
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
@@ -293,6 +303,113 @@ for (const id of proseDescriptors.keys()) {
   }
 }
 
+// The same treatment for the evidence layer's own semantic text. Without this
+// the layer is only existence-checked: its definitions, warrants and rules
+// could be reversed in the JSON and nothing would notice — including a flip of
+// the witness/attester split, which is the whole point of the layer.
+const section = (heading) => {
+  const start = prose.indexOf(heading);
+  if (start === -1) return "";
+  const next = prose.indexOf("\n#", start + heading.length);
+  return prose.slice(start, next === -1 ? prose.length : next);
+};
+
+// A prose table cell, normalised: markdown emphasis and code ticks removed.
+const cell = (s) => s.replace(/[`*]/g, "").trim();
+
+// A JSON string list, rendered the one way the prose is allowed to render it.
+const renderList = (xs) => {
+  const joined = xs.join("; ");
+  return joined.charAt(0).toUpperCase() + joined.slice(1) + ".";
+};
+
+const tableRows = (text) => {
+  const rows = new Map();
+  for (const line of text.split("\n")) {
+    if (!line.startsWith("|")) continue;
+    const cells = line.split("|").slice(1, -1).map(cell);
+    if (cells[0]?.startsWith("OMBS.")) rows.set(cells[0], cells);
+  }
+  return rows;
+};
+
+const cmp = (id, field, expected, actual) => {
+  if (actual === undefined) {
+    fail("evidence-parity", `${id}: ${field} has no matching cell in ${VERSION_DIR}/STANDARD.md §8.1`);
+  } else if (cell(String(expected)) !== actual) {
+    fail(
+      "evidence-parity",
+      `${id}: ${field} differs between prose and JSON\n` +
+        `             prose: ${actual}\n` +
+        `             json : ${cell(String(expected))}`,
+    );
+  }
+};
+
+const formsProse = tableRows(section("#### 8.1.1 Evidence forms"));
+for (const f of evidenceLayer.forms ?? []) {
+  const row = formsProse.get(f.id);
+  if (!row) {
+    fail("evidence-parity", `${f.id} has no row in the §8.1.1 evidence-forms table`);
+    continue;
+  }
+  cmp(f.id, "name", f.name, row[1]);
+  cmp(f.id, "definition", f.definition, row[2]);
+  cmp(f.id, "exists", f.exists, row[3]);
+}
+for (const id of formsProse.keys()) {
+  if (!FORM_IDS.has(id)) fail("evidence-parity", `§8.1.1 lists ${id}, which is not in evidenceLayer.forms`);
+}
+
+const observersSection = section("#### 8.1.2 Observer types");
+const observersProse = tableRows(observersSection);
+for (const o of evidenceLayer.observers ?? []) {
+  const row = observersProse.get(o.id);
+  if (!row) {
+    fail("evidence-parity", `${o.id} has no row in the §8.1.2 observer-types table`);
+    continue;
+  }
+  cmp(o.id, "name", o.name, row[1]);
+  cmp(o.id, "warrants", renderList(o.warrants), row[2]);
+  cmp(o.id, "doesNotWarrant", renderList(o.doesNotWarrant), row[3]);
+  // definition and mustRecord live in the §8.1.2 bullet list, not the table.
+  if (!cell(observersSection).includes(cell(o.definition))) {
+    fail("evidence-parity", `${o.id}: definition does not appear verbatim in §8.1.2\n             json : ${o.definition}`);
+  }
+  const records = `Records: ${o.mustRecord.join("; ")}.`;
+  if (!cell(observersSection).includes(cell(records))) {
+    fail("evidence-parity", `${o.id}: mustRecord does not appear verbatim in §8.1.2\n             json : ${records}`);
+  }
+}
+for (const id of observersProse.keys()) {
+  if (!OBSERVER_IDS.has(id)) fail("evidence-parity", `§8.1.2 lists ${id}, which is not in evidenceLayer.observers`);
+}
+
+const rulesProse = tableRows(section("#### 8.1.3 Admissibility rules"));
+for (const r of evidenceLayer.admissibility ?? []) {
+  const row = rulesProse.get(r.id);
+  if (!row) {
+    fail("evidence-parity", `${r.id} has no row in the §8.1.3 admissibility table`);
+    continue;
+  }
+  cmp(r.id, "name", r.name, row[1]);
+  cmp(r.id, "rule", r.rule, row[2]);
+}
+for (const id of rulesProse.keys()) {
+  if (!RULE_IDS.has(id)) fail("evidence-parity", `§8.1.3 lists ${id}, which is not in evidenceLayer.admissibility`);
+}
+
+// Anchor statements are normative prose too, and appear in §4–§6.
+for (const unit of units) {
+  if (unit.anchorStatement && !prose.includes(unit.anchorStatement)) {
+    fail(
+      "evidence-parity",
+      `${unit.anchor}: anchorStatement does not appear verbatim in ${VERSION_DIR}/STANDARD.md\n` +
+        `             json : ${unit.anchorStatement}`,
+    );
+  }
+}
+
 // ------------------------------------------------------------- 7. references
 
 for (const fw of crosswalks.frameworks ?? []) {
@@ -330,12 +447,22 @@ const CHECKS = [
   ["version", `version ${VERSION} agrees across standards.json, crosswalks.json, STANDARD.md, README.md`],
   ["ids", `${componentIds.size} component ids well-formed and unique`],
   ["self-describe", `${componentIds.size} nodes carry domain + dimension + gradeBand + evidence forms + observer inline`],
-  ["bands", `${units.length} dimensions cover all four grade bands`],
+  [
+    "bands",
+    `${units.filter((u) => !u.parent).length} dimensions + ${units.filter((u) => u.parent).length} sub-dimensions cover all four grade bands`,
+  ],
   ["parity", `${allJsonCodes.size} codes match between STANDARD.md prose and standards.json, both directions`],
   ["descriptors", `${componentIds.size} descriptor texts identical between STANDARD.md §8 and standards.json`],
+  [
+    "evidence-parity",
+    `${FORM_IDS.size + OBSERVER_IDS.size + RULE_IDS.size} evidence-layer definitions and ${units.length} anchor statements identical between prose and JSON`,
+  ],
   ["refs", "crosswalk and boundary references resolve"],
   ["evidence-layer", `${FORM_IDS.size} evidence forms, ${OBSERVER_IDS.size} observer types, ${RULE_IDS.size} admissibility rules`],
-  ["citations", `${Object.keys(BIBLIOGRAPHY).length} bibliography entries resolvable; codes new in ${VERSION} carry citations`],
+  [
+    "citations",
+    `${Object.keys(BIBLIOGRAPHY).length} bibliography entries carry a DOI or URL and appear in §11; codes new in ${VERSION} carry citations`,
+  ],
 ];
 
 for (const [name, summary] of CHECKS) {

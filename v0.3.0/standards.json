@@ -73,7 +73,7 @@
       {
         "id": "OMBS.EF.SR",
         "name": "System record",
-        "definition": "A timestamp, version history, submission event, access change, or other trace produced automatically by the environment the work happened in, without the learner or an observer choosing to create it. This is what 'dated or otherwise traceable' names.",
+        "definition": "A timestamp, version history, submission event, access change, or other trace produced automatically by the environment the work happened in, without the learner or an observer choosing to create it.",
         "exists": "during"
       },
       {
@@ -168,7 +168,7 @@
       {
         "id": "OMBS.EV.DISC",
         "name": "Disclosure",
-        "rule": "Every claim that a code was demonstrated records at least one evidence form and exactly one observer type. A tag carrying neither is not OMBS-conformant and must not be reported as OMBS evidence."
+        "rule": "Every claim that a code was demonstrated records at least one evidence form and exactly one observer type. A tag missing either is not OMBS-conformant and must not be reported as OMBS evidence."
       },
       {
         "id": "OMBS.EV.SEQ",
@@ -203,7 +203,7 @@
           "anchor": "OMBS.S.DF",
           "name": "Define",
           "introducedIn": "0.1.0",
-          "anchorStatement": "The learner identifies what they intend to make or build, for whom, and against what success criteria, before significant work begins.",
+          "anchorStatement": "The learner identifies what they intend to make or build, for whom, and against what success criteria, before significant work begins. They revise the definition as understanding deepens.",
           "components": [
             {
               "id": "OMBS.S.DF.K2.1",
@@ -282,7 +282,7 @@
           "anchor": "OMBS.S.DR",
           "name": "Draft",
           "introducedIn": "0.1.0",
-          "anchorStatement": "The learner produces preliminary, low-stakes versions of the artifact that make assumptions visible before commitment to final form.",
+          "anchorStatement": "The learner produces preliminary, low-stakes versions of the artifact — sketches, prototypes, outlines, mock-ups — that make assumptions visible before commitment to final form.",
           "components": [
             {
               "id": "OMBS.S.DR.K2.1",
@@ -362,7 +362,7 @@
           "anchor": "OMBS.S.TS",
           "name": "Test",
           "introducedIn": "0.1.0",
-          "anchorStatement": "The learner exposes the work to evidence and treats the result as information, not judgment.",
+          "anchorStatement": "The learner exposes the work to evidence — feedback from a real audience, performance against criteria, behavior under intended use — and treats the result as information, not judgment.",
           "components": [
             {
               "id": "OMBS.S.TS.K2.1",
@@ -679,7 +679,7 @@
               }
             }
           ],
-          "componentRole": "The band components below are composite: each is satisfied when the sub-dimension components for that band are. Retained unchanged from v0.2.0 so existing tags stay valid.",
+          "componentRole": "One-directional. Evidence gathered for a sub-dimension MAY be reported at this level where it satisfies the parent descriptor; satisfying every sub-dimension at a band does NOT by itself satisfy the parent component (at 9-12 it demonstrably does not — OMBS.S.AI.912.1 requires a counterfactual defense none of the four 9-12 sub-descriptors produces). Retained unchanged from v0.2.0 so existing tags stay valid.",
           "subDimensions": [
             {
               "id": "DI",
@@ -943,7 +943,7 @@
               "name": "Trajectory",
               "parent": "OMBS.S.AI",
               "introducedIn": "0.3.0",
-              "anchorStatement": "Across the work, what the learner delegates to the tool changes, and the learner can say what they took over and why. Reported as not applicable where the work contains only one substantive AI use, since trajectory needs two points to be observable.",
+              "anchorStatement": "Across the work, what the learner delegates to the tool changes, and the learner can say what they took over and why.",
               "citations": [
                 "salomon-1991",
                 "pea-2004",
@@ -1021,7 +1021,8 @@
                     ]
                   }
                 }
-              ]
+              ],
+              "appliesWhen": "The work contains at least two substantive AI uses. Reported as not applicable where it contains only one, since trajectory needs two observation points to be observable."
             }
           ]
         }
@@ -1037,7 +1038,7 @@
           "anchor": "OMBS.M.AU",
           "name": "Audience awareness",
           "introducedIn": "0.1.0",
-          "anchorStatement": "The learner identifies a specific audience, characterizes the audience by relevant traits, and adapts the work to fit.",
+          "anchorStatement": "The learner identifies a specific audience for the artifact, characterizes that audience by relevant traits (age, prior knowledge, context of encounter), and adapts the work to fit.",
           "components": [
             {
               "id": "OMBS.M.AU.K2.1",
@@ -1132,7 +1133,7 @@
           "anchor": "OMBS.M.PU",
           "name": "Purpose and intent",
           "introducedIn": "0.1.0",
-          "anchorStatement": "The learner names the change they want the artifact to produce in the audience and structures the artifact around that intent.",
+          "anchorStatement": "The learner names the change they want the artifact to produce in the audience — to inform, persuade, move, entertain, instruct, provoke — and structures the artifact around that intent.",
           "components": [
             {
               "id": "OMBS.M.PU.K2.1",
@@ -1211,7 +1212,7 @@
           "anchor": "OMBS.M.EX",
           "name": "Expression and medium",
           "introducedIn": "0.1.0",
-          "anchorStatement": "The learner uses the medium's specific affordances rather than treating the medium as a neutral container.",
+          "anchorStatement": "The learner uses the medium's specific affordances — what it can do that other mediums cannot — rather than treating the medium as a neutral container.",
           "components": [
             {
               "id": "OMBS.M.EX.K2.1",
@@ -1289,7 +1290,7 @@
           "anchor": "OMBS.M.CR",
           "name": "Critique and response",
           "introducedIn": "0.1.0",
-          "anchorStatement": "The learner solicits, receives, and acts on critique without collapsing into compliance or defensiveness, and gives critique in terms that serve the work.",
+          "anchorStatement": "The learner solicits, receives, and acts on critique without collapsing into compliance or defensiveness, and gives critique to peers in terms that serve the work.",
           "components": [
             {
               "id": "OMBS.M.CR.K2.1",
@@ -1373,7 +1374,7 @@
           "anchor": "OMBS.B.MT",
           "name": "Materials and medium reasoning",
           "introducedIn": "0.1.0",
-          "anchorStatement": "The learner selects materials based on the demands of the build, names tradeoffs, and revises in response to test results.",
+          "anchorStatement": "The learner selects materials or components based on the demands of the build, names tradeoffs (cost, weight, durability, availability, complexity), and revises material choices in response to test results.",
           "components": [
             {
               "id": "OMBS.B.MT.K2.1",
@@ -1451,7 +1452,7 @@
           "anchor": "OMBS.B.ST",
           "name": "Structure and systems thinking",
           "introducedIn": "0.1.0",
-          "anchorStatement": "The learner organizes components into a structure with named relationships, identifies points of stress, and uses that structure to predict behavior before testing.",
+          "anchorStatement": "The learner organizes components into a structure with named relationships, identifies points of stress or coupling, and uses that structure to predict behavior before testing.",
           "components": [
             {
               "id": "OMBS.B.ST.K2.1",
@@ -1530,7 +1531,7 @@
           "anchor": "OMBS.B.DR",
           "name": "Durability and robustness",
           "introducedIn": "0.1.0",
-          "anchorStatement": "The learner anticipates conditions of use including misuse and edge cases, designs for them, and tests against them.",
+          "anchorStatement": "The learner anticipates conditions of use — including misuse, edge cases, and time — and designs for them, then tests against those conditions.",
           "components": [
             {
               "id": "OMBS.B.DR.K2.1",
@@ -1610,7 +1611,7 @@
           "anchor": "OMBS.B.FN",
           "name": "Function and fit-for-use",
           "introducedIn": "0.1.0",
-          "anchorStatement": "The learner evaluates the build against its stated function in the hands of intended users and accepts the gap between intent and result as data.",
+          "anchorStatement": "The learner evaluates the build against its stated function in the hands of intended users, accepts the gap between intent and result as data, and decides whether the gap warrants revision.",
           "components": [
             {
               "id": "OMBS.B.FN.K2.1",

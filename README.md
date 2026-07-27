@@ -25,7 +25,7 @@ These practices appear in every domain — a poem, a robot, a science fair displ
 
 - Subject-area content knowledge (use CCSS, NGSS, state standards)
 - Social-emotional learning competencies (use CASEL)
-- AI literacy (use UNESCO AI Literacy Framework)
+- Understanding of AI as subject matter, i.e. AI literacy (use the UNESCO *AI Competency Framework for Students*, 2024) — distinct from `OMBS.S.AI`, which assesses whether the learner remained the source of choice while making
 - Career and technical credentials (use ASCA, industry frameworks)
 
 ## How to use
