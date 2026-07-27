@@ -1,0 +1,19 @@
+name: parity
+
+# CONTRIBUTING.md tells contributors that "CI verifies parity between the prose
+# and the JSON." This is that CI. Read-only: it runs one zero-dependency script.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check-parity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/check-parity.mjs
