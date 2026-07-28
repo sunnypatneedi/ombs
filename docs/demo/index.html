@@ -7,118 +7,335 @@
 <meta name="description" content="A free tool built on the Open Making and Building Standard. See what making and building well looks like at any age — and what would count as evidence. No account, no score.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" media="print" onload="this.media='all'"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
 <style>
+/* Design language is the published site's (docs/index.html). Every value below
+   is either a token declared there or a measured value lifted from one of its
+   components; the component each rule copies is named in a trailing comment. */
 :root{
-  --blue:#2563EB; --blue-dark:#1E40AF; --blue-light:#EFF6FF;
-  --orange:#EA580C; --orange-dark:#C2410C;
-  --green:#16A34A; --green-dark:#15803D;
+  /* Domain colours. These carry meaning: S = Shared Practices, M = Making, B = Building.
+     Never used decoratively. Tints are the site's .domain-filter-btn.active-* triples. */
+  --blue:#2563EB;   --blue-dark:#1E40AF;   --blue-light:#EFF6FF;   --blue-border:#BFDBFE;
+  --orange:#EA580C; --orange-dark:#C2410C; --orange-light:#FFF7ED; --orange-border:#FED7AA;
+  --green:#16A34A;  --green-dark:#15803D;  --green-light:#F0FDF4;  --green-border:#BBF7D0;
+
   --bg:#F8FAFC; --white:#FFFFFF;
-  --s900:#0F172A; --s800:#1E293B; --s700:#334155; --s600:#475569;
-  --s500:#64748B; --s400:#94A3B8; --s300:#CBD5E1; --s200:#E2E8F0; --s100:#F1F5F9;
+  --s900:#0F172A; --s700:#334155; --s600:#475569; --s500:#64748B;
+  --s400:#94A3B8; --s300:#CBD5E1; --s200:#E2E8F0; --s100:#F1F5F9; --s50:#F8FAFC;
+
   --font:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
-  --serif:'Instrument Serif',Georgia,serif;
   --mono:'SFMono-Regular',Consolas,monospace;
+
+  /* Card treatment, measured off the site's .stat-card */
+  --card-radius:20px; --card-border:2px solid var(--s200);
+  --card-shadow:4px 4px 0 rgba(0,0,0,0.04);
 }
+
 *{box-sizing:border-box;min-width:0}
-body{margin:0;background:var(--bg);color:var(--s900);font-family:var(--font);line-height:1.6;-webkit-font-smoothing:antialiased}
+html,body{overflow-x:clip}
+body{
+  margin:0;background:var(--bg);color:var(--s900);
+  font-family:var(--font);line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+a{color:var(--blue);text-decoration:none;font-weight:600}          /* site: a */
+a:hover{text-decoration:underline}
 .wrap{max-width:940px;margin:0 auto;padding:0 20px}
-a{color:var(--blue)}
 
-/* header */
-.top{background:var(--white);border-bottom:1px solid var(--s200)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;gap:16px}
-.brand{font-weight:800;font-size:17px;letter-spacing:-.02em;text-decoration:none;color:var(--s900)}
-.brand span{color:var(--blue)}
-.top a.back{font-size:14px;font-weight:600;text-decoration:none}
+/* ── HEADER — matches the site header element for element ─────────── */
+header{
+  background:var(--white);
+  border-bottom:4px solid var(--s200);
+  padding:0.875rem 1.5rem;
+  position:sticky;top:0;z-index:100;
+  box-shadow:0 1px 8px rgba(0,0,0,0.05);
+}
+.header-inner{
+  max-width:1280px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+}
+.brand{display:flex;align-items:center;gap:0.75rem;color:var(--s900);font-weight:400}
+.brand:hover{text-decoration:none}
+.logo{
+  width:48px;height:48px;
+  background:var(--s900);color:var(--white);
+  border-radius:16px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:0.7rem;letter-spacing:-0.5px;
+  box-shadow:4px 4px 0 rgba(0,0,0,0.1);
+  flex-shrink:0;line-height:1.2;text-align:center;
+}
+.brand-name{font-weight:800;font-size:1.2rem;letter-spacing:-0.4px;line-height:1.2}
+.brand-meta{display:flex;align-items:center;gap:0.5rem;margin-top:0.2rem}
+.v-badge{
+  background:var(--s200);color:var(--s700);
+  font-size:0.68rem;font-weight:700;
+  padding:0.15rem 0.5rem;border-radius:20px;
+}
+.brand-sub{font-size:0.78rem;color:var(--s500);font-weight:500}
 
-/* hero */
-.hero{padding:54px 0 30px;text-align:center}
-.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(32px,5.2vw,50px);line-height:1.14;letter-spacing:-.01em;margin:0 0 16px}
-.hero p{margin:0 auto;max-width:600px;color:var(--s600);font-size:16px}
+.tab-nav{
+  background:var(--s100);
+  padding:6px;border-radius:20px;
+  display:flex;gap:2px;overflow-x:auto;
+}
+.tab-nav a{
+  display:flex;align-items:center;gap:0.35rem;
+  flex-shrink:0;                     /* without this the strip squeezes items into each other */
+  padding:0.5rem 1.1rem;
+  border-radius:14px;
+  font-size:0.84rem;font-weight:700;
+  color:var(--s600);white-space:nowrap;
+  text-decoration:none;transition:all 0.15s;
+}
+.tab-nav a:hover{color:var(--s900);background:rgba(255,255,255,0.6);text-decoration:none}
 
-/* setup card */
-.card{background:var(--white);border:1px solid var(--s200);border-radius:14px;padding:26px;box-shadow:0 1px 2px rgba(15,23,42,.04)}
-.row{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:20px}
+/* ── HERO ─────────────────────────────────────────────────────────── */
+.hero{max-width:720px;margin:0 auto;padding:54px 0 30px;text-align:center}
+.hero h1{
+  font-size:clamp(2rem,5vw,3.25rem);                                /* site: .hero h2 */
+  font-weight:800;line-height:1.15;letter-spacing:-1px;
+  text-wrap:balance;margin:0 0 1.2rem;
+}
+.hero h1 .c-orange{color:var(--orange-dark)}   /* Making  */
+.hero h1 .c-green{color:var(--green-dark)}     /* Building */
+.hero p{margin:0;font-size:1.1rem;color:var(--s600);font-weight:500;line-height:1.65}
+
+/* ── SETUP CARD — the site's .stat-card treatment ─────────────────── */
+.card{
+  background:var(--white);
+  border:var(--card-border);
+  border-radius:var(--card-radius);
+  padding:1.5rem;
+  box-shadow:var(--card-shadow);
+}
+.row{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:1.25rem}
 .field{flex:1;min-width:170px}
-label{display:block;font-size:12.5px;font-weight:700;color:var(--s700);margin-bottom:7px}
-label em{font-style:normal;font-weight:500;color:var(--s400)}
-input,select{width:100%;font-family:var(--font);font-size:15px;padding:11px 13px;border:1px solid var(--s300);border-radius:9px;background:var(--white);color:var(--s900)}
-input:focus,select:focus{outline:2px solid var(--blue);outline-offset:-1px;border-color:var(--blue)}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{display:inline-flex;align-items:center;gap:7px;font-family:var(--font);font-size:14px;font-weight:600;padding:8px 14px;border:1px solid var(--s300);background:var(--white);color:var(--s700);border-radius:999px;cursor:pointer}
-.chip:hover{border-color:var(--s400)}
-.chip[aria-pressed="true"]{background:var(--s900);border-color:var(--s900);color:var(--white)}
-.chip:disabled{opacity:.42;cursor:not-allowed}
-.lean{margin-top:16px;font-size:14px;color:var(--s600);min-height:22px}
-.lean b{color:var(--s900)}
+label{display:block;font-size:0.78rem;font-weight:700;color:var(--s700);margin-bottom:0.4rem}
+label em{font-style:normal;font-weight:500;color:var(--s500)}
+input,select{
+  width:100%;font-family:var(--font);
+  font-size:0.95rem;font-weight:600;
+  padding:0.7rem 0.85rem;
+  border:2px solid var(--s200);border-radius:16px;           /* site: .domain-filter-btn */
+  background:var(--white);color:var(--s900);
+}
+input::placeholder{color:var(--s500)}
+input:focus,select:focus{outline:2px solid var(--blue);outline-offset:1px;border-color:var(--blue)}
 
-/* dark explorer */
-.explorer{background:var(--s900);border-radius:14px;padding:30px 28px 34px;margin-top:22px;color:#E8EDF4}
-.exhead{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--s400);font-weight:700;margin-bottom:6px}
-.exband{font-family:var(--serif);font-size:38px;line-height:1.15;color:#fff;margin-bottom:22px}
-.exband small{font-family:var(--font);font-size:14px;font-weight:500;color:var(--s400);letter-spacing:0;display:block;margin-top:4px}
-.tabs{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:26px}
-.tab{font-family:var(--font);font-size:13.5px;font-weight:600;padding:7px 15px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:transparent;color:#C7D3E1;cursor:pointer}
-.tab:hover{border-color:rgba(255,255,255,.34)}
-.tab[aria-selected="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{                                                        /* site: .grade-filter-btn */
+  display:inline-flex;align-items:center;gap:0.45rem;
+  font-family:var(--font);font-size:0.84rem;font-weight:700;
+  padding:0.5rem 1rem;
+  border:2px solid var(--s200);border-radius:20px;
+  background:var(--white);color:var(--s600);
+  cursor:pointer;transition:all 0.15s;
+}
+.chip:hover{border-color:var(--s400);color:var(--s700)}
+.chip:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.chip[aria-pressed="true"]{background:var(--s900);border-color:var(--s900);color:var(--white)}
+.chip:disabled{opacity:.5;cursor:not-allowed}
+.lean{margin-top:1rem;font-size:0.9rem;color:var(--s600);font-weight:500}
+.lean:empty{display:none}          /* no reserved dead space under the chips before a pick */
+.lean b{color:var(--s900);font-weight:800}
+
+/* ── EXPLORER — light card, domain-badged (see build notes on the dark panel) ── */
+.explorer{
+  background:var(--white);
+  border:var(--card-border);
+  border-radius:32px;                                         /* site: .about-header-card */
+  padding:2rem;
+  box-shadow:var(--card-shadow);
+  margin-top:22px;
+}
+.ex-top{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.25rem}
+.acc-icon{                                                    /* site: .acc-icon */
+  width:44px;height:44px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;font-weight:800;color:var(--white);flex-shrink:0;
+}
+.acc-icon-S{background:var(--blue)}
+.ex-domain{font-size:1rem;font-weight:800;margin:0}
+.exhead{font-size:0.8rem;color:var(--s500);font-weight:500;margin-top:0.1rem}
+.exband{
+  font-size:clamp(1.75rem,4vw,2.25rem);                       /* site: .search-title */
+  font-weight:800;line-height:1.15;letter-spacing:-0.6px;
+  text-wrap:balance;margin-bottom:1.4rem;
+}
+.exband small{
+  font-family:var(--font);font-size:0.85rem;font-weight:500;
+  color:var(--s500);letter-spacing:0;display:block;margin-top:0.35rem;line-height:1.5;
+}
+
+.tabs{                                                        /* site: .tab-nav */
+  display:flex;flex-wrap:wrap;gap:2px;row-gap:4px;
+  width:fit-content;max-width:100%;   /* the trough hugs its tabs, as it does on the site */
+  background:var(--s100);padding:6px;border-radius:20px;
+  margin-bottom:1.6rem;
+}
+.tab{
+  font-family:var(--font);font-size:0.84rem;font-weight:700;
+  padding:0.5rem 1.1rem;
+  border:none;border-radius:14px;background:none;
+  color:var(--s600);cursor:pointer;white-space:nowrap;transition:all 0.15s;
+}
+.tab:hover{color:var(--s900);background:rgba(255,255,255,0.6)}
+.tab:focus-visible{outline:2px solid var(--blue);outline-offset:1px}
+.tab[aria-selected="true"]{
+  background:var(--white);color:var(--s900);
+  box-shadow:0 2px 10px rgba(0,0,0,0.06);
+}
 
 .track{position:relative;margin:0 4px 8px}
-.ticks{display:flex;justify-content:space-between;margin-bottom:9px;position:relative;height:16px}
-.tickmark{font-size:11px;color:var(--s500);font-weight:600;letter-spacing:.03em}
-.tickmark.here{color:var(--orange)}
-input[type=range]{width:100%;-webkit-appearance:none;appearance:none;background:transparent;padding:0;border:0;margin:6px 0}
+input[type=range]{
+  /* 32px + margins keeps the pointer target above the 24px floor; the visible
+     track stays 6px and the thumb centres on it (see margin-top below). */
+  width:100%;height:32px;-webkit-appearance:none;appearance:none;
+  background:transparent;padding:0;border:0;margin:6px 0;
+}
 input[type=range]:focus{outline:none}
-input[type=range]::-webkit-slider-runnable-track{height:5px;background:rgba(255,255,255,.2);border-radius:4px}
-input[type=range]::-moz-range-track{height:5px;background:rgba(255,255,255,.2);border-radius:4px}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#fff;border:0;margin-top:-8.5px;cursor:pointer;box-shadow:0 1px 5px rgba(0,0,0,.45)}
-input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#fff;border:0;cursor:pointer}
-.bands{display:flex;justify-content:space-between;margin-top:4px}
-.bandlbl{font-size:12.5px;color:var(--s400);font-weight:600}
-.bandlbl.here{color:var(--orange)}
-.youmark{font-size:11px;color:var(--orange);font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-top:14px;min-height:16px}
+input[type=range]::-webkit-slider-runnable-track{height:6px;background:var(--s200);border-radius:20px}
+input[type=range]::-moz-range-track{height:6px;background:var(--s200);border-radius:20px}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:24px;height:24px;border-radius:50%;
+  background:var(--s900);border:3px solid var(--white);
+  margin-top:-9px;cursor:pointer;
+  box-shadow:0 0 0 2px var(--s900);
+}
+input[type=range]::-moz-range-thumb{
+  width:24px;height:24px;border-radius:50%;
+  background:var(--s900);border:3px solid var(--white);cursor:pointer;
+  box-shadow:0 0 0 2px var(--s900);
+}
+input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 2px var(--s900),0 0 0 5px var(--blue)}
+input[type=range]:focus-visible::-moz-range-thumb{box-shadow:0 0 0 2px var(--s900),0 0 0 5px var(--blue)}
 
-.gloss{font-family:var(--serif);font-size:clamp(21px,2.9vw,27px);line-height:1.42;color:#fff;margin:24px 0 20px}
-.verbatim{background:rgba(255,255,255,.05);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:16px 18px}
-.verbatim .lbl{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--s400);font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.verbatim .lbl code{font-family:var(--mono);font-size:11px;color:var(--green);background:rgba(22,163,74,.14);padding:2px 7px;border-radius:4px;letter-spacing:0}
-.verbatim p{margin:0;font-size:15.5px;color:#D6DEE8;line-height:1.62}
-.plainnote{font-size:12px;color:var(--s500);margin-top:14px}
+.bands{display:flex;justify-content:space-between;margin-top:4px;gap:4px}
+.bandlbl{font-size:0.8rem;color:var(--s500);font-weight:700}
+.bandlbl.here{color:var(--s900);font-weight:800}
+.youmark{                                                     /* site: .v-badge, sized up */
+  display:inline-block;margin-top:14px;
+  background:var(--s100);color:var(--s900);
+  font-size:0.8rem;font-weight:700;
+  padding:0.3rem 0.8rem;border-radius:20px;
+}
+.youmark:empty{display:none}
 
-/* not-a-score */
-.notascore{background:#FFF7ED;border:1px solid #FED7AA;border-radius:12px;padding:18px 20px;margin-top:22px}
-.notascore h3{margin:0 0 6px;font-size:15px;color:var(--orange-dark)}
-.notascore p{margin:0;font-size:14.5px;color:var(--s700)}
+.gloss{
+  font-size:clamp(1.15rem,2.4vw,1.4rem);
+  font-weight:600;line-height:1.5;color:var(--s900);
+  text-wrap:pretty;margin:1.5rem 0 1.25rem;
+}
+.verbatim{                                                    /* site: .grade-cell */
+  background:var(--s50);border:2px solid var(--s100);
+  border-radius:12px;padding:1rem 1.1rem;
+}
+.verbatim .lbl{                                               /* site: .stat-label */
+  font-size:0.7rem;letter-spacing:1px;text-transform:uppercase;
+  color:var(--s500);font-weight:700;margin-bottom:0.6rem;
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+}
+.verbatim .lbl code{                                          /* S domain tint */
+  font-family:var(--mono);font-size:0.72rem;font-weight:700;letter-spacing:0;
+  background:var(--blue-light);color:var(--blue-dark);
+  border:1px solid var(--blue-border);
+  padding:0.15rem 0.45rem;border-radius:6px;text-transform:none;
+}
+.verbatim p{margin:0;font-size:0.95rem;color:var(--s700);font-weight:500;line-height:1.6}
+.plainnote{font-size:0.78rem;color:var(--s500);font-weight:500;margin-top:0.9rem}
 
-/* domain */
-.domain{margin-top:22px}
-.domain h2{font-family:var(--serif);font-weight:400;font-size:27px;margin:0 0 4px}
-.domain .sub{color:var(--s600);font-size:14.5px;margin:0 0 16px}
+/* ── NOT A SCORE — heaviest border on the page; no domain colour ──── */
+.notascore{
+  background:var(--white);
+  border:4px solid var(--s900);
+  border-radius:20px;
+  padding:1.25rem 1.5rem;margin-top:22px;
+  box-shadow:4px 4px 0 rgba(0,0,0,0.08);
+}
+.notascore h3{margin:0 0 0.4rem;font-size:1.05rem;font-weight:800;color:var(--s900)}
+.notascore p{margin:0;font-size:0.9rem;color:var(--s700);font-weight:500;line-height:1.6}
+
+/* ── DOMAIN DIMENSIONS ────────────────────────────────────────────── */
+.domain{margin-top:2rem}
+.domain h2{font-size:1.5rem;font-weight:800;letter-spacing:-0.5px;margin:0 0 0.25rem}
+.domain .sub{color:var(--s600);font-size:0.9rem;font-weight:500;margin:0 0 1rem}
 .dims{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
-.dim{background:var(--white);border:1px solid var(--s200);border-radius:11px;padding:16px}
-.dim code{font-family:var(--mono);font-size:11px;color:var(--blue);background:var(--blue-light);padding:2px 7px;border-radius:4px}
-.dim h4{margin:9px 0 5px;font-size:15px}
-.dim p{margin:0;font-size:13.5px;color:var(--s600);line-height:1.5}
+.dim{                                                         /* site: .result-item */
+  background:var(--white);border:2px solid var(--s200);
+  border-radius:16px;padding:1.1rem;
+  box-shadow:2px 2px 0 rgba(0,0,0,0.04);
+}
+.dim code{
+  font-family:var(--mono);font-size:0.72rem;font-weight:700;
+  padding:0.15rem 0.45rem;border-radius:6px;
+  border:1px solid transparent;display:inline-block;
+  background:var(--s100);color:var(--s700);
+}
+.dim.d-S code{background:var(--blue-light);  color:var(--blue-dark);  border-color:var(--blue-border)}
+.dim.d-M code{background:var(--orange-light);color:var(--orange-dark);border-color:var(--orange-border)}
+.dim.d-B code{background:var(--green-light); color:var(--green-dark); border-color:var(--green-border)}
+.dim h4{margin:0.55rem 0 0.3rem;font-size:0.95rem;font-weight:800}
+.dim p{margin:0;font-size:0.84rem;color:var(--s600);font-weight:500;line-height:1.55}
 
-footer{margin:44px 0 60px;padding-top:22px;border-top:1px solid var(--s200);font-size:13.5px;color:var(--s500);text-align:center}
+footer{
+  margin:44px 0 60px;padding-top:1.4rem;
+  border-top:2px solid var(--s200);
+  font-size:0.84rem;color:var(--s500);font-weight:500;text-align:center;
+}
 footer .built{margin-bottom:8px}
-@media (max-width:620px){
-  .explorer{padding:22px 18px 26px}
+
+/* ── RESPONSIVE — the site's breakpoints ──────────────────────────── */
+@media (max-width:700px){
+  .explorer{border-radius:24px;padding:1.5rem 1.25rem}
   .hero{padding:36px 0 22px}
+}
+@media (max-width:600px){
+  header{padding:0.75rem 1rem}
+  .header-inner{flex-wrap:wrap}
+  .brand-name{font-size:0.95rem}
+  /* The site hides .tab-nav here. The demo keeps it: it is the only route
+     back into the standard from this page, so hiding it strands the visitor. */
+  .tab-nav{width:100%}
+}
+@media (max-width:400px){
+  .brand-name{font-size:0.85rem}
+  .logo{width:40px;height:40px;border-radius:13px;font-size:0.62rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:0.01ms !important;animation-duration:0.01ms !important}
 }
 </style>
 </head>
 <body>
 
-<div class="top"><div class="wrap">
-  <a class="brand" href="../">OMBS<span>.</span></a>
-  <a class="back" href="../">Read the standard →</a>
-</div></div>
+<header>
+  <div class="header-inner">
+    <a class="brand" href="../">
+      <div class="logo">OMBS</div>
+      <div>
+        <div class="brand-name">Open Making &amp; Building Standard</div>
+        <div class="brand-meta">
+          <span class="v-badge" id="v-badge">v0.3.0</span>
+          <span class="brand-sub">K–12 Cross-Domain Framework</span>
+        </div>
+      </div>
+    </a>
+
+    <nav class="tab-nav" aria-label="The standard">
+      <a href="../#overview">⊞ Overview</a>
+      <a href="../#standards">⊟ Standards</a>
+      <a href="../#search">⌕ Search</a>
+      <a href="../#crosswalks"># Crosswalks</a>
+      <a href="../#about">ⓘ About</a>
+    </nav>
+  </div>
+</header>
 
 <div class="wrap">
 
   <div class="hero">
-    <h1>What does making and building <em style="font-style:italic">well</em> look like at your child's age?</h1>
+    <h1>What does <span class="c-orange">making</span> and <span class="c-green">building</span> well look like at your child's age?</h1>
     <p>Grounded in the open OMBS standard. Free, no account, nothing saved.</p>
   </div>
 
@@ -139,7 +356,14 @@ footer .built{margin-bottom:8px}
   </div>
 
   <div class="explorer">
-    <div class="exhead" id="exhead">Slide through the grade bands</div>
+    <div class="ex-top">
+      <div class="acc-icon acc-icon-S" aria-hidden="true">S</div>
+      <div>
+        <h2 class="ex-domain">Shared Practices</h2>
+        <div class="exhead" id="exhead">Slide through the grade bands</div>
+      </div>
+    </div>
+
     <div class="exband" id="exband">Grades 3–5<small>How this practice grows as they get older</small></div>
 
     <div class="tabs" id="tabs" role="tablist"></div>
@@ -359,7 +583,10 @@ function renderDomain(){
 }
 
 function dimCard(d){
-  return `<div class="dim"><code>${esc(d.anchor)}</code><h4>${esc(d.name)}</h4><p>${esc(d.anchorStatement)}</p></div>`;
+  /* The domain letter comes out of the anchor (OMBS.<domain>.<dim>) so each code
+     chip carries its own domain colour: S blue, M orange, B green. */
+  const dom = String(d.anchor).split(".")[1] || "S";
+  return `<div class="dim d-${esc(dom)}"><code>${esc(d.anchor)}</code><h4>${esc(d.name)}</h4><p>${esc(d.anchorStatement)}</p></div>`;
 }
 
 /* ---------- events ---------- */
@@ -383,6 +610,8 @@ fetch("../standards.json")
   .then(r=>{ if(!r.ok) throw new Error("HTTP "+r.status); return r.json(); })
   .then(spec=>{
     state.spec = spec;
+    /* Same contract as the site header: the version pill reads the standard. */
+    if (spec.version) $("v-badge").textContent = "v" + spec.version;
     const dims = spec.domains.reduce((n,d)=>n+d.dimensions.length,0);
     const comps = spec.domains.reduce((n,d)=>n+d.dimensions.reduce((m,x)=>m+x.components.length,0),0);
     const el = spec.evidenceLayer;

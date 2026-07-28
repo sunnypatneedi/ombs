@@ -1070,9 +1070,25 @@ function switchTab(name, btn) {
   document.querySelectorAll('.tab-nav button').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + name).classList.add('active');
   if (btn) btn.classList.add('active');
+  // Deep-linkable tabs: /demo/ (and any other page) can route straight to a tab.
+  try {
+    if (location.hash !== '#' + name) history.replaceState(null, '', '#' + name);
+  } catch (e) { /* file:// origins reject replaceState; tab switching still works */ }
 }
 
+const TAB_ORDER = ['overview', 'standards', 'search', 'crosswalks', 'about'];
+
+function applyHash() {
+  const name = (location.hash || '').replace(/^#/, '');
+  const i = TAB_ORDER.indexOf(name);
+  if (i === -1) return;
+  switchTab(name, document.querySelector(`.tab-nav button:nth-child(${i + 1})`));
+}
+
+window.addEventListener('hashchange', applyHash);
+
 init();
+applyHash();
 </script>
 </body>
 </html>
