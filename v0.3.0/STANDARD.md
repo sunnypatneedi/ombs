@@ -1,7 +1,7 @@
 # Open Making and Building Standard (OMBS)
 
-**Version:** 0.2.0 (Draft)
-**Date:** 2026-05-11
+**Version:** 0.3.0 (Draft)
+**Date:** 2026-07-27
 **License:** CC BY-SA 4.0
 **Status:** Draft for community review
 
@@ -17,6 +17,7 @@
 6. [Building Domain (B)](#6-building-domain-b)
 7. [Grade-Band Progressions](#7-grade-band-progressions)
 8. [Evidence Descriptors](#8-evidence-descriptors)
+   - [8.1 The evidence and provenance layer](#81-the-evidence-and-provenance-layer)
 9. [Crosswalks](#9-crosswalks)
 10. [Glossary](#10-glossary)
 11. [Bibliography](#11-bibliography)
@@ -54,8 +55,9 @@ The standard is governed by five design principles, in order of precedence:
 - Subject-specific content knowledge — covered by CCSS, NGSS, state academic standards, and equivalents.
 - Social-emotional learning — covered by CASEL.
 - Digital citizenship and information literacy — covered by ISTE Standards for Students (2024 refresh) and AASL.
+- Understanding of AI as subject matter — how models work, where they fail, their societal effects — covered by the UNESCO *AI Competency Framework for Students* (2024). This is AI literacy, and it is distinct from `OMBS.S.AI` (§4.6), which assesses only whether the learner remained the source of choice while making something.
 - Career-specific technical skills — covered by industry frameworks.
-- Early childhood pre-K practice — a future v0.2 may add a Pre-K band.
+- Early childhood pre-K practice — a future version may add a Pre-K band.
 
 ### 1.4 Audiences and uses
 
@@ -86,6 +88,9 @@ OMBS synthesizes prior work rather than inventing from scratch. Principal source
 - **The intellectual lineage of making: Constructionism, experiential education, and critical pedagogy** (Blikstein, 2013): synthesizes the three foundational traditions underlying making as a learning practice — Papert's Constructionism (knowledge is built most powerfully when learners construct publicly shareable objects); Dewey's experiential education (learning through authentic, world-connected problems rather than abstracted instruction); and Freire's critical pedagogy (curriculum rooted in learners' own cultures and lives, making as empowerment rather than training). The "democratization of invention" frame — that digital fabrication does for design and engineering what Logo did for mathematics — grounds OMBS's treatment of making and building as foundational literacies for all learners rather than vocational pathways for a subset. The distinction between *technological literacy* (adaptive, foundational, for all citizens) and *technical competence* (in-depth professional knowledge) (NRC, 1999; 2002) directly informs OMBS's exclusion of career-specific technical skills from scope (§1.3). The empirically documented "keychain syndrome" — learners who stay at aesthetically impressive but intellectually trivial projects because the incentive structure rewards product over process — is the concrete failure mode that the Practice-over-outcome and Failure-positive design principles are designed to prevent.
 - **Maker culture's failure modes and the conditions for equitable deep learning** (Blikstein & Worsley, 2016): identifies four cultural tendencies within the Maker Movement that, unchecked, undermine equitable and intellectually serious learning: hacker autodidacticism (sink-or-swim facilitation that functions only for already-advantaged students), publisher product-centrism (valuing spectacular finished objects over learning process), informal-education speed pressure (perpetually introductory "30-minute" workshops that never advance to complex work), and job-market pipeline thinking (reducing making to STEM workforce development). Each maps to a design choice in OMBS: the process-visible and practice-over-outcome principles counter the product-centric failure mode; the failure-positive principle is calibrated by Papert's "hard fun" rather than hacker-culture sink-or-swim; the scope exclusion of career-specific technical skills (§1.3) explicitly rejects the pipeline rationale. The equity analysis is also formative: documented patterns showing that hacker-culture makerspaces disproportionately disadvantage students without prior technical experience — particularly girls, students of color, and students from lower-income families — reinforce the equity grounding already established by Vossoughi, Hooper, & Escudé (2016). Additionally, Wilensky's reframing of the concrete/abstract dichotomy — abstractness is not a property of objects but of a person's relationship with them (Wilensky, 1991) — grounds OMBS's medium-agnostic principle: the standard does not privilege physical making over other mediums; depth of intellectual engagement can occur in any medium.
 
+- **Assessment-validity theory** (Mislevy, Steinberg, & Almond, 2003; Messick, 1995): grounds the evidence and provenance layer (§8.1). Evidence-centered design's insistence that a claim, the observations that warrant it, and the situations that elicit those observations be specified separately is why OMBS now names evidence *forms* and *observer types* as coded objects rather than leaving "evidence" to each adopter's judgment. Messick's account of construct-irrelevant variance is why the standard forbids reporting a claim at a stronger warrant than its evidence carries (`OMBS.EV.WARR`) — an inflated warrant introduces exactly the irrelevant variance that destroys comparability across adopters.
+- **Human–automation research** (Parasuraman & Riley, 1997): grounds the automated-derivation observer type (`OMBS.OB.AD`) and the conservative-derivation rule (`OMBS.EV.CONS`). The documented failure mode of automation is *misuse* — over-reliance on an automated aid whose output is treated as more authoritative than its inputs support. An automated tagger that emits a tag on ambiguous input reproduces that failure inside an assessment record.
+
 This standard is not derivative of any single source and may be used independently of all of them. Crosswalks (§9) make alignment explicit where it exists.
 
 ### 1.6 What this standard does *not* do
@@ -106,15 +111,16 @@ OMBS does not assign hours, units, or credits. It does not specify which practic
 
 The two domains overlap. A short film is made (it expresses for an audience) and built (it has structure and must function as a viewing experience). A bridge is built (it must hold loads) and made (it expresses civic intent). OMBS does not require artifacts to be classified as one or the other; it requires evidence of the relevant practices, which may be drawn from either or both domains.
 
-### 2.2 Three components of the standard
+### 2.2 Components of the standard
 
-OMBS has three structural components:
+OMBS has three structural components plus a cross-cutting layer:
 
-1. **Five Shared Practices (S)** — a spine of practices common to both domains. Every project worth assessing exercises at least three of these. (§4)
+1. **Shared Practices (S)** — a spine of practices common to both domains: five unconditional (Define, Draft, Test, Iterate, Share) plus one conditional (AI-Independence, which applies only where AI tools were used). Every project worth assessing exercises at least three of the unconditional five. (§4)
 2. **Making Domain (M)** — four dimensions specific to making. (§5)
 3. **Building Domain (B)** — four dimensions specific to building. (§6)
+4. **The evidence and provenance layer** — coded evidence forms, observer types, and admissibility rules that say what may count as a trace of a practice, who is competent to record it, and what their record warrants. It cuts across all three components rather than adding practices of its own. (§8.1)
 
-This gives 13 codes (5 + 4 + 4). Each code has a four-band progression (K–2, 3–5, 6–8, 9–12) with one or more evidence descriptors per cell, yielding 52+ leaf-level standard statements.
+This gives 14 dimensions (6 + 4 + 4). `S.AI` further decomposes into four sub-dimensions (§4.6). Each dimension and sub-dimension has a four-band progression (K–2, 3–5, 6–8, 9–12) with one or more evidence descriptors per cell, yielding 73 leaf-level standard statements.
 
 ### 2.3 Why two domains share a spine
 
@@ -159,7 +165,34 @@ Examples:
 
 Anchor codes are used when describing a competency without committing to a grade band; they are required to have at least one progression cell per band.
 
-### 3.1 Stability guarantees
+### 3.1 Sub-dimensions
+
+A dimension whose practice decomposes into distinguishable sub-practices may carry sub-dimensions. A sub-dimension inserts one further two-letter segment between the dimension and the grade band:
+
+```
+OMBS.<domain>.<dimension>.<sub-dimension>.<grade-band>.<component>
+```
+
+- `OMBS.S.AI.AP.68.1` — Shared Practices, AI-Independence, Appraisal, grades 6–8, component 1.
+- `OMBS.S.AI.AP` — the anchor for the Appraisal sub-dimension.
+
+Sub-dimensions are additive: the parent dimension keeps its own band components. The relationship between them is **one-directional**. Evidence gathered for a sub-dimension MAY be reported at the parent level where it satisfies the parent descriptor; satisfying every sub-dimension at a band does NOT by itself satisfy the parent component. At 9–12 it demonstrably does not — `OMBS.S.AI.912.1` requires a counterfactual defense that none of the four 9–12 sub-descriptors produces. A parent band component is satisfied only by its own descriptor, on its own evidence, like any other component.
+
+An adopter may report at whichever level their evidence supports. `S.AI` is the only dimension with sub-dimensions in v0.3.0.
+
+### 3.2 Auxiliary code namespaces
+
+The evidence and provenance layer (§8.1) uses three namespaces that are not practice codes and never appear in a `<domain>` position:
+
+| Namespace | Meaning | Example |
+|---|---|---|
+| `OMBS.EF.<XX>` | Evidence form — a shape a trace of practice may take | `OMBS.EF.SR` |
+| `OMBS.OB.<XX>` | Observer type — who recorded it and what that record warrants | `OMBS.OB.WT` |
+| `OMBS.EV.<rule>` | Admissibility rule — when a form satisfies a descriptor | `OMBS.EV.SEQ` |
+
+`EF`, `OB`, and `EV` are reserved and will never be issued as domain identifiers.
+
+### 3.3 Stability guarantees
 
 - Codes, once published in a stable minor version (≥ v1.0), are **never reused**. If a code is deprecated, it is permanently retired; replacements receive new component numbers.
 - Code IDs are stable across patch versions. Minor versions may add codes but not rename or remove. Major versions may rename or remove codes with a one-version deprecation alias.
@@ -169,7 +202,7 @@ Anchor codes are used when describing a competency without committing to a grade
 
 ## 4. Shared Practices (S)
 
-The five Shared Practices form the spine that runs through both domains. A project that exercises none of these does not satisfy OMBS.
+Five Shared Practices form the spine that runs through both domains. A project that exercises none of these does not satisfy OMBS. A sixth, `S.AI`, is **conditional** — it applies only where AI tools were used, and is reported as not applicable otherwise.
 
 ### 4.1 S.DF — Define
 
@@ -206,6 +239,54 @@ Sharing is what makes the work real. A standard that lets learners hand work onl
 **Anchor:** Where AI tools were used in producing the artifact, the learner can show what they kept, what they changed, and what they rejected, with reasons. Intention, voice, and the judgment behind tradeoffs remain the learner's.
 
 The standard does not prohibit AI use; it asks whether the learner remained the source of choice. In an environment where polished artifacts are cheap, AI use can silently inflate other dimensions — an audience adaptation that reads well may be the tool's; a tradeoff defended in writing may be paraphrased back from a chat. S.AI is what holds the rest of the standard honest. It does not measure *how much* AI was used; it measures whether the learner can point to specific kept, changed, and rejected outputs and say why. Where no AI was used, the dimension is reported as not applicable rather than scored.
+
+v0.2.0 stated this as a single dimension with one descriptor per band. That is enough to notice AI use and not enough to say anything specific about it: "the learner stayed the author" bundles four separable questions that can come apart. A learner can appraise outputs sharply while never having chosen the task. A learner can disclose AI use honestly and still delegate more of the work each week. v0.3.0 separates them.
+
+#### 4.6.1 What S.AI is not
+
+S.AI is **not AI literacy**. It does not assess what the learner understands about how models work, where they fail, who builds them, or what they cost society. That is a content domain, it is out of OMBS scope (§1.3), and it is covered by the UNESCO *AI Competency Framework for Students*. S.AI assesses one thing: whether, during the making of this artifact, the learner remained the source of choice. Every descriptor below is satisfied or not satisfied by looking at the work and its trace — never by asking the learner what they know about AI.
+
+It is also not a compliance check. A learner who followed every disclosure rule and delegated every decision satisfies `S.AI.AB` and fails `S.AI.DI`. That is the intended behavior: the sub-dimensions are separable on purpose, and a tool that collapses them back into one number has discarded the information the split exists to carry.
+
+#### 4.6.2 S.AI.DI — Direction
+
+**Anchor:** The learner, not the tool, decides what is to be made and what is asked of the tool. Requests made to an AI trace back to the learner's own stated intent.
+
+Direction is the forethought phase of self-regulated learning applied to a collaborator that will happily supply goals as well as outputs (Zimmerman, 2002). The question is not whether the learner writes good prompts — that is craft, and it is not what OMBS measures. The question is whose task it is. A learner who asks "what should I make" and builds the answer has produced an artifact without exercising Define. The 9–12 descriptor is the sharpest instrument here: naming what you deliberately *did not* delegate is the observable that separates a learner using a tool from a learner supervising one.
+
+#### 4.6.3 S.AI.AP — Appraisal
+
+**Anchor:** The learner judges each substantive AI output against criteria they can state, and the decision to keep, change, or reject it is recorded with its reason.
+
+This is the kept/changed/rejected core of v0.2.0's `S.AI`, separated from disclosure and made criterion-referenced. It is the evaluative-judgment capability — deciding about the quality of work — exercised on work the learner did not write (Tai et al., 2018). Two constraints keep it honest:
+
+- **A keep counts, but only a reasoned one.** The standard distinguishes two things adopters have tended to collapse. A **reasoned keep** — the learner kept the output *and* recorded why, referenced to their own audience, purpose, or success criterion — is appraisal, and is evidence for `S.AI.AP`. A **silent keep** — the output was used with no recorded judgment of it — is not, and must not be tagged. The distinction is a condition on the descriptors below rather than a code of its own: a silent keep is the *absence* of a recorded judgment, and OMBS does not issue codes for absences (§8, and Appendix A.2.3 on not reasoning from absent codes). It is a gap in the evidence, never a finding about the learner.
+
+  Two failure modes this rules out. Adopters that treat "changed" as evidence and "kept" as absence mis-score learners who correctly judged a good output, and reward pointless edits. Adopters that treat any keep as evidence score the learner who accepted everything without looking.
+- **The reason must reference the learner's own criteria**, not the output's apparent quality. "It was good" is not appraisal. "It was too long for a six-year-old" is.
+
+The failure mode this dimension exists to catch is documented outside education: over-reliance on an automated aid whose output is treated as more authoritative than its inputs support (Parasuraman & Riley, 1997).
+
+#### 4.6.4 S.AI.AB — Attribution
+
+**Anchor:** The record maps parts of the artifact to where they came from — learner-authored, AI-generated, AI-assisted then revised, or sourced elsewhere — at a granularity a reader can check against the artifact.
+
+Attribution is the dimension that makes the other three auditable. Without a per-part origin claim, a Direction or Appraisal record cannot be checked against the artifact it describes; the evidence chain terminates in the learner's say-so. Disclosure norms for AI use in assessed work are an active area with published schemes an adopter can adopt rather than invent (Perkins, 2023; Perkins et al., 2024). OMBS does not mandate a scheme — it requires that one is stated and that the disclosure is accurate against the retained record.
+
+Attribution is stated as an evidence requirement, not an integrity rule. Whether undisclosed AI use is a violation is a local policy question OMBS takes no position on.
+
+#### 4.6.5 S.AI.TJ — Trajectory
+
+**Anchor:** Across the work, what the learner delegates to the tool changes, and the learner can say what they took over and why.
+
+Trajectory is the only longitudinal sub-dimension, and it carries the question the other three cannot answer: is the learner's dependence on the tool going anywhere? The distinction is between the intelligence a learner displays *with* a tool present and what remains *after* it is withdrawn (Salomon, Perkins, & Globerson, 1991). Scaffolding literature names the mechanism: support that is never withdrawn is not scaffolding, and the withdrawal is the part that produces the capability (Wood, Bruner, & Ross, 1976; Pea, 2004).
+
+Two guards apply:
+
+- **Trajectory needs two observation points.** Where the work contains only one substantive AI use, `S.AI.TJ` is reported as not applicable — the same convention as the parent dimension. It is not an absent code.
+- **Direction of travel is not prescribed.** A learner who takes over a part they previously delegated demonstrates trajectory; so does a learner who delegates a part they had been doing by hand *and can say why that is now the right call*. What is assessed is whether the learner is steering the boundary, not which side of it grows.
+
+**Epistemic status — read before adopting.** The constructs Trajectory rests on are well established; *this observable* is not. The works cited above support transfer after scaffolding withdrawal and the with/of distinction, but none of them measures trajectory of AI delegation in K–12 makers, and no study validates the descriptors below. `OMBS.S.AI.TJ` is offered as a proposed observable rather than a validated one, and it is the code most in need of comment. Adopters should treat evidence tagged to it as exploratory.
 
 ---
 
@@ -284,6 +365,15 @@ Each table cell names what evidence looks like in that band. Cells include 1–3
 | **S.SH Share** | Presents to the class or family with support. | Adapts the artifact for an audience beyond the teacher. | Reaches an audience the learner identified; documents the audience's response. | Publishes to a sustained public audience with attention to access, rights, and follow-on use. |
 | **S.AI AI-Independence** | Points to one part the learner decided and one part a tool produced, with adult support. | Discloses where AI was used; names one kept and one changed-or-rejected output, each with a reason. | Keeps a record of prompts, outputs, and kept/changed/rejected decisions, with the reason in the learner's own words. | Defends that intent, voice, and key tradeoffs would still stand without the AI portion — or names what would be lost and why that loss is acceptable. |
 
+The `S.AI` row above is the parent. Where an adopter's evidence supports it, report the four sub-dimensions instead — the same evidence, separated so the four questions can come apart. Reporting all four does not by itself satisfy the parent row (§3.1).
+
+| Sub-dimension | K–2 | 3–5 | 6–8 | 9–12 |
+|---|---|---|---|---|
+| **S.AI.DI Direction** | Says what they want to make before asking the tool; an adult records the request. | Points to the part of their own intent the request was meant to serve. | Narrows or redirects a request after seeing an output, citing their own goal. | Names what they deliberately did not delegate, and defends why. |
+| **S.AI.AP Appraisal** | Says whether an output is what they wanted, with one reason. | Records kept/changed/rejected with a reason referencing audience, purpose, or criterion. | Every substantive output carries a decision + reason; at least one cites test evidence. | Names an output first accepted then rejected, and the evidence that changed the judgment. |
+| **S.AI.AB Attribution** | Shows one part they made and one part the tool made. | Discloses AI use and names one specific part it produced. | Origin note per substantive part, checkable against the artifact. | Whole-work and per-component disclosure using a stated scheme, accurate against the record. |
+| **S.AI.TJ Trajectory** | Names one thing they asked the tool for earlier and did themselves later, or the reverse. | Record shows a part first delegated and later self-done; says what changed. | Compares two points; names what they took over and what they still delegate. | Builds a capability by withdrawing support; names how transfer would be known; reports the attempt. |
+
 ### 7.3 Making Domain (M) progression summary
 
 | Code | K–2 | 3–5 | 6–8 | 9–12 |
@@ -312,44 +402,128 @@ Format: `<CODE> — <descriptor>`
 
 > **Note on observability.** Each descriptor is written so that an observer (teacher, peer, AI tagger) can determine satisfaction from observable artifacts and behaviors, not from the learner's reported intent alone. "The learner intended X" is not evidence; "the artifact shows X" or "the learner did X observable action" is.
 
-### 8.1 Shared Practices
+### 8.1 The evidence and provenance layer
 
-#### S.DF — Define
+**Added in v0.3.0.** Through v0.2.0 the descriptors said what must be true without saying what would show it. `OMBS.S.DF.68.1` requires a revision "dated or otherwise traceable" and never says which artifacts count as a trace, nor who is competent to notice one. Every adopter had to answer that privately, and two adopters answering it differently produce data that cannot be compared — which quietly defeats the interoperability the standard exists for.
+
+This section closes that gap by naming three coded objects: the **forms** a trace may take, the **observer types** competent to record one and what each record warrants, and the **admissibility rules** governing when a form satisfies a descriptor. Every component node in `standards.json` names its admissible forms and competent observers inline, so a leaf is interpretable without walking back up the tree.
+
+The design follows evidence-centered design's separation of the claim, the observations that warrant it, and the situations that elicit them (Mislevy, Steinberg, & Almond, 2003).
+
+**Minimization is normative.** Naming a form is permission to count a trace, never an instruction to collect one. An adopter retains the minimum record that satisfies a named form and no more: one admissible form recorded by one competent observer satisfies a node (§8.1.4), so an excerpt suffices wherever a complete record is not itself the evidence. OMBS never requires a learner to be identifiable beyond what the holding portfolio already requires, and never requires that a record be retained longer than the claim it supports is in use. Evidence linked to OMBS codes is typically subject to child-privacy law even though the codes are not (Appendix A.4).
+
+#### 8.1.1 Evidence forms
+
+Forms are defined by what makes a trace *count as evidence*, not by medium. A form is not a file type: `OMBS.EF.LA` is satisfied by a notebook page, a voice memo, a commit message, or a chalk drawing photographed before it was erased. This is deliberate — a medium taxonomy would contradict the medium-agnostic design principle (§1.2).
+
+| Code | Form | What it is | Exists |
+|---|---|---|---|
+| `OMBS.EF.LA` | Learner-authored trace | A record the learner produced *during* the work — writing, sketch, annotation, message, saved revision, spoken note — attributable to the learner and existing independently of any later retelling. | during |
+| `OMBS.EF.AR` | Artifact state | The artifact itself, or a preserved earlier state of it. Nobody authored it *as* evidence; it is the work. A kept draft, a prior version, a photograph of a build mid-assembly. | during |
+| `OMBS.EF.SR` | System record | A timestamp, version history, submission event, access change, or other trace produced automatically by the environment the work happened in, without the learner or an observer choosing to create it. | during |
+| `OMBS.EF.OB` | Observation record | A contemporaneous account by someone present while the practice occurred — a teacher's note, a peer's log, a caption written by an adult who watched. Its warrant is presence, not judgment. | during |
+| `OMBS.EF.AC` | Audience response | A record of what a real audience or user did or said on encountering the work. Distinct from the learner's account of how the audience reacted. | during |
+| `OMBS.EF.LR` | Learner retrospective account | The learner's after-the-fact explanation — a reflection, an oral defense, an interview answer. Admissible, and often the richest form, but the weakest standing alone because nothing independent constrains it. | after |
+
+`OMBS.EF.SR` is the answer to `OMBS.S.DF.68.1`. A revision is "otherwise traceable" when a system record fixes its order relative to the thing it revised. A learner saying "I changed it partway through" does not establish that; a saved earlier version does.
+
+#### 8.1.2 Observer types
+
+An observer type says who recorded the evidence and — more importantly — what their record does and does not warrant. Conflating these is the most common way an evidence claim gets inflated.
+
+- **`OMBS.OB.SF` — Self.** The learner is the observer of their own practice. Records: the learner's identity as observer.
+- **`OMBS.OB.WT` — Witness.** An adult or peer who was present while the work happened and records what they saw. A parent, a family member, a classmate, a teacher acting in a presence role rather than an assessment role. Records: the witness's relationship to the learner; when the observation was made.
+- **`OMBS.OB.AT` — Attester.** An observer with assessment standing in the context — teacher, coach, assessor, reviewer — who judges that a descriptor is satisfied and is accountable for that judgment. Records: the attester's identity and role; the evidence the judgment rests on; when the judgment was made.
+- **`OMBS.OB.AD` — Automated derivation.** A rule or model that infers a tag from retained records with no human observer in the loop. Records: the deriving system's identifier and version; the records the derivation read; a confidence value where the derivation is not deterministic.
+
+| Code | Observer | Warrants | Does **not** warrant |
+|---|---|---|---|
+| `OMBS.OB.SF` | Self | What the learner did, as the learner represents it; the learner's reasons for a choice. | That the descriptor is satisfied at the named band; that the account is complete. |
+| `OMBS.OB.WT` | Witness | That the practice occurred; who did the work (authorship and presence). | That the descriptor is satisfied at the named band; the quality or level of the practice. |
+| `OMBS.OB.AT` | Attester | That the descriptor is satisfied at the named band; everything a witness warrants. | Practices outside the attester's own observation or the retained record. |
+| `OMBS.OB.AD` | Automated derivation | Only what its inputs warrant, never more. | That the descriptor is satisfied at the named band; anything its inputs do not contain. |
+
+The witness/attester split is the load-bearing distinction. A parent who watched their child build something can say *that the child built it* — authorship and presence — and cannot say the child's Structure practice met the 6–8 band. Both are useful; treating the first as the second is how a family-facing report ends up claiming more than it knows.
+
+Exactly one observer type warrants band attainment: `OMBS.OB.AT`. What confers the standing to occupy it is stated normatively in `OMBS.EV.STAND` (§8.1.3) rather than left to each adopter, because a tool that may nominate its own attesters can reach an attested claim by relabelling — which would make the whole tier decorative.
+
+**A deliberate consequence, stated so it is not discovered later.** `OMBS.EV.STAND` excludes the parent-educator case: where a parent is the assessor of record — home education, some microschools — their judgment about their own child is still recorded as a witness record for OMBS purposes. The standard is not denying that judgment's validity in its own jurisdiction. It is declining to carry it as an *attested OMBS claim*, because the independence the attested tier represents is precisely what is absent when the assessor and the household are the same. Such a setting can record every practice at the self and witness tiers, and should seek an outside reader when an attested claim is wanted.
+
+#### 8.1.3 Admissibility rules
+
+| Code | Rule | Statement |
+|---|---|---|
+| `OMBS.EV.DISC` | Disclosure | Every claim that a code was demonstrated records at least one evidence form and exactly one observer type. A tag missing either is not OMBS-conformant and must not be reported as OMBS evidence. |
+| `OMBS.EV.SEQ` | Sequence | A descriptor making a temporal claim — before, revises, predicts before test, later — requires at least one evidence form that existed during the work (`OMBS.EF.LA`, `OMBS.EF.AR`, `OMBS.EF.SR`, `OMBS.EF.OB`). A learner retrospective account alone (`OMBS.EF.LR`) does not establish sequence. |
+| `OMBS.EV.RESP` | Response | A descriptor claiming something about what an audience or user did requires `OMBS.EF.AC`. The learner's report of an audience reaction is a retrospective account and does not satisfy it alone. |
+| `OMBS.EV.WARR` | No inflation | A claim is reported at the weakest warrant in its chain. Witness records and automated derivations may support an attested claim but cannot produce one; only `OMBS.OB.AT` yields an attested claim. Reports must name which warrant a claim carries. |
+| `OMBS.EV.CONS` | Conservative derivation | An automated derivation (`OMBS.OB.AD`) emits no tag when its inputs are ambiguous, records the deriving system's identifier and version, and is reproducible from the retained record. A missed tag is a tolerable error; an unearned tag is not. |
+| `OMBS.EV.STAND` | Standing | An attested claim MUST record the assessment role under which it was made and the basis the judgment rests on. Assessment standing is conferred by that role in the context; it is never conferred by presence, by household relationship, or by having done the work. A learner judging their own practice (`OMBS.OB.SF`) and a parent or guardian judging their own child's (`OMBS.OB.WT`) MUST NOT be recorded as `OMBS.OB.AT` whatever role a system assigns them: their records may support an attested claim but MUST NOT be reported as one. |
+
+`OMBS.EV.WARR` is the rule that protects construct validity across adopters. Reporting a witnessed observation as an attested one introduces variance that has nothing to do with the practice being measured and everything to do with who happened to be in the room (Messick, 1995).
+
+`OMBS.EV.CONS` states for automated taggers what human-automation research established for automated aids generally: the failure mode is *misuse* — treating output as more authoritative than its inputs support (Parasuraman & Riley, 1997). A deterministic tagger that fires only on affirmative evidence in the learner's own record, and stays silent when unsure, satisfies this rule; a model that guesses a tag to fill a gap does not.
+
+`OMBS.EV.STAND` and `OMBS.EV.WARR` are complementary, not redundant: `EV.WARR` governs the *chain* (a claim is reported at its weakest link), while `EV.STAND` governs *entry* to the chain (who may be an attester at all). Without `EV.STAND`, `EV.WARR` is satisfiable by a system that simply calls its own users attesters. Together they make the attested tier mean something an outside reader can rely on.
+
+#### 8.1.4 Reading the evidence block on a node
+
+Every component in `standards.json` carries an inline evidence block:
+
+```json
+{
+  "id": "OMBS.S.DF.68.1",
+  "domain": "S",
+  "dimension": "OMBS.S.DF",
+  "gradeBand": "68",
+  "descriptor": "The learner produces a written intent statement ...",
+  "evidence": {
+    "forms": ["OMBS.EF.LA", "OMBS.EF.SR"],
+    "observer": ["OMBS.OB.SF", "OMBS.OB.WT", "OMBS.OB.AT"]
+  }
+}
+```
+
+`forms` names the trace types that can satisfy this descriptor; `observer` names the observer types competent to record it. Neither list is a requirement to hold all of them — one admissible form recorded by one competent observer satisfies the node, subject to the rules in §8.1.3.
+
+### 8.2 Shared Practices
+
+#### OMBS.S.DF — Define
 
 - `OMBS.S.DF.K2.1` — With prompting, the learner states what they will make or build and names at least one person who will see or use it.
 - `OMBS.S.DF.35.1` — The learner records, before substantial work begins, a written or spoken statement naming (a) the artifact, (b) the intended audience or user, and (c) at least one criterion for success.
 - `OMBS.S.DF.68.1` — The learner produces a written intent statement with two or more success criteria, and revises that statement at least once during the project, with the revision dated or otherwise traceable.
 - `OMBS.S.DF.912.1` — The learner frames the intent in tension with stated constraints (time, budget, materials, audience access) and defends scope choices in writing or in conversation against at least one feasible alternative scope considered and rejected.
 
-#### S.DR — Draft
+#### OMBS.S.DR — Draft
 
 - `OMBS.S.DR.K2.1` — The learner produces a sketch, model, or rough version before producing the final artifact, when prompted.
 - `OMBS.S.DR.35.1` — The learner produces at least two distinct drafts and can point to specific differences between them.
 - `OMBS.S.DR.68.1` — The learner produces drafts at multiple grain sizes (e.g., outline before paragraph, rough cardboard before final material) and annotates points where decisions were made.
 - `OMBS.S.DR.912.1` — The learner produces drafts that include explicit alternatives carried forward into testing, not only the path eventually chosen, and documents which alternatives were eliminated and on what evidence.
 
-#### S.TS — Test
+#### OMBS.S.TS — Test
 
 - `OMBS.S.TS.K2.1` — The learner shows the work to at least one person other than the teacher and reports what that person did or said.
 - `OMBS.S.TS.35.1` — The learner tests the artifact against the success criterion stated in S.DF and records what happened in writing, sketch, or recording.
 - `OMBS.S.TS.68.1` — The learner designs tests that exercise at least two of the success criteria, conducts them with a real audience or in a realistic use scenario, and distinguishes findings driven by the test from confounds.
 - `OMBS.S.TS.912.1` — The learner designs at least one test capable of falsifying a key assumption of the work, conducts it, and reports negative results faithfully — including when the result reflects unfavorably on the learner's prior choices.
 
-#### S.IT — Iterate
+#### OMBS.S.IT — Iterate
 
 - `OMBS.S.IT.K2.1` — After receiving feedback, the learner tries the work again with at least one observable change.
 - `OMBS.S.IT.35.1` — The learner names one change made between drafts and the feedback or test result that drove it.
 - `OMBS.S.IT.68.1` — The learner explains, in writing or conversation, which feedback was acted on, which was set aside, and the reason for each decision.
 - `OMBS.S.IT.912.1` — The learner iterates across structurally distinct alternatives (not only polish or refinement of one direction) and documents abandoned directions with the evidence that led to abandonment.
 
-#### S.SH — Share
+#### OMBS.S.SH — Share
 
 - `OMBS.S.SH.K2.1` — The learner presents the artifact to an audience beyond the teacher (classmates, family, school community), with adult support as needed.
 - `OMBS.S.SH.35.1` — The learner adapts the artifact or its presentation for an audience beyond the teacher and explains one adaptation made.
 - `OMBS.S.SH.68.1` — The learner reaches an audience they identified in S.DF and documents the audience's response in a form appropriate to the audience.
 - `OMBS.S.SH.912.1` — The learner publishes the artifact to a sustained public or community audience with attention to access (who can find it, who can use it), rights (attribution, licensing), and provision for follow-on use or remixing.
 
-#### S.AI — AI-Independence
+#### OMBS.S.AI — AI-Independence
 
 > Reported as not applicable when no AI tools were used. Where AI tools were used in any substantive way (drafting, ideation, rendering, code generation, translation, summarization), the descriptors below apply.
 
@@ -358,9 +532,39 @@ Format: `<CODE> — <descriptor>`
 - `OMBS.S.AI.68.1` — The learner maintains a record across the project that, for each substantive AI use, includes the prompt or request made, the output received, and what was kept, changed, or rejected — each kept or changed item paired with a reason in the learner's own words.
 - `OMBS.S.AI.912.1` — The learner can defend, in writing or conversation, that the artifact's intention, voice, and key tradeoffs would still stand if the AI-generated portions were removed; or, where they would not, names specifically what would be lost and why the loss is acceptable for the stated audience and purpose.
 
-### 8.2 Making Domain
+##### OMBS.S.AI.DI — Direction
 
-#### M.AU — Audience awareness
+- `OMBS.S.AI.DI.K2.1` — Before the tool is asked for anything, the learner says what they want to make, and an adult records the learner's request in the learner's own words.
+- `OMBS.S.AI.DI.35.1` — The request the learner made to the tool is retained, and the learner points to the part of their own intent statement (S.DF) that the request was meant to serve.
+- `OMBS.S.AI.DI.68.1` — For at least two substantive AI uses, the retained record shows the learner narrowing or redirecting the request after seeing an output, and the learner names what about their own goal drove the change — not that the output was bad.
+- `OMBS.S.AI.DI.912.1` — The learner names at least one part of the work they deliberately did not ask the tool to do, and defends that choice by reference to what they intended to own or learn in the work.
+
+##### OMBS.S.AI.AP — Appraisal
+
+- `OMBS.S.AI.AP.K2.1` — Shown an output from the tool, the learner says whether it is what they wanted and gives one reason ("too long," "that isn't my dog"), and an adult records the exchange. Using the output without saying anything about it does not satisfy this descriptor.
+- `OMBS.S.AI.AP.35.1` — For at least one AI output the learner records a decision — kept, changed, or rejected — with a reason that refers to their audience, purpose, or success criterion rather than to whether the output was good. A keep recorded without a reason — a silent keep — does not satisfy this descriptor; a reasoned keep does.
+- `OMBS.S.AI.AP.68.1` — Every substantive AI output in the retained record carries a kept, changed, or rejected decision with a reason in the learner's own words, and at least one reason cites evidence from testing (S.TS) rather than preference alone. An output kept silently counts as carrying no decision.
+- `OMBS.S.AI.AP.912.1` — The learner identifies at least one AI output they first accepted and later revised or rejected, names the evidence that changed their judgment, and states the criterion the output had failed. Where the earlier acceptance was a silent keep, the learner says so and names what they had not checked at the time.
+
+##### OMBS.S.AI.AB — Attribution
+
+- `OMBS.S.AI.AB.K2.1` — The learner points at the artifact and shows one part they made and one part the tool made, and an adult records which is which.
+- `OMBS.S.AI.AB.35.1` — The learner discloses, in a form attached to the artifact, that AI was used and names at least one specific part of the artifact it produced or helped produce.
+- `OMBS.S.AI.AB.68.1` — The artifact carries an origin note covering each substantive part — learner-authored, AI-generated, AI-assisted then revised, or sourced elsewhere — and a reader can match each claim to the part of the artifact it describes.
+- `OMBS.S.AI.AB.912.1` — The learner's disclosure states the level of AI involvement for the work as a whole and for each major component, uses a stated disclosure scheme (a local policy, a publisher requirement, or a published scale), and is accurate against the retained working record.
+
+##### OMBS.S.AI.TJ — Trajectory
+
+> Reported as not applicable where the work contains only one substantive AI use. Trajectory needs two observation points to be observable at all.
+
+- `OMBS.S.AI.TJ.K2.1` — The learner names one thing they asked the tool to do earlier and did themselves later, or the reverse, and an adult confirms it against the earlier record.
+- `OMBS.S.AI.TJ.35.1` — Across at least two points in the project the retained record shows a part the learner first delegated to the tool and later did themselves, and the learner says what changed.
+- `OMBS.S.AI.TJ.68.1` — The learner compares AI use at two points in the project, or across two projects, names what they have taken over and what they still delegate, and gives a reason for each that refers to what they can now do unaided.
+- `OMBS.S.AI.TJ.912.1` — The learner identifies a capability they built by deliberately withdrawing AI support from part of the work, names how they would know the capability transferred to a new task, and reports what happened when they tried.
+
+### 8.3 Making Domain
+
+#### OMBS.M.AU — Audience awareness
 
 - `OMBS.M.AU.K2.1` — The learner names a specific person, group, or class as the intended audience for the artifact.
 - `OMBS.M.AU.35.1` — The learner names at least one audience trait (age, prior knowledge, interest) and points to a choice in the artifact shaped by that trait.
@@ -368,51 +572,51 @@ Format: `<CODE> — <descriptor>`
 - `OMBS.M.AU.68.2` — The learner adapts vocabulary, examples, format, or length in ways visible in the artifact (not only described in reflection) to fit the named audience.
 - `OMBS.M.AU.912.1` — The learner designs for a defined primary audience while accounting for foreseeable secondary audiences (e.g., archival readers, parents, future learners), and notes choices that serve or fail to serve secondaries.
 
-#### M.PU — Purpose and intent
+#### OMBS.M.PU — Purpose and intent
 
 - `OMBS.M.PU.K2.1` — The learner names in one phrase what the artifact is for ("to teach," "to make them laugh," "to help them remember").
 - `OMBS.M.PU.35.1` — The learner names purpose and points to at least one form choice (opening, sequence, ending) shaped by that purpose.
 - `OMBS.M.PU.68.1` — The learner defends two or more form choices by reference to purpose and can describe how a different purpose would have produced different choices.
 - `OMBS.M.PU.912.1` — The learner holds purpose stable while exploring multiple possible forms, selects among them with explicit tradeoff analysis, and can articulate why the chosen form serves the purpose better than alternatives considered.
 
-#### M.EX — Expression and medium
+#### OMBS.M.EX — Expression and medium
 
 - `OMBS.M.EX.K2.1` — The learner tries a medium and notices, with prompting, something the medium can do (e.g., "music can make it sad").
 - `OMBS.M.EX.35.1` — The learner uses at least one medium-specific affordance (color, sound, motion, layout, pacing) intentionally and can name why.
 - `OMBS.M.EX.68.1` — The learner uses medium-specific affordances in service of stated purpose and audience, not for novelty alone.
 - `OMBS.M.EX.912.1` — The learner combines affordances across mediums or sub-mediums (e.g., type and image, sound and silence, code and prose) and defends the combination as serving purpose better than either alone.
 
-#### M.CR — Critique and response
+#### OMBS.M.CR — Critique and response
 
 - `OMBS.M.CR.K2.1` — The learner receives feedback without distress and tries at least one suggestion.
 - `OMBS.M.CR.35.1` — The learner asks for feedback on a specific aspect of the work (a specific question, not "what do you think") and acts on at least one piece received.
 - `OMBS.M.CR.68.1` — The learner distinguishes compliance, defense, and negotiation in their own responses to critique and can name a recent instance of each.
 - `OMBS.M.CR.912.1` — The learner gives critique to peers that names what is working and what is not, in terms the maker can act on, distinct from praise or correction.
 
-### 8.3 Building Domain
+### 8.4 Building Domain
 
-#### B.MT — Materials and medium reasoning
+#### OMBS.B.MT — Materials and medium reasoning
 
 - `OMBS.B.MT.K2.1` — The learner picks from offered materials and explains, when asked, why the choice was made.
 - `OMBS.B.MT.35.1` — The learner compares at least two materials on one trait (strength, color, cost, weight, availability) before selecting.
 - `OMBS.B.MT.68.1` — The learner selects materials by at least two tradeoffs and revises material choice in response to test results.
 - `OMBS.B.MT.912.1` — The learner documents material choices with quantitative or comparative evidence and considers lifecycle factors (sourcing, durability, end-of-life) appropriate to the project.
 
-#### B.ST — Structure and systems thinking
+#### OMBS.B.ST — Structure and systems thinking
 
 - `OMBS.B.ST.K2.1` — The learner names at least two parts of the build and how they connect.
 - `OMBS.B.ST.35.1` — The learner produces a diagram of the build with parts and connections labeled.
 - `OMBS.B.ST.68.1` — The learner identifies at least one stress point, fragile coupling, or single point of failure in the structure and addresses it in the design.
 - `OMBS.B.ST.912.1` — The learner predicts system behavior from structure before test and explains any observed deviation in terms of the structure post-test.
 
-#### B.DR — Durability and robustness
+#### OMBS.B.DR — Durability and robustness
 
 - `OMBS.B.DR.K2.1` — The learner uses the build more than once and notices when something breaks or fails.
 - `OMBS.B.DR.35.1` — The learner tests the build under at least one non-trivial condition (rougher use, longer time, harsher environment).
 - `OMBS.B.DR.68.1` — The learner tests against at least one misuse case the learner imagined (not only the intended use) and reports the result.
 - `OMBS.B.DR.912.1` — The learner designs and reports failure tests, specifies the operating envelope within which the build is intended to function, and notes the boundary conditions.
 
-#### B.FN — Function and fit-for-use
+#### OMBS.B.FN — Function and fit-for-use
 
 - `OMBS.B.FN.K2.1` — The learner gives the build to a user and watches what happens.
 - `OMBS.B.FN.35.1` — The learner records whether the user could use the build as intended and names at least one gap between intent and use.
@@ -470,6 +674,21 @@ Crosswalks map OMBS codes to selected external frameworks. They are advisory: al
 | S.DR + S.IT | W.x.5 — Planning, revising, editing | Direct overlap |
 | S.SH | W.x.6 — Use of technology to produce and publish | Substantial overlap (OMBS broader) |
 
+### 9.6 Artificial Intelligence Assessment Scale (AIAS)
+
+| OMBS | AIAS | Note |
+|---|---|---|
+| S.AI.AB | Levels 1–5 (the permitted extent of generative-AI use in a task) | AIAS states what level of AI use is *allowed*; `S.AI.AB` states what the learner must be able to *disclose* about the use that occurred. Complementary, not equivalent — an AIAS level is a task rule, not evidence of practice. `OMBS.S.AI.AB.912.1` accepts AIAS as one of the published disclosure schemes it requires. |
+
+### 9.7 Boundaries — frameworks OMBS deliberately does not overlap
+
+A crosswalk says where OMBS meets another framework. A boundary says where it deliberately stops. These are as load-bearing as the crosswalks: a tool that reads `S.AI` as an AI-literacy measure has misread the standard, and the machine-readable `boundaries` block in [crosswalks.json](crosswalks.json) exists so that misreading is checkable rather than a matter of interpretation.
+
+| OMBS | Framework | Boundary |
+|---|---|---|
+| S.AI and its sub-dimensions | UNESCO *AI Competency Framework for Students* | OMBS assesses whether the learner remained the source of choice while making something. It does not assess understanding of AI as subject matter — how models work, where they fail, their societal effects. That is AI literacy and belongs to UNESCO's framework (§1.3, §4.6.1). |
+| M.CR, S.AI.AP | CASEL Core SEL Competencies | Critique response and appraisal are assessed as observable practices on a piece of work, not as dispositions or social-emotional competencies. Self-awareness and relationship skills belong to CASEL (§1.3). |
+
 ---
 
 ## 10. Glossary
@@ -498,7 +717,19 @@ Crosswalks map OMBS codes to selected external frameworks. They are advisory: al
 
 **Draft.** A preliminary, low-stakes version of the artifact intended to make assumptions visible before commitment to final form. Drafts are kept, not erased.
 
+**Admissibility rule.** A rule stating when an evidence form satisfies a descriptor (`OMBS.EV.*`). See §8.1.3.
+
+**Assessment standing.** The property that qualifies an observer to make an attested claim. Conferred by a stated assessment role in the context, together with a recorded basis for the judgment — never by presence, household relationship, or having done the work. Governed normatively by `OMBS.EV.STAND`.
+
+**Attester.** An observer with assessment standing in the context — teacher, coach, assessor — who judges that a descriptor is satisfied and is accountable for that judgment (`OMBS.OB.AT`). Distinct from a witness.
+
+**Automated derivation.** A rule or model that infers a tag from retained records with no human observer in the loop (`OMBS.OB.AD`). Warrants only what its inputs warrant.
+
 **Evidence descriptor.** A specific observable behavior or artifact feature that satisfies a code. Codes are made operational through their evidence descriptors.
+
+**Evidence form.** A shape a trace of practice may take, defined by what makes it count as evidence rather than by its medium (`OMBS.EF.*`). See §8.1.1.
+
+**Observer type.** Who recorded a piece of evidence and what their record warrants (`OMBS.OB.*`). Every OMBS-conformant claim records exactly one.
 
 **Fit-for-use.** The degree to which the build serves its intended user in the intended context. Evaluated by observing use, not by asking the user.
 
@@ -520,22 +751,31 @@ Crosswalks map OMBS codes to selected external frameworks. They are advisory: al
 
 **Purpose.** The change the learner wants the artifact to produce in the audience (inform, persuade, move, entertain, instruct, provoke).
 
+**Reasoned keep.** An AI output the learner kept *and* recorded a reason for, referenced to their own audience, purpose, or success criterion. Evidences `OMBS.S.AI.AP`. Contrast *silent keep*.
+
 **Shared Practice.** A practice common to both making and building (Define, Draft, Test, Iterate, Share).
+
+**Silent keep.** An AI output the learner used without recording any judgment of it. Not evidence of appraisal and never tagged. A silent keep is a gap in the evidence, not a finding about the learner — OMBS issues no codes for absences.
 
 **Structure.** The named relationships among the parts of a build. Distinct from a list of parts.
 
 **Stress point.** A part of a structure where failure is more likely or more consequential. Identifying stress points is part of B.ST at the 6–8 band.
 
+**Sub-dimension.** A third-level category within a dimension whose practice decomposes into distinguishable sub-practices (e.g. `OMBS.S.AI.AP` — Appraisal — is a sub-dimension of AI-Independence). See §3.1.
+
+**Warrant.** What a piece of evidence entitles a report to claim, given who observed it. A witness record warrants that a practice occurred; only an attester's record warrants that it met a band descriptor. See `OMBS.EV.WARR`.
+
+**Witness.** Someone who was present while the work happened and records what they saw (`OMBS.OB.WT`). Warrants authorship and presence, never quality or band attainment.
+
 ---
 
 ## 11. Bibliography
 
-Selected works that informed this standard. This is not an exhaustive review.
+Selected works that informed this standard. This is not an exhaustive review. Works cited by a specific code carry a DOI; those DOIs are the machine-readable `bibliography` block in [standards.json](standards.json), and `scripts/check-parity.mjs` asserts that every cited key resolves to an entry here.
 
-- Achievement First. *Engineering Design at Scale: Implementation Notes from K–8 Programs.* (2024).
 - Agency by Design / Project Zero. *Maker-Centered Learning: Empowering Young People to Shape Their Worlds.* Clapp, Ross, Ryan, Tishman. Jossey-Bass (2017).
-- Blikstein, Paulo. "Digital Fabrication and 'Making' in Education: The Democratization of Invention." In *FabLabs: Of Machines, Makers and Inventors*, edited by J. Walter-Herrmann and C. Büching. Bielefeld: Transcript Publishers, 2013.
-- Blikstein, Paulo, and Marcelo Worsley. "Children Are Not Hackers: Building a Culture of Powerful Ideas, Deep Learning, and Equity in the Maker Movement." In *Makeology: Makers as Learners* (Vol. 2), edited by K. Peppler, E. Halverson, and Y. B. Kafai. New York: Routledge, 2016.
+- Blikstein, Paulo. "Digital Fabrication and 'Making' in Education: The Democratization of Invention." In *FabLab: Of Machines, Makers and Inventors*, edited by J. Walter-Herrmann and C. Büching. Bielefeld: Transcript Publishers, 2013.
+- Blikstein, Paulo, and Marcelo Worsley. "Children Are Not Hackers: Building a Culture of Powerful Ideas, Deep Learning, and Equity in the Maker Movement." In *Makeology: Makerspaces as Learning Environments* (Vol. 1), edited by K. Peppler, E. Halverson, and Y. B. Kafai. New York: Routledge, 2016, 64–79. doi:10.4324/9781315726519-5.
 - CASEL. *Core SEL Competencies Framework.* (2020).
 - Common Core State Standards Initiative. *English Language Arts Standards — Writing.* (2010).
 - Dougherty, Dale. *Free to Make: How the Maker Movement Is Changing Our Schools, Our Jobs, and Our Minds.* North Atlantic Books (2016).
@@ -544,19 +784,29 @@ Selected works that informed this standard. This is not an exhaustive review.
 - Honey, Margaret, and David E. Kanter, eds. *Design, Make, Play: Growing the Next Generation of STEM Innovators.* Routledge (2013).
 - ISTE. *Standards for Students (2024 Refresh).* International Society for Technology in Education.
 - Martinez, Sylvia Libow, and Gary Stager. *Invent to Learn: Making, Tinkering, and Engineering in the Classroom.* 2nd ed. Constructing Modern Knowledge Press (2019).
+- Messick, Samuel. "Validity of Psychological Assessment: Validation of Inferences from Persons’ Responses and Performances as Scientific Inquiry into Score Meaning." *American Psychologist* 50 (1995): 741–749. doi:10.1037/0003-066X.50.9.741.
+- Mislevy, Robert J., Linda S. Steinberg, and Russell G. Almond. "Focus Article: On the Structure of Educational Assessments." *Measurement: Interdisciplinary Research & Perspective* 1 (2003): 3–62. doi:10.1207/s15366359mea0101_02.
 - National Research Council. *A Framework for K–12 Science Education: Practices, Crosscutting Concepts, and Core Ideas.* National Academies Press (2012).
 - NGSS Lead States. *Next Generation Science Standards: For States, By States.* National Academies Press (2013).
 - OECD. *Learning Compass 2030.* OECD Publishing (2019).
 - Papert, Seymour. *Mindstorms: Children, Computers, and Powerful Ideas.* Basic Books (1980).
 - Papert, Seymour. "Hard Fun." *Bangor Daily News*, 2002. Available at papert.org/articles/HardFun.html.
+- Parasuraman, Raja, and Victor Riley. "Humans and Automation: Use, Misuse, Disuse, Abuse." *Human Factors* 39 (1997): 230–253. doi:10.1518/001872097778543886.
 - Partnership for 21st Century Learning / Battelle for Kids. *Framework for 21st Century Learning Definitions.* (2019).
+- Pea, Roy D. "The Social and Technological Dimensions of Scaffolding and Related Theoretical Concepts for Learning, Education, and Human Activity." *Journal of the Learning Sciences* 13 (2004): 423–451. doi:10.1207/s15327809jls1303_6.
 - Peppler, Kylie, Erica Halverson, and Yasmin B. Kafai, eds. *Makeology: Makers as Learners* (Vol. 2). Routledge (2016).
+- Perkins, Mike. "Academic Integrity Considerations of AI Large Language Models in the Post-Pandemic Era: ChatGPT and Beyond." *Journal of University Teaching and Learning Practice* 20 (2023). doi:10.53761/1.20.02.07.
+- Perkins, Mike, Leon Furze, Jasper Roe, and Jason MacVaugh. "The Artificial Intelligence Assessment Scale (AIAS): A Framework for Ethical Integration of Generative AI in Educational Assessment." *Journal of University Teaching and Learning Practice* 21 (2024). doi:10.53761/q3azde36.
 - Regalla, Lisa. "Developing a Maker Mindset." In K. Peppler, E. R. Halverson, & Y. B. Kafai (Eds.), *Makeology: Makerspaces as Learning Environments* (Vol. 1). Routledge (2016).
 - Resnick, Mitchel. *Lifelong Kindergarten: Cultivating Creativity through Projects, Passion, Peers, and Play.* MIT Press (2017).
+- Salomon, Gavriel, David N. Perkins, and Tamar Globerson. "Partners in Cognition: Extending Human Intelligence with Intelligent Technologies." *Educational Researcher* 20 (1991): 2–9. doi:10.3102/0013189X020003002.
 - Sheridan, Kimberly, Erica Rosenfeld Halverson, Breanne K. Litts, Lisa Brahms, Lynette Jacobs-Priebe, and Trevor Owens. "Learning in the Making: A Comparative Case Study of Three Makerspaces." *Harvard Educational Review* 84, no. 4 (2014): 505–531.
+- Tai, Joanna, Rola Ajjawi, David Boud, Phillip Dawson, and Ernesto Panadero. "Developing Evaluative Judgement: Enabling Students to Make Decisions about the Quality of Work." *Higher Education* 76 (2018): 467–481. doi:10.1007/s10734-017-0220-3.
 - UNESCO. *AI Competency Framework for Students.* (2024).
 - Vossoughi, Shirin, Paula K. Hooper, and Meg Escudé. "Making Through the Lens of Culture and Power: Toward Transformative Visions for Educational Equity." *Harvard Educational Review* 86, no. 2 (2016): 206–232.
 - Wilensky, Uri. "Abstract Meditations on the Concrete and Concrete Implications for Mathematics Education." In *Constructionism*, edited by I. Harel and S. Papert, 193–204. New York: Ablex Publishing, 1991.
+- Wood, David, Jerome S. Bruner, and Gail Ross. "The Role of Tutoring in Problem Solving." *Journal of Child Psychology and Psychiatry* 17 (1976): 89–100. doi:10.1111/j.1469-7610.1976.tb00381.x.
+- Zimmerman, Barry J. "Becoming a Self-Regulated Learner: An Overview." *Theory Into Practice* 41 (2002): 64–70. doi:10.1207/s15430421tip4102_2.
 
 ---
 
@@ -569,9 +819,12 @@ OMBS is designed to be ingested by AI-powered curriculum, assessment, and learne
 Tools that tag evidence (student work, observation notes, project artifacts) with OMBS codes should:
 
 1. Tag at the evidence-descriptor level (e.g., `OMBS.S.DR.35.1`), not only the dimension level (`OMBS.S.DR`).
-2. Record a confidence value if the tag is generated automatically.
-3. Record the source of the tag (human educator, learner, automated tagger, with model identifier and version if automated).
+2. Record the observer type (`OMBS.OB.*`) and at least one evidence form (`OMBS.EF.*`) on every tag — this is required by `OMBS.EV.DISC`, not optional.
+3. Record a confidence value if the tag is generated automatically, and the deriving system's identifier and version (`OMBS.EV.CONS`).
 4. Preserve the artifact or excerpt that supports the tag, subject to applicable privacy and retention requirements.
+5. Never report a tag at a stronger warrant than its observer type supports (`OMBS.EV.WARR`).
+
+**Worked example.** A portfolio tool derives tags from two sources with no human in the loop: system records (an upload exists; a reflection was submitted at a timestamp; visibility was widened beyond the household) and the learner's own reflection text. Its `S.SH` tag rests on `OMBS.EF.SR` observed by `OMBS.OB.AD` — a system fact, conservatively derived, and correctly reported as *practiced*, never as *met the 6–8 band*. When an adult who was present confirms the child made the thing, that is a second claim, recorded by `OMBS.OB.WT`: authorship and presence, still not attainment. It is a separate tag — `OMBS.EV.DISC` allows exactly one observer type per claim. Only when a coach with assessment standing judges the descriptor satisfied does the claim become attested (`OMBS.OB.AT`). Three tiers, three different sentences a report may write — and `OMBS.EV.WARR` is what stops the first from being printed as the third.
 
 ### A.2 Recommendations and next steps
 
@@ -588,6 +841,7 @@ Tools that report progress to families using OMBS codes should:
 1. Translate codes into plain language; do not show raw codes as the primary surface.
 2. Frame progress as developmental, not as scored. OMBS bands are sketches, not gates.
 3. Show *evidence* (the artifact or excerpt) alongside the claim that a code was demonstrated.
+4. Say which warrant the claim carries, in plain language. "You watched her build this" is a witness claim; "her coach reviewed this against the standard" is an attested one; "we noticed this in her own notes" is a derivation. A family-facing report that renders all three identically has inflated two of them (`OMBS.EV.WARR`).
 
 ### A.4 Privacy and child data
 
@@ -595,8 +849,8 @@ When OMBS-tagged evidence includes student work, tools must comply with applicab
 
 ### A.5 Versioning in tools
 
-Tools should record the OMBS version they were aligned to (e.g., `OMBS@0.2.0`). When OMBS bumps minor or major versions, tools should provide a visible upgrade path rather than silently migrating tagged evidence.
+Tools should record the OMBS version they were aligned to (e.g., `OMBS@0.3.0`). When OMBS bumps minor or major versions, tools should provide a visible upgrade path rather than silently migrating tagged evidence.
 
 ---
 
-*End of OMBS v0.2.0*
+*End of OMBS v0.3.0*
