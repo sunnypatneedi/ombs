@@ -273,7 +273,7 @@ for (const obs of evidenceLayer.observers ?? []) {
 // types that carry the warrant model, silent removal is not an acceptable
 // failure mode. Additions are free; these five and four may not vanish.
 const REQUIRED_RULES = ["OMBS.EV.DISC", "OMBS.EV.SEQ", "OMBS.EV.WARR", "OMBS.EV.CONS", "OMBS.EV.STAND"];
-const REQUIRED_OBSERVERS = ["OMBS.OB.SF", "OMBS.OB.WT", "OMBS.OB.AT", "OMBS.OB.AD"];
+const REQUIRED_OBSERVERS = ["OMBS.OB.SF", "OMBS.OB.RC", "OMBS.OB.WT", "OMBS.OB.AT", "OMBS.OB.AD"];
 for (const id of REQUIRED_RULES) {
   if (!RULE_IDS.has(id)) fail("standing", `${id} is missing from evidenceLayer.admissibility — the warrant model depends on it`);
 }
