@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What does making well look like at my child's age? · OMBS</title>
+<meta name="description" content="A free tool built on the Open Making and Building Standard. See what making and building well looks like at any age — and what would count as evidence. No account, no score.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+:root{
+  --blue:#2563EB; --blue-dark:#1E40AF; --blue-light:#EFF6FF;
+  --orange:#EA580C; --orange-dark:#C2410C;
+  --green:#16A34A; --green-dark:#15803D;
+  --bg:#F8FAFC; --white:#FFFFFF;
+  --s900:#0F172A; --s800:#1E293B; --s700:#334155; --s600:#475569;
+  --s500:#64748B; --s400:#94A3B8; --s300:#CBD5E1; --s200:#E2E8F0; --s100:#F1F5F9;
+  --font:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
+  --serif:'Instrument Serif',Georgia,serif;
+  --mono:'SFMono-Regular',Consolas,monospace;
+}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--s900);font-family:var(--font);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:940px;margin:0 auto;padding:0 20px}
+a{color:var(--blue)}
+
+/* header */
+.top{background:var(--white);border-bottom:1px solid var(--s200)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;gap:16px}
+.brand{font-weight:800;font-size:17px;letter-spacing:-.02em;text-decoration:none;color:var(--s900)}
+.brand span{color:var(--blue)}
+.top a.back{font-size:14px;font-weight:600;text-decoration:none}
+
+/* hero */
+.hero{padding:54px 0 30px;text-align:center}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(32px,5.2vw,50px);line-height:1.14;letter-spacing:-.01em;margin:0 0 16px}
+.hero p{margin:0 auto;max-width:600px;color:var(--s600);font-size:16px}
+
+/* setup card */
+.card{background:var(--white);border:1px solid var(--s200);border-radius:14px;padding:26px;box-shadow:0 1px 2px rgba(15,23,42,.04)}
+.row{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:20px}
+.field{flex:1;min-width:170px}
+label{display:block;font-size:12.5px;font-weight:700;color:var(--s700);margin-bottom:7px}
+label em{font-style:normal;font-weight:500;color:var(--s400)}
+input,select{width:100%;font-family:var(--font);font-size:15px;padding:11px 13px;border:1px solid var(--s300);border-radius:9px;background:var(--white);color:var(--s900)}
+input:focus,select:focus{outline:2px solid var(--blue);outline-offset:-1px;border-color:var(--blue)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:7px;font-family:var(--font);font-size:14px;font-weight:600;padding:8px 14px;border:1px solid var(--s300);background:var(--white);color:var(--s700);border-radius:999px;cursor:pointer}
+.chip:hover{border-color:var(--s400)}
+.chip[aria-pressed="true"]{background:var(--s900);border-color:var(--s900);color:var(--white)}
+.chip:disabled{opacity:.42;cursor:not-allowed}
+.lean{margin-top:16px;font-size:14px;color:var(--s600);min-height:22px}
+.lean b{color:var(--s900)}
+
+/* dark explorer */
+.explorer{background:var(--s900);border-radius:14px;padding:30px 28px 34px;margin-top:22px;color:#E8EDF4}
+.exhead{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--s400);font-weight:700;margin-bottom:6px}
+.exband{font-family:var(--serif);font-size:38px;line-height:1.15;color:#fff;margin-bottom:22px}
+.exband small{font-family:var(--font);font-size:14px;font-weight:500;color:var(--s400);letter-spacing:0;display:block;margin-top:4px}
+.tabs{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:26px}
+.tab{font-family:var(--font);font-size:13.5px;font-weight:600;padding:7px 15px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:transparent;color:#C7D3E1;cursor:pointer}
+.tab:hover{border-color:rgba(255,255,255,.34)}
+.tab[aria-selected="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+
+.track{position:relative;margin:0 4px 8px}
+.ticks{display:flex;justify-content:space-between;margin-bottom:9px;position:relative;height:16px}
+.tickmark{font-size:11px;color:var(--s500);font-weight:600;letter-spacing:.03em}
+.tickmark.here{color:var(--orange)}
+input[type=range]{width:100%;-webkit-appearance:none;appearance:none;background:transparent;padding:0;border:0;margin:6px 0}
+input[type=range]:focus{outline:none}
+input[type=range]::-webkit-slider-runnable-track{height:5px;background:rgba(255,255,255,.2);border-radius:4px}
+input[type=range]::-moz-range-track{height:5px;background:rgba(255,255,255,.2);border-radius:4px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#fff;border:0;margin-top:-8.5px;cursor:pointer;box-shadow:0 1px 5px rgba(0,0,0,.45)}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#fff;border:0;cursor:pointer}
+.bands{display:flex;justify-content:space-between;margin-top:4px}
+.bandlbl{font-size:12.5px;color:var(--s400);font-weight:600}
+.bandlbl.here{color:var(--orange)}
+.youmark{font-size:11px;color:var(--orange);font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-top:14px;min-height:16px}
+
+.gloss{font-family:var(--serif);font-size:clamp(21px,2.9vw,27px);line-height:1.42;color:#fff;margin:24px 0 20px}
+.verbatim{background:rgba(255,255,255,.05);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:16px 18px}
+.verbatim .lbl{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--s400);font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.verbatim .lbl code{font-family:var(--mono);font-size:11px;color:var(--green);background:rgba(22,163,74,.14);padding:2px 7px;border-radius:4px;letter-spacing:0}
+.verbatim p{margin:0;font-size:15.5px;color:#D6DEE8;line-height:1.62}
+.plainnote{font-size:12px;color:var(--s500);margin-top:14px}
+
+/* not-a-score */
+.notascore{background:#FFF7ED;border:1px solid #FED7AA;border-radius:12px;padding:18px 20px;margin-top:22px}
+.notascore h3{margin:0 0 6px;font-size:15px;color:var(--orange-dark)}
+.notascore p{margin:0;font-size:14.5px;color:var(--s700)}
+
+/* domain */
+.domain{margin-top:22px}
+.domain h2{font-family:var(--serif);font-weight:400;font-size:27px;margin:0 0 4px}
+.domain .sub{color:var(--s600);font-size:14.5px;margin:0 0 16px}
+.dims{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.dim{background:var(--white);border:1px solid var(--s200);border-radius:11px;padding:16px}
+.dim code{font-family:var(--mono);font-size:11px;color:var(--blue);background:var(--blue-light);padding:2px 7px;border-radius:4px}
+.dim h4{margin:9px 0 5px;font-size:15px}
+.dim p{margin:0;font-size:13.5px;color:var(--s600);line-height:1.5}
+
+footer{margin:44px 0 60px;padding-top:22px;border-top:1px solid var(--s200);font-size:13.5px;color:var(--s500);text-align:center}
+footer .built{margin-bottom:8px}
+@media (max-width:620px){
+  .explorer{padding:22px 18px 26px}
+  .hero{padding:36px 0 22px}
+}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="wrap">
+  <a class="brand" href="../">OMBS<span>.</span></a>
+  <a class="back" href="../">Read the standard →</a>
+</div></div>
+
+<div class="wrap">
+
+  <div class="hero">
+    <h1>What does making and building <em style="font-style:italic">well</em> look like at your child's age?</h1>
+    <p>Grounded in the open OMBS standard. Free, no account, nothing saved.</p>
+  </div>
+
+  <div class="card">
+    <div class="row">
+      <div class="field">
+        <label for="name">Your child's first name <em>optional</em></label>
+        <input id="name" type="text" placeholder="Lio" maxlength="24" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="age">How old are they?</label>
+        <select id="age"></select>
+      </div>
+    </div>
+    <label>What do they like to make right now? <em>pick up to three</em></label>
+    <div class="chips" id="chips"></div>
+    <div class="lean" id="lean"></div>
+  </div>
+
+  <div class="explorer">
+    <div class="exhead" id="exhead">Slide through the grade bands</div>
+    <div class="exband" id="exband">Grades 3–5<small>How this practice grows as they get older</small></div>
+
+    <div class="tabs" id="tabs" role="tablist"></div>
+
+    <div class="track">
+      <input type="range" id="slider" min="0" max="3" step="1" value="1" aria-label="Grade band">
+      <div class="bands" id="bands"></div>
+      <div class="youmark" id="youmark"></div>
+    </div>
+
+    <div class="gloss" id="gloss"></div>
+
+    <div class="verbatim">
+      <div class="lbl">In the standard's own words <code id="codeid">OMBS.S.DF.35.1</code></div>
+      <p id="verbatim"></p>
+    </div>
+    <div class="plainnote">The large line above is a plain-English paraphrase written for this page. The quoted text is the standard itself.</div>
+  </div>
+
+  <div class="notascore">
+    <h3>This is not a score, and OMBS never produces one.</h3>
+    <p id="notascore-body">OMBS records that a practice happened, tied to real work — never how well, never a level, never a rank. Nothing here places a child against other children, and nothing here is a test.</p>
+  </div>
+
+  <div class="domain">
+    <h2 id="domain-title">Also worth looking at</h2>
+    <p class="sub" id="domain-sub">The five shared practices apply to everything. These add detail for what your child actually makes.</p>
+    <div class="dims" id="dims"></div>
+  </div>
+
+  <footer>
+    <div class="built" id="built">Loading the standard…</div>
+    <div>Free to use, adapt and share under CC BY-SA 4.0 · <a href="https://github.com/sunnypatneedi/ombs">explore the open standard</a></div>
+  </footer>
+</div>
+
+<script>
+/* ---------- data loaded from the machine-readable standard ---------- */
+const BANDS = [
+  { id:"K2",  label:"K–2",   ages:"ages 5–7"  },
+  { id:"35",  label:"3–5",   ages:"ages 8–10" },
+  { id:"68",  label:"6–8",   ages:"ages 11–13"},
+  { id:"912", label:"9–12",  ages:"ages 14–18"},
+];
+
+/* Editorial paraphrases written for this page. NOT part of the standard. */
+const GLOSS = {
+  "OMBS.S.DF": {
+    K2:"They can say what they're making and who it's for — even if you have to ask first.",
+    35:"Before they start, they say or write three things: what it is, who it's for, and one way to tell if it worked.",
+    68:"They set two or more ways to tell if it worked — and change that plan at least once as the project goes on.",
+    912:"They weigh what they wanted against real limits, and can tell you what they chose not to do, and why."
+  },
+  "OMBS.S.DR": {
+    K2:"They make a rough version first, when someone reminds them to.",
+    35:"They make two different versions, and can point at what changed between them.",
+    68:"They rough things out at different sizes — an outline before the writing, cardboard before the real thing.",
+    912:"Their drafts keep more than one option alive, and they record which ones they dropped and what made them drop it."
+  },
+  "OMBS.S.TS": {
+    K2:"They show it to someone who isn't their teacher, and tell you what that person did or said.",
+    35:"They check it against the thing they said would count as working, and write down what actually happened.",
+    68:"They design tests for their own criteria, run them with real people, and can tell a real finding from a fluke.",
+    912:"They design a test that could prove them wrong, run it anyway, and report the bad news honestly."
+  },
+  "OMBS.S.IT": {
+    K2:"After feedback, they try again and something visibly changes.",
+    35:"They can name one change they made and the feedback that caused it.",
+    68:"They can say which feedback they took, which they set aside, and the reason for each.",
+    912:"They try genuinely different directions, not just polish — and record what they abandoned and why."
+  },
+  "OMBS.S.SH": {
+    K2:"They show it to people beyond the teacher — classmates, family, the school.",
+    35:"They change something about how they present it for a new audience, and can say what they changed.",
+    68:"They reach the audience they named at the start, and record how that audience responded.",
+    912:"They publish it properly — thinking about access, rights, and letting other people build on it."
+  },
+  "OMBS.S.AI": {
+    K2:"They can point at one part they decided themselves and one part the tool made.",
+    35:"They say where they used AI, name one thing they kept and one they changed or rejected, and give their own reason for each.",
+    68:"They keep a running record: what they asked, what came back, and what they kept, changed or rejected — each with a reason in their own words.",
+    912:"They can argue the work would still stand without the AI parts — or say exactly what would be lost, and why that's acceptable."
+  }
+};
+
+const INTERESTS = [
+  { id:"stories",   label:"Stories",       emoji:"📖", lean:"M" },
+  { id:"drawing",   label:"Drawing",       emoji:"🎨", lean:"M" },
+  { id:"comics",    label:"Comics",        emoji:"💥", lean:"M" },
+  { id:"music",     label:"Music",         emoji:"🎵", lean:"M" },
+  { id:"videos",    label:"Videos",        emoji:"🎬", lean:"M" },
+  { id:"costumes",  label:"Costumes",      emoji:"🧵", lean:"M" },
+  { id:"robots",    label:"Robots",        emoji:"🤖", lean:"B" },
+  { id:"models",    label:"Models",        emoji:"🏗️", lean:"B" },
+  { id:"games",     label:"Games",         emoji:"🎮", lean:"B" },
+  { id:"apps",      label:"Apps",          emoji:"📱", lean:"B" },
+  { id:"forts",     label:"Dens & forts",  emoji:"🏕️", lean:"B" },
+  { id:"baking",    label:"Baking",        emoji:"🧁", lean:"B" },
+];
+
+const state = { name:"", age:9, band:1, dim:"OMBS.S.DF", picks:[], spec:null };
+
+/* ---------- helpers ---------- */
+const $ = (id) => document.getElementById(id);
+const who = () => state.name.trim() || "your child";
+const bandForAge = (a) => a<8 ? 0 : a<11 ? 1 : a<14 ? 2 : 3;
+const esc = (s) => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/* ---------- build static controls ---------- */
+const ageSel = $("age");
+for (let a=5; a<=18; a++){
+  const o=document.createElement("option");
+  o.value=a; o.textContent=a+" years old";
+  if(a===9) o.selected=true;
+  ageSel.appendChild(o);
+}
+
+const chipWrap = $("chips");
+INTERESTS.forEach(it=>{
+  const b=document.createElement("button");
+  b.type="button"; b.className="chip"; b.setAttribute("aria-pressed","false"); b.dataset.id=it.id;
+  b.innerHTML = `<span aria-hidden="true">${it.emoji}</span>${esc(it.label)}`;
+  b.addEventListener("click",()=>{
+    const i=state.picks.indexOf(it.id);
+    if(i>=0) state.picks.splice(i,1);
+    else if(state.picks.length<3) state.picks.push(it.id);
+    renderChips(); renderLean(); renderDomain();
+  });
+  chipWrap.appendChild(b);
+});
+
+$("bands").innerHTML = BANDS.map((b,i)=>`<span class="bandlbl" data-i="${i}">${b.label}</span>`).join("");
+
+/* ---------- renderers ---------- */
+function renderChips(){
+  [...chipWrap.children].forEach(b=>{
+    const on = state.picks.includes(b.dataset.id);
+    b.setAttribute("aria-pressed", on?"true":"false");
+    b.disabled = !on && state.picks.length>=3;
+  });
+}
+
+function renderLean(){
+  const el=$("lean");
+  if(!state.picks.length){ el.textContent=""; return; }
+  const picked = INTERESTS.filter(i=>state.picks.includes(i.id));
+  const m = picked.filter(p=>p.lean==="M").length;
+  const b = picked.filter(p=>p.lean==="B").length;
+  const word = m>b ? "<b>Making</b> — originating something for an audience"
+            : b>m ? "<b>Building</b> — constructing something that has to hold up in use"
+                  : "<b>both Making and Building</b> in equal measure";
+  el.innerHTML = `What ${esc(who())} picked leans toward ${word}.`;
+}
+
+function dimsOf(domainId){
+  if(!state.spec) return [];
+  const d=state.spec.domains.find(x=>x.id===domainId);
+  return d ? d.dimensions : [];
+}
+
+function renderTabs(){
+  const tabs=$("tabs");
+  tabs.innerHTML="";
+  dimsOf("S").forEach(dim=>{
+    const b=document.createElement("button");
+    b.type="button"; b.className="tab"; b.setAttribute("role","tab");
+    b.setAttribute("aria-selected", dim.anchor===state.dim ? "true":"false");
+    b.textContent=dim.name;
+    b.addEventListener("click",()=>{ state.dim=dim.anchor; renderTabs(); renderPractice(); });
+    tabs.appendChild(b);
+  });
+}
+
+function renderBandUi(){
+  const yourBand = bandForAge(state.age);
+  $("slider").value = state.band;
+  [...$("bands").children].forEach((el,i)=>{
+    el.classList.toggle("here", i===yourBand);
+  });
+  const b = BANDS[state.band];
+  $("exband").innerHTML = `Grades ${esc(b.label)}<small>${esc(b.ages)} · how this practice grows as they get older</small>`;
+  $("youmark").textContent = state.band===yourBand
+    ? `▲ ${who()} is in this band`
+    : `${who()}'s band is ${BANDS[yourBand].label} — you're looking at ${b.label}`;
+  $("exhead").textContent = `Slide through the grade bands · ${who()} is ${state.age}`;
+}
+
+function renderPractice(){
+  if(!state.spec) return;
+  const dim = dimsOf("S").find(d=>d.anchor===state.dim);
+  if(!dim) return;
+  const bandId = BANDS[state.band].id;
+  const comps = dim.components.filter(c=>c.gradeBand===bandId);
+  const g = (GLOSS[dim.anchor]||{})[bandId];
+  $("gloss").textContent = g || dim.anchorStatement;
+  $("verbatim").innerHTML = comps.map(c=>esc(c.descriptor)).join("<br><br>");
+  $("codeid").textContent = comps.map(c=>c.id).join(" · ");
+}
+
+function renderDomain(){
+  if(!state.spec) return;
+  const picked = INTERESTS.filter(i=>state.picks.includes(i.id));
+  const m = picked.filter(p=>p.lean==="M").length;
+  const b = picked.filter(p=>p.lean==="B").length;
+  const domainId = !picked.length ? null : (b>m ? "B" : m>b ? "M" : null);
+
+  if(!domainId){
+    $("domain-title").textContent = "The two halves of the standard";
+    $("domain-sub").textContent = "Pick what they like making above and this narrows to the half that fits. Until then, here are both.";
+    $("dims").innerHTML = ["M","B"].flatMap(id=>dimsOf(id)).map(d=>dimCard(d)).join("");
+    return;
+  }
+  const dom = state.spec.domains.find(x=>x.id===domainId);
+  $("domain-title").textContent = dom.name + " — the half that fits what they make";
+  $("domain-sub").textContent = "The shared practices apply to everything. These four add detail for this kind of work.";
+  $("dims").innerHTML = dimsOf(domainId).map(d=>dimCard(d)).join("");
+}
+
+function dimCard(d){
+  return `<div class="dim"><code>${esc(d.anchor)}</code><h4>${esc(d.name)}</h4><p>${esc(d.anchorStatement)}</p></div>`;
+}
+
+/* ---------- events ---------- */
+$("name").addEventListener("input", e=>{
+  state.name = e.target.value;
+  renderLean(); renderBandUi();
+  $("notascore-body").textContent = `OMBS records that a practice happened, tied to real work — never how well, never a level, never a rank. Nothing here places ${who()} against other children, and nothing here is a test.`;
+});
+ageSel.addEventListener("change", e=>{
+  state.age = Number(e.target.value);
+  state.band = bandForAge(state.age);
+  renderBandUi(); renderPractice();
+});
+$("slider").addEventListener("input", e=>{
+  state.band = Number(e.target.value);
+  renderBandUi(); renderPractice();
+});
+
+/* ---------- boot: read the machine-readable standard ---------- */
+fetch("../standards.json")
+  .then(r=>{ if(!r.ok) throw new Error("HTTP "+r.status); return r.json(); })
+  .then(spec=>{
+    state.spec = spec;
+    const dims = spec.domains.reduce((n,d)=>n+d.dimensions.length,0);
+    const comps = spec.domains.reduce((n,d)=>n+d.dimensions.reduce((m,x)=>m+x.components.length,0),0);
+    const el = spec.evidenceLayer;
+    const extra = el
+      ? ` Plus an evidence layer of ${el.forms.length} evidence forms, ${el.observers.length} observer types and ${el.admissibility.length} admissibility rules.`
+      : "";
+    $("built").textContent =
+      `Built live from ${comps} evidence descriptors across ${dims} dimensions in OMBS v${spec.version} (${spec.status}).${extra}`;
+    state.age = 9; state.band = bandForAge(9);
+    renderTabs(); renderBandUi(); renderPractice(); renderDomain(); renderChips();
+  })
+  .catch(err=>{
+    $("built").textContent = "Could not load the standard (" + err.message + ").";
+    $("gloss").textContent = "This page reads standards.json directly. If you are opening it from your file system, run a local web server instead.";
+  });
+</script>
+</body>
+</html>

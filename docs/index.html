@@ -659,7 +659,7 @@
       <div>
         <div class="brand-name">Open Making &amp; Building Standard</div>
         <div class="brand-meta">
-          <span class="v-badge">v0.1.0</span>
+          <span class="v-badge" id="v-badge">v0.2.0</span>
           <span class="brand-sub">K–12 Cross-Domain Framework</span>
         </div>
       </div>
@@ -685,6 +685,9 @@
       <button class="cta-btn" onclick="switchTab('standards', document.querySelector('.tab-nav button:nth-child(2)'))">
         Browse Standards &rarr;
       </button>
+      <p style="margin-top:1.25rem;font-size:0.95rem;color:var(--s500);">
+        New to OMBS? <a href="./demo/" style="color:var(--blue);font-weight:600;">See what it looks like at your child's age &rarr;</a>
+      </p>
     </div>
 
     <div class="stats-grid" id="stats-grid"></div>
@@ -812,6 +815,10 @@ async function init() {
     ]);
     standardsData  = await sRes.json();
     crosswalksData = await cRes.json();
+
+    // Version badge reads the standard itself so it cannot go stale again.
+    const vBadge = document.getElementById('v-badge');
+    if (vBadge && standardsData.version) vBadge.textContent = 'v' + standardsData.version;
 
     buildAllComponents();
     renderStats();
