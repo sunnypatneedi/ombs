@@ -10,6 +10,7 @@
 ## Table of Contents
 
 1. [About this Standard](#1-about-this-standard)
+   - [1.7 Conformance levels](#17-conformance-levels)
 2. [Conceptual Framework](#2-conceptual-framework)
 3. [Code Format](#3-code-format)
 4. [Shared Practices (S)](#4-shared-practices-s)
@@ -98,6 +99,33 @@ This standard is not derivative of any single source and may be used independent
 OMBS is not a curriculum, not a rubric, and not an assessment. It is a vocabulary. Educators and tool builders are expected to translate it into local rubrics, learning experiences, and measurement instruments suited to their context. The standard provides evidence descriptors that constrain those translations without prescribing them.
 
 OMBS does not assign hours, units, or credits. It does not specify which practices must be taught in which grades — only what they look like *if* taught. This deliberately leaves room for varied implementation models (project-based, inquiry, traditional with embedded projects, etc.).
+
+### 1.7 Conformance levels
+
+`OMBS.EV.DISC` (§8.1.3) and §10 both use the term *OMBS-conformant* normatively without defining it. This section defines it. There are two levels, and Extended is not a better grade than Core — they answer different questions about scope, not about quality.
+
+**Core.** An implementation conforms at Core if, for every claim it reports as OMBS evidence:
+
+- it uses the five Shared Practices codes — `OMBS.S.DF`, `OMBS.S.DR`, `OMBS.S.TS`, `OMBS.S.IT`, `OMBS.S.SH` — for the practices it observes;
+- it reports `OMBS.S.AI` where AI tools were used substantively in producing the artifact, and not-applicable where they were not;
+- it records exactly one observer type (`OMBS.OB.*`) and at least one evidence form (`OMBS.EF.*`), per `OMBS.EV.DISC`;
+- it satisfies the admissibility rules of §8.1.3, including `OMBS.EV.WARR` — no claim reported at a stronger warrant than its observer supports — and `OMBS.EV.STAND`.
+
+Core does not require the Making or Building dimensions.
+
+**Extended.** Core, plus every dimension of at least one domain, declared with the domain named: *Extended (Making)*, *Extended (Building)*, or *Extended (Making and Building)*.
+
+A domain is taken whole or not at all. An implementation emitting two of Making's four dimensions conforms at Core, not at Extended (Making). Partial domains produce data that looks comparable and is not.
+
+**Why the levels exist.** Both reasons are about comparability, not ambition.
+
+The shared spine is what makes evidence comparable *between* programmes. Two adopters that each emit `OMBS.S.TS` with an evidence form and an observer type can compare notes. The domain dimensions add depth *within* a programme and are not needed for that exchange, so requiring them as the price of conformance would raise the cost of adoption without increasing what adopters can say to one another.
+
+The domain split is also what lets a programme take one half. A writing studio has no use for Durability; a robotics club has no use for Audience awareness in the sense §5.1 means it. Were Making and Building a single domain, every adopter would carry all eight dimensions and report the irrelevant half as not-applicable — more classification work rather than less, and it would make an absent code ambiguous between *not observed* and *not applicable here*.
+
+**Declaring a level.** State it with the version, because pre-1.0 code IDs may change (§3.1): "OMBS v0.3.0, Core" or "OMBS v0.3.0, Extended (Building)".
+
+**What conformance is not.** It is not certification. No body reviews or grants it. A conformance claim is a self-declaration, and its worth rests entirely on being checkable against the retained record.
 
 ---
 
@@ -708,6 +736,8 @@ A crosswalk says where OMBS meets another framework. A boundary says where it de
 **Building.** Practice of constructing structures or systems from components such that they function reliably under specified conditions. Defining concerns: materials, structure, durability, fit-for-use.
 
 **Compliance (in critique).** Acting on critique without engagement, simply because the critic said so. A failure mode of M.CR.
+
+**Conformance.** What it means for an implementation to be *OMBS-conformant* (§1.7). Two levels: **Core** — the five Shared Practices plus conditional `OMBS.S.AI`, each claim carrying an evidence form and one observer type and satisfying §8.1.3. **Extended** — Core plus every dimension of at least one named domain, taken whole. A self-declaration, not a certification; no body grants it.
 
 **Construct validity.** The degree to which a measurement of a competency actually measures that competency. OMBS evidence descriptors are designed for construct validity but have not yet been empirically validated; that work is pending.
 

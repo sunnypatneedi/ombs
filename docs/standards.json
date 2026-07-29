@@ -221,6 +221,50 @@
       }
     ]
   },
+  "conformance": {
+    "introducedIn": "0.3.0",
+    "description": "What it means for an implementation to be OMBS-conformant. Two levels; Extended is a wider scope, not a better grade. Self-declared, never certified. See STANDARD.md §1.7.",
+    "levels": [
+      {
+        "id": "core",
+        "name": "Core",
+        "requiredDimensions": [
+          "OMBS.S.DF",
+          "OMBS.S.DR",
+          "OMBS.S.TS",
+          "OMBS.S.IT",
+          "OMBS.S.SH"
+        ],
+        "conditionalDimensions": [
+          "OMBS.S.AI"
+        ],
+        "requiresEvidenceLayer": true,
+        "requiredDomains": [],
+        "domainsTakenWhole": false
+      },
+      {
+        "id": "extended",
+        "name": "Extended",
+        "requiredDimensions": [
+          "OMBS.S.DF",
+          "OMBS.S.DR",
+          "OMBS.S.TS",
+          "OMBS.S.IT",
+          "OMBS.S.SH"
+        ],
+        "conditionalDimensions": [
+          "OMBS.S.AI"
+        ],
+        "requiresEvidenceLayer": true,
+        "requiredDomains": [
+          "M",
+          "B"
+        ],
+        "requiredDomainsRule": "at-least-one",
+        "domainsTakenWhole": true
+      }
+    ]
+  },
   "domains": [
     {
       "id": "S",
