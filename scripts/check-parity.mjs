@@ -509,7 +509,58 @@ const CHECKS = [
     "citations",
     `${Object.keys(BIBLIOGRAPHY).length} bibliography entries carry a DOI or URL and appear in §11; codes new in ${VERSION} carry citations`,
   ],
+  [
+    "conformance",
+    `${standards.conformance?.levels?.length ?? 0} conformance levels; Core is exactly the shared spine and requires no domain`,
+  ],
 ];
+
+// ── conformance levels (§1.7) ────────────────────────────────────────────
+// Core's required set is the shared spine. If a dimension is ever added to or
+// removed from that spine, this check forces the conformance block to move with
+// it rather than silently describing a spine that no longer exists.
+const CORE_SPINE = ["OMBS.S.DF", "OMBS.S.DR", "OMBS.S.TS", "OMBS.S.IT", "OMBS.S.SH"];
+const conformance = standards.conformance;
+if (!conformance?.levels?.length) {
+  fail("conformance", "standards.json has no conformance.levels — §1.7 defines two levels");
+} else {
+  const byId = new Map(conformance.levels.map((l) => [l.id, l]));
+  for (const id of ["core", "extended"]) {
+    if (!byId.has(id)) fail("conformance", `conformance.levels is missing "${id}" (§1.7 defines Core and Extended)`);
+  }
+  const anchors = new Set();
+  for (const dom of standards.domains) for (const dim of dom.dimensions) anchors.add(dim.anchor);
+  const domainIds = new Set(standards.domains.map((d) => d.id));
+
+  for (const lvl of conformance.levels) {
+    for (const a of [...(lvl.requiredDimensions ?? []), ...(lvl.conditionalDimensions ?? [])]) {
+      if (!anchors.has(a)) fail("conformance", `conformance level "${lvl.id}" names ${a}, which is not a dimension anchor`);
+    }
+    for (const dm of lvl.requiredDomains ?? []) {
+      if (!domainIds.has(dm)) fail("conformance", `conformance level "${lvl.id}" names domain "${dm}", which does not exist`);
+    }
+    if (!prose.includes(lvl.name)) {
+      fail("conformance", `conformance level "${lvl.name}" does not appear in STANDARD.md prose`);
+    }
+  }
+  const core = byId.get("core");
+  if (core) {
+    const got = [...(core.requiredDimensions ?? [])].sort().join(",");
+    if (got !== [...CORE_SPINE].sort().join(",")) {
+      fail("conformance", `Core requiredDimensions must be exactly the shared spine (${CORE_SPINE.join(", ")}); got ${got || "nothing"}`);
+    }
+    if (core.requiredDomains?.length) fail("conformance", "Core must require no domains — that is what distinguishes it from Extended (§1.7)");
+    if (core.requiresEvidenceLayer !== true) fail("conformance", "Core must require the evidence layer; without it claims are not comparable (OMBS.EV.DISC)");
+  }
+  const ext = byId.get("extended");
+  if (ext) {
+    if (ext.domainsTakenWhole !== true) fail("conformance", "Extended must take a domain whole — §1.7 forbids partial domains");
+    if (!(ext.requiredDomains ?? []).length) fail("conformance", "Extended must name the domains it may be declared against");
+  }
+  if (!/### 1\.7 Conformance levels/.test(prose)) {
+    fail("conformance", "STANDARD.md has no §1.7 Conformance levels section, but standards.json declares conformance levels");
+  }
+}
 
 for (const [name, summary] of CHECKS) {
   const hits = failures.filter((f) => f.check === name);
