@@ -114,6 +114,26 @@
         "warrantsBandAttainment": false
       },
       {
+        "id": "OMBS.OB.RC",
+        "name": "Recipient",
+        "definition": "An adult who received the finished artifact without having been present while the work happened, and records what they received and when. A parent handed a completed drawing; a coach sent a photo of a build they did not watch.",
+        "warrants": [
+          "that the artifact exists and was received at a stated time",
+          "the learner's authorship as reported to the recipient, not as observed"
+        ],
+        "doesNotWarrant": [
+          "that the practice occurred",
+          "that the descriptor is satisfied at the named band",
+          "how the work was made, or by what process"
+        ],
+        "mustRecord": [
+          "the recipient's relationship to the learner",
+          "when the artifact was received",
+          "that authorship is reported rather than observed"
+        ],
+        "warrantsBandAttainment": false
+      },
+      {
         "id": "OMBS.OB.WT",
         "name": "Witness",
         "definition": "An adult or peer who was present while the work happened and records what they saw. A parent, a family member, a classmate, a teacher acting in a presence role rather than an assessment role.",
@@ -197,7 +217,7 @@
       {
         "id": "OMBS.EV.STAND",
         "name": "Standing",
-        "rule": "An attested claim MUST record the assessment role under which it was made and the basis the judgment rests on. Assessment standing is conferred by that role in the context; it is never conferred by presence, by household relationship, or by having done the work. A learner judging their own practice (OMBS.OB.SF) and a parent or guardian judging their own child's (OMBS.OB.WT) MUST NOT be recorded as OMBS.OB.AT whatever role a system assigns them: their records may support an attested claim but MUST NOT be reported as one."
+        "rule": "An attested claim MUST record the assessment role under which it was made and the basis the judgment rests on. Assessment standing is conferred by that role in the context; it is never conferred by presence, by household relationship, or by having done the work. A learner judging their own practice (OMBS.OB.SF) and a parent or guardian judging their own child's (OMBS.OB.WT) MUST NOT be recorded as OMBS.OB.AT whatever role a system assigns them: their records may support an attested claim but MUST NOT be reported as one. An adult who was not present while the work happened is a recipient (OMBS.OB.RC), never a witness: presence is part of what a witness warrants and cannot be supplied after the fact."
       }
     ]
   },

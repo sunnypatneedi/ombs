@@ -432,6 +432,7 @@ Forms are defined by what makes a trace *count as evidence*, not by medium. A fo
 An observer type says who recorded the evidence and — more importantly — what their record does and does not warrant. Conflating these is the most common way an evidence claim gets inflated.
 
 - **`OMBS.OB.SF` — Self.** The learner is the observer of their own practice. Records: the learner's identity as observer.
+- **`OMBS.OB.RC` — Recipient.** An adult who received the finished artifact without having been present while the work happened, and records what they received and when. A parent handed a completed drawing; a coach sent a photo of a build they did not watch. Records: the recipient's relationship to the learner; when the artifact was received; that authorship is reported rather than observed.
 - **`OMBS.OB.WT` — Witness.** An adult or peer who was present while the work happened and records what they saw. A parent, a family member, a classmate, a teacher acting in a presence role rather than an assessment role. Records: the witness's relationship to the learner; when the observation was made.
 - **`OMBS.OB.AT` — Attester.** An observer with assessment standing in the context — teacher, coach, assessor, reviewer — who judges that a descriptor is satisfied and is accountable for that judgment. Records: the attester's identity and role; the evidence the judgment rests on; when the judgment was made.
 - **`OMBS.OB.AD` — Automated derivation.** A rule or model that infers a tag from retained records with no human observer in the loop. Records: the deriving system's identifier and version; the records the derivation read; a confidence value where the derivation is not deterministic.
@@ -439,11 +440,14 @@ An observer type says who recorded the evidence and — more importantly — wha
 | Code | Observer | Warrants | Does **not** warrant |
 |---|---|---|---|
 | `OMBS.OB.SF` | Self | What the learner did, as the learner represents it; the learner's reasons for a choice. | That the descriptor is satisfied at the named band; that the account is complete. |
+| `OMBS.OB.RC` | Recipient | That the artifact exists and was received at a stated time; the learner's authorship as reported to the recipient, not as observed. | That the practice occurred; that the descriptor is satisfied at the named band; how the work was made, or by what process. |
 | `OMBS.OB.WT` | Witness | That the practice occurred; who did the work (authorship and presence). | That the descriptor is satisfied at the named band; the quality or level of the practice. |
 | `OMBS.OB.AT` | Attester | That the descriptor is satisfied at the named band; everything a witness warrants. | Practices outside the attester's own observation or the retained record. |
 | `OMBS.OB.AD` | Automated derivation | Only what its inputs warrant, never more. | That the descriptor is satisfied at the named band; anything its inputs do not contain. |
 
 The witness/attester split is the load-bearing distinction. A parent who watched their child build something can say *that the child built it* — authorship and presence — and cannot say the child's Structure practice met the 6–8 band. Both are useful; treating the first as the second is how a family-facing report ends up claiming more than it knows.
+
+The recipient tier exists because the most common real case is weaker still. A parent who is handed a finished drawing, or who photographs a build they did not watch, is not a witness — they did not see the work happen — but they are not nothing either: they can say the artifact exists, when it arrived, and who they were told made it. Without this tier that adult satisfies no observer type at all, and the modal home and portfolio case becomes unrecordable. Recipient is deliberately the weakest external warrant in the standard: it carries custody and reported authorship, and it carries neither the practice nor the band.
 
 Exactly one observer type warrants band attainment: `OMBS.OB.AT`. What confers the standing to occupy it is stated normatively in `OMBS.EV.STAND` (§8.1.3) rather than left to each adopter, because a tool that may nominate its own attesters can reach an attested claim by relabelling — which would make the whole tier decorative.
 
@@ -458,7 +462,7 @@ Exactly one observer type warrants band attainment: `OMBS.OB.AT`. What confers t
 | `OMBS.EV.RESP` | Response | A descriptor claiming something about what an audience or user did requires `OMBS.EF.AC`. The learner's report of an audience reaction is a retrospective account and does not satisfy it alone. |
 | `OMBS.EV.WARR` | No inflation | A claim is reported at the weakest warrant in its chain. Witness records and automated derivations may support an attested claim but cannot produce one; only `OMBS.OB.AT` yields an attested claim. Reports must name which warrant a claim carries. |
 | `OMBS.EV.CONS` | Conservative derivation | An automated derivation (`OMBS.OB.AD`) emits no tag when its inputs are ambiguous, records the deriving system's identifier and version, and is reproducible from the retained record. A missed tag is a tolerable error; an unearned tag is not. |
-| `OMBS.EV.STAND` | Standing | An attested claim MUST record the assessment role under which it was made and the basis the judgment rests on. Assessment standing is conferred by that role in the context; it is never conferred by presence, by household relationship, or by having done the work. A learner judging their own practice (`OMBS.OB.SF`) and a parent or guardian judging their own child's (`OMBS.OB.WT`) MUST NOT be recorded as `OMBS.OB.AT` whatever role a system assigns them: their records may support an attested claim but MUST NOT be reported as one. |
+| `OMBS.EV.STAND` | Standing | An attested claim MUST record the assessment role under which it was made and the basis the judgment rests on. Assessment standing is conferred by that role in the context; it is never conferred by presence, by household relationship, or by having done the work. A learner judging their own practice (`OMBS.OB.SF`) and a parent or guardian judging their own child's (`OMBS.OB.WT`) MUST NOT be recorded as `OMBS.OB.AT` whatever role a system assigns them: their records may support an attested claim but MUST NOT be reported as one. An adult who was not present while the work happened is a recipient (`OMBS.OB.RC`), never a witness: presence is part of what a witness warrants and cannot be supplied after the fact. |
 
 `OMBS.EV.WARR` is the rule that protects construct validity across adopters. Reporting a witnessed observation as an attested one introduces variance that has nothing to do with the practice being measured and everything to do with who happened to be in the room (Messick, 1995).
 
@@ -786,11 +790,12 @@ Selected works that informed this standard. This is not an exhaustive review. Wo
 - Martinez, Sylvia Libow, and Gary Stager. *Invent to Learn: Making, Tinkering, and Engineering in the Classroom.* 2nd ed. Constructing Modern Knowledge Press (2019).
 - Messick, Samuel. "Validity of Psychological Assessment: Validation of Inferences from Persons’ Responses and Performances as Scientific Inquiry into Score Meaning." *American Psychologist* 50 (1995): 741–749. doi:10.1037/0003-066X.50.9.741.
 - Mislevy, Robert J., Linda S. Steinberg, and Russell G. Almond. "Focus Article: On the Structure of Educational Assessments." *Measurement: Interdisciplinary Research & Perspective* 1 (2003): 3–62. doi:10.1207/s15366359mea0101_02.
+- National Academy of Engineering and National Research Council. *Technically Speaking: Why All Americans Need to Know More About Technology.* National Academies Press (2002). doi:10.17226/10250.
 - National Research Council. *A Framework for K–12 Science Education: Practices, Crosscutting Concepts, and Core Ideas.* National Academies Press (2012).
+- National Research Council. *Being Fluent with Information Technology.* National Academies Press (1999). doi:10.17226/6482.
 - NGSS Lead States. *Next Generation Science Standards: For States, By States.* National Academies Press (2013).
-- OECD. *Learning Compass 2030.* OECD Publishing (2019).
 - Papert, Seymour. *Mindstorms: Children, Computers, and Powerful Ideas.* Basic Books (1980).
-- Papert, Seymour. "Hard Fun." *Bangor Daily News*, 2002. Available at papert.org/articles/HardFun.html.
+- Papert, Seymour. "Hard Fun." Column, 2002. Available at http://papert.org/articles/HardFun.html (plain HTTP; the host's HTTPS certificate does not validate). The article text confirms it ran as a newspaper column; the *Bangor Daily News* attribution is the conventional one in the literature and is not stated on the page itself.
 - Parasuraman, Raja, and Victor Riley. "Humans and Automation: Use, Misuse, Disuse, Abuse." *Human Factors* 39 (1997): 230–253. doi:10.1518/001872097778543886.
 - Partnership for 21st Century Learning / Battelle for Kids. *Framework for 21st Century Learning Definitions.* (2019).
 - Pea, Roy D. "The Social and Technological Dimensions of Scaffolding and Related Theoretical Concepts for Learning, Education, and Human Activity." *Journal of the Learning Sciences* 13 (2004): 423–451. doi:10.1207/s15327809jls1303_6.
