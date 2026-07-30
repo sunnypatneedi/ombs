@@ -1,0 +1,28 @@
+name: parity
+
+# CONTRIBUTING.md tells contributors that "CI verifies parity between the prose
+# and the JSON." This is that CI. Read-only: it runs one zero-dependency script.
+#
+# Actions are pinned by commit SHA rather than by tag — this is a public
+# standards repo and a moved tag is a supply-chain vector. Each SHA is the
+# commit its `v4` tag resolved to on 2026-07-27; bump deliberately.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check-parity:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+      - run: node scripts/check-parity.mjs

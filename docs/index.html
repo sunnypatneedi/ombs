@@ -125,7 +125,7 @@
       letter-spacing: -1px; margin-bottom: 1.2rem;
     }
 
-    .hero h2 .c-blue { color: var(--blue); }
+    .hero h2 .c-orange { color: var(--orange); }  /* Making is orange; blue is Shared Practices */
     .hero h2 .c-green { color: var(--green); }
 
     .hero p {
@@ -659,7 +659,7 @@
       <div>
         <div class="brand-name">Open Making &amp; Building Standard</div>
         <div class="brand-meta">
-          <span class="v-badge">v0.1.0</span>
+          <span class="v-badge" id="v-badge">v0.2.0</span>
           <span class="brand-sub">K–12 Cross-Domain Framework</span>
         </div>
       </div>
@@ -680,11 +680,14 @@
   <!-- OVERVIEW -->
   <div id="tab-overview" class="tab-content active">
     <div class="hero">
-      <h2>Assess <span class="c-blue">making</span> and <span class="c-green">building</span> with confidence.</h2>
+      <h2>Assess <span class="c-orange">making</span> and <span class="c-green">building</span> with confidence.</h2>
       <p>A common language for K–12 educators to evaluate craft, systems, and shared practices in project-based learning.</p>
       <button class="cta-btn" onclick="switchTab('standards', document.querySelector('.tab-nav button:nth-child(2)'))">
         Browse Standards &rarr;
       </button>
+      <p style="margin-top:1.25rem;font-size:0.95rem;color:var(--s500);">
+        New to OMBS? <a href="./demo/" style="color:var(--blue);font-weight:600;">See what it looks like at your child's age &rarr;</a>
+      </p>
     </div>
 
     <div class="stats-grid" id="stats-grid"></div>
@@ -812,6 +815,10 @@ async function init() {
     ]);
     standardsData  = await sRes.json();
     crosswalksData = await cRes.json();
+
+    // Version badge reads the standard itself so it cannot go stale again.
+    const vBadge = document.getElementById('v-badge');
+    if (vBadge && standardsData.version) vBadge.textContent = 'v' + standardsData.version;
 
     buildAllComponents();
     renderStats();
@@ -1063,9 +1070,25 @@ function switchTab(name, btn) {
   document.querySelectorAll('.tab-nav button').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + name).classList.add('active');
   if (btn) btn.classList.add('active');
+  // Deep-linkable tabs: /demo/ (and any other page) can route straight to a tab.
+  try {
+    if (location.hash !== '#' + name) history.replaceState(null, '', '#' + name);
+  } catch (e) { /* file:// origins reject replaceState; tab switching still works */ }
 }
 
+const TAB_ORDER = ['overview', 'standards', 'search', 'crosswalks', 'about'];
+
+function applyHash() {
+  const name = (location.hash || '').replace(/^#/, '');
+  const i = TAB_ORDER.indexOf(name);
+  if (i === -1) return;
+  switchTab(name, document.querySelector(`.tab-nav button:nth-child(${i + 1})`));
+}
+
+window.addEventListener('hashchange', applyHash);
+
 init();
+applyHash();
 </script>
 </body>
 </html>

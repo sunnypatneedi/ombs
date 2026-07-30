@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What does making well look like at my child's age? · OMBS</title>
+<meta name="description" content="A free tool built on the Open Making and Building Standard. See what making and building well looks like at any age — and what would count as evidence. No account, no score.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" media="print" onload="this.media='all'"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+/* Design language is the published site's (docs/index.html). Two kinds of comment,
+   and the difference is load-bearing:
+
+     site: <selector>   the rule's values ARE that component's values, unchanged.
+     derived: …         the rule departs from the site. The comment says how, and why.
+
+   Anything uncommented is layout assembled from the tokens below and the site's own
+   rem scale. Line numbers cite docs/index.html. */
+:root{
+  /* Domain colours. These carry meaning: S = Shared Practices, M = Making, B = Building.
+     Never used decoratively. The light/border tints are the site's
+     .domain-filter-btn.active-S/-M/-B triples (site 273-275); the *-dark shades are the
+     ink the site uses for the same tints and the border it uses on .domain-*-card
+     (site 196-198). */
+  --blue:#2563EB;   --blue-dark:#1E40AF;   --blue-light:#EFF6FF;   --blue-border:#BFDBFE;
+  --orange:#EA580C; --orange-dark:#C2410C; --orange-light:#FFF7ED; --orange-border:#FED7AA;
+  --green:#16A34A;  --green-dark:#15803D;  --green-light:#F0FDF4;  --green-border:#BBF7D0;
+
+  --bg:#F8FAFC; --white:#FFFFFF;
+  --s900:#0F172A; --s700:#334155; --s600:#475569; --s500:#64748B;
+  --s400:#94A3B8; --s300:#CBD5E1; --s200:#E2E8F0; --s100:#F1F5F9; --s50:#F8FAFC;
+
+  --font:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
+  --mono:'SFMono-Regular',Consolas,monospace;
+
+  /* Card treatment, measured off the site's .stat-card */
+  --card-radius:20px; --card-border:2px solid var(--s200);
+  --card-shadow:4px 4px 0 rgba(0,0,0,0.04);
+}
+
+*{box-sizing:border-box;min-width:0}
+html,body{overflow-x:clip}
+body{
+  margin:0;background:var(--bg);color:var(--s900);
+  font-family:var(--font);line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+a{color:var(--blue);text-decoration:none;font-weight:600}          /* site: a (624) */
+a:hover{text-decoration:underline}                                 /* site: a:hover (625) */
+/* derived: the site's own gutter is main's 1.5rem (114). The column is narrower than
+   the site's 1280px main because this page is one reading column, not a browser. */
+.wrap{max-width:940px;margin:0 auto;padding:0 1.5rem}
+
+/* ── HEADER — site: header, .header-inner, .logo, .brand-name, .brand-meta,
+      .v-badge, .brand-sub (44-88), all value-for-value. The one departure is
+      .brand: the site's is a <div>, this one is an <a>, so it needs two
+      declarations to neutralise the global a rule above. ─────────────── */
+header{
+  background:var(--white);
+  border-bottom:4px solid var(--s200);
+  padding:0.875rem 1.5rem;
+  position:sticky;top:0;z-index:100;
+  box-shadow:0 1px 8px rgba(0,0,0,0.05);
+}
+.header-inner{
+  max-width:1280px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+}
+.brand{display:flex;align-items:center;gap:0.75rem;color:var(--s900);font-weight:400}
+.brand:hover{text-decoration:none}   /* ↑ colour + weight + this rule: the a-rule reset */
+.logo{
+  width:48px;height:48px;
+  background:var(--s900);color:var(--white);
+  border-radius:16px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:0.7rem;letter-spacing:-0.5px;
+  box-shadow:4px 4px 0 rgba(0,0,0,0.1);
+  flex-shrink:0;line-height:1.2;text-align:center;
+}
+.brand-name{font-weight:800;font-size:1.2rem;letter-spacing:-0.4px;line-height:1.2}
+.brand-meta{display:flex;align-items:center;gap:0.5rem;margin-top:0.2rem}
+.v-badge{
+  background:var(--s200);color:var(--s700);
+  font-size:0.68rem;font-weight:700;
+  padding:0.15rem 0.5rem;border-radius:20px;
+}
+.brand-sub{font-size:0.78rem;color:var(--s500);font-weight:500}
+
+.tab-nav{                            /* site: .tab-nav (91-96) */
+  background:var(--s100);
+  padding:6px;border-radius:20px;
+  display:flex;gap:2px;overflow-x:auto;
+}
+/* derived: .tab-nav button (98-105). Three deltas, each forced:
+     1. flex-shrink:0 — the site's children are <button>s and hold their width;
+        <a>s squeeze into each other without it.
+     2. --s600, not the site's --s500: --s500 on the --s100 trough is 4.34:1,
+        under AA for 13.4px text. --s600 is 6.92:1.
+     3. text-decoration:none replaces the site's border/background/font-family
+        button resets — an <a> inherits the font and has no chrome to strip. */
+.tab-nav a{
+  display:flex;align-items:center;gap:0.35rem;
+  flex-shrink:0;
+  padding:0.5rem 1.1rem;
+  border-radius:14px;
+  font-size:0.84rem;font-weight:700;
+  color:var(--s600);white-space:nowrap;
+  text-decoration:none;transition:all 0.15s;
+}
+.tab-nav a:hover{color:var(--s900);background:rgba(255,255,255,0.5);text-decoration:none}
+
+/* ── HERO ─────────────────────────────────────────────────────────── */
+/* derived: .hero (120). Same 720px measure and centring; the vertical inset is the
+   site's main padding (3rem, 114) because this page has no <main> to carry it. */
+.hero{max-width:720px;margin:0 auto;padding:3rem 0 2rem;text-align:center}
+/* derived: .hero h2 (122-126) — same clamp, weight, leading, tracking and 1.2rem bottom
+   margin, plus text-wrap:balance (the site's hero orphans "confidence." at 390px). */
+.hero h1{
+  font-size:clamp(2rem,5vw,3.25rem);
+  font-weight:800;line-height:1.15;letter-spacing:-1px;
+  text-wrap:balance;margin:0 0 1.2rem;
+}
+/* derived: .hero h2 .c-orange / .c-green (128-129) — same device and same two domains,
+   in the *-dark shades rather than the site's base hues: these clear AA at any size
+   (4.95:1 / 4.79:1 on --bg) where the base hues only clear the 3:1 large-text floor
+   (3.40:1 and 3.15:1). */
+.hero h1 .c-orange{color:var(--orange-dark)}   /* Making  */
+.hero h1 .c-green{color:var(--green-dark)}     /* Building */
+.hero p{margin:0;font-size:1.1rem;color:var(--s600);font-weight:500;line-height:1.65}
+
+/* ── SETUP CARD ───────────────────────────────────────────────────── */
+.card{                                    /* site: .stat-card (156-161), all five values */
+  background:var(--white);
+  border:var(--card-border);
+  border-radius:var(--card-radius);
+  padding:1.5rem;
+  box-shadow:var(--card-shadow);
+}
+.row{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.25rem}
+.field{flex:1;min-width:170px}
+label{display:block;font-size:0.78rem;font-weight:700;color:var(--s700);margin-bottom:0.4rem}
+label em{font-style:normal;font-weight:500;color:var(--s500)}
+/* derived: border + radius only, from .domain-filter-btn (261). The rest is a form field
+   and the site has none — its .search-input (407-416) is a 4px/24px mono search box. */
+input,select{
+  width:100%;font-family:var(--font);
+  font-size:0.95rem;font-weight:600;
+  padding:0.7rem 0.85rem;
+  border:2px solid var(--s200);border-radius:16px;
+  background:var(--white);color:var(--s900);
+}
+input::placeholder{color:var(--s500)}
+input:focus,select:focus{outline:2px solid var(--blue);outline-offset:1px;border-color:var(--blue)}
+
+.chips{display:flex;flex-wrap:wrap;gap:0.5rem}   /* site: .grade-filter-bar (420-423), minus
+                                                    its centring and its 2rem bottom margin */
+/* derived: .grade-filter-btn (425-431). Every resting value is the site's — 0.45rem/1rem
+   padding, 0.82rem/700, 2px --s200, 20px, --s500 ink. The min-height and the centring are
+   not: the site's chip renders 35px, and this row is the one control a parent on a phone
+   has to hit. 35px clears WCAG 2.2 AA (24px) but sits under the 44px pointer guideline. */
+.chip{
+  display:inline-flex;align-items:center;justify-content:center;min-height:2.75rem;
+  font-family:var(--font);font-size:0.82rem;font-weight:700;
+  padding:0.45rem 1rem;
+  border:2px solid var(--s200);border-radius:20px;
+  background:var(--white);color:var(--s500);
+  cursor:pointer;transition:all 0.15s;
+}
+.chip:hover{border-color:var(--s400);color:var(--s700)}   /* site: .grade-filter-btn:hover (433) */
+.chip:focus-visible{outline:2px solid var(--blue);outline-offset:2px}   /* demo-only: the site
+                                              ships no focus styling outside its search field */
+/* SELECTED — deliberately NOT .grade-filter-btn.active (434), whose --s900 fill says only
+   "on". These chips carry a domain lean, so they take the site's domain treatment and the
+   row teaches the colour rule the rest of the page runs on: pick Making things, they turn
+   Making orange. Fill + ink are .domain-filter-btn.active-M/-B (274-275) — 4.88:1 and
+   4.79:1. The border is .domain-M-card / .domain-B-card's (197-198) rather than the pale
+   --*-border token, because it is the only part of the state that survives greyscale:
+   selected ink against idle ink is 1.09:1 and the tint against white is 1.35:1, so with
+   the pale border (1.10:1 against the idle --s200) nothing about the state would be
+   visible without colour vision. The -dark border reads 4.20:1 against the idle one. */
+.chip[aria-pressed="true"].m-lean{background:var(--orange-light);color:var(--orange-dark);border-color:var(--orange-dark)}
+.chip[aria-pressed="true"].b-lean{background:var(--green-light); color:var(--green-dark); border-color:var(--green-dark)}
+.chip:disabled{opacity:.5;cursor:not-allowed}
+.lean{margin-top:1rem;font-size:0.9rem;color:var(--s600);font-weight:500}
+.lean:empty{display:none}          /* no reserved dead space under the chips before a pick */
+.lean b{color:var(--s900);font-weight:800}
+
+/* ── EXPLORER — light card, domain-badged (see build notes on the dark panel) ── */
+/* derived: .about-header-card (535-539) — same white / 2px --s200 / 32px / 4px 4px 0
+   shell, at 2rem padding and left-aligned. The site's is 3rem and centred; this one
+   holds a control, not a statement. */
+.explorer{
+  background:var(--white);
+  border:var(--card-border);
+  border-radius:32px;
+  padding:2rem;
+  box-shadow:var(--card-shadow);
+  margin-top:1.5rem;
+}
+/* derived: .accordion-header (302-307) — same 1rem gap, top-aligned instead of centred
+   and without the site's padding, since this one is a heading, not a click target. */
+.ex-top{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.25rem}
+.acc-icon{                                                    /* site: .acc-icon (311-315) */
+  width:44px;height:44px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;font-weight:800;color:var(--white);flex-shrink:0;
+}
+.acc-icon-S{background:var(--blue)}                           /* site: .acc-icon-S (317) */
+.ex-domain{font-size:1rem;font-weight:800;margin:0}           /* site: .acc-title h2 (322) */
+.exhead{font-size:0.8rem;color:var(--s500);font-weight:500;margin-top:0.1rem}  /* site: .acc-title p (323) */
+/* derived, and not a lift of anything. The site's three 2rem/800 section headings
+   (.search-title 394, .cw-title 478, .about-header-card h2 555) are fixed-size, tracking
+   normal, leading 1.6. This one is fluid, tracked -0.6px and led 1.15 because it carries a
+   <small> sub-line underneath and none of those three do. */
+.exband{
+  font-size:clamp(1.75rem,4vw,2.25rem);
+  font-weight:800;line-height:1.15;letter-spacing:-0.6px;
+  text-wrap:balance;margin-bottom:1.4rem;
+}
+.exband small{
+  font-family:var(--font);font-size:0.85rem;font-weight:500;
+  color:var(--s500);letter-spacing:0;display:block;margin-top:0.35rem;line-height:1.5;
+}
+
+/* derived: the .tab-nav trough (91-96) — same --s100 fill, 6px inset, 20px radius and
+   2px gap, wrapping instead of scrolling because it holds six tabs inside a 940px reading
+   column, not five across a 1280px header bar. */
+.tabs{
+  display:flex;flex-wrap:wrap;gap:2px;row-gap:4px;   /* 4px pairs with the site's own 2px */
+  width:fit-content;max-width:100%;   /* the site's trough hugs because it is a flex item in
+                                         a space-between header; this one has to be told to */
+  background:var(--s100);padding:6px;border-radius:20px;
+  margin-bottom:1.6rem;
+}
+.tab{                                 /* site: .tab-nav button (98-105), --s600 for the same
+                                         AA reason as the header nav above */
+  font-family:var(--font);font-size:0.84rem;font-weight:700;
+  padding:0.5rem 1.1rem;
+  border:none;border-radius:14px;background:none;
+  color:var(--s600);cursor:pointer;white-space:nowrap;transition:all 0.15s;
+}
+.tab:hover{color:var(--s900);background:rgba(255,255,255,0.5)}   /* site: .tab-nav button:hover (107) */
+.tab:focus-visible{outline:2px solid var(--blue);outline-offset:1px}   /* demo-only */
+.tab[aria-selected="true"]{                                     /* site: .tab-nav button.active (108-111) */
+  background:var(--white);color:var(--s900);
+  box-shadow:0 2px 10px rgba(0,0,0,0.06);
+}
+
+/* The site has no range control, so this one is built from the site's shapes: --s200
+   trough, --s900 thumb, and an 8px thumb radius — the site's radius for a small square
+   object (.grade-pill 368, .dim-code-tag 344; .dfb-icon is 10px on 32px, the same ratio).
+   Nothing on either page is a circle, and the thumb is not going to be the exception.
+   The px below are one coupled geometry, not vertical rhythm: 32px of pointer target
+   around a 6px visible track, with the thumb centred by margin-top. */
+.track{position:relative;margin:0 0.25rem 0.5rem}
+input[type=range]{
+  width:100%;height:32px;-webkit-appearance:none;appearance:none;
+  background:transparent;padding:0;border:0;margin:6px 0;
+}
+input[type=range]:focus{outline:none}
+input[type=range]::-webkit-slider-runnable-track{height:6px;background:var(--s200);border-radius:20px}
+input[type=range]::-moz-range-track{height:6px;background:var(--s200);border-radius:20px}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:24px;height:24px;border-radius:8px;
+  background:var(--s900);border:3px solid var(--white);
+  margin-top:-9px;cursor:pointer;
+  box-shadow:0 0 0 2px var(--s900);
+}
+input[type=range]::-moz-range-thumb{
+  width:24px;height:24px;border-radius:8px;
+  background:var(--s900);border:3px solid var(--white);cursor:pointer;
+  box-shadow:0 0 0 2px var(--s900);
+}
+input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 2px var(--s900),0 0 0 5px var(--blue)}
+input[type=range]:focus-visible::-moz-range-thumb{box-shadow:0 0 0 2px var(--s900),0 0 0 5px var(--blue)}
+
+.bands{display:flex;justify-content:space-between;margin-top:0.25rem;gap:0.25rem}
+.bandlbl{font-size:0.8rem;color:var(--s500);font-weight:700}
+.bandlbl.here{color:var(--s900);font-weight:800}
+/* derived: .v-badge (82-86) — the pill shape (20px radius, weight 700) at a larger size
+   and refilled --s100/--s900. Both the fill and the ink changed: the site's badge holds a
+   version string, this one holds a 42-character sentence about a specific child, and it
+   reads at 16.30:1 instead of the badge's 8.40:1. */
+.youmark{
+  display:inline-block;margin-top:0.75rem;
+  background:var(--s100);color:var(--s900);
+  font-size:0.8rem;font-weight:700;
+  padding:0.3rem 0.8rem;border-radius:20px;
+}
+.youmark:empty{display:none}
+
+.gloss{
+  font-size:clamp(1.15rem,2.4vw,1.4rem);
+  font-weight:600;line-height:1.5;color:var(--s900);
+  text-wrap:pretty;margin:1.5rem 0 1.25rem;
+}
+/* derived: .grade-cell (363-366) — the site's container for quoted band-level standard
+   text, which is exactly what this holds. Same fill, border and radius; padded wider
+   because this one runs the column, where the site's sits four-up in a grid. */
+.verbatim{
+  background:var(--s50);border:2px solid var(--s100);
+  border-radius:12px;padding:1rem 1.1rem;
+}
+/* derived: .stat-label (163-167) — same size, tracking, case and weight; --s500 not the
+   site's --s400 (2.56:1 on white, a pre-existing AA failure), and laid out as a flex row
+   so the code chip can sit beside the label instead of under it. */
+.verbatim .lbl{
+  font-size:0.7rem;letter-spacing:1px;text-transform:uppercase;
+  color:var(--s500);font-weight:700;margin-bottom:0.6rem;
+  display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;
+}
+.verbatim .lbl code{      /* site: the .domain-filter-btn.active-S triple (273). #codeid only
+                             ever holds an OMBS.S.* component, so S blue is the true colour. */
+  font-family:var(--mono);font-size:0.72rem;font-weight:700;letter-spacing:0;
+  background:var(--blue-light);color:var(--blue-dark);
+  border:1px solid var(--blue-border);
+  padding:0.15rem 0.45rem;border-radius:6px;text-transform:none;
+}
+.verbatim p{margin:0;font-size:0.95rem;color:var(--s700);font-weight:500;line-height:1.6}
+.plainnote{font-size:0.78rem;color:var(--s500);font-weight:500;margin-top:0.9rem}
+
+/* ── NOT A SCORE ──────────────────────────────────────────────────── */
+/* derived: the card recipe at the site's heaviest border weight. 4px is the site's own
+   top border width (header 46, .search-input 410, .domain-big-card 184); putting it at
+   --s900 makes this the only 4px --s900 border on the page. No domain colour: this
+   callout belongs to no domain. */
+.notascore{
+  background:var(--white);
+  border:4px solid var(--s900);
+  border-radius:20px;
+  padding:1.25rem 1.5rem;margin-top:1.5rem;
+  box-shadow:4px 4px 0 rgba(0,0,0,0.08);
+}
+.notascore h3{margin:0 0 0.4rem;font-size:1.05rem;font-weight:800;color:var(--s900)}
+.notascore p{margin:0;font-size:0.9rem;color:var(--s700);font-weight:500;line-height:1.6}
+
+/* ── DOMAIN DIMENSIONS ────────────────────────────────────────────── */
+.domain{margin-top:2rem}
+/* derived: a rung the site does not have. Its headings step 1rem (.acc-title h2 322) →
+   1.4rem (.domain-big-card h3 210) → 2rem (.search-title 394); 1.5rem/-0.5px sits this
+   section head above the 2.25rem .exband without competing with it. */
+.domain h2{font-size:1.5rem;font-weight:800;letter-spacing:-0.5px;margin:0 0 0.25rem}
+.domain .sub{color:var(--s600);font-size:0.9rem;font-weight:500;margin:0 0 1rem}
+.dims{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:0.75rem}
+.dim{                                     /* site: .result-item (438-444), minus its
+                                             margin-bottom (the grid gap does that job) and
+                                             its hover transition (these are not links) */
+  background:var(--white);border:2px solid var(--s200);
+  border-radius:16px;padding:1.1rem 1.25rem;
+  box-shadow:2px 2px 0 rgba(0,0,0,0.04);
+}
+/* derived: .result-code-tag (451-456) shape — mono, 700, 6px radius — with .dim-code-tag's
+   neutral --s100/--s700 fill (344-349) as the default. The three rules under it swap in the
+   anchor's own domain triple, which .result-code-tag does not do: the site paints every
+   search result blue, including the M and B codes. */
+.dim code{
+  font-family:var(--mono);font-size:0.72rem;font-weight:700;
+  padding:0.15rem 0.45rem;border-radius:6px;
+  border:1px solid transparent;display:inline-block;
+  background:var(--s100);color:var(--s700);
+}
+.dim.d-S code{background:var(--blue-light);  color:var(--blue-dark);  border-color:var(--blue-border)}
+.dim.d-M code{background:var(--orange-light);color:var(--orange-dark);border-color:var(--orange-border)}
+.dim.d-B code{background:var(--green-light); color:var(--green-dark); border-color:var(--green-border)}
+.dim h4{margin:0.55rem 0 0.3rem;font-size:0.95rem;font-weight:800}
+.dim p{margin:0;font-size:0.84rem;color:var(--s600);font-weight:500;line-height:1.55}
+
+footer{
+  margin:3rem 0 3.5rem;padding-top:1.4rem;
+  border-top:2px solid var(--s200);
+  font-size:0.84rem;color:var(--s500);font-weight:500;text-align:center;
+}
+footer .built{margin-bottom:0.5rem}
+
+/* ── RESPONSIVE — the site's 700 and 600 steps (639, 645), plus a 400 the site has
+      no equivalent of: the brand row is the only thing on this page that breaks
+      below 400px. The site's third step, 900, has nothing to act on here. ────── */
+@media (max-width:700px){
+  .explorer{border-radius:24px;padding:1.5rem 1.25rem}
+  .hero{padding:2rem 0 1.5rem}
+}
+@media (max-width:600px){
+  header{padding:0.75rem 1rem}         /* site: header @600 (646) */
+  .header-inner{flex-wrap:wrap}
+  .brand-name{font-size:0.95rem}       /* site: .brand-name @600 (647) */
+  /* The site hides .tab-nav here (648). The demo keeps it: it is the only route
+     back into the standard from this page, so hiding it strands the visitor. */
+  .tab-nav{width:100%}
+}
+@media (max-width:400px){
+  .brand-name{font-size:0.85rem}
+  .logo{width:40px;height:40px;border-radius:12px;font-size:0.62rem}   /* 12px, not a
+        proportional 13px: the site's radius scale has no 13 (.grade-cell and .code-block
+        are 12, .acc-icon is 14) */
+}
+/* Demo-only. The site declares no reduced-motion block at all. */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:0.01ms !important;animation-duration:0.01ms !important}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="brand" href="../">
+      <div class="logo">OMBS</div>
+      <div>
+        <div class="brand-name">Open Making &amp; Building Standard</div>
+        <div class="brand-meta">
+          <span class="v-badge" id="v-badge">v0.3.0</span>
+          <span class="brand-sub">K–12 Cross-Domain Framework</span>
+        </div>
+      </div>
+    </a>
+
+    <nav class="tab-nav" aria-label="The standard">
+      <a href="../#overview">⊞ Overview</a>
+      <a href="../#standards">⊟ Standards</a>
+      <a href="../#search">⌕ Search</a>
+      <a href="../#crosswalks"># Crosswalks</a>
+      <a href="../#about">ⓘ About</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="hero">
+    <h1>What does <span class="c-orange">making</span> and <span class="c-green">building</span> well look like at your child's age?</h1>
+    <p>Grounded in the open OMBS standard. Free, no account, nothing saved.</p>
+  </div>
+
+  <div class="card">
+    <div class="row">
+      <div class="field">
+        <label for="name">Your child's first name <em>optional</em></label>
+        <input id="name" type="text" placeholder="Lio" maxlength="24" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="age">How old are they?</label>
+        <select id="age"></select>
+      </div>
+    </div>
+    <label>What do they like to make right now? <em>pick up to three</em></label>
+    <div class="chips" id="chips"></div>
+    <div class="lean" id="lean"></div>
+  </div>
+
+  <div class="explorer">
+    <div class="ex-top">
+      <div class="acc-icon acc-icon-S" aria-hidden="true">S</div>
+      <div>
+        <h2 class="ex-domain">Shared Practices</h2>
+        <div class="exhead" id="exhead">Slide through the grade bands</div>
+      </div>
+    </div>
+
+    <div class="exband" id="exband">Grades 3–5<small>How this practice grows as they get older</small></div>
+
+    <div class="tabs" id="tabs" role="tablist"></div>
+
+    <div class="track">
+      <input type="range" id="slider" min="0" max="3" step="1" value="1" aria-label="Grade band">
+      <div class="bands" id="bands"></div>
+      <div class="youmark" id="youmark"></div>
+    </div>
+
+    <div class="gloss" id="gloss"></div>
+
+    <div class="verbatim">
+      <div class="lbl">In the standard's own words <code id="codeid">OMBS.S.DF.35.1</code></div>
+      <p id="verbatim"></p>
+    </div>
+    <div class="plainnote">The large line above is a plain-English paraphrase written for this page. The quoted text is the standard itself.</div>
+  </div>
+
+  <div class="notascore">
+    <h3>This is not a score, and OMBS never produces one.</h3>
+    <p id="notascore-body">OMBS records that a practice happened, tied to real work — never how well, never a level, never a rank. Nothing here places a child against other children, and nothing here is a test.</p>
+  </div>
+
+  <div class="domain">
+    <h2 id="domain-title">Also worth looking at</h2>
+    <p class="sub" id="domain-sub">The five shared practices apply to everything. These add detail for what your child actually makes.</p>
+    <div class="dims" id="dims"></div>
+  </div>
+
+  <footer>
+    <div class="built" id="built">Loading the standard…</div>
+    <div>Free to use, adapt and share under CC BY-SA 4.0 · <a href="https://github.com/sunnypatneedi/ombs">explore the open standard</a></div>
+  </footer>
+</div>
+
+<script>
+/* ---------- data loaded from the machine-readable standard ---------- */
+const BANDS = [
+  { id:"K2",  label:"K–2",   ages:"ages 5–7"  },
+  { id:"35",  label:"3–5",   ages:"ages 8–10" },
+  { id:"68",  label:"6–8",   ages:"ages 11–13"},
+  { id:"912", label:"9–12",  ages:"ages 14–18"},
+];
+
+/* Editorial paraphrases written for this page. NOT part of the standard. */
+const GLOSS = {
+  "OMBS.S.DF": {
+    K2:"They can say what they're making and who it's for — even if you have to ask first.",
+    35:"Before they start, they say or write three things: what it is, who it's for, and one way to tell if it worked.",
+    68:"They set two or more ways to tell if it worked — and change that plan at least once as the project goes on.",
+    912:"They weigh what they wanted against real limits, and can tell you what they chose not to do, and why."
+  },
+  "OMBS.S.DR": {
+    K2:"They make a rough version first, when someone reminds them to.",
+    35:"They make two different versions, and can point at what changed between them.",
+    68:"They rough things out at different sizes — an outline before the writing, cardboard before the real thing.",
+    912:"Their drafts keep more than one option alive, and they record which ones they dropped and what made them drop it."
+  },
+  "OMBS.S.TS": {
+    K2:"They show it to someone who isn't their teacher, and tell you what that person did or said.",
+    35:"They check it against the thing they said would count as working, and write down what actually happened.",
+    68:"They design tests for their own criteria, run them with real people, and can tell a real finding from a fluke.",
+    912:"They design a test that could prove them wrong, run it anyway, and report the bad news honestly."
+  },
+  "OMBS.S.IT": {
+    K2:"After feedback, they try again and something visibly changes.",
+    35:"They can name one change they made and the feedback that caused it.",
+    68:"They can say which feedback they took, which they set aside, and the reason for each.",
+    912:"They try genuinely different directions, not just polish — and record what they abandoned and why."
+  },
+  "OMBS.S.SH": {
+    K2:"They show it to people beyond the teacher — classmates, family, the school.",
+    35:"They change something about how they present it for a new audience, and can say what they changed.",
+    68:"They reach the audience they named at the start, and record how that audience responded.",
+    912:"They publish it properly — thinking about access, rights, and letting other people build on it."
+  },
+  "OMBS.S.AI": {
+    K2:"They can point at one part they decided themselves and one part the tool made.",
+    35:"They say where they used AI, name one thing they kept and one they changed or rejected, and give their own reason for each.",
+    68:"They keep a running record: what they asked, what came back, and what they kept, changed or rejected — each with a reason in their own words.",
+    912:"They can argue the work would still stand without the AI parts — or say exactly what would be lost, and why that's acceptable."
+  }
+};
+
+/* No icons here on purpose. The one thing this row has to teach is that Making is orange
+   and Building is green, and it teaches it by tinting the picks — see .chip[aria-pressed]. */
+const INTERESTS = [
+  { id:"stories",   label:"Stories",       lean:"M" },
+  { id:"drawing",   label:"Drawing",       lean:"M" },
+  { id:"comics",    label:"Comics",        lean:"M" },
+  { id:"music",     label:"Music",         lean:"M" },
+  { id:"videos",    label:"Videos",        lean:"M" },
+  { id:"costumes",  label:"Costumes",      lean:"M" },
+  { id:"robots",    label:"Robots",        lean:"B" },
+  { id:"models",    label:"Models",        lean:"B" },
+  { id:"games",     label:"Games",         lean:"B" },
+  { id:"apps",      label:"Apps",          lean:"B" },
+  { id:"forts",     label:"Dens & forts",  lean:"B" },
+  { id:"baking",    label:"Baking",        lean:"B" },
+];
+
+const state = { name:"", age:9, band:1, dim:"OMBS.S.DF", picks:[], spec:null };
+
+/* ---------- helpers ---------- */
+const $ = (id) => document.getElementById(id);
+const who = () => state.name.trim() || "your child";
+const bandForAge = (a) => a<8 ? 0 : a<11 ? 1 : a<14 ? 2 : 3;
+const esc = (s) => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/* ---------- build static controls ---------- */
+const ageSel = $("age");
+for (let a=5; a<=18; a++){
+  const o=document.createElement("option");
+  o.value=a; o.textContent=a+" years old";
+  if(a===9) o.selected=true;
+  ageSel.appendChild(o);
+}
+
+const chipWrap = $("chips");
+INTERESTS.forEach(it=>{
+  const b=document.createElement("button");
+  b.type="button";
+  /* The lean rides on the element so the selected state can carry the domain's colour. */
+  b.className = "chip " + (it.lean==="B" ? "b-lean" : "m-lean");
+  b.setAttribute("aria-pressed","false"); b.dataset.id=it.id;
+  b.textContent = it.label;
+  b.addEventListener("click",()=>{
+    const i=state.picks.indexOf(it.id);
+    if(i>=0) state.picks.splice(i,1);
+    else if(state.picks.length<3) state.picks.push(it.id);
+    renderChips(); renderLean(); renderDomain();
+  });
+  chipWrap.appendChild(b);
+});
+
+$("bands").innerHTML = BANDS.map((b,i)=>`<span class="bandlbl" data-i="${i}">${b.label}</span>`).join("");
+
+/* ---------- renderers ---------- */
+function renderChips(){
+  [...chipWrap.children].forEach(b=>{
+    const on = state.picks.includes(b.dataset.id);
+    b.setAttribute("aria-pressed", on?"true":"false");
+    b.disabled = !on && state.picks.length>=3;
+  });
+}
+
+function renderLean(){
+  const el=$("lean");
+  if(!state.picks.length){ el.textContent=""; return; }
+  const picked = INTERESTS.filter(i=>state.picks.includes(i.id));
+  const m = picked.filter(p=>p.lean==="M").length;
+  const b = picked.filter(p=>p.lean==="B").length;
+  const word = m>b ? "<b>Making</b> — originating something for an audience"
+            : b>m ? "<b>Building</b> — constructing something that has to hold up in use"
+                  : "<b>both Making and Building</b> in equal measure";
+  el.innerHTML = `What ${esc(who())} picked leans toward ${word}.`;
+}
+
+function dimsOf(domainId){
+  if(!state.spec) return [];
+  const d=state.spec.domains.find(x=>x.id===domainId);
+  return d ? d.dimensions : [];
+}
+
+function renderTabs(){
+  const tabs=$("tabs");
+  tabs.innerHTML="";
+  dimsOf("S").forEach(dim=>{
+    const b=document.createElement("button");
+    b.type="button"; b.className="tab"; b.setAttribute("role","tab");
+    b.setAttribute("aria-selected", dim.anchor===state.dim ? "true":"false");
+    b.textContent=dim.name;
+    b.addEventListener("click",()=>{ state.dim=dim.anchor; renderTabs(); renderPractice(); });
+    tabs.appendChild(b);
+  });
+}
+
+function renderBandUi(){
+  const yourBand = bandForAge(state.age);
+  $("slider").value = state.band;
+  [...$("bands").children].forEach((el,i)=>{
+    el.classList.toggle("here", i===yourBand);
+  });
+  const b = BANDS[state.band];
+  $("exband").innerHTML = `Grades ${esc(b.label)}<small>${esc(b.ages)} · how this practice grows as they get older</small>`;
+  $("youmark").textContent = state.band===yourBand
+    ? `▲ ${who()} is in this band`
+    : `${who()}'s band is ${BANDS[yourBand].label} — you're looking at ${b.label}`;
+  $("exhead").textContent = `Slide through the grade bands · ${who()} is ${state.age}`;
+}
+
+function renderPractice(){
+  if(!state.spec) return;
+  const dim = dimsOf("S").find(d=>d.anchor===state.dim);
+  if(!dim) return;
+  const bandId = BANDS[state.band].id;
+  const comps = dim.components.filter(c=>c.gradeBand===bandId);
+  const g = (GLOSS[dim.anchor]||{})[bandId];
+  $("gloss").textContent = g || dim.anchorStatement;
+  $("verbatim").innerHTML = comps.map(c=>esc(c.descriptor)).join("<br><br>");
+  $("codeid").textContent = comps.map(c=>c.id).join(" · ");
+}
+
+function renderDomain(){
+  if(!state.spec) return;
+  const picked = INTERESTS.filter(i=>state.picks.includes(i.id));
+  const m = picked.filter(p=>p.lean==="M").length;
+  const b = picked.filter(p=>p.lean==="B").length;
+  const domainId = !picked.length ? null : (b>m ? "B" : m>b ? "M" : null);
+
+  if(!domainId){
+    $("domain-title").textContent = "The two halves of the standard";
+    $("domain-sub").textContent = "Pick what they like making above and this narrows to the half that fits. Until then, here are both.";
+    $("dims").innerHTML = ["M","B"].flatMap(id=>dimsOf(id)).map(d=>dimCard(d)).join("");
+    return;
+  }
+  const dom = state.spec.domains.find(x=>x.id===domainId);
+  $("domain-title").textContent = dom.name + " — the half that fits what they make";
+  $("domain-sub").textContent = "The shared practices apply to everything. These four add detail for this kind of work.";
+  $("dims").innerHTML = dimsOf(domainId).map(d=>dimCard(d)).join("");
+}
+
+function dimCard(d){
+  /* The domain letter comes out of the anchor (OMBS.<domain>.<dim>) so each code
+     chip carries its own domain colour: S blue, M orange, B green. */
+  const dom = String(d.anchor).split(".")[1] || "S";
+  return `<div class="dim d-${esc(dom)}"><code>${esc(d.anchor)}</code><h4>${esc(d.name)}</h4><p>${esc(d.anchorStatement)}</p></div>`;
+}
+
+/* ---------- events ---------- */
+$("name").addEventListener("input", e=>{
+  state.name = e.target.value;
+  renderLean(); renderBandUi();
+  $("notascore-body").textContent = `OMBS records that a practice happened, tied to real work — never how well, never a level, never a rank. Nothing here places ${who()} against other children, and nothing here is a test.`;
+});
+ageSel.addEventListener("change", e=>{
+  state.age = Number(e.target.value);
+  state.band = bandForAge(state.age);
+  renderBandUi(); renderPractice();
+});
+$("slider").addEventListener("input", e=>{
+  state.band = Number(e.target.value);
+  renderBandUi(); renderPractice();
+});
+
+/* ---------- boot: read the machine-readable standard ---------- */
+fetch("../standards.json")
+  .then(r=>{ if(!r.ok) throw new Error("HTTP "+r.status); return r.json(); })
+  .then(spec=>{
+    state.spec = spec;
+    /* Same contract as the site header: the version pill reads the standard. */
+    if (spec.version) $("v-badge").textContent = "v" + spec.version;
+    const dims = spec.domains.reduce((n,d)=>n+d.dimensions.length,0);
+    const comps = spec.domains.reduce((n,d)=>n+d.dimensions.reduce((m,x)=>m+x.components.length,0),0);
+    const el = spec.evidenceLayer;
+    const extra = el
+      ? ` Plus an evidence layer of ${el.forms.length} evidence forms, ${el.observers.length} observer types and ${el.admissibility.length} admissibility rules.`
+      : "";
+    $("built").textContent =
+      `Built live from ${comps} evidence descriptors across ${dims} dimensions in OMBS v${spec.version} (${spec.status}).${extra}`;
+    state.age = 9; state.band = bandForAge(9);
+    renderTabs(); renderBandUi(); renderPractice(); renderDomain(); renderChips();
+  })
+  .catch(err=>{
+    $("built").textContent = "Could not load the standard (" + err.message + ").";
+    $("gloss").textContent = "This page reads standards.json directly. If you are opening it from your file system, run a local web server instead.";
+  });
+</script>
+</body>
+</html>

@@ -1,3 +1,3 @@
-node_modules/
-npm-debug.log
-.env
+# AI agent instructions — kept local, not part of the published standard.
+AGENTS.md
+CLAUDE.md
