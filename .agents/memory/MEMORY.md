@@ -3,3 +3,4 @@
 - [Git merge/rebase interference](git-merge-interference.md) — merges get silently interrupted here; verify two parents, and don't trust ahead/behind counts mid-rebase.
 - [Transcribing local audio](asr-transcription-on-replit.md) — the ElevenLabs passthrough can't upload files at all; run Whisper locally instead, and how to spot the failure.
 - [Caption cue timing](caption-timing.md) — cues are anchored to each narration clip plus its mux delay; what invalidates them and how to verify.
+- [Two divergent index.html copies](ombs-dual-index-html.md) — root and docs/ are separate hand-maintained pages; docs/ is published, root is what preview shows, edits never propagate.
