@@ -1,0 +1,56 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "ekwlOqwDp_X8P46XLzBHB"
+uri = "file://video/assets/audio/vo1.mp3"
+type = "audio"
+title = "vo1"
+
+[[outputs]]
+id = "Ye617qn4aLY21uq14FM0V"
+uri = "file://video/assets/audio/vo2.mp3"
+type = "audio"
+title = "vo2"
+
+[[outputs]]
+id = "0oCcUzoStD0xhfE1jbB_O"
+uri = "file://video/assets/audio/vo4.mp3"
+type = "audio"
+title = "vo4"
+
+[[outputs]]
+id = "E2EtonEtN7XUQif3oTI60"
+uri = "file://video/assets/audio/vo3.mp3"
+type = "audio"
+title = "vo3"
+
+[[outputs]]
+id = "TpHvGzvBQUjc19tvgPM1O"
+uri = "file://video/assets/audio/vo6.mp3"
+type = "audio"
+title = "vo6"
+
+[[outputs]]
+id = "1i5xZluVXI257wG-y9gKh"
+uri = "file://video/assets/audio/vo5.mp3"
+type = "audio"
+title = "vo5"
+
+[[outputs]]
+id = "uULMxSViiWMgfrzQr6-Ry"
+uri = "file://video/assets/audio/music_bed.mp3"
+type = "audio"
+title = "ombs promo bed"
+
+[[outputs]]
+id = "AJgI1FwPPL9KeMt3UxSvf"
+uri = "file://video/assets/audio/vo4_2.mp3"
+type = "audio"
+title = "vo4"
+
+[[outputs]]
+id = "4wSzt1JxBgkLZSHKwSoPx"
+uri = "file://video/ombs-promo.mp4"
+type = "video"
+title = "OMBS promo — Assess making and building with confidence"

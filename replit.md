@@ -27,6 +27,10 @@ A web-based viewer for the Open Making and Building Standard (OMBS) v0.1.0 — a
 ## Workflow
 - **Start application:** `node server.js` — serves on port 5000
 
+## Promo video
+- `video/ombs-promo.mp4` — 51-second promotional film introducing OMBS and driving viewers to the `/demo` parent tool
+- `video/` holds the source: frames are drawn with `@napi-rs/canvas` and streamed into ffmpeg (`node render.js`, then `./mux.sh`). See `video/README.md`
+
 ## Standard Content Summary
 - 3 domains: Shared Practices (S), Making (M), Building (B)
 - 13 dimensions total (5 shared + 4 making + 4 building)

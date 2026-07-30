@@ -1,0 +1,2 @@
+- [Canvas → ffmpeg video pipeline](canvas-video-pipeline.md) — how to render a real MP4 with no video-artifact scaffold, plus the wipe/iris and sidechain-duck traps that break silently.
+- [OMBS content facts](ombs-content-facts.md) — what the standard actually contains; check before writing marketing copy that names frameworks or counts.
