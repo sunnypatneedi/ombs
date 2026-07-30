@@ -1,0 +1,64 @@
+1
+00:00:00,700 --> 00:00:03,250
+Every school says it values
+making and building.
+
+2
+00:00:03,550 --> 00:00:06,200
+Far fewer can say what good
+actually looks like.
+
+3
+00:00:07,100 --> 00:00:11,550
+The Open Making and Building Standard
+is an open K–12 vocabulary
+
+4
+00:00:11,700 --> 00:00:13,820
+for the practices behind the projects.
+
+5
+00:00:14,900 --> 00:00:18,150
+Five shared practices: Define, Draft,
+
+6
+00:00:18,300 --> 00:00:21,000
+Test, Iterate, Share.
+
+7
+00:00:21,450 --> 00:00:24,600
+Four dimensions for making,
+four for building.
+
+8
+00:00:25,450 --> 00:00:28,750
+Every dimension progresses from
+kindergarten through 12th grade,
+
+9
+00:00:28,870 --> 00:00:33,300
+with crosswalks to NGSS,
+Common Core and ISTE.
+
+10
+00:00:34,350 --> 00:00:36,800
+And for families, one simple question:
+
+11
+00:00:37,000 --> 00:00:39,600
+What does making well look like
+at my child's age?
+
+12
+00:00:39,750 --> 00:00:43,450
+Pick a grade, move the slider,
+read it in plain English.
+
+13
+00:00:44,700 --> 00:00:47,200
+Assess making and building
+with confidence.
+
+14
+00:00:47,520 --> 00:00:49,800
+Try the parent tool at /demo.

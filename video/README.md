@@ -16,6 +16,8 @@ ffmpeg, so there is no browser or PNG sequence involved.
 | `assets/fonts/` | Plus Jakarta Sans (400–800) and JetBrains Mono, registered one alias per weight |
 | `assets/audio/` | `vo1..vo6.mp3` narration and `music_bed.mp3` |
 | `mux.sh` | Places narration on the timeline, ducks the bed under it, muxes the deliverable |
+| `ombs-promo.srt` | Captions for upload (YouTube, Vimeo, an LMS) |
+| `ombs-promo.vtt` | Same cues as WebVTT, for an HTML `<track>`; published copy lives at `docs/ombs-promo.vtt` |
 
 ## Rebuilding
 
@@ -48,3 +50,19 @@ Narration drives the cut points; each clip starts a beat after its scene opens.
 Changing a narration clip means re-measuring it (`ffprobe -show_entries
 format=duration`) and updating both the scene duration in `render.js` and the
 matching delay in `mux.sh`.
+
+## Captions
+
+`ombs-promo.srt` and `ombs-promo.vtt` carry the same fourteen cues, transcribed
+from the narration clips themselves rather than from any script. Cue times are
+clip-local positions plus that clip's `D1..D6` delay from `mux.sh`, so every cue
+falls inside its own clip's window and no cue spans two clips.
+
+Re-recording a clip or moving a delay invalidates the cues that sit on it: both
+caption files and the published copy at `docs/ombs-promo.vtt` have to be re-timed
+together.
+
+The narration was written against v0.1.0 and now understates the standard — it
+says five shared practices and does not mention `S.AI`, so the film implies
+thirteen dimensions where v0.3.0 has fourteen. The captions reproduce what is
+spoken; correcting the claim means re-recording, not editing the cues.
