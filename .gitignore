@@ -5,3 +5,18 @@ npm-debug.log
 # AI agent instructions - kept local, not part of the published standard.
 AGENTS.md
 CLAUDE.md
+
+# The promo voiceover. The repository carries the script (docs/promo/vo-script.md) and the
+# generator (scripts/gen-vo.mjs); the recording is regenerated, not versioned. It is also the
+# one artifact here produced with a vendor API key, and it has no business in git.
+docs/promo/vo.mp3
+
+# Remotion render scratch: bundles, contact-sheet stills, browser probes.
+promo-src/out/
+
+# Remotion's downloaded Chrome Headless Shell (~175 MB). Fetched on first render.
+.remotion/
+
+# Staged at render time from video/assets/fonts, which is where these faces already live.
+# Two copies of a typeface in one repository is two sources of truth for the type.
+promo-src/public/fonts/

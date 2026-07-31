@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>See what making and building well looks like at your child's age · OMBS</title>
+<meta name="description" content="Twenty seconds of a free tool built on the Open Making and Building Standard. No account, nothing saved, and it never produces a score, level or rank.">
+<link rel="canonical" href="https://sunnypatneedi.github.io/ombs/promo/">
+<meta property="og:title" content="See what making and building well looks like at your child's age">
+<meta property="og:description" content="Twenty seconds of a free tool built on the open OMBS standard. No account, nothing saved, never a score.">
+<meta property="og:type" content="video.other">
+<meta property="og:url" content="https://sunnypatneedi.github.io/ombs/promo/">
+<meta property="og:image" content="https://sunnypatneedi.github.io/ombs/promo/poster-16x9.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" media="print" onload="this.media='all'"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+/* Tokens are the demo's own :root (docs/demo/index.html L21-41). The page field is white
+   rather than the demo's --bg, because this page is a frame around a video and the video
+   already carries the tool's own grey. The three domain hues appear exactly twice — on
+   "making" and "building" in the headline — and they mean Making and Building there, which
+   is the same device the demo's hero uses. Nowhere else on this page is coloured. */
+:root{
+  --orange-dark:#C2410C;   /* M · Making  */
+  --green-dark:#15803D;    /* B · Building */
+  --blue:#2563EB;
+
+  --white:#FFFFFF;
+  --s900:#0F172A; --s700:#334155; --s600:#475569; --s500:#64748B;
+  --s300:#CBD5E1; --s200:#E2E8F0; --s100:#F1F5F9; --s50:#F8FAFC;
+
+  --font:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
+  --mono:'SFMono-Regular',Consolas,monospace;
+
+  --bar:76px;   /* the sticky CTA's own height, kept off the bottom of the document */
+}
+*{box-sizing:border-box;min-width:0}
+html,body{overflow-x:clip}
+body{
+  margin:0;background:var(--white);color:var(--s900);
+  font-family:var(--font);line-height:1.6;-webkit-font-smoothing:antialiased;
+  padding-bottom:calc(var(--bar) + env(safe-area-inset-bottom));
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* ── masthead ─────────────────────────────────────────────────────────── */
+header{padding:18px 24px;border-bottom:2px solid var(--s100)}
+.hi{max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.logo{
+  width:44px;height:44px;background:var(--s900);color:var(--white);border-radius:15px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:.66rem;letter-spacing:-.5px;flex-shrink:0;
+  box-shadow:4px 4px 0 rgba(0,0,0,.1);
+}
+.mast strong{display:block;font-weight:800;font-size:1.02rem;letter-spacing:-.4px;line-height:1.2}
+.mast span{font-size:.76rem;color:var(--s500);font-weight:500}
+
+/* ── the video ────────────────────────────────────────────────────────────
+   It goes first, above the headline, and it is sized so that the whole cut plus its sound
+   control fit in the first screen at every width. A 9:16 video is 1.78 times taller than it
+   is wide; put a three-line headline above it on a phone and either the video or the control
+   that turns its sound on ends up below the fold. On a video-first page that is the wrong
+   thing to lose. */
+.stage{display:flex;justify-content:center;margin:24px 0 18px}
+.frame{position:relative;display:flex;max-width:100%}
+video{
+  display:block;
+  width:auto;height:auto;
+  max-width:100%;
+  max-height:min(62vh,600px);
+  max-height:min(62svh,600px);
+  background:var(--s50);
+  border:2px solid var(--s200);border-radius:22px;
+  box-shadow:6px 6px 0 rgba(0,0,0,.05);
+}
+
+/* ── the one thing ────────────────────────────────────────────────────── */
+h1{
+  font-size:clamp(1.75rem,4.4vw,3.1rem);font-weight:800;line-height:1.14;letter-spacing:-1.1px;
+  text-wrap:balance;margin:0 0 14px;max-width:20ch;
+  overflow-wrap:anywhere;
+}
+h1 .m{color:var(--orange-dark)}
+h1 .b{color:var(--green-dark)}
+.lede{
+  font-size:clamp(1rem,1.9vw,1.15rem);color:var(--s600);font-weight:500;
+  max-width:56ch;margin:0 0 40px;text-wrap:pretty;
+}
+
+.sound{
+  position:absolute;left:50%;transform:translateX(-50%);
+  bottom:20px;
+  display:inline-flex;align-items:center;gap:10px;
+  min-height:52px;padding:0 24px;border-radius:26px;
+  font-family:var(--font);font-size:1rem;font-weight:800;letter-spacing:-.2px;
+  background:var(--s900);color:var(--white);
+  border:3px solid var(--white);
+  box-shadow:0 6px 22px rgba(15,23,42,.34);
+  cursor:pointer;white-space:nowrap;
+}
+/* `display:inline-flex` above outranks the UA stylesheet's `[hidden]{display:none}`, so the
+   attribute alone would leave the control painted. It is set by the audio audit in the script
+   below, and a control that survives being hidden is worse than no control. */
+.sound[hidden]{display:none}
+.sound:hover{background:var(--s700)}
+.sound:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.sound .ico{font-size:1.15rem;line-height:1}
+/* Once the sound is on, the control stops shouting and becomes an ordinary mute toggle. */
+.sound[data-on="true"]{
+  background:var(--white);color:var(--s700);border-color:var(--s200);
+  font-size:.84rem;font-weight:700;min-height:40px;padding:0 16px;
+  box-shadow:0 2px 10px rgba(15,23,42,.12);
+  bottom:16px;
+}
+.sound[data-on="true"]:hover{color:var(--s900);border-color:var(--s300);background:var(--white)}
+
+.capnote{
+  font-size:.8rem;color:var(--s500);font-weight:500;margin:0 0 40px;text-align:center;
+}
+@media (max-width:620px){.capnote{margin-bottom:28px}}
+
+/* ── what happens ─────────────────────────────────────────────────────── */
+h2{font-size:clamp(1.4rem,3vw,1.85rem);font-weight:800;letter-spacing:-.6px;margin:0 0 6px}
+.sub{color:var(--s600);font-size:.95rem;font-weight:500;margin:0 0 20px;max-width:62ch}
+
+/* Rows, not a card grid: this is one ordered sequence — the order the video does it in —
+   and four boxes side by side would say "four features" instead. */
+ol.seq{
+  margin:0 0 44px;padding:0;list-style:none;
+  border-top:2px solid var(--s100);
+}
+ol.seq li{
+  display:grid;grid-template-columns:44px minmax(0,1fr);gap:18px;align-items:baseline;
+  padding:18px 4px;border-bottom:2px solid var(--s100);
+}
+ol.seq .n{
+  font-family:var(--mono);font-size:.86rem;font-weight:700;color:var(--s500);
+}
+ol.seq p{margin:0;font-size:clamp(1rem,1.9vw,1.1rem);font-weight:600;color:var(--s900);text-wrap:pretty}
+ol.seq small{
+  display:block;margin-top:5px;font-size:.85rem;font-weight:500;color:var(--s600);
+  line-height:1.55;
+}
+
+/* ── the standing callout, carried over from the tool ─────────────────── */
+.notascore{
+  border:4px solid var(--s900);border-radius:20px;
+  padding:22px 26px;margin:0 0 32px;box-shadow:4px 4px 0 rgba(0,0,0,.08);
+  max-width:70ch;
+}
+.notascore h3{margin:0 0 8px;font-size:clamp(1.05rem,2.2vw,1.25rem);font-weight:800;letter-spacing:-.3px}
+.notascore p{margin:0;font-size:.96rem;color:var(--s700);font-weight:500;line-height:1.62;text-wrap:pretty}
+
+.count{
+  background:var(--s50);border:2px solid var(--s100);border-radius:14px;
+  padding:18px 20px;margin:0 0 40px;max-width:70ch;
+}
+.count p{margin:0;font-size:.94rem;color:var(--s700);font-weight:500;line-height:1.6}
+.count b{color:var(--s900);font-weight:800}
+.count code{font-family:var(--mono);font-size:.84rem;color:var(--s600)}
+
+/* ── sticky CTA ───────────────────────────────────────────────────────── */
+.cta{
+  position:fixed;left:0;right:0;bottom:0;z-index:60;
+  background:var(--white);border-top:2px solid var(--s200);
+  box-shadow:0 -2px 18px rgba(15,23,42,.07);
+  padding:12px 24px calc(12px + env(safe-area-inset-bottom));
+}
+.cta-in{
+  max-width:1080px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.cta-note{font-size:.82rem;color:var(--s500);font-weight:500}
+a.go{
+  display:inline-flex;align-items:center;gap:9px;
+  min-height:48px;padding:0 22px;border-radius:16px;
+  background:var(--s900);color:var(--white);
+  font-size:1rem;font-weight:800;letter-spacing:-.2px;text-decoration:none;white-space:nowrap;
+  box-shadow:4px 4px 0 rgba(0,0,0,.12);
+}
+a.go:hover{background:var(--s700)}
+a.go:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+
+footer{
+  font-size:.84rem;color:var(--s500);font-weight:500;
+  border-top:2px solid var(--s100);padding-top:20px;margin:0 0 24px;
+}
+footer a{color:var(--blue);font-weight:600;text-decoration:none}
+footer a:hover{text-decoration:underline}
+
+@media (max-width:620px){
+  .cta-note{display:none}
+  .cta-in{justify-content:center}
+  a.go{width:100%;justify-content:center}
+  h1{margin-top:32px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hi">
+    <a href="../" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit">
+      <div class="logo">OMBS</div>
+      <div class="mast">
+        <strong>Open Making &amp; Building Standard</strong>
+        <span>K–12 Cross-Domain Framework</span>
+      </div>
+    </a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="stage">
+    <div class="frame">
+      <video
+        id="promo"
+        data-cut=""
+        muted
+        loop
+        playsinline
+        autoplay
+        preload="metadata"
+        width="1920" height="1080"
+        aria-label="Twenty seconds of the OMBS demo being operated: a name is typed, three interest chips are tapped, a practice tab is pressed, and a four-band slider is dragged."
+      ></video>
+
+      <button class="sound" id="sound" type="button" data-on="false">
+        <span class="ico" aria-hidden="true">🔊</span><span id="soundlabel">Tap for sound</span>
+      </button>
+    </div>
+  </div>
+
+  <p class="capnote" id="capnote">No music. Twenty seconds of the interface.</p>
+
+  <h1>See what <span class="m">making</span> and <span class="b">building</span> well looks like at your child&rsquo;s age.</h1>
+  <p class="lede">
+    Twenty seconds of the tool being used. It is free, it needs no account, it saves nothing, and
+    the name you type never leaves your browser.
+  </p>
+
+  <h2>What happens in the twenty seconds</h2>
+  <p class="sub">
+    In the order the video does it. Every one of these is a control being operated, not a claim
+    about an outcome.
+  </p>
+
+  <ol class="seq">
+    <li>
+      <span class="n">01</span>
+      <p>A first name and an age.
+        <small>The age derives the grade band and marks it on the slider. The name personalises
+        the copy: “Lio is in this band”. Both are optional, and neither is stored.</small></p>
+    </li>
+    <li>
+      <span class="n">02</span>
+      <p>Up to three things they like making.
+        <small>The picks compute a lean — toward Making or toward Building — and each selected
+        chip tints with that half&rsquo;s colour. Below, the page narrows to the four dimensions
+        that fit.</small></p>
+    </li>
+    <li>
+      <span class="n">03</span>
+      <p>Six practices, four grade bands.
+        <small>Define, Draft, Test, Iterate, Share, AI-Independence. Drag the slider and one
+        practice matures across K–2, 3–5, 6–8 and 9–12. Slide off your child&rsquo;s band and it
+        says so — it does not re-place the child.</small></p>
+    </li>
+    <li>
+      <span class="n">04</span>
+      <p>The standard&rsquo;s own words, with its code.
+        <small>Every band shows the verbatim descriptor and its identifier, so you can go and
+        read the clause the sentence came from.</small></p>
+    </li>
+  </ol>
+
+  <div class="notascore">
+    <h3>This is not a score, and OMBS never produces one.</h3>
+    <p>
+      OMBS records that a practice happened, tied to real work — never how well, never a level,
+      never a rank. Nothing here places one child against another, nothing here is a test, and
+      there is nothing to sign up for.
+    </p>
+  </div>
+
+  <div class="count">
+    <p>
+      The tool is built live from the standard: <b>57 evidence descriptors</b> across
+      <b>14 dimensions</b> in OMBS v0.3.0, plus an evidence layer of 6 evidence forms, 5 observer
+      types and 6 admissibility rules. Those numbers are counted out of
+      <code>standards.json</code> in the browser — nothing on the page types them in.
+    </p>
+  </div>
+
+  <footer>
+    <div>Free to use, adapt and share under CC BY-SA 4.0.</div>
+    <div>Open the tool itself at <a href="../demo/">sunnypatneedi.github.io/ombs/demo/</a>.</div>
+  </footer>
+</main>
+
+<div class="cta">
+  <div class="cta-in">
+    <span class="cta-note">An open standard for making and building, K–12.</span>
+    <a class="go" href="../">Explore the open standard <span aria-hidden="true">→</span></a>
+  </div>
+</div>
+
+<script>
+/* ── one <video>, two files ────────────────────────────────────────────
+   The cut is chosen by the shape of the viewport, not by a user-agent string: a tall window
+   gets the 1080×1920 phone cut, everything else gets 1920×1080. The swap preserves the play
+   position, so rotating a phone mid-video does not restart it. */
+const TALL = window.matchMedia("(max-aspect-ratio: 3/5)");
+const CUT = {
+  "9x16": { src: "ombs-demo-promo-9x16.mp4", poster: "poster-9x16.jpg", w: 1080, h: 1920 },
+  "16x9": { src: "ombs-demo-promo-16x9.mp4", poster: "poster-16x9.jpg", w: 1920, h: 1080 },
+};
+
+const v = document.getElementById("promo");
+const btn = document.getElementById("sound");
+const label = document.getElementById("soundlabel");
+const note = document.getElementById("capnote");
+
+function choose() {
+  const key = TALL.matches ? "9x16" : "16x9";
+  if (v.dataset.cut === key) return;
+  const at = v.currentTime || 0;
+  const cut = CUT[key];
+  v.dataset.cut = key;
+  v.width = cut.w;
+  v.height = cut.h;
+  v.poster = cut.poster;
+  v.src = cut.src;
+  v.currentTime = at;
+  v.play().catch(blocked);
+}
+
+/* Autoplay can be refused — iOS Low Power Mode refuses even muted video. When it is, the
+   affordance stops asking for sound and asks for a tap instead, because a still frame with a
+   "Tap for sound" button on it is a broken promise. */
+function blocked() {
+  label.textContent = "Tap to play";
+  btn.dataset.on = "false";
+}
+
+function toggleSound() {
+  if (v.paused) {
+    v.play().catch(() => {});
+  }
+  v.muted = !v.muted;
+  btn.dataset.on = String(!v.muted);
+  label.textContent = v.muted ? "Tap for sound" : "Sound on · mute";
+  btn.querySelector(".ico").textContent = v.muted ? "🔊" : "🔇";
+}
+
+/* The control promises a voice. The voiceover is generated by the operator (scripts/gen-vo.mjs)
+   and muxed in at render time, so a file can legitimately reach this page with no audio track —
+   and a "Tap for sound" button on a silent video is a lie the viewer discovers by tapping.
+   Once playback is a second in, ask the file whether it has audio and remove the promise if it
+   does not. Inconclusive is treated as "has audio": the copy below never claims a voice until
+   one has actually been detected, so the worst inconclusive case is a button that does nothing,
+   not a sentence that is false. */
+function auditAudio() {
+  const tracks = v.audioTracks ? v.audioTracks.length > 0 : null;
+  const moz = typeof v.mozHasAudio === "boolean" ? v.mozHasAudio : null;
+  const decoded =
+    typeof v.webkitAudioDecodedByteCount === "number" ? v.webkitAudioDecodedByteCount : null;
+
+  const silent = tracks === false || moz === false || (decoded === 0 && v.currentTime > 1);
+  const hasAudio = tracks === true || moz === true || (decoded !== null && decoded > 0);
+
+  btn.hidden = silent;
+  if (hasAudio) note.textContent = "No music. One voice, eight lines, and the interface.";
+}
+
+btn.addEventListener("click", toggleSound);
+TALL.addEventListener("change", choose);
+v.addEventListener("playing", () => {
+  if (label.textContent === "Tap to play") label.textContent = v.muted ? "Tap for sound" : "Sound on · mute";
+});
+v.addEventListener("timeupdate", auditAudio);
+
+choose();
+</script>
+</body>
+</html>

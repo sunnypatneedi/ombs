@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Storyboard · OMBS /demo promo</title>
+<meta name="description" content="The eight beats of the 20-second OMBS demo promo, scrubbable, each mapped to the Ground-truth item it depicts.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" media="print" onload="this.media='all'"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+/* Tokens are the demo's own :root (docs/demo/index.html L21-41), unchanged. The three domain
+   hues carry meaning here exactly as they do there — S blue, M orange, B green — and are used
+   nowhere decorative. Everything else is the neutral ramp. */
+:root{
+  --blue:#2563EB;   --blue-dark:#1E40AF;   --blue-light:#EFF6FF;   --blue-border:#BFDBFE;
+  --orange:#EA580C; --orange-dark:#C2410C; --orange-light:#FFF7ED; --orange-border:#FED7AA;
+  --green:#16A34A;  --green-dark:#15803D;  --green-light:#F0FDF4;  --green-border:#BBF7D0;
+
+  --bg:#F8FAFC; --white:#FFFFFF;
+  --s900:#0F172A; --s700:#334155; --s600:#475569; --s500:#64748B;
+  --s400:#94A3B8; --s300:#CBD5E1; --s200:#E2E8F0; --s100:#F1F5F9; --s50:#F8FAFC;
+
+  --font:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
+  --mono:'SFMono-Regular',Consolas,monospace;
+}
+*{box-sizing:border-box;min-width:0}
+html,body{overflow-x:clip}
+body{
+  margin:0;background:var(--bg);color:var(--s900);
+  font-family:var(--font);line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+
+/* ── masthead ─────────────────────────────────────────────────────────── */
+header{
+  background:var(--white);border-bottom:4px solid var(--s200);
+  padding:14px 24px;box-shadow:0 1px 8px rgba(0,0,0,0.05);
+}
+.hi{max-width:1040px;margin:0 auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{
+  width:48px;height:48px;background:var(--s900);color:var(--white);border-radius:16px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:.7rem;letter-spacing:-.5px;box-shadow:4px 4px 0 rgba(0,0,0,.1);
+  flex-shrink:0;
+}
+.mast strong{display:block;font-weight:800;font-size:1.2rem;letter-spacing:-.4px;line-height:1.2}
+.mast span{font-size:.78rem;color:var(--s500);font-weight:500}
+
+h1{
+  font-size:clamp(1.9rem,4.4vw,2.9rem);font-weight:800;line-height:1.15;letter-spacing:-1px;
+  text-wrap:balance;margin:44px 0 12px;
+}
+.lede{font-size:1.05rem;color:var(--s600);font-weight:500;max-width:66ch;margin:0 0 8px}
+.facts{
+  display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none;
+}
+.facts li{
+  background:var(--white);border:2px solid var(--s200);border-radius:20px;
+  padding:5px 14px;font-size:.8rem;font-weight:700;color:var(--s700);
+}
+.facts li b{font-family:var(--mono);font-weight:700;color:var(--s900)}
+
+/* ── scrubber ─────────────────────────────────────────────────────────── */
+.scrub{
+  position:sticky;top:0;z-index:50;margin:28px 0 0;
+  background:var(--white);border:2px solid var(--s200);border-radius:20px;
+  padding:16px 18px 14px;box-shadow:4px 4px 0 rgba(0,0,0,.04);
+}
+.scrub-top{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:12px}
+button.play{
+  font-family:var(--font);font-size:.86rem;font-weight:700;
+  min-height:40px;padding:0 18px;border-radius:14px;cursor:pointer;
+  background:var(--s900);color:var(--white);border:2px solid var(--s900);
+}
+button.play:hover{background:var(--s700);border-color:var(--s700)}
+button.play:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.clock{font-family:var(--mono);font-size:.9rem;font-weight:700;color:var(--s900)}
+.clock em{font-style:normal;color:var(--s500);font-weight:700}
+.now{
+  font-size:.86rem;font-weight:700;color:var(--s700);
+  margin-left:auto;text-align:right;
+}
+.now b{color:var(--s900);font-weight:800}
+
+input[type=range]{
+  width:100%;height:32px;-webkit-appearance:none;appearance:none;
+  background:transparent;padding:0;border:0;margin:0;display:block;
+}
+input[type=range]:focus{outline:none}
+input[type=range]::-webkit-slider-runnable-track{height:6px;background:var(--s200);border-radius:20px}
+input[type=range]::-moz-range-track{height:6px;background:var(--s200);border-radius:20px}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:24px;height:24px;border-radius:8px;
+  background:var(--s900);border:3px solid var(--white);margin-top:-9px;cursor:pointer;
+  box-shadow:0 0 0 2px var(--s900);
+}
+input[type=range]::-moz-range-thumb{
+  width:24px;height:24px;border-radius:8px;background:var(--s900);
+  border:3px solid var(--white);cursor:pointer;box-shadow:0 0 0 2px var(--s900);
+}
+input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 2px var(--s900),0 0 0 5px var(--blue)}
+input[type=range]:focus-visible::-moz-range-thumb{box-shadow:0 0 0 2px var(--s900),0 0 0 5px var(--blue)}
+
+.track{display:flex;gap:2px;margin-top:2px}
+.tseg{
+  flex-grow:1;flex-basis:0;height:26px;border-radius:8px;
+  background:var(--s100);border:2px solid transparent;
+  font-size:.66rem;font-weight:800;color:var(--s500);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;overflow:hidden;white-space:nowrap;padding:0 4px;
+}
+.tseg:hover{border-color:var(--s300);color:var(--s700)}
+.tseg:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.tseg[aria-current="true"]{background:var(--s900);color:var(--white);border-color:var(--s900)}
+
+/* ── beats ────────────────────────────────────────────────────────────── */
+h2.sec{font-size:1.5rem;font-weight:800;letter-spacing:-.5px;margin:48px 0 4px}
+p.sub{color:var(--s600);font-size:.92rem;font-weight:500;margin:0 0 20px;max-width:70ch}
+
+.beat{
+  background:var(--white);border:2px solid var(--s200);border-radius:20px;
+  padding:22px 24px;margin-bottom:14px;box-shadow:4px 4px 0 rgba(0,0,0,.04);
+  scroll-margin-top:190px;
+}
+.beat[data-live="true"]{border-color:var(--s900);box-shadow:4px 4px 0 rgba(15,23,42,.14)}
+.beat-head{display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:12px}
+.num{
+  width:40px;height:40px;border-radius:14px;flex-shrink:0;
+  background:var(--s100);color:var(--s700);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:.9rem;font-weight:700;
+}
+.beat[data-live="true"] .num{background:var(--s900);color:var(--white)}
+.beat-head h3{margin:0;font-size:1.15rem;font-weight:800;letter-spacing:-.3px}
+.timing{
+  font-family:var(--mono);font-size:.76rem;font-weight:700;color:var(--s600);
+  margin-top:2px;
+}
+.beat-body{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:22px}
+@media (max-width:760px){.beat-body{grid-template-columns:minmax(0,1fr)}}
+.moves{margin:0;font-size:.94rem;color:var(--s700);font-weight:500;line-height:1.62;text-wrap:pretty}
+.moves + .moves{margin-top:10px}
+
+.lbl{
+  font-size:.68rem;letter-spacing:1px;text-transform:uppercase;
+  color:var(--s500);font-weight:700;margin:16px 0 8px;
+}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.gt{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--blue-light);color:var(--blue-dark);border:1px solid var(--blue-border);
+  border-radius:8px;padding:4px 9px;font-size:.76rem;font-weight:700;text-decoration:none;
+}
+.gt:hover{border-color:var(--blue-dark)}
+.gt:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.gt code{font-family:var(--mono);font-size:.72rem}
+
+.evs{margin:0;padding:0;list-style:none;font-size:.8rem}
+.evs li{display:flex;gap:10px;padding:5px 0;border-bottom:1px solid var(--s100)}
+.evs li:last-child{border-bottom:0}
+.evs b{font-family:var(--mono);font-weight:700;color:var(--s900);flex-shrink:0;min-width:52px}
+.evs span{color:var(--s600);font-weight:500}
+
+/* Screen schematic. Deliberately crude: it says which control is live and where the pointer
+   is, and nothing about pixels. The real screen is the Remotion project. */
+.screen{
+  background:var(--bg);border:2px solid var(--s200);border-radius:14px;padding:12px;
+}
+.screen .bar{height:16px;border-radius:6px;background:var(--white);border:1px solid var(--s200);margin-bottom:8px}
+.rowlets{display:flex;gap:5px;flex-wrap:wrap}
+.let{
+  height:22px;border-radius:7px;background:var(--white);border:1px solid var(--s200);
+  flex-grow:1;flex-basis:52px;
+}
+.let.on-S{background:var(--blue-light);border-color:var(--blue)}
+.let.on-M{background:var(--orange-light);border-color:var(--orange-dark)}
+.let.on-B{background:var(--green-light);border-color:var(--green-dark)}
+.let.ink{background:var(--s900);border-color:var(--s900)}
+.let.ghost{opacity:.42}
+.slab{height:12px;border-radius:5px;background:var(--s200);margin-top:8px}
+.slab.w70{width:70%}.slab.w88{width:88%}.slab.w52{width:52%}
+.cursor{font-size:.74rem;font-weight:700;color:var(--s700);margin-top:10px;display:flex;gap:7px}
+.cursor b{color:var(--s900);font-weight:800}
+
+/* ── ground truth ─────────────────────────────────────────────────────── */
+.truth{
+  background:var(--white);border:2px solid var(--s200);border-radius:20px;
+  padding:8px 24px;box-shadow:4px 4px 0 rgba(0,0,0,.04);
+}
+.truth ol{margin:0;padding:0 0 0 26px}
+.truth li{padding:14px 0;border-bottom:1px solid var(--s100);font-size:.94rem;font-weight:500;color:var(--s700)}
+.truth li:last-child{border-bottom:0}
+.truth li:target{background:var(--blue-light);border-radius:10px;padding-left:10px;margin-left:-10px}
+.truth li b{color:var(--s900);font-weight:700}
+.used{
+  display:block;margin-top:6px;font-size:.76rem;font-weight:700;color:var(--s500);
+  font-family:var(--mono);
+}
+
+.notascore{
+  background:var(--white);border:4px solid var(--s900);border-radius:20px;
+  padding:20px 24px;margin:24px 0 0;box-shadow:4px 4px 0 rgba(0,0,0,.08);
+}
+.notascore h3{margin:0 0 6px;font-size:1.05rem;font-weight:800}
+.notascore p{margin:0;font-size:.92rem;color:var(--s700);font-weight:500;line-height:1.6}
+
+footer{
+  margin:48px 0 56px;padding-top:22px;border-top:2px solid var(--s200);
+  font-size:.84rem;color:var(--s500);font-weight:500;
+}
+footer a{color:var(--blue);font-weight:600;text-decoration:none}
+footer a:hover{text-decoration:underline}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hi">
+    <div class="logo">OMBS</div>
+    <div class="mast">
+      <strong>Storyboard · /demo promo</strong>
+      <span>Open Making &amp; Building Standard</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <h1>Twenty seconds of the tool being operated.</h1>
+  <p class="lede">
+    Eight beats. Every one of them is a control being touched and an interface answering — not a
+    slide, not a pan across a screenshot. Scrub the timeline and the beat under the playhead
+    lights up; click a beat to jump to it.
+  </p>
+  <p class="lede">
+    Each beat carries the numbered Ground-truth items it depicts. That mapping is the honesty
+    gate: a beat that cannot cite an item is a beat that shows something the tool does not do,
+    and it does not get built.
+  </p>
+
+  <ul class="facts">
+    <li><b>20.00s</b> · 600 frames @ 30fps</li>
+    <li><b>1080×1920</b> phone cut</li>
+    <li><b>1920×1080</b> desktop cut</li>
+    <li><b>6</b> controls touched</li>
+    <li><b>0</b> screenshots</li>
+  </ul>
+
+  <div class="scrub">
+    <div class="scrub-top">
+      <button class="play" id="play" type="button" aria-label="Play the timeline">▶ Play</button>
+      <span class="clock"><span id="tsec">0.00</span>s <em>·</em> f<span id="tframe">0</span></span>
+      <span class="now">Beat <b id="nowbeat">1 · The tool, at rest</b></span>
+    </div>
+    <input type="range" id="head" min="0" max="599" step="1" value="0" aria-label="Scrub the timeline, frame 0 to 599">
+    <div class="track" id="track" role="tablist" aria-label="Jump to a beat"></div>
+  </div>
+
+  <h2 class="sec">The beats</h2>
+  <p class="sub">
+    Frames are the source of truth — <code>promo-src/src/script.ts</code> holds the same numbers,
+    and the storyboard is wrong if they ever disagree.
+  </p>
+
+  <div id="beats"></div>
+
+  <div class="notascore">
+    <h3>Nothing in these twenty seconds tracks, scores, compares or stores.</h3>
+    <p>
+      There is no progress over time, no second child to compare against, no account, no
+      assessment and no AI feature, because the tool has none of those. Beat 6 is not a
+      disclaimer bolted to the end — it is a block the page carries at all times, and it gets a
+      beat of its own for that reason.
+    </p>
+  </div>
+
+  <h2 class="sec">Ground truth</h2>
+  <p class="sub">
+    Shipped and verifiable at
+    <a href="../demo/">sunnypatneedi.github.io/ombs/demo/</a> today. Nothing outside this list
+    is claimed, implied or animated anywhere in the video, the voiceover or the landing page.
+  </p>
+
+  <div class="truth">
+    <ol id="truth"></ol>
+  </div>
+
+  <footer>
+    <div>The video is built by <code>promo-src/</code>; render it with <code>node scripts/render-promo.mjs</code>.</div>
+    <div>Free to use, adapt and share under CC BY-SA 4.0 · <a href="../">explore the open standard</a></div>
+  </footer>
+</div>
+
+<script>
+/* One source of numbers, mirrored from promo-src/src/script.ts. If the two disagree, the
+   Remotion project is right and this file is stale. */
+const FPS = 30, TOTAL = 600;
+
+/* `short` is the chip label, `full` is the item as the brief states it. Two fields rather than
+   one truncated string: slicing a sentence to fit a chip cuts it mid-word, and a label that
+   ends "…never produ" is the kind of thing a storyboard is supposed to catch, not commit. */
+const TRUTH = [
+  { short:"the first name",     full:"Type a child's first name → copy personalises throughout (“Lio is in this band”; “What Lio picked leans toward Building”)." },
+  { short:"the age → the band", full:"Pick an age 5–18 → derives the grade band and marks it on the slider." },
+  { short:"three chips, a lean",full:"Tap interest chips, capped at three → computes a Making/Building lean; selected chips tint with that domain's colour." },
+  { short:"six practice tabs",  full:"Six practice tabs — Define, Draft, Test, Iterate, Share, AI-Independence — each swaps the displayed descriptor." },
+  { short:"four grade bands",   full:"A four-band slider (K–2 · 3–5 · 6–8 · 9–12) shows how one practice matures. Sliding off the child's band reads “Lio's band is 3–5 — you're looking at 6–8” rather than re-placing the child." },
+  { short:"verbatim + code",    full:"The standard's <b>verbatim</b> descriptor is shown with its code (e.g. <code>OMBS.S.AI.68.1</code>)." },
+  { short:"the live count",     full:"The footer count is read live from <code>standards.json</code>: 57 evidence descriptors, 14 dimensions, plus 6 evidence forms, 5 observer types, 6 admissibility rules." },
+  { short:"never a score",      full:"A standing callout states the tool never produces a score, level or rank." },
+  { short:"nothing stored",     full:"Nothing is stored, no account is required, and the child's name never leaves the browser." }
+];
+
+const BEATS = [
+  {
+    id:"open", label:"The tool, at rest", from:0, to:40, truth:[9],
+    moves:[
+      "The demo's own hero paints — the OMBS masthead with the version pill read from standards.json, the question headline with “making” in Making orange and “building” in Building green, and the subline “Free, no account, nothing saved”.",
+      "A pointer enters from below the fold and off to the right, the way a hand arrives at a screen. The page does not move: at both formats the masthead, the hero and the whole setup card already fit in one viewport, so there is nothing to scroll to."
+    ],
+    events:[["f4","pointer enters"]],
+    screen:{ bar:true, rows:[["ghost","ghost","ghost","ghost"]], slabs:["w70","w88"], cursor:"entering, below the fold" }
+  },
+  {
+    id:"name", label:"Type a first name", from:40, to:142, truth:[1,2],
+    moves:[
+      "The pointer taps the name field. The field takes the demo's blue focus ring — instantly, because a focus ring that fades in reads as lag — and a caret starts blinking at the platform rate.",
+      "L·i·o types in, and copy personalises live across three separate blocks: the explorer sub-head becomes “Lio is 9”, the band pill becomes “▲ Lio is in this band”, and the standing callout rewrites to “Nothing here places Lio against other children”. The age field already reads 9 years old, and that is what put the marker on 3–5."
+    ],
+    events:[["f62","tap · focus ring + caret"],["f80 f94 f108","L · Li · Lio"],["f150","blur"]],
+    screen:{ bar:true, rows:[["on-S","",""]], slabs:["w52"], cursor:"on the name field" }
+  },
+  {
+    id:"chips", label:"Pick what they like to make", from:142, to:254, truth:[3],
+    moves:[
+      "Three chips are tapped in order — Robots, Games, Comics. Each tints on press: Building green, Building green, Making orange. The row is the one place in the tool where the colour rule is taught rather than stated, so the tint is mixed in across the press rather than simply being present.",
+      "On the third pick the nine remaining chips go half-strength, because the control is capped at three. The lean sentence resolves underneath — “What Lio picked leans toward Building” — and further down the page the eight domain dimensions narrow to the four Building ones."
+    ],
+    events:[["f166","Robots"],["f198","Games"],["f230","Comics · cap reached"]],
+    screen:{ bar:true, rows:[["","","on-M",""],["","","on-B",""],["on-B","ghost","ghost","ghost"]], slabs:["w88"], cursor:"on the third chip" }
+  },
+  {
+    id:"tabs", label:"Switch practice", from:254, to:342, truth:[4,6],
+    moves:[
+      "The pointer travels to the AI-Independence tab and the page scrolls under it on the same leg — a page that scrolls while the pointer is parked on a control drags the control out from under it, which is the single thing that makes scripted cursor work read as fake.",
+      "The tab presses; the white selected pill travels across the trough to it; the descriptor underneath swaps to the plain-English line, the standard's verbatim text, and the component code <code>OMBS.S.AI.35.1</code>."
+    ],
+    events:[["f254–282","camera: band heading to the top"],["f286","tab press"],["f286–306","pill travels"]],
+    screen:{ bar:true, rows:[["","","","ink"]], slabs:["w88","w70"], cursor:"on the AI-Independence tab" }
+  },
+  {
+    id:"slider", label:"Drag the four bands", from:342, to:444, truth:[5,6],
+    moves:[
+      "The pointer grabs the thumb and drags right. It moves continuously while the value snaps band to band the way a step-1 range does — 3–5, 6–8, 9–12 — then settles back on 6–8. Both motions are drawn, because the gap between them is what makes a drag read as a drag.",
+      "Every stop rewrites four things at once: the band heading, the ages line, the plain-English line and the verbatim descriptor with its code. The camera does not move for any of it — all four are in the same frame as the slider.",
+      "The band pill refuses to re-place the child. It reads “Lio's band is 3–5 — you're looking at 6–8”, and the bold marker under 3–5 never moves."
+    ],
+    events:[["f368","grab"],["f370–394","drag to 9–12"],["f402–414","back to 6–8"],["f420","release"]],
+    screen:{ bar:true, rows:[["","","ink",""]], slabs:["w88","w70","w52"], cursor:"holding the thumb" }
+  },
+  {
+    id:"notascore", label:"Never a score", from:444, to:498, truth:[8],
+    moves:[
+      "The pointer stops and the page scrolls under it to the standing callout — the only 4px ink border anywhere in the tool, and the one block that belongs to no domain, so it carries no domain colour.",
+      "“This is not a score, and OMBS never produces one. OMBS records that a practice happened, tied to real work — never how well, never a level, never a rank.”"
+    ],
+    events:[["f446–478","camera: to the callout"]],
+    screen:{ bar:true, rows:[["ink","ink","ink","ink"]], slabs:["w88","w70"], cursor:"still, page moving under it" }
+  },
+  {
+    id:"cta", label:"Tap the standard", from:498, to:546, truth:[7],
+    moves:[
+      "The footer's live count is on screen: 57 evidence descriptors across 14 dimensions in OMBS v0.3.0, plus 6 evidence forms, 5 observer types and 6 admissibility rules. None of those numbers is typed into the video — they are counted out of standards.json at build time.",
+      "The pointer hovers the footer link, which underlines instantly, then presses it."
+    ],
+    events:[["f502–514","camera: to the footer"],["f514","hover · underline"],["f532","press"]],
+    screen:{ bar:true, rows:[["","","",""]], slabs:["w88","w52"], cursor:"on “explore the open standard”" }
+  },
+  {
+    id:"end", label:"Resolved", from:546, to:600, truth:[7,8,9],
+    moves:[
+      "The press resolves to the done state: the masthead and version, the address of the tool, and the two things that are true of it — never a score, never a level, never a rank; nothing saved, no account, the name never leaves your browser.",
+      "No button, no offer, no waitlist. OMBS has nothing to sign up for and the video does not imply that it does."
+    ],
+    events:[["f546","end card rises"],["f554","pointer gone"]],
+    screen:{ bar:false, rows:[["ink","",""]], slabs:["w70","w52"], cursor:"—" }
+  }
+];
+
+/* ── render ───────────────────────────────────────────────────────────── */
+const $ = (id) => document.getElementById(id);
+const fmt = (f) => (f / FPS).toFixed(2);
+
+$("truth").innerHTML = TRUTH.map((t, i) => {
+  const n = i + 1;
+  const used = BEATS.filter((b) => b.truth.includes(n)).map((b) => b.label);
+  return `<li id="gt${n}">${t.full}<span class="used">beats: ${used.join(" · ") || "—"}</span></li>`;
+}).join("");
+
+$("beats").innerHTML = BEATS.map((b, i) => {
+  const rows = b.screen.rows.map((r) =>
+    `<div class="rowlets">${r.map((c) => `<span class="let ${c}"></span>`).join("")}</div>`
+  ).join("");
+  const slabs = b.screen.slabs.map((w) => `<div class="slab ${w}"></div>`).join("");
+  return `
+  <section class="beat" id="beat-${b.id}" data-from="${b.from}" data-to="${b.to}">
+    <div class="beat-head">
+      <div class="num">${i + 1}</div>
+      <div>
+        <h3>${b.label}</h3>
+        <div class="timing">f${b.from}–${b.to} · ${fmt(b.from)}s–${fmt(b.to)}s · ${((b.to - b.from) / FPS).toFixed(1)}s</div>
+      </div>
+    </div>
+    <div class="beat-body">
+      <div>
+        ${b.moves.map((m) => `<p class="moves">${m}</p>`).join("")}
+        <div class="lbl">Ground truth</div>
+        <div class="chips">${b.truth.map((n) => `<a class="gt" href="#gt${n}" title="${TRUTH[n - 1].full.replace(/<[^>]+>/g, "").replace(/"/g, "&quot;")}"><code>${n}</code> ${TRUTH[n - 1].short}</a>`).join("")}</div>
+      </div>
+      <div>
+        <div class="screen">
+          ${b.screen.bar ? '<div class="bar"></div>' : ""}
+          ${rows}
+          ${slabs}
+          <div class="cursor">▲ <b>${b.screen.cursor}</b></div>
+        </div>
+        <div class="lbl">Event frames</div>
+        <ul class="evs">${b.events.map(([f, what]) => `<li><b>${f}</b><span>${what}</span></li>`).join("")}</ul>
+      </div>
+    </div>
+  </section>`;
+}).join("");
+
+$("track").innerHTML = BEATS.map((b, i) =>
+  `<button class="tseg" type="button" role="tab" data-i="${i}" style="flex-grow:${b.to - b.from}">${i + 1}</button>`
+).join("");
+
+/* ── scrub ────────────────────────────────────────────────────────────── */
+const head = $("head");
+const segs = [...$("track").children];
+const panels = [...document.querySelectorAll(".beat")];
+let playing = null;
+
+const beatAt = (f) => BEATS.findIndex((b) => f >= b.from && f < b.to);
+
+function paint(f) {
+  $("tsec").textContent = fmt(f);
+  $("tframe").textContent = f;
+  const i = Math.max(0, beatAt(f));
+  $("nowbeat").textContent = `${i + 1} · ${BEATS[i].label}`;
+  segs.forEach((s, k) => s.setAttribute("aria-current", String(k === i)));
+  panels.forEach((p, k) => p.setAttribute("data-live", String(k === i)));
+}
+
+head.addEventListener("input", (e) => { stop(); paint(Number(e.target.value)); });
+
+segs.forEach((s) => s.addEventListener("click", () => {
+  stop();
+  const b = BEATS[Number(s.dataset.i)];
+  head.value = b.from;
+  paint(b.from);
+  panels[Number(s.dataset.i)].scrollIntoView({ behavior: "smooth", block: "start" });
+}));
+
+function stop() {
+  if (playing) { clearInterval(playing); playing = null; }
+  $("play").textContent = "▶ Play";
+}
+
+$("play").addEventListener("click", () => {
+  if (playing) return stop();
+  if (Number(head.value) >= TOTAL - 1) head.value = 0;
+  $("play").textContent = "‖ Pause";
+  playing = setInterval(() => {
+    const next = Number(head.value) + 1;
+    if (next >= TOTAL) { head.value = TOTAL - 1; paint(TOTAL - 1); return stop(); }
+    head.value = next;
+    paint(next);
+  }, 1000 / FPS);
+});
+
+paint(0);
+</script>
+</body>
+</html>

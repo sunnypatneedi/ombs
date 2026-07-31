@@ -1,0 +1,29 @@
+{
+  "name": "ombs-demo-promo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Remotion project for the OMBS /demo promo. Recreates the live demo's screens as frame-driven components under a scripted cursor.",
+  "license": "CC-BY-SA-4.0",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "bundle": "node scripts/bundle.mjs",
+    "still:vertical": "remotion still src/index.ts DemoPromoVertical",
+    "still:wide": "remotion still src/index.ts DemoPromoWide",
+    "render": "node ../scripts/render-promo.mjs"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.400",
+    "@remotion/cli": "4.0.400",
+    "@remotion/renderer": "4.0.400",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "remotion": "4.0.400"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.2",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "typescript": "5.9.3"
+  }
+}
