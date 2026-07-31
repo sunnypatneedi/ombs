@@ -312,7 +312,7 @@ const TRUTH = [
   { short:"the age → the band", full:"Pick an age 5–18 → derives the grade band and marks it on the slider." },
   { short:"three chips, a lean",full:"Tap interest chips, capped at three → computes a Making/Building lean; selected chips tint with that domain's colour." },
   { short:"six practice tabs",  full:"Six practice tabs — Define, Draft, Test, Iterate, Share, AI-Independence — each swaps the displayed descriptor." },
-  { short:"four grade bands",   full:"A four-band slider (K–2 · 3–5 · 6–8 · 9–12) shows how one practice matures. Sliding off the child's band reads “Lio's band is 3–5 — you're looking at 6–8” rather than re-placing the child." },
+  { short:"four grade bands",   full:"A four-band slider (K–2 · 3–5 · 6–8 · 9–12) shows how one practice matures. Sliding off the child's band reads “Lio's band is 6–8 — you're looking at K–2” rather than re-placing the child." },
   { short:"verbatim + code",    full:"The standard's <b>verbatim</b> descriptor is shown with its code (e.g. <code>OMBS.S.AI.68.1</code>)." },
   { short:"the live count",     full:"The footer count is read live from <code>standards.json</code>: 57 evidence descriptors, 14 dimensions, plus 6 evidence forms, 5 observer types, 6 admissibility rules." },
   { short:"never a score",      full:"A standing callout states the tool never produces a score, level or rank." },
@@ -342,7 +342,7 @@ const BEATS = [
     id:"chips", label:"Pick what they like to make", from:142, to:254, truth:[3],
     moves:[
       "Three chips are tapped in order — Robots, Games, Comics. Each tints on press: Building green, Building green, Making orange. The row is the one place in the tool where the colour rule is taught rather than stated, so the tint is mixed in across the press rather than simply being present.",
-      "On the third pick the nine remaining chips go half-strength, because the control is capped at three. The lean sentence resolves underneath — “What Lio picked leans toward Building” — and further down the page the eight domain dimensions narrow to the four Building ones."
+      "On the third pick the nine remaining chips go half-strength, because the control is capped at three. The lean sentence resolves underneath — “What Lio picked leans toward Building” — and further down the page the four Building dimensions stand already resolved. (The tool narrows from all eight to these four when a lean resolves; this cut holds the resolved state rather than animating the narrowing.)"
     ],
     events:[["f166","Robots"],["f198","Games"],["f230","Comics · cap reached"]],
     screen:{ bar:true, rows:[["","","on-M",""],["","","on-B",""],["on-B","ghost","ghost","ghost"]], slabs:["w88"], cursor:"on the third chip" }
