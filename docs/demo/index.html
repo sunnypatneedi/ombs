@@ -253,6 +253,12 @@ input:focus,select:focus{outline:2px solid var(--blue);outline-offset:1px;border
    colour grammar as the cards and code chips — S blue, M orange, B green — so
    the row teaches the taxonomy instead of listing it. */
 .tab-sep{align-self:stretch;width:1px;margin:0.25rem 0.45rem;background:var(--s300);flex:none}
+/* Unselected domain tabs carry their domain's ink too, so the row teaches the
+   split before the first tap. This matters most at 390px, where the 1.36:1
+   separator is nearly invisible and label length was doing all the work.
+   Measured on the --s100 trough at 13.44px/700: M 4.71:1, B 4.56:1 — AA. */
+.tab[data-domain="M"]{color:var(--orange-dark)}
+.tab[data-domain="B"]{color:var(--green-dark)}
 .tab[data-domain="M"][aria-selected="true"]{color:var(--orange-dark);box-shadow:0 2px 10px rgba(234,88,12,0.16)}
 .tab[data-domain="B"][aria-selected="true"]{color:var(--green-dark);box-shadow:0 2px 10px rgba(22,163,74,0.16)}
 button.dim{cursor:pointer;text-align:left;width:100%;font-family:var(--font)}
@@ -715,7 +721,9 @@ function renderPractice(){
   if(note){
     note.textContent = g
       ? "The large line above is a plain-English paraphrase written for this page. The quoted text is the standard itself."
-      : "The large line above is this dimension's anchor statement, from the standard. The quoted text below is its evidence descriptor for this band.";
+      : ("The large line above is this dimension's anchor statement, from the standard. The quoted text below is "
+         + (comps.length === 1 ? "its evidence descriptor" : "its " + comps.length + " evidence descriptors")
+         + " for this band.");
   }
   $("verbatim").innerHTML = comps.map(c=>esc(c.descriptor)).join("<br><br>");
   $("codeid").textContent = comps.map(c=>c.id).join(" · ");
