@@ -485,7 +485,7 @@ footer .built{margin-bottom:0.5rem}
       <div class="lbl">In the standard's own words <code id="codeid">OMBS.S.DF.35.1</code></div>
       <p id="verbatim"></p>
     </div>
-    <div class="plainnote">The large line above is a plain-English paraphrase written for this page. The quoted text is the standard itself.</div>
+    <div class="plainnote" id="plainnote">The large line above is a plain-English paraphrase written for this page. The quoted text is the standard itself.</div>
   </div>
 
   <div class="notascore">
@@ -707,6 +707,16 @@ function renderPractice(){
 
   const g = (GLOSS[dim.anchor]||{})[bandId];
   $("gloss").textContent = g || dim.anchorStatement;
+  // The caption has to describe what the large line actually is on this tab. A
+  // paraphrase exists only for the shared six; everywhere else that line is the
+  // dimension's own anchor statement, and calling it a paraphrase would label
+  // the standard's words as ours.
+  const note = $("plainnote");
+  if(note){
+    note.textContent = g
+      ? "The large line above is a plain-English paraphrase written for this page. The quoted text is the standard itself."
+      : "The large line above is this dimension's anchor statement, from the standard. The quoted text below is its evidence descriptor for this band.";
+  }
   $("verbatim").innerHTML = comps.map(c=>esc(c.descriptor)).join("<br><br>");
   $("codeid").textContent = comps.map(c=>c.id).join(" · ");
 }
@@ -740,18 +750,30 @@ function wireDimCards(){
   document.querySelectorAll("button.dim[data-anchor]").forEach(el=>{
     el.addEventListener("click",()=>{
       const a=el.dataset.anchor, dm=String(a).split(".")[1];
-      if(dm!=="S" && dm!==leanDomain()) return;   // not browsable until its half is chosen
+      if(!dimActivatable(a)) return;   // defensive; non-activatable cards are not buttons
       state.dim=a; renderTabs(); renderPractice();
       document.getElementById("tabs").scrollIntoView({block:"center"});
     });
   });
 }
 
+function dimActivatable(anchor){
+  const dm = String(anchor).split(".")[1] || "S";
+  return dm === "S" || dm === leanDomain();
+}
+
 function dimCard(d){
   /* The domain letter comes out of the anchor (OMBS.<domain>.<dim>) so each code
      chip carries its own domain colour: S blue, M orange, B green. */
   const dom = String(d.anchor).split(".")[1] || "S";
-  return `<button type="button" class="dim d-${esc(dom)}" data-anchor="${esc(d.anchor)}"><code>${esc(d.anchor)}</code><h4>${esc(d.name)}</h4><p>${esc(d.anchorStatement)}</p></button>`;
+  // A card is a button only when pressing it opens something. In the default
+  // state no half is chosen, so none of these are reachable yet — rendering them
+  // as buttons would give every visitor eight dead controls and eight junk tab
+  // stops on the first screen they see.
+  const inner = `<code>${esc(d.anchor)}</code><h4>${esc(d.name)}</h4><p>${esc(d.anchorStatement)}</p>`;
+  return dimActivatable(d.anchor)
+    ? `<button type="button" class="dim d-${esc(dom)}" data-anchor="${esc(d.anchor)}">${inner}</button>`
+    : `<div class="dim d-${esc(dom)}">${inner}</div>`;
 }
 
 /* ---------- events ---------- */
