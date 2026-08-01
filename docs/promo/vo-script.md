@@ -1,6 +1,6 @@
 # Voiceover — OMBS /demo promo
 
-Eight lines, 43 words, ~17.5 seconds of speech inside a 20-second cut. It is deliberately
+Seven lines, 35 words, ~14.5 seconds of speech inside a 20-second cut. It is deliberately
 short. The screen already carries the promise; the voice carries the operation, and the two
 never say the same sentence.
 
@@ -16,17 +16,16 @@ tool has none of those.
 |---|--------|------|--------------|
 | 1 | 24–90 | A first name. An age. | 1 · 2 |
 | 2 | 150–235 | Three things they like making. | 3 |
-| 3 | 205–250 | It leans Making, or Building. | 3 |
-| 4 | 262–330 | Six practices, four grade bands. | 4 · 5 |
-| 5 | 350–425 | Slide it, and watch one practice mature. | 5 |
-| 6 | 415–450 | In the standard's own words. | 6 |
-| 7 | 455–500 | Never a score. Never a rank. | 8 |
-| 8 | 512–575 | Fifty-seven descriptors. Free, and open. | 7 · 9 |
+| 3 | 262–330 | Six practices. Four bands. | 4 · 5 |
+| 4 | 350–425 | Slide it. Watch one practice mature. | 5 |
+| 5 | 415–450 | In the standard's own words. | 6 |
+| 6 | 455–500 | Never a score. Never a rank. | 8 |
+| 7 | 512–575 | Fifty-seven descriptors. Free and open. | 7 · 9 |
 
-Line 5 says *one practice* matures, not *the child*. The distinction is the whole point of the
+Line 4 says *one practice* matures, not *the child*. The distinction is the whole point of the
 band slider and it is the easiest thing in this script to get wrong.
 
-Line 8's count is not typed into the video — `promo-src/src/standard.ts` derives it from
+Line 7's count is not typed into the video — `promo-src/src/standard.ts` derives it from
 `docs/standards.json`. If the standard grows, re-record this line and re-render; the number on
 screen will already have changed.
 
@@ -39,12 +38,11 @@ not as words.
 ```vo
 [chill] A first name. An age.
 [warm] Three things they like making.
-[warm] It leans Making, or Building.
-[chill] Six practices, four grade bands.
-[excited] Slide it, and watch one practice mature.
+[chill] Six practices. Four bands.
+[excited] Slide it. Watch one practice mature.
 [warm] In the standard's own words.
 [warm] Never a score. Never a rank.
-[warm] Fifty-seven descriptors. Free, and open.
+[warm] Fifty-seven descriptors. Free and open.
 ```
 
 ## Recording it

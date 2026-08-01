@@ -64,7 +64,13 @@ export const Explorer: React.FC = () => {
   const swapIn =
     swap < 0
       ? 1
-      : spring({ frame: frame - swap, fps, config: { damping: 200 }, durationInFrames: 16 });
+      : spring({ frame: frame - swap, fps, config: { damping: 200 }, durationInFrames: 9 });
+
+  // Content opacity never reaches zero. The live demo swaps text instantly — it
+  // assigns textContent — so a fade that passes through nothing shows an empty
+  // labelled callout for ~8 frames and reads as a missing state rather than a
+  // change of state. Floor it and shorten it: the box always holds words.
+  const swapFade = swap < 0 ? 1 : 0.34 + 0.66 * swapIn;
 
   const tabPress = press(frame, EV.tabTap);
   const held = sliderHeld(frame);
@@ -150,7 +156,7 @@ export const Explorer: React.FC = () => {
           color: C.s900,
         }}
       >
-        <span style={{ display: "inline-block", opacity: swapIn }}>Grades {BANDS[band].label}</span>
+        <span style={{ display: "inline-block", opacity: swapFade }}>Grades {BANDS[band].label}</span>
         <small
           style={{
             fontFamily: FONT.sans,
@@ -161,7 +167,7 @@ export const Explorer: React.FC = () => {
             display: "block",
             marginTop: 5.6,
             lineHeight: 1.5,
-            opacity: swapIn,
+            opacity: swapFade,
           }}
         >
           {BANDS[band].ages} · how this practice grows as they get older
@@ -308,7 +314,7 @@ export const Explorer: React.FC = () => {
           textWrap: "pretty",
           margin: "24px 0 20px",
           minHeight: glossMin,
-          opacity: swapIn,
+          opacity: swapFade,
           transform: `translateY(${(1 - swapIn) * 6}px)`,
         }}
       >
@@ -352,7 +358,7 @@ export const Explorer: React.FC = () => {
               padding: "2.4px 7.2px",
               borderRadius: 6,
               textTransform: "none",
-              opacity: swapIn,
+              opacity: swapFade,
             }}
           >
             {comps.map((c) => c.id).join(" · ")}
@@ -366,7 +372,7 @@ export const Explorer: React.FC = () => {
             fontWeight: 500,
             lineHeight: 1.6,
             whiteSpace: "pre-line",
-            opacity: swapIn,
+            opacity: swapFade,
             transform: `translateY(${(1 - swapIn) * 5}px)`,
           }}
         >
