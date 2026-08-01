@@ -207,6 +207,8 @@ input:focus,select:focus{outline:2px solid var(--blue);outline-offset:1px;border
   font-size:1.1rem;font-weight:800;color:var(--white);flex-shrink:0;
 }
 .acc-icon-S{background:var(--blue)}                           /* site: .acc-icon-S (317) */
+.acc-icon-M{background:var(--orange)}                         /* the badge follows the open dimension's */
+.acc-icon-B{background:var(--green)}                          /* domain — same grammar as everything else */
 .ex-domain{font-size:1rem;font-weight:800;margin:0}           /* site: .acc-title h2 (322) */
 .exhead{font-size:0.8rem;color:var(--s500);font-weight:500;margin-top:0.1rem}  /* site: .acc-title p (323) */
 /* derived, and not a lift of anything. The site's three 2rem/800 section headings
@@ -246,6 +248,16 @@ input:focus,select:focus{outline:2px solid var(--blue);outline-offset:1px;border
   background:var(--white);color:var(--s900);
   box-shadow:0 2px 10px rgba(0,0,0,0.06);
 }
+/* The tab row carries the standard's own split: shared practices apply to every
+   project, the domain four only to the half the child's picks lean toward. Same
+   colour grammar as the cards and code chips — S blue, M orange, B green — so
+   the row teaches the taxonomy instead of listing it. */
+.tab-sep{align-self:stretch;width:1px;margin:0.25rem 0.45rem;background:var(--s300);flex:none}
+.tab[data-domain="M"][aria-selected="true"]{color:var(--orange-dark);box-shadow:0 2px 10px rgba(234,88,12,0.16)}
+.tab[data-domain="B"][aria-selected="true"]{color:var(--green-dark);box-shadow:0 2px 10px rgba(22,163,74,0.16)}
+button.dim{cursor:pointer;text-align:left;width:100%;font-family:var(--font)}
+button.dim:hover{border-color:var(--s400)}
+button.dim:focus-visible{outline:2px solid var(--blue);outline-offset:1px}
 
 /* The site has no range control, so this one is built from the site's shapes: --s200
    trough, --s900 thumb, and an 8px thumb radius — the site's radius for a small square
@@ -450,9 +462,9 @@ footer .built{margin-bottom:0.5rem}
 
   <div class="explorer">
     <div class="ex-top">
-      <div class="acc-icon acc-icon-S" aria-hidden="true">S</div>
+      <div class="acc-icon acc-icon-S" id="exbadge" aria-hidden="true">S</div>
       <div>
-        <h2 class="ex-domain">Shared Practices</h2>
+        <h2 class="ex-domain" id="exdomain">Shared Practices</h2>
         <div class="exhead" id="exhead">Slide through the grade bands</div>
       </div>
     </div>
@@ -588,7 +600,7 @@ INTERESTS.forEach(it=>{
     const i=state.picks.indexOf(it.id);
     if(i>=0) state.picks.splice(i,1);
     else if(state.picks.length<3) state.picks.push(it.id);
-    renderChips(); renderLean(); renderDomain();
+    renderChips(); renderLean(); renderDomain(); ensureValidTab(); renderTabs(); renderPractice();
   });
   chipWrap.appendChild(b);
 });
@@ -616,23 +628,53 @@ function renderLean(){
   el.innerHTML = `What ${esc(who())} picked leans toward ${word}.`;
 }
 
+function allDims(){
+  if(!state.spec) return [];
+  return state.spec.domains.flatMap(d=>d.dimensions);
+}
+
+// If the picks change so the selected tab's half no longer applies, fall back to
+// Define rather than leaving the explorer pointed at a tab that is no longer there.
+function ensureValidTab(){
+  const { domainId } = tabsFor();
+  const dim = allDims().find(d=>d.anchor===state.dim);
+  if(!dim) { state.dim="OMBS.S.DF"; return; }
+  const dm = String(dim.anchor).split(".")[1];
+  if(dm!=="S" && dm!==domainId) state.dim="OMBS.S.DF";
+}
+
 function dimsOf(domainId){
   if(!state.spec) return [];
   const d=state.spec.domains.find(x=>x.id===domainId);
   return d ? d.dimensions : [];
 }
 
+function tabsFor(){
+  const dom = leanDomain();
+  return { shared: dimsOf("S"), domainId: dom, domain: dom ? dimsOf(dom) : [] };
+}
+
 function renderTabs(){
   const tabs=$("tabs");
   tabs.innerHTML="";
-  dimsOf("S").forEach(dim=>{
+  const { shared, domainId, domain } = tabsFor();
+  const add = (dim, dm) => {
     const b=document.createElement("button");
     b.type="button"; b.className="tab"; b.setAttribute("role","tab");
+    if(dm) b.dataset.domain=dm;
     b.setAttribute("aria-selected", dim.anchor===state.dim ? "true":"false");
     b.textContent=dim.name;
+    b.title=dim.anchor;
     b.addEventListener("click",()=>{ state.dim=dim.anchor; renderTabs(); renderPractice(); });
     tabs.appendChild(b);
-  });
+  };
+  shared.forEach(d=>add(d,null));
+  if(domain.length){
+    const sep=document.createElement("span");
+    sep.className="tab-sep"; sep.setAttribute("aria-hidden","true");
+    tabs.appendChild(sep);
+    domain.forEach(d=>add(d,domainId));
+  }
 }
 
 function renderBandUi(){
@@ -651,40 +693,65 @@ function renderBandUi(){
 
 function renderPractice(){
   if(!state.spec) return;
-  const dim = dimsOf("S").find(d=>d.anchor===state.dim);
+  const dim = allDims().find(d=>d.anchor===state.dim);
   if(!dim) return;
   const bandId = BANDS[state.band].id;
   const comps = dim.components.filter(c=>c.gradeBand===bandId);
+  // The badge and heading name the domain of the dimension actually open, so a
+  // Making dimension never sits under a blue "Shared Practices" label.
+  const dm = String(dim.anchor).split(".")[1] || "S";
+  const domName = (state.spec.domains.find(x=>x.id===dm)||{}).name || "Shared Practices";
+  const badge = $("exbadge"), head = $("exdomain");
+  if(badge){ badge.className = "acc-icon acc-icon-"+dm; badge.textContent = dm; }
+  if(head){ head.textContent = domName; }
+
   const g = (GLOSS[dim.anchor]||{})[bandId];
   $("gloss").textContent = g || dim.anchorStatement;
   $("verbatim").innerHTML = comps.map(c=>esc(c.descriptor)).join("<br><br>");
   $("codeid").textContent = comps.map(c=>c.id).join(" · ");
 }
 
-function renderDomain(){
-  if(!state.spec) return;
+function leanDomain(){
   const picked = INTERESTS.filter(i=>state.picks.includes(i.id));
   const m = picked.filter(p=>p.lean==="M").length;
   const b = picked.filter(p=>p.lean==="B").length;
-  const domainId = !picked.length ? null : (b>m ? "B" : m>b ? "M" : null);
+  return !picked.length ? null : (b>m ? "B" : m>b ? "M" : null);
+}
+
+function renderDomain(){
+  if(!state.spec) return;
+  const domainId = leanDomain();
 
   if(!domainId){
     $("domain-title").textContent = "The two halves of the standard";
     $("domain-sub").textContent = "Pick what they like making above and this narrows to the half that fits. Until then, here are both.";
     $("dims").innerHTML = ["M","B"].flatMap(id=>dimsOf(id)).map(d=>dimCard(d)).join("");
+    wireDimCards();
     return;
   }
   const dom = state.spec.domains.find(x=>x.id===domainId);
   $("domain-title").textContent = dom.name + " — the half that fits what they make";
   $("domain-sub").textContent = "The shared practices apply to everything. These four add detail for this kind of work.";
   $("dims").innerHTML = dimsOf(domainId).map(d=>dimCard(d)).join("");
+  wireDimCards();
+}
+
+function wireDimCards(){
+  document.querySelectorAll("button.dim[data-anchor]").forEach(el=>{
+    el.addEventListener("click",()=>{
+      const a=el.dataset.anchor, dm=String(a).split(".")[1];
+      if(dm!=="S" && dm!==leanDomain()) return;   // not browsable until its half is chosen
+      state.dim=a; renderTabs(); renderPractice();
+      document.getElementById("tabs").scrollIntoView({block:"center"});
+    });
+  });
 }
 
 function dimCard(d){
   /* The domain letter comes out of the anchor (OMBS.<domain>.<dim>) so each code
      chip carries its own domain colour: S blue, M orange, B green. */
   const dom = String(d.anchor).split(".")[1] || "S";
-  return `<div class="dim d-${esc(dom)}"><code>${esc(d.anchor)}</code><h4>${esc(d.name)}</h4><p>${esc(d.anchorStatement)}</p></div>`;
+  return `<button type="button" class="dim d-${esc(dom)}" data-anchor="${esc(d.anchor)}"><code>${esc(d.anchor)}</code><h4>${esc(d.name)}</h4><p>${esc(d.anchorStatement)}</p></button>`;
 }
 
 /* ---------- events ---------- */
@@ -717,7 +784,8 @@ fetch("../standards.json")
       ? ` Plus an evidence layer of ${el.forms.length} evidence forms, ${el.observers.length} observer types and ${el.admissibility.length} admissibility rules.`
       : "";
     $("built").textContent =
-      `Built live from ${comps} evidence descriptors across ${dims} dimensions in OMBS v${spec.version} (${spec.status}).${extra}`;
+      `Built live from ${comps} evidence descriptors across ${dims} dimensions in OMBS v${spec.version} (${spec.status}). `
+      + `The six shared practices are browsable above; pick what they like making and that half's four join them.${extra}`;
     state.age = 9; state.band = bandForAge(9);
     renderTabs(); renderBandUi(); renderPractice(); renderDomain(); renderChips();
   })
