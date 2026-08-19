@@ -1,0 +1,402 @@
+{
+  "ombsVersion": "0.4.0",
+  "note": "Crosswalks indicate substantial overlap, not 1:1 equivalence. See STANDARD.md §9 for context. Boundaries (§9.7) name frameworks OMBS deliberately does NOT overlap, so an adopter can tell scope adjacency from scope claim.",
+  "frameworks": [
+    {
+      "id": "ngss-eng-design",
+      "name": "Next Generation Science Standards — Engineering Design",
+      "version": "2013",
+      "url": "https://www.nextgenscience.org/",
+      "mappings": [
+        {
+          "ombs": "OMBS.S.DF",
+          "external": [
+            "K-2-ETS1-1",
+            "3-5-ETS1-1",
+            "MS-ETS1-1",
+            "HS-ETS1-1"
+          ],
+          "relation": "overlaps"
+        },
+        {
+          "ombs": "OMBS.S.DR",
+          "external": [
+            "3-5-ETS1-2",
+            "MS-ETS1-3"
+          ],
+          "relation": "overlaps"
+        },
+        {
+          "ombs": "OMBS.S.IT",
+          "external": [
+            "3-5-ETS1-2",
+            "MS-ETS1-3"
+          ],
+          "relation": "overlaps"
+        },
+        {
+          "ombs": "OMBS.S.TS",
+          "external": [
+            "3-5-ETS1-3",
+            "MS-ETS1-4",
+            "HS-ETS1-3"
+          ],
+          "relation": "overlaps"
+        },
+        {
+          "ombs": "OMBS.B.DR",
+          "external": [
+            "3-5-ETS1-3",
+            "MS-ETS1-4",
+            "HS-ETS1-3"
+          ],
+          "relation": "overlaps"
+        },
+        {
+          "ombs": "OMBS.B.ST",
+          "external": [
+            "MS-ETS1-2",
+            "HS-ETS1-2"
+          ],
+          "relation": "overlaps"
+        }
+      ]
+    },
+    {
+      "id": "iste-students-2024",
+      "name": "ISTE Standards for Students (2024 refresh)",
+      "version": "2024",
+      "url": "https://iste.org/standards/students",
+      "mappings": [
+        {
+          "ombs": "OMBS.M.AU",
+          "external": [
+            "1.6.a",
+            "1.6.b"
+          ],
+          "relation": "overlaps"
+        },
+        {
+          "ombs": "OMBS.M.PU",
+          "external": [
+            "1.6.a",
+            "1.6.b"
+          ],
+          "relation": "overlaps"
+        },
+        {
+          "ombs": "OMBS.M.EX",
+          "external": [
+            "1.6.c",
+            "1.6.d"
+          ],
+          "relation": "overlaps"
+        },
+        {
+          "ombs": "OMBS.S.DF",
+          "external": [
+            "1.4.a"
+          ],
+          "relation": "overlaps"
+        },
+        {
+          "ombs": "OMBS.S.DR",
+          "external": [
+            "1.4.b"
+          ],
+          "relation": "overlaps"
+        },
+        {
+          "ombs": "OMBS.S.TS",
+          "external": [
+            "1.4.c"
+          ],
+          "relation": "overlaps"
+        },
+        {
+          "ombs": "OMBS.S.IT",
+          "external": [
+            "1.4.d"
+          ],
+          "relation": "overlaps"
+        },
+        {
+          "ombs": "OMBS.B.ST",
+          "external": [
+            "1.5.a",
+            "1.5.b"
+          ],
+          "relation": "overlaps"
+        },
+        {
+          "ombs": "OMBS.B.DR",
+          "external": [
+            "1.5.c"
+          ],
+          "relation": "overlaps"
+        },
+        {
+          "ombs": "OMBS.S.SH",
+          "external": [
+            "1.7.b",
+            "1.7.c"
+          ],
+          "relation": "overlaps"
+        }
+      ]
+    },
+    {
+      "id": "p21-4cs",
+      "name": "P21 / Battelle for Kids — Framework for 21st Century Learning (4Cs)",
+      "version": "2019",
+      "url": "https://www.battelleforkids.org/networks/p21",
+      "mappings": [
+        {
+          "ombs": "OMBS.M.PU",
+          "external": [
+            "Creativity"
+          ],
+          "relation": "supports"
+        },
+        {
+          "ombs": "OMBS.M.EX",
+          "external": [
+            "Creativity"
+          ],
+          "relation": "supports"
+        },
+        {
+          "ombs": "OMBS.S.DR",
+          "external": [
+            "Creativity"
+          ],
+          "relation": "supports"
+        },
+        {
+          "ombs": "OMBS.S.DF",
+          "external": [
+            "Critical Thinking"
+          ],
+          "relation": "supports"
+        },
+        {
+          "ombs": "OMBS.S.TS",
+          "external": [
+            "Critical Thinking"
+          ],
+          "relation": "supports"
+        },
+        {
+          "ombs": "OMBS.B.ST",
+          "external": [
+            "Critical Thinking"
+          ],
+          "relation": "supports"
+        },
+        {
+          "ombs": "OMBS.M.AU",
+          "external": [
+            "Communication"
+          ],
+          "relation": "supports"
+        },
+        {
+          "ombs": "OMBS.S.SH",
+          "external": [
+            "Communication"
+          ],
+          "relation": "supports"
+        },
+        {
+          "ombs": "OMBS.M.CR",
+          "external": [
+            "Collaboration"
+          ],
+          "relation": "supports"
+        },
+        {
+          "ombs": "OMBS.S.IT",
+          "external": [
+            "Collaboration"
+          ],
+          "relation": "supports"
+        },
+        {
+          "ombs": "OMBS.S.DG",
+          "external": [
+            "Critical Thinking"
+          ],
+          "relation": "supports"
+        }
+      ]
+    },
+    {
+      "id": "agency-by-design",
+      "name": "Agency by Design — Maker-Centered Learning",
+      "version": "2017",
+      "url": "https://www.agencybydesign.org/",
+      "mappings": [
+        {
+          "ombs": "OMBS.B.ST",
+          "external": [
+            "Look Closely"
+          ],
+          "relation": "supports"
+        },
+        {
+          "ombs": "OMBS.B.MT",
+          "external": [
+            "Explore Complexity"
+          ],
+          "relation": "supports"
+        },
+        {
+          "ombs": "OMBS.B.DR",
+          "external": [
+            "Explore Complexity"
+          ],
+          "relation": "supports"
+        },
+        {
+          "ombs": "OMBS.M.AU",
+          "external": [
+            "Find Opportunity"
+          ],
+          "relation": "supports"
+        },
+        {
+          "ombs": "OMBS.M.PU",
+          "external": [
+            "Find Opportunity"
+          ],
+          "relation": "supports"
+        },
+        {
+          "ombs": "OMBS.S.DF",
+          "external": [
+            "Find Opportunity"
+          ],
+          "relation": "supports"
+        },
+        {
+          "ombs": "OMBS.S.DG",
+          "external": [
+            "Look Closely"
+          ],
+          "relation": "supports",
+          "note": "Narrowing a fault to the smallest part that still shows it is close observation of parts and relationships. Partial: Agency by Design's triad is about noticing designed systems, not about repairing one's own build."
+        }
+      ]
+    },
+    {
+      "id": "ccss-ela-writing",
+      "name": "CCSS English Language Arts — Writing Standards",
+      "version": "2010",
+      "url": "https://www.thecorestandards.org/ELA-Literacy/W/",
+      "mappings": [
+        {
+          "ombs": "OMBS.M.AU",
+          "external": [
+            "W.x.4"
+          ],
+          "relation": "overlaps",
+          "note": "x denotes any grade"
+        },
+        {
+          "ombs": "OMBS.M.PU",
+          "external": [
+            "W.x.4"
+          ],
+          "relation": "overlaps"
+        },
+        {
+          "ombs": "OMBS.S.DR",
+          "external": [
+            "W.x.5"
+          ],
+          "relation": "overlaps"
+        },
+        {
+          "ombs": "OMBS.S.IT",
+          "external": [
+            "W.x.5"
+          ],
+          "relation": "overlaps"
+        },
+        {
+          "ombs": "OMBS.S.SH",
+          "external": [
+            "W.x.6"
+          ],
+          "relation": "overlaps"
+        }
+      ]
+    },
+    {
+      "id": "aias-2024",
+      "name": "Artificial Intelligence Assessment Scale (AIAS)",
+      "version": "2024",
+      "url": "https://doi.org/10.53761/q3azde36",
+      "note": "A five-level scale for the permitted extent of generative-AI use in an assessment task. AIAS states what level of use is ALLOWED; OMBS.S.AI.AB states what the learner must be able to DISCLOSE about the use that occurred. Complementary, not equivalent — an AIAS level is a task rule, not evidence of practice.",
+      "mappings": [
+        {
+          "ombs": "OMBS.S.AI.AB",
+          "external": [
+            "AIAS levels 1-5"
+          ],
+          "relation": "supports"
+        },
+        {
+          "ombs": "OMBS.S.AI.AB.912.1",
+          "external": [
+            "AIAS levels 1-5"
+          ],
+          "relation": "supports",
+          "note": "AIAS is one of the published disclosure schemes this descriptor accepts."
+        }
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "framework": "unesco-ai-competency-students",
+      "name": "UNESCO AI Competency Framework for Students",
+      "version": "2024",
+      "url": "https://www.unesco.org/en/digital-education/ai-future-learning",
+      "relation": "distinct-from",
+      "ombs": [
+        "OMBS.S.AI",
+        "OMBS.S.AI.DI",
+        "OMBS.S.AI.AP",
+        "OMBS.S.AI.AB",
+        "OMBS.S.AI.TJ"
+      ],
+      "note": "OMBS.S.AI and its sub-dimensions assess whether the learner remained the source of choice while making something. They do not assess understanding of AI as subject matter — how models work, where they fail, their societal effects — which is AI literacy and belongs to the UNESCO framework. A tool that reads S.AI as an AI-literacy measure has misread it. See STANDARD.md §1.3 and §4.7.1."
+    },
+    {
+      "framework": "casel-sel",
+      "name": "CASEL Core SEL Competencies",
+      "version": "2020",
+      "url": "https://casel.org/fundamentals-of-sel/",
+      "relation": "distinct-from",
+      "ombs": [
+        "OMBS.M.CR",
+        "OMBS.S.AI.AP",
+        "OMBS.S.DG"
+      ],
+      "note": "Critique response, appraisal, and diagnosis are assessed as observable practices on a piece of work, not as dispositions or social-emotional competencies. OMBS.S.DG in particular does not measure persistence, patience, or frustration tolerance: a calm learner who changes five things at once does not satisfy it, and a frustrated learner who changes one thing at a time does. Every S.DG descriptor is decided by a trace on the work — a smaller specimen, a single changed variable, a retained baseline — never by the learner's manner. Self-awareness and self-management belong to CASEL. See STANDARD.md §1.3, §4.4 and §9.7."
+    },
+    {
+      "framework": "ngss-sep-3",
+      "name": "NGSS / NRC Framework for K-12 Science Education — Practice 3, Planning and carrying out investigations",
+      "version": "NRC Framework 2012; NGSS 2013",
+      "url": "https://nap.nationalacademies.org/catalog/13165/a-framework-for-k-12-science-education-practices-crosscutting-concepts",
+      "relation": "distinct-from",
+      "ombs": [
+        "OMBS.S.DG",
+        "OMBS.S.TS"
+      ],
+      "note": "Deliberately a boundary and not a crosswalk. The control-of-variables reasoning studied in science education and the diagnosis practice OMBS codes share a cognitive core, and OMBS cites that research as grounding for OMBS.S.DG (STANDARD.md §4.4). They remain different objects. SEP-3 investigates a natural phenomenon to produce scientific knowledge, inside a science content domain, under the norms of a scientific investigation. OMBS.S.DG locates the cause of a fault in an artifact the learner made, in order to repair it, in any medium — a paragraph readers stall on, a dish that came out flat, a scene that drags, a mechanism that jams. OMBS requires no hypothesis in a stated form, no instrument, no measurement and no domain knowledge, and assesses no science content. A tool that reads OMBS.S.DG as an NGSS science-practice measure has misread it. See STANDARD.md §1.3, §2.4 and §9.7."
+    }
+  ]
+}
