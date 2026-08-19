@@ -6,14 +6,25 @@
 **Targets:** OMBS v0.4.0
 **Encoded draft:** [`v0.4.0-draft/`](../v0.4.0-draft/) — full prose + JSON + crosswalks, passing `scripts/check-parity.mjs`
 **Governance class:** New dimensions / codes — steering review + 30-day public comment + 2/3 majority (GOVERNANCE.md)
-**Conformance impact:** **Breaking at Core.** The Shared Practices spine goes from five to six.
+**Conformance impact:** **Breaking at Core.** The Shared Practices spine goes from five to seven — broken once, in one version.
 
 ---
 
 ## 0. Read this part first
 
-This proposal asks for one new Shared dimension and four new components. It also asks the project to notice
-something about itself.
+This proposal asks for **two** new Shared dimensions — `OMBS.S.DG` (Diagnose) and `OMBS.S.RV` (Revisit) — and
+**two** new component families under existing dimensions. It also asks the project to notice something about
+itself.
+
+Two earlier shapes of this proposal were cut on review, and both cuts made it smaller and better sourced:
+
+- **Two component families were removed** — a *minimal end-to-end version* under `S.DR` and a *reproducibility*
+  record under `B.FN`, eight leaves in total. They were the two families for which no source could be found that
+  genuinely supports the practice claim, and they shipped in an earlier revision carrying `TODO(cite)` with no
+  citation at all. A fully-cited proposal was preferred to a larger one with declared gaps. The practices are
+  real and may return with grounding; they are not in this proposal.
+- **`S.RV` was added rather than deferred to 0.5.0**, so the Core spine is broken **once**. Two consecutive
+  minors each moving the spine would make every adopter re-conform twice for one editorial decision.
 
 GOVERNANCE.md puts a change of this class behind steering review, a 30-day public comment window, and a 2/3
 majority. **There is no steering committee.** GOVERNANCE.md says OMBS is in bootstrap stewardship and intends
@@ -130,8 +141,8 @@ artifact ladder that carried them is rejected in §7.4.
 
 ## 2. What is proposed
 
-One new Shared dimension and four new components, all four grade bands each. Twenty new leaves; 73 → **93**.
-Fifteen dimensions (7 + 4 + 4). Additive only: no code is renamed, retired, or narrowed.
+Two new Shared dimensions and two new component families, all four grade bands each. Sixteen new leaves;
+73 → **89**. Sixteen dimensions (8 + 4 + 4). Additive only: no code is renamed, retired, or narrowed.
 
 ### 2.1 `OMBS.S.DG` — Diagnose
 
@@ -177,13 +188,84 @@ most in need of comment.
 
 | Code | Practice | What distinguishes it from `.1` |
 |---|---|---|
-| `OMBS.S.DR.<band>.2` | The minimal end-to-end version | `.1` is **incomplete at full scope** (a rough partial draft). `.2` is **complete at small scope** — every stage present, start to finish, nothing skipped. The two find different problems: `.1` finds problems inside a part, `.2` finds problems between parts. An adopter tagging a rough partial as `.2` has recorded the opposite of what the code says. |
 | `OMBS.S.TS.<band>.2` | Risk-ordered testing | `.1` asks whether the learner tested. `.2` asks whether they tested the assumption whose failure would cost the most **before** building what depends on it, with the ordering and its reason recorded beforehand. What is assessed is the ordering decision, not the outcome: an assumption tested first and found sound is full evidence. |
 | `OMBS.B.ST.<band>.2` | The join as a designed object | `.1` **identifies** structure that already exists. `.2` **specifies a boundary in advance** — what each side must provide and what each may assume — so a part built to the specification fits. Two parts that fit because their maker adjusted them is `.1`; two parts that fit because the meeting point was written down first is `.2`. |
-| `OMBS.B.FN.<band>.2` | Reproducibility | `.1` asks whether the build works for its user. `.2` asks whether enough of the recipe survives that someone who was not there could rebuild or repair it. It asks for the **smallest** sufficient record, not a complete account — §8.1's minimization rule governs. A learner who names what they left out and why it is safe to leave out demonstrates more of the practice than one who kept everything. |
 
-Full descriptor text for all sixteen is in `v0.4.0-draft/STANDARD.md` §8.2 and §8.4, mirrored in
+Full descriptor text for all eight is in `v0.4.0-draft/STANDARD.md` §8.2 and §8.4, mirrored in
 `standards.json`.
+
+### 2.3 `OMBS.S.RV` — Revisit
+
+**Anchor.** After a piece of work has stopped — set aside, declared finished, or abandoned — the learner chooses
+to return to it, does further work on it, and can say what made them stop and what brought them back.
+
+Placed at §4.5, between Diagnose and Iterate. Every other Shared Practice lives inside one stretch of work;
+Revisit is the only one that needs a gap.
+
+| Code | Descriptor |
+|---|---|
+| `OMBS.S.RV.K2.1` | The learner picks up a piece of their own work that stopped at least several days earlier, does more on it, and says with prompting one reason they chose that piece. |
+| `OMBS.S.RV.35.1` | The learner returns by their own choice to a piece of their own work that had been set aside, does further work on it, and names both what had stopped them and what brought them back. |
+| `OMBS.S.RV.68.1` | Returning to a project they had abandoned, the learner names what stopped it, what has changed since that makes returning worth doing, and what they will do differently this time; if they work on it and then set it aside again, naming why satisfies this descriptor as fully as continuing does. |
+| `OMBS.S.RV.912.1` | The learner chooses one abandoned project from among two or more candidates, states the grounds for choosing it over the others, does further work on it, and names at least one thing they can do now that they could not do when the work stopped. |
+
+#### 2.3.1 The evidence that proves it is not `S.IT`
+
+This is the test the dimension has to pass to earn its place, so here is a case that satisfies `S.RV` and
+satisfies **no** `S.IT` descriptor at any band.
+
+> In October a learner drew four pages of a comic about their dog and stopped. No one reviewed it, no one gave
+> feedback, nothing was tested; they simply could not draw the dog running and stopped opening the file. In
+> March, unprompted, they pick it up. They say: *"I stopped because I couldn't draw him running and it put me
+> off. I came back because we did motion lines in the animation unit and now I can, and I want my cousin to
+> read the whole thing."* The four October pages are unchanged. They draw page five.
+
+- **Satisfies `OMBS.S.RV.35.1`**: work was set aside, the return was the learner's choice, and they named both
+  what stopped them and what brought them back.
+- **Satisfies no `S.IT` descriptor.** `S.IT`'s anchor is "uses test results to revise." There was no test, no
+  feedback, and no revision — the earlier pages were not changed at all. `OMBS.S.IT.35.1` requires "one change
+  made between drafts and the feedback or test result that drove it"; there is no feedback, no test result, and
+  no change to a draft. `S.IT.K2.1` requires "after receiving feedback"; none was received.
+
+The separation holds in the other direction too, which is what makes it a real distinction rather than a
+relabelling: a learner who revises a poem three times in one sitting on peer feedback satisfies `S.IT` fully and
+never touches `S.RV`, because no gap was crossed.
+
+#### 2.3.2 Tested against the other two codes it could collapse into
+
+- **Not `S.DG`.** Nothing failed and no cause was located. The learner did not reproduce a problem in a smaller
+  setting or hold anything constant. Conversely a learner can diagnose a fault and repair it inside one
+  afternoon, crossing no gap at all.
+- **Not `S.AI.TJ`.** Trajectory is the standard's other longitudinal code, so this one matters. `TJ` tracks a
+  moving boundary of *delegation* — what the learner hands to a tool versus keeps — and requires at least two
+  substantive AI uses to be observable at all. The comic example involves no AI, so `TJ` is not applicable to
+  it. Conversely, a learner whose delegation boundary shifts across a single continuous project satisfies `TJ`
+  and never abandons anything, so `RV` is not applicable to that. They share only the property of needing two
+  points in time; they are not measuring the same movement.
+
+#### 2.3.3 The failure modes this dimension is written against
+
+`S.RV` is one careless descriptor away from being a compliance code or a grit score, so all three guards are in
+the normative text (§4.5) rather than in this proposal only:
+
+- **Not compliance.** A learner *directed* back to an unfinished assignment has complied, not revisited. Every
+  descriptor asks for the learner's own account of why this piece.
+- **Not persistence as a virtue.** Abandonment is a legitimate outcome of making and OMBS issues no code for
+  it. `OMBS.S.RV.68.1` says explicitly that working on the piece and then setting it aside again, with a stated
+  reason, satisfies the descriptor **as fully as continuing does**. A code that rewarded only finishing would
+  punish taste.
+- **Not a record-keeping test.** The learner need not have documented the abandonment at the time. The earlier
+  state of the work is useful evidence where it survives; the assessable act is the return and the account.
+
+#### 2.3.4 Origin, and why the origin is not the argument
+
+`OMBS.S.RV` was named as a candidate in SayMake's own mapping document, which logs a `SM.DREAM_RESURFACE` event
+when a child returns to an abandoned project and commits to picking it up, and flags it as "candidate for
+upstream `OMBS.S.RV` (Revisit) if OMBS adds one." That is where the name came from and it is **not** the
+rationale. A product's event log is evidence that someone found the distinction worth instrumenting, not
+evidence that it is developmentally real. The case above and the grounding in §6 are the argument; the origin is
+disclosed because the sole adopter proposing a code that its own product already emits is exactly the conflict
+§0 is about.
 
 ---
 
@@ -224,14 +306,37 @@ however it is worded. These are illustrations for reviewers, not normative text,
   suspicion — the second violins being under-rehearsed — was ruled out when the same passage held at a slower
   tempo with the same players.
 
-### The four second components
+### `OMBS.S.RV` — Revisit
+
+**K–2** *(picks up work stopped several days earlier; says one reason)*
+- **Non-physical (story).** A child returns to a story they dictated last week, asks the adult to read back what
+  is there, and adds an ending — "because I wanted the cat to get home."
+- **Physical.** A half-built block tower left standing since Friday; on Monday the child chooses it over the new
+  materials on the table and adds a roof.
+
+**3–5** *(names what stopped them and what brought them back)*
+- **Non-physical (music).** A song abandoned at one verse. Two months later: "I stopped because I couldn't
+  think of a second verse. I came back because we sang a round in class and now I want it to be a round."
+- **Sewing.** A cushion cover put down when the zip went wrong: "I stopped at the zip. Nan showed me how to
+  tack it, so I got it back out."
+
+**6–8** *(what changed since; what they will do differently; a reasoned re-abandonment counts)*
+- **Non-physical (social/writing).** A school newsletter that ran twice and stopped: "It stopped because I was
+  doing all of it. What's changed is two people said they'd write a section. This time I'm doing four pages,
+  not eight." — and, equally valid: they restart it, find the two helpers do not deliver, and stop again,
+  writing down that they will not run it single-handed.
+- **Physical.** A go-kart abandoned when the steering jammed, restarted after a scrap bearing turns up.
+
+**9–12** *(chooses among candidates on stated grounds; names a new capability)*
+- **Non-physical (code).** Three shelved projects; the learner picks the one whose blocker was a database they
+  now know how to model — "the other two are still blocked on money and on access to the site."
+- **Furniture.** Two unfinished pieces; picks the chair because the joint that stopped it is one they can now
+  cut, and says so.
+
+### The two second components
 
 | Code | Non-physical example | Second example |
 |---|---|---|
-| `S.DR.K2.2` | A three-line song with a start, a middle and an end, sung all the way through, before the long one. | A one-page picture book, cover to back, before the big book. |
-| `S.DR.35.2` | A five-slide talk with every section present and none of them written out, before expanding. | A whole small garden bed planted end to end before the full plot. |
-| `S.DR.68.2` | A newsletter with every section stubbed, used to find that the interview section is the hardest. | A short film shot end to end on a phone to find that sound is the hard stage. |
-| `S.DR.912.2` | A working single-page version of a site, all stages present, that proves the data actually arrives. | A one-table version of a full dinner service, run start to finish. |
 | `S.TS.K2.2` | Tries saying the scary line of a play first, before learning the rest. | Tries whether the glue holds the two heaviest pieces before building the rest. |
 | `S.TS.35.2` | Checks that the library actually has the book the whole report depends on, before writing. | Checks that the motor turns the wheel at all before building the chassis. |
 | `S.TS.68.2` | Ranks "will anyone come?" above "will the posters look good?" and tests attendance first. | Ranks "will the shelf hold the weight?" above "will the stain match?" and loads a test shelf. |
@@ -240,10 +345,6 @@ however it is worded. These are illustrations for reviewers, not normative text,
 | `B.ST.35.2` | Two writers agree in writing what the first chapter must leave the character holding. | Draws the size the peg must be for the hole, before making either. |
 | `B.ST.68.2` | A shared playlist spec: what each contributor's segment must start and end on, so one can be swapped. | A shelf bracket spec that lets the shelf be replaced without redrilling. |
 | `B.ST.912.2` | A co-written report's section interface, handed to a partner who writes to it without seeing the rest. | A joint spec a partner mills to without seeing the mating part. |
-| `B.FN.K2.2` | Tells a friend the order of the steps for the game they invented. | Shows a sibling how the model was put together, in order. |
-| `B.FN.35.2` | Writes down the recipe with quantities and order, so someone can cook it again. | Records which parts and what order, so a broken one can be fixed. |
-| `B.FN.68.2` | Hands the recipe to another person, watches them cook it, notes what was missing. | Hands the build record to a classmate and notes the step they got stuck on. |
-| `B.FN.912.2` | The smallest set-up notes an absent stage manager could re-rig the show from, naming what is left out. | The smallest parts-and-settings record a repairer could work from, naming what is left out and why. |
 
 ---
 
@@ -253,16 +354,26 @@ however it is worded. These are illustrations for reviewers, not normative text,
 
 ### 4.1 What breaks
 
-§1.7 defines Core as, among other things, using "the five Shared Practices codes." With `S.DG` it is six. An
-implementation that conformed at Core under v0.3.0 does not conform at Core under v0.4.0 until it can emit
-`OMBS.S.DG`.
+§1.7 defines Core as, among other things, using "the five Shared Practices codes." With `S.DG` and `S.RV` it is
+**seven**. An implementation that conformed at Core under v0.3.0 does not conform at Core under v0.4.0 until it
+can emit both.
+
+**The spine is broken once, and that is the reason `S.RV` is in this proposal rather than the next one.** Two
+consecutive minors each adding one spine dimension would cost every adopter two migrations for what is a single
+editorial judgement about what the spine is missing. One break is cheaper than two even though this break is
+bigger.
 
 ### 4.2 Who it affects
 
 - **SayMake**, pinned at `OMBS@0.2.0` in `ombs-tagger.ts` and `studio-independence.ts` (per the brief that
   commissioned this proposal — **not verified from this repository**, which has no visibility into that
-  codebase). Being pinned two minors back, it is unaffected until it upgrades, and it is the adopter with the
-  most direct reason to want `S.DG`: a learner who breaks a build and cannot say why currently earns no code.
+  codebase). Being pinned two minors back it is unaffected until it upgrades, and it is the adopter with the
+  most direct reason to want both codes: a learner who breaks a build and cannot say why currently earns no
+  code, and a learner who returns to an abandoned project earns one only under a SayMake-private
+  `SM.DREAM_RESURFACE` event. The cost is real and larger than for `S.DG` alone — its `OmbsPractice` union goes
+  from six members to eight, and every exhaustive switch over that union becomes a compile error until both are
+  handled. That is the good kind of breakage (it fails loudly at build time rather than silently at tag time),
+  but it is work, and it is reported here rather than discovered later.
 - **The published site** (`docs/`, `index.html`) and the badge companion, which read v0.3.0 and are unaffected
   until a release is cut.
 - **Any other adopter.** None is known to the maintainer. That is a statement about the maintainer's knowledge,
@@ -279,12 +390,13 @@ Encoded in `v0.4.0-draft/STANDARD.md` §1.7 and in `standards.json` under `confo
 2. **The version is part of the declaration.** §1.7 already requires the level to be stated with its version.
    An implementation that keeps declaring `OMBS v0.3.0, Core` stays accurate and needs no work. The break lands
    only when it declares against 0.4.0.
-3. **The migration is additive.** Add `OMBS.S.DG` to the emitted set. Where the practice was not observed, it
-   is reported the way any unobserved practice is reported — as no evidence yet, never as a deficit
-   (Appendix A.2.3).
-4. **The honest half-step.** An adopter who cannot emit `S.DG` and will not stay on 0.3.0 declares *Core
-   (partial)* and names the missing dimension. That is honest and it is not Core. A Core that means five
-   practices at one adopter and six at another is exactly the incomparability §1.7 exists to prevent.
+3. **The migration is additive.** Add `OMBS.S.DG` and `OMBS.S.RV` to the emitted set. Where a practice was not
+   observed, it is reported the way any unobserved practice is reported — as no evidence yet, never as a
+   deficit (Appendix A.2.3). `OMBS.S.RV` will read as no-evidence-yet for any programme whose projects all
+   begin and end inside one unit; that describes the programme, not the learners.
+4. **The honest half-step.** An adopter who cannot emit `S.DG` or `S.RV` and will not stay on 0.3.0 declares
+   *Core (partial)* and names the missing dimensions. That is honest and it is not Core. A Core that means five
+   practices at one adopter and seven at another is exactly the incomparability §1.7 exists to prevent.
 
 ### 4.4 Version number
 
@@ -387,14 +499,23 @@ components likewise stay inside the practices their parent dimensions already cl
 Every citation below was checked against a primary source before being written into the draft. What was fetched
 and what it returned is recorded in the loop's build notes.
 
-**There are sixteen declared `TODO(cite)` markers in `v0.4.0-draft/`, and that number is the point of this
-section.** An earlier revision of this proposal said there were none. That was literally true and misleading:
-`S.DG`'s three citations were never claimed to ground the four `.2` component families, and those sixteen codes
-had no citations at all — they were invisible to the checker because its citation gate fired only at dimension
-level, and their parent dimensions date from 0.1.0. The rule in `AGENTS.md` and `CONTRIBUTING.md` is per code.
-So: the gate now fires per code, the sixteen were failed by it, and each one is now either cited or carries a
-written, machine-readable reason it is not. A flagged gap is what the repo's rules prefer to an unflagged
-absence; a clean sweep those codes did not earn is worse than either.
+**Every shipped code now carries at least one verified citation.** That was not true two revisions ago, and the
+route here is worth stating because it is the substance of the proposal's honesty claim.
+
+An early revision said there were zero `TODO(cite)` markers. Literally true, and misleading: sixteen new codes
+had no citations at all and were invisible to the checker, whose citation gate fired only at dimension level
+while their parent dimensions dated from 0.1.0. The gate now fires **per code**, which is what `AGENTS.md` and
+`CONTRIBUTING.md` say. When it was first run it failed all twenty new codes.
+
+The next revision filled what could be filled and declared the rest — eight codes shipped with `TODO(cite)` as
+their **only** grounding. On review that was judged the wrong trade for a public standard, and those two
+families were **cut** rather than shipped ungrounded: `OMBS.S.DR.*.2` (minimal end-to-end version) and
+`OMBS.B.FN.*.2` (reproducibility) are gone, eight leaves removed. The practices are real; the sources are not
+there yet.
+
+What remains: **every shipped code carries at least one citation verified against a primary source.** Eight
+codes additionally carry a scoped `TODO(cite)` covering the *learner-level* claim only — never as the code's
+sole grounding, always alongside a verified citation for the practice.
 
 | Key | Reference | Verified against | Status |
 |---|---|---|---|
@@ -436,18 +557,39 @@ literature pulls a K–12 standard the wrong way should say so: the fallback is 
 
 ### 6.1 The four declared gaps
 
-| Family | Status | Why |
+| Family | Status | Grounding |
 |---|---|---|
-| `OMBS.S.DG.*` | Cited | Chen & Klahr (1999), Klahr & Carver (1988), Zimmerman, C. (2007) — all verified. Band placements still flagged in §4.4's epistemic-status note. |
-| `OMBS.S.TS.*.2` risk-ordered testing | Cited for the practice, `TODO(cite)` for the learner claim | Boehm (1988) states the practice. Nothing places risk-ordering at a grade band, and no study validates the four descriptors. |
-| `OMBS.B.ST.*.2` boundary specification | Cited for the practice, `TODO(cite)` for the learner claim | Parnas (1972) states the practice. Nothing places boundary specification at a grade band, and no study validates the four descriptors. |
-| `OMBS.S.DR.*.2` minimal end-to-end version | **`TODO(cite)` — no citation offered** | The practice is plainly attested in craft and production traditions (a maquette, a toile, a read-through, a pilot bake), but no peer-reviewed or canonical source has been identified that states it generally or places it at a band. The nearest software sources would be a stretch and are not used. |
-| `OMBS.B.FN.*.2` reproducibility | **`TODO(cite)` — no citation offered** | The obvious neighbouring literature is research reproducibility, which concerns replication of published findings by researchers. Borrowing it for a learner keeping enough of a recipe to mend a costume would overstate what is known, so it is not borrowed. |
+| `OMBS.S.DG.*` Diagnose | **Cited, verified** | Chen & Klahr (1999), Klahr & Carver (1988), Zimmerman, C. (2007). Band placements flagged in §4.4's epistemic-status note. |
+| `OMBS.S.RV.*` Revisit | **Cited, verified** + scoped `TODO(cite)` | Azevedo (2011) grounds the load-bearing claim; Barron (2006) grounds self-initiation only. `TODO(cite)` for the band placements. See §6.2. |
+| `OMBS.S.TS.*.2` risk-ordered testing | **Cited, verified** + scoped `TODO(cite)` | Boehm (1988) states the practice. Nothing places risk-ordering at a grade band. |
+| `OMBS.B.ST.*.2` boundary specification | **Cited, verified** + scoped `TODO(cite)` | Parnas (1972) states the practice. Nothing places boundary specification at a grade band. |
+| ~~`OMBS.S.DR.*.2`~~ minimal end-to-end | **CUT** | No source found that states the practice generally or places it at a band. Not shipped rather than shipped ungrounded. |
+| ~~`OMBS.B.FN.*.2`~~ reproducibility | **CUT** | Research-reproducibility literature concerns replication of published findings by researchers; borrowing it for a learner keeping enough of a recipe to mend a costume would overstate what is known. Not shipped. |
 
-A related softening: §4.2 previously asserted that between-the-parts problems "are cheapest to find early and
-most expensive to find late." That is the cost-of-change curve — a contested empirical claim from software
-engineering, with no evidence in the mediums OMBS spans. It now reads as design rationale for why the code
-exists, explicitly marked `TODO(cite)`, and no descriptor depends on it.
+Cutting the two families also removed the proposal's one uncited empirical claim. §4.2 had asserted that
+between-the-parts problems "are cheapest to find early and most expensive to find late" — the cost-of-change
+curve, contested in the literature it comes from and unevidenced in OMBS's mediums. That paragraph went with the
+family it justified.
+
+### 6.2 `OMBS.S.RV` — what was searched, what was found, what was declined
+
+The hard constraint on this amendment was that `S.RV` ships only with a verified citation genuinely supporting a
+practice claim. Four leads were checked.
+
+| Lead | Metadata | Abstract | Decision |
+|---|---|---|---|
+| **Azevedo (2011)**, "Lines of Practice: A Practice-Centered Theory of Interest Relationships," *Cognition and Instruction* 29(2):147–184, doi:10.1080/07370008.2011.556834 | Verified (Crossref, Semantic Scholar) | **Verified in full.** "A line of practice is a distinctive, **recurrent** pattern of long-term engagement in a person's participation"; "I show how interests have **birth, death, and changes** in a person's engagement." | **CITED — primary grounding.** This is the claim `S.RV` rests on: stopping and resuming is the normal shape of sustained practice, not a deficit, which is what makes a code for the *return* worth having. |
+| **Barron (2006)**, "Interest and Self-Sustained Learning as Catalysts of Development," *Human Development* 49(4):193–224, doi:10.1159/000094368 | Verified (Crossref) | **Verified in full** from the Karger page. Five self-initiated learning processes including "the creation of new interactive activity contexts such as projects." **The abstract does not mention time, persistence, or returning to work.** | **CITED, narrowly.** Grounds self-initiation and sustained projects across settings. Explicitly *not* cited for return — the JSON `note` says so. |
+| **Hidi & Renninger (2006)**, "The Four-Phase Model of Interest Development," *Educational Psychologist* 41(2):111–127, doi:10.1207/s15326985ep4102_4 | Verified (Crossref) | Verified: "a 4-phase model… triggered situational interest, maintained situational interest, emerging (less-developed) individual interest, and well-developed individual interest." | **DECLINED.** The construct I would have wanted it for — individual interest as a disposition to voluntarily *re-engage* content over time — does **not appear in the abstract**, and the publisher blocked every route to the body. Citing it for re-engagement would have been the precise stretch this proposal was warned against. Named here so the next reviewer can finish the check rather than repeat it. |
+| **Ito et al., *Connected Learning* (2013)** | Not pursued | — | **DECLINED.** A programme report rather than an empirical finding; Azevedo already carries the claim from a peer-reviewed study. |
+
+**Resnick, *Lifelong Kindergarten* (2017)** is already in §11 and its creative-learning spiral is the natural
+design rationale for a return-to-earlier-work loop. It is a practitioner book, not an empirical finding, and it
+is treated as rationale — it is not among `S.RV`'s machine-readable citations.
+
+Had Azevedo not verified, the honest outcome was to ship `S.DG` alone and defer `S.RV`. It verified, and its
+abstract turned out to be more directly on point than expected — "birth, death, and changes in engagement" is
+abandonment and resumption named as the ordinary shape of an interest.
 
 ---
 
@@ -536,7 +678,7 @@ Two design choices worth review:
 - **README and `docs/` stay pinned to the published version.** They describe what is released. A draft that
   dragged them forward would make an unadopted proposal look shipped.
 - **The citation gate fires per code, not per dimension.** It previously tested `introducedIn` only on
-  dimensions, so a new component under an old dimension — `OMBS.S.DR.68.2`, under a dimension introduced in
+  dimensions, so a new component under an old dimension — `OMBS.B.ST.68.2`, under a dimension introduced in
   0.1.0 — was structurally invisible to it while the summary line printed "codes new in 0.4.0 carry citations."
   Sixteen uncited codes passed. Components now declare `introducedIn`, the gate fires on them, and a gap may be
   *declared* with a written `citationsTodo` reason rather than filled. The summary now names the count and lists

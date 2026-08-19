@@ -235,6 +235,14 @@
             "Critical Thinking"
           ],
           "relation": "supports"
+        },
+        {
+          "ombs": "OMBS.S.RV",
+          "external": [
+            "Creativity"
+          ],
+          "relation": "supports",
+          "note": "Partial. Returning to abandoned work and taking it further is one way sustained original work happens; P21 names Creativity at framework level only, so this is mapped no more specifically than the source supports."
         }
       ]
     },
@@ -390,9 +398,10 @@
       "ombs": [
         "OMBS.M.CR",
         "OMBS.S.AI.AP",
-        "OMBS.S.DG"
+        "OMBS.S.DG",
+        "OMBS.S.RV"
       ],
-      "note": "Critique response, appraisal, and diagnosis are assessed as observable practices on a piece of work, not as dispositions or social-emotional competencies. OMBS.S.DG in particular does not measure persistence, patience, or frustration tolerance: a calm learner who changes five things at once does not satisfy it, and a frustrated learner who changes one thing at a time does. Every S.DG descriptor is decided by a trace on the work — a smaller specimen, a single changed variable, a retained baseline — never by the learner's manner. Self-awareness and self-management belong to CASEL. See STANDARD.md §1.3, §4.4 and §9.7."
+      "note": "Critique response, appraisal, and diagnosis are assessed as observable practices on a piece of work, not as dispositions or social-emotional competencies. OMBS.S.DG in particular does not measure persistence, patience, or frustration tolerance: a calm learner who changes five things at once does not satisfy it, and a frustrated learner who changes one thing at a time does. Every S.DG descriptor is decided by a trace on the work — a smaller specimen, a single changed variable, a retained baseline — never by the learner's manner. OMBS.S.RV is at the same risk and is bounded the same way: it does not measure persistence, grit, or follow-through. Abandonment is a legitimate outcome of making, OMBS issues no code for it, and a learner who returns, works, and then sets the piece aside again with a stated reason satisfies OMBS.S.RV in full. What is assessed is the learner's account across the gap, not whether anything was finished. Self-awareness and self-management belong to CASEL. See STANDARD.md §1.3, §4.4 and §9.7."
     },
     {
       "framework": "ngss-sep-3",

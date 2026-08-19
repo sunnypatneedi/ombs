@@ -233,6 +233,7 @@
           "OMBS.S.DR",
           "OMBS.S.TS",
           "OMBS.S.DG",
+          "OMBS.S.RV",
           "OMBS.S.IT",
           "OMBS.S.SH"
         ],
@@ -251,6 +252,7 @@
           "OMBS.S.DR",
           "OMBS.S.TS",
           "OMBS.S.DG",
+          "OMBS.S.RV",
           "OMBS.S.IT",
           "OMBS.S.SH"
         ],
@@ -267,7 +269,7 @@
       }
     ],
     "coreSpineChangedIn": "0.4.0",
-    "migrationNote": "The Core spine went from five Shared Practices to six in 0.4.0 with the addition of OMBS.S.DG. No code is renamed or retired and no v0.3.0 tag becomes wrong; what changes is what a Core declaration asserts. An implementation that keeps declaring \"OMBS v0.3.0, Core\" stays accurate and needs no work. Migrating means adding OMBS.S.DG to the emitted set; where the practice was not observed it is reported as no evidence yet, never as a deficit. An adopter who cannot emit it and will not stay on 0.3.0 declares \"Core (partial)\" and names the missing dimension. See STANDARD.md §1.7."
+    "migrationNote": "The Core spine went from five Shared Practices to seven in 0.4.0 with the addition of OMBS.S.DG and OMBS.S.RV. The spine is broken once, in one version, rather than in two consecutive minors. No code is renamed or retired and no v0.3.0 tag becomes wrong; what changes is what a Core declaration asserts. An implementation that keeps declaring \"OMBS v0.3.0, Core\" stays accurate and needs no work. Migrating means adding both codes to the emitted set; where a practice was not observed it is reported as no evidence yet, never as a deficit. OMBS.S.RV will read as no-evidence-yet for any programme whose projects all begin and end inside one unit, which describes the programme rather than the learners. An adopter who cannot emit them and will not stay on 0.3.0 declares \"Core (partial)\" and names the missing dimensions. See STANDARD.md §1.7."
   },
   "domains": [
     {
@@ -420,86 +422,6 @@
               "dimension": "OMBS.S.DR",
               "gradeBand": "912",
               "descriptor": "The learner produces drafts that include explicit alternatives carried forward into testing, not only the path eventually chosen, and documents which alternatives were eliminated and on what evidence.",
-              "evidence": {
-                "forms": [
-                  "OMBS.EF.AR",
-                  "OMBS.EF.LA",
-                  "OMBS.EF.SR"
-                ],
-                "observer": [
-                  "OMBS.OB.SF",
-                  "OMBS.OB.AT"
-                ]
-              }
-            },
-            {
-              "id": "OMBS.S.DR.K2.2",
-              "domain": "S",
-              "dimension": "OMBS.S.DR",
-              "gradeBand": "K2",
-              "introducedIn": "0.4.0",
-              "descriptor": "The learner makes a whole small version of the work that goes all the way from start to finish before making the full one, and can show where it starts and where it ends.",
-              "citationsTodo": "No citation offered. The practice is attested in craft and production traditions (a maquette, a toile, a read-through, a pilot bake) but no peer-reviewed or canonical source has been identified that states it generally or places it at a grade band. Declared gap, not an oversight. See STANDARD.md §4.2.",
-              "evidence": {
-                "forms": [
-                  "OMBS.EF.AR",
-                  "OMBS.EF.OB"
-                ],
-                "observer": [
-                  "OMBS.OB.WT",
-                  "OMBS.OB.AT"
-                ]
-              }
-            },
-            {
-              "id": "OMBS.S.DR.35.2",
-              "domain": "S",
-              "dimension": "OMBS.S.DR",
-              "gradeBand": "35",
-              "introducedIn": "0.4.0",
-              "descriptor": "The learner produces a version that is complete from beginning to end at a smaller size — every part present, none of them finished — before enlarging or refining any part, and names one part that is present but not yet done.",
-              "citationsTodo": "No citation offered. The practice is attested in craft and production traditions (a maquette, a toile, a read-through, a pilot bake) but no peer-reviewed or canonical source has been identified that states it generally or places it at a grade band. Declared gap, not an oversight. See STANDARD.md §4.2.",
-              "evidence": {
-                "forms": [
-                  "OMBS.EF.AR",
-                  "OMBS.EF.LA"
-                ],
-                "observer": [
-                  "OMBS.OB.SF",
-                  "OMBS.OB.WT",
-                  "OMBS.OB.AT"
-                ]
-              }
-            },
-            {
-              "id": "OMBS.S.DR.68.2",
-              "domain": "S",
-              "dimension": "OMBS.S.DR",
-              "gradeBand": "68",
-              "introducedIn": "0.4.0",
-              "descriptor": "The learner produces a version that runs through every stage of the work at reduced scope, uses it to find which stage is hardest or least certain, and names that stage before expanding the work.",
-              "citationsTodo": "No citation offered. The practice is attested in craft and production traditions (a maquette, a toile, a read-through, a pilot bake) but no peer-reviewed or canonical source has been identified that states it generally or places it at a grade band. Declared gap, not an oversight. See STANDARD.md §4.2.",
-              "evidence": {
-                "forms": [
-                  "OMBS.EF.AR",
-                  "OMBS.EF.LA",
-                  "OMBS.EF.SR"
-                ],
-                "observer": [
-                  "OMBS.OB.SF",
-                  "OMBS.OB.WT",
-                  "OMBS.OB.AT"
-                ]
-              }
-            },
-            {
-              "id": "OMBS.S.DR.912.2",
-              "domain": "S",
-              "dimension": "OMBS.S.DR",
-              "gradeBand": "912",
-              "introducedIn": "0.4.0",
-              "descriptor": "The learner produces a version small enough to finish early but complete through every stage, states what that version established that a partial draft could not, and expands the work only after the small version works end to end.",
-              "citationsTodo": "No citation offered. The practice is attested in craft and production traditions (a maquette, a toile, a read-through, a pilot bake) but no peer-reviewed or canonical source has been identified that states it generally or places it at a grade band. Declared gap, not an oversight. See STANDARD.md §4.2.",
               "evidence": {
                 "forms": [
                   "OMBS.EF.AR",
@@ -793,6 +715,121 @@
                 "zimmerman-c-2007"
               ],
               "citationScope": "Grounds the practice and, for Chen & Klahr, the plausibility of the K-2/3-5 placement. No cited study measures these descriptors. See STANDARD.md §4.4.",
+              "evidence": {
+                "forms": [
+                  "OMBS.EF.AR",
+                  "OMBS.EF.LA",
+                  "OMBS.EF.SR"
+                ],
+                "observer": [
+                  "OMBS.OB.SF",
+                  "OMBS.OB.AT"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "RV",
+          "anchor": "OMBS.S.RV",
+          "name": "Revisit",
+          "introducedIn": "0.4.0",
+          "anchorStatement": "After a piece of work has stopped — set aside, declared finished, or abandoned — the learner chooses to return to it, does further work on it, and can say what made them stop and what brought them back.",
+          "citations": [
+            "azevedo-2011",
+            "barron-2006"
+          ],
+          "epistemicStatus": "Proposed observable, not validated. Azevedo (2011) grounds the claim that stopping and resuming is the normal shape of sustained practice rather than a deficit; Barron (2006) grounds self-initiation across settings and does not address return. Neither measures these observables, neither studied a K-12 cohort across bands, and no study validates the band placements. The K-2 band is the placement most in need of comment. See STANDARD.md §4.5.",
+          "components": [
+            {
+              "id": "OMBS.S.RV.K2.1",
+              "domain": "S",
+              "dimension": "OMBS.S.RV",
+              "gradeBand": "K2",
+              "introducedIn": "0.4.0",
+              "descriptor": "The learner picks up a piece of their own work that stopped at least several days earlier, does more on it, and says with prompting one reason they chose that piece.",
+              "citations": [
+                "azevedo-2011",
+                "barron-2006"
+              ],
+              "citationScope": "Grounds the practice only. Azevedo (2011) supports recurrence and the birth/death of engagement; Barron (2006) supports self-initiated sustained projects and does not address returning to abandoned work. Neither is a K-12 study across bands and neither validates these descriptors. See STANDARD.md §4.5.",
+              "citationsTodo": "Developmental claim only: no source places revisiting at a grade band, and none validates these descriptors. The K-2 band is the least supported — the gap a five-year-old can hold in mind is unknown. See STANDARD.md §4.5.",
+              "evidence": {
+                "forms": [
+                  "OMBS.EF.AR",
+                  "OMBS.EF.OB"
+                ],
+                "observer": [
+                  "OMBS.OB.WT",
+                  "OMBS.OB.AT"
+                ]
+              }
+            },
+            {
+              "id": "OMBS.S.RV.35.1",
+              "domain": "S",
+              "dimension": "OMBS.S.RV",
+              "gradeBand": "35",
+              "introducedIn": "0.4.0",
+              "descriptor": "The learner returns by their own choice to a piece of their own work that had been set aside, does further work on it, and names both what had stopped them and what brought them back.",
+              "citationScope": "Grounds the practice only. Azevedo (2011) supports recurrence and the birth/death of engagement; Barron (2006) supports self-initiated sustained projects and does not address returning to abandoned work. Neither is a K-12 study across bands and neither validates these descriptors. See STANDARD.md §4.5.",
+              "citationsTodo": "Developmental claim only: no source places revisiting at a grade band, and none validates these descriptors. The K-2 band is the least supported — the gap a five-year-old can hold in mind is unknown. See STANDARD.md §4.5.",
+              "evidence": {
+                "forms": [
+                  "OMBS.EF.AR",
+                  "OMBS.EF.LA",
+                  "OMBS.EF.OB"
+                ],
+                "observer": [
+                  "OMBS.OB.SF",
+                  "OMBS.OB.WT",
+                  "OMBS.OB.AT"
+                ]
+              },
+              "citations": [
+                "azevedo-2011",
+                "barron-2006"
+              ]
+            },
+            {
+              "id": "OMBS.S.RV.68.1",
+              "domain": "S",
+              "dimension": "OMBS.S.RV",
+              "gradeBand": "68",
+              "introducedIn": "0.4.0",
+              "descriptor": "Returning to a project they had abandoned, the learner names what stopped it, what has changed since that makes returning worth doing, and what they will do differently this time; if they work on it and then set it aside again, naming why satisfies this descriptor as fully as continuing does.",
+              "citations": [
+                "azevedo-2011",
+                "barron-2006"
+              ],
+              "citationScope": "Grounds the practice only. Azevedo (2011) supports recurrence and the birth/death of engagement; Barron (2006) supports self-initiated sustained projects and does not address returning to abandoned work. Neither is a K-12 study across bands and neither validates these descriptors. See STANDARD.md §4.5.",
+              "citationsTodo": "Developmental claim only: no source places revisiting at a grade band, and none validates these descriptors. The K-2 band is the least supported — the gap a five-year-old can hold in mind is unknown. See STANDARD.md §4.5.",
+              "evidence": {
+                "forms": [
+                  "OMBS.EF.AR",
+                  "OMBS.EF.LA",
+                  "OMBS.EF.SR"
+                ],
+                "observer": [
+                  "OMBS.OB.SF",
+                  "OMBS.OB.WT",
+                  "OMBS.OB.AT"
+                ]
+              }
+            },
+            {
+              "id": "OMBS.S.RV.912.1",
+              "domain": "S",
+              "dimension": "OMBS.S.RV",
+              "gradeBand": "912",
+              "introducedIn": "0.4.0",
+              "descriptor": "The learner chooses one abandoned project from among two or more candidates, states the grounds for choosing it over the others, does further work on it, and names at least one thing they can do now that they could not do when the work stopped.",
+              "citations": [
+                "azevedo-2011",
+                "barron-2006"
+              ],
+              "citationScope": "Grounds the practice only. Azevedo (2011) supports recurrence and the birth/death of engagement; Barron (2006) supports self-initiated sustained projects and does not address returning to abandoned work. Neither is a K-12 study across bands and neither validates these descriptors. See STANDARD.md §4.5.",
+              "citationsTodo": "Developmental claim only: no source places revisiting at a grade band, and none validates these descriptors. The K-2 band is the least supported — the gap a five-year-old can hold in mind is unknown. See STANDARD.md §4.5.",
               "evidence": {
                 "forms": [
                   "OMBS.EF.AR",
@@ -2150,86 +2187,6 @@
                   "OMBS.OB.AT"
                 ]
               }
-            },
-            {
-              "id": "OMBS.B.FN.K2.2",
-              "domain": "B",
-              "dimension": "OMBS.B.FN",
-              "gradeBand": "K2",
-              "introducedIn": "0.4.0",
-              "descriptor": "With prompting, the learner tells or shows another person the steps they used, in the order they used them, so that person could try to make one too.",
-              "citationsTodo": "No citation offered. Research-reproducibility literature concerns replication of published findings by other researchers and would overstate what is known about a learner keeping enough of a recipe to repair a build. Declared gap, not an oversight. See STANDARD.md §6.4.",
-              "evidence": {
-                "forms": [
-                  "OMBS.EF.OB",
-                  "OMBS.EF.AR"
-                ],
-                "observer": [
-                  "OMBS.OB.WT",
-                  "OMBS.OB.AT"
-                ]
-              }
-            },
-            {
-              "id": "OMBS.B.FN.35.2",
-              "domain": "B",
-              "dimension": "OMBS.B.FN",
-              "gradeBand": "35",
-              "introducedIn": "0.4.0",
-              "descriptor": "The learner records what the build is made of and the order of the steps, in enough detail that someone else could make another one or repair a broken part.",
-              "citationsTodo": "No citation offered. Research-reproducibility literature concerns replication of published findings by other researchers and would overstate what is known about a learner keeping enough of a recipe to repair a build. Declared gap, not an oversight. See STANDARD.md §6.4.",
-              "evidence": {
-                "forms": [
-                  "OMBS.EF.LA",
-                  "OMBS.EF.AR"
-                ],
-                "observer": [
-                  "OMBS.OB.SF",
-                  "OMBS.OB.WT",
-                  "OMBS.OB.AT"
-                ]
-              }
-            },
-            {
-              "id": "OMBS.B.FN.68.2",
-              "domain": "B",
-              "dimension": "OMBS.B.FN",
-              "gradeBand": "68",
-              "introducedIn": "0.4.0",
-              "descriptor": "The learner retains the materials, settings, and step order needed to rebuild or repair the build, checks that record by having another person follow it or by remaking one part from it, and notes what the record was missing.",
-              "citationsTodo": "No citation offered. Research-reproducibility literature concerns replication of published findings by other researchers and would overstate what is known about a learner keeping enough of a recipe to repair a build. Declared gap, not an oversight. See STANDARD.md §6.4.",
-              "evidence": {
-                "forms": [
-                  "OMBS.EF.LA",
-                  "OMBS.EF.AR",
-                  "OMBS.EF.AC"
-                ],
-                "observer": [
-                  "OMBS.OB.SF",
-                  "OMBS.OB.WT",
-                  "OMBS.OB.AT"
-                ]
-              }
-            },
-            {
-              "id": "OMBS.B.FN.912.2",
-              "domain": "B",
-              "dimension": "OMBS.B.FN",
-              "gradeBand": "912",
-              "introducedIn": "0.4.0",
-              "descriptor": "The learner retains the smallest record from which a person who was not present could reproduce or repair the build, names what the record deliberately leaves out and why leaving it out is safe, and reports the result of one attempt to use it.",
-              "citationsTodo": "No citation offered. Research-reproducibility literature concerns replication of published findings by other researchers and would overstate what is known about a learner keeping enough of a recipe to repair a build. Declared gap, not an oversight. See STANDARD.md §6.4.",
-              "evidence": {
-                "forms": [
-                  "OMBS.EF.LA",
-                  "OMBS.EF.AR",
-                  "OMBS.EF.AC"
-                ],
-                "observer": [
-                  "OMBS.OB.SF",
-                  "OMBS.OB.AT"
-                ]
-              }
             }
           ]
         }
@@ -2314,6 +2271,18 @@
       "title": "A spiral model of software development and enhancement",
       "doi": "10.1109/2.59",
       "note": "Cited as the canonical statement of a practice — ordering work by what it would cost to be wrong late. Engineering literature, not a study of children; grounds no developmental or grade-band claim. Verified against Crossref, which is authoritative for this DOI: Computer 21(5):61-72, 1988. An OpenAlex record conflates this with the 1986 ACM SIGSOFT Software Engineering Notes 11(4):14-24 version of the same paper."
+    },
+    "azevedo-2011": {
+      "citation": "Azevedo, Flávio S. \"Lines of Practice: A Practice-Centered Theory of Interest Relationships.\" Cognition and Instruction 29, no. 2 (2011): 147–184.",
+      "title": "Lines of Practice: A Practice-Centered Theory of Interest Relationships",
+      "doi": "10.1080/07370008.2011.556834",
+      "note": "Grounds the claim OMBS.S.RV rests on: long-term engagement is \"a distinctive, recurrent pattern\" and interests have \"birth, death, and changes in a person's engagement\" — so stopping and resuming is the normal shape of sustained practice, not a deficit. A three-year ethnography of hobbyist rocketry, not a K-12 study; grounds no band placement."
+    },
+    "barron-2006": {
+      "citation": "Barron, Brigid. \"Interest and Self-Sustained Learning as Catalysts of Development: A Learning Ecology Perspective.\" Human Development 49, no. 4 (2006): 193–224.",
+      "title": "Interest and Self-Sustained Learning as Catalysts of Development: A Learning Ecology Perspective",
+      "doi": "10.1159/000094368",
+      "note": "Grounds the surrounding claim only: learners self-initiate and sustain projects across settings and beyond what was assigned, including \"the creation of new interactive activity contexts such as projects.\" The abstract does NOT address returning to abandoned work; this entry is not cited for that."
     }
   }
 }

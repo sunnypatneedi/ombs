@@ -141,9 +141,11 @@ if (DRAFT && cmpVersion(DRAFT.version, PUBLISHED.version) <= 0) {
 // twice, once here and once in the JSON, by someone who meant it.
 const CORE_SPINE_BY_VERSION = {
   "0.3.0": ["OMBS.S.DF", "OMBS.S.DR", "OMBS.S.TS", "OMBS.S.IT", "OMBS.S.SH"],
-  // 0.4.0 adds OMBS.S.DG (Diagnose). Five -> six is a Core-conformance break;
-  // see v0.4.0-draft/STANDARD.md §1.7 and proposals/0001-building-under-uncertainty.md.
-  "0.4.0": ["OMBS.S.DF", "OMBS.S.DR", "OMBS.S.TS", "OMBS.S.DG", "OMBS.S.IT", "OMBS.S.SH"],
+  // 0.4.0 adds OMBS.S.DG (Diagnose) and OMBS.S.RV (Revisit). Five -> seven is a
+  // Core-conformance break, taken once in one version rather than across two
+  // consecutive minors; see v0.4.0-draft/STANDARD.md §1.7 and
+  // proposals/0001-building-under-uncertainty.md.
+  "0.4.0": ["OMBS.S.DF", "OMBS.S.DR", "OMBS.S.TS", "OMBS.S.DG", "OMBS.S.RV", "OMBS.S.IT", "OMBS.S.SH"],
 };
 
 const readJson = (p) => JSON.parse(readFileSync(p, "utf8"));
@@ -314,7 +316,7 @@ function checkStandard({ versionDir, version: VERSION, isDraft }) {
 
       // Per-CODE citation gate, not per-dimension. Until 0.4.0 this fired only
       // on `unit.introducedIn`, so a new component under an OLD dimension —
-      // OMBS.S.DR.68.2 under a dimension introduced in 0.1.0 — was structurally
+      // OMBS.B.ST.68.2 under a dimension introduced in 0.1.0 — was structurally
       // invisible to it, and sixteen uncited codes passed while the summary
       // line claimed "codes new in <version> carry citations." The rule the
       // failure text quotes is per code, so the check is now per code.

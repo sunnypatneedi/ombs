@@ -56,7 +56,7 @@ The standard is governed by five design principles, in order of precedence:
 - Subject-specific content knowledge — covered by CCSS, NGSS, state academic standards, and equivalents.
 - Social-emotional learning — covered by CASEL.
 - Digital citizenship and information literacy — covered by ISTE Standards for Students (2024 refresh) and AASL.
-- Understanding of AI as subject matter — how models work, where they fail, their societal effects — covered by the UNESCO *AI Competency Framework for Students* (2024). This is AI literacy, and it is distinct from `OMBS.S.AI` (§4.7), which assesses only whether the learner remained the source of choice while making something.
+- Understanding of AI as subject matter — how models work, where they fail, their societal effects — covered by the UNESCO *AI Competency Framework for Students* (2024). This is AI literacy, and it is distinct from `OMBS.S.AI` (§4.8), which assesses only whether the learner remained the source of choice while making something.
 - Career-specific technical skills — covered by industry frameworks.
 - Early childhood pre-K practice — a future version may add a Pre-K band.
 
@@ -107,20 +107,20 @@ OMBS does not assign hours, units, or credits. It does not specify which practic
 
 **Core.** An implementation conforms at Core if, for every claim it reports as OMBS evidence:
 
-- it uses the six Shared Practices codes — `OMBS.S.DF`, `OMBS.S.DR`, `OMBS.S.TS`, `OMBS.S.DG`, `OMBS.S.IT`, `OMBS.S.SH` — for the practices it observes;
+- it uses the seven Shared Practices codes — `OMBS.S.DF`, `OMBS.S.DR`, `OMBS.S.TS`, `OMBS.S.DG`, `OMBS.S.RV`, `OMBS.S.IT`, `OMBS.S.SH` — for the practices it observes;
 - it reports `OMBS.S.AI` where AI tools were used substantively in producing the artifact, and not-applicable where they were not;
 - it records exactly one observer type (`OMBS.OB.*`) and at least one evidence form (`OMBS.EF.*`), per `OMBS.EV.DISC`;
 - it satisfies the admissibility rules of §8.1.3, including `OMBS.EV.WARR` — no claim reported at a stronger warrant than its observer supports — and `OMBS.EV.STAND`.
 
 Core does not require the Making or Building dimensions.
 
-**The Core spine changed in 0.4.0, and that is a break.** Through v0.3.0 the spine was five practices; `OMBS.S.DG` (§4.4) makes it six. An implementation that conformed at Core under v0.3.0 does not conform at Core under v0.4.0 until it can emit `OMBS.S.DG`. Three things soften it and none of them removes it:
+**The Core spine changed in 0.4.0, and that is a break.** Through v0.3.0 the spine was five practices; `OMBS.S.DG` (§4.4) and `OMBS.S.RV` (§4.5) make it seven. An implementation that conformed at Core under v0.3.0 does not conform at Core under v0.4.0 until it can emit both. The spine is broken **once**, in one version, rather than in two consecutive minors — that is why both dimensions are proposed together rather than sequenced. Three things soften it and none of them removes it:
 
 - **Nothing already emitted becomes wrong.** No code is renamed or retired; every v0.3.0 tag keeps its meaning. What changes is what a *Core* declaration asserts.
 - **The version is part of the declaration.** §1.7 already requires a level to be stated with its version ("OMBS v0.3.0, Core"). An implementation that keeps declaring `OMBS v0.3.0, Core` remains accurate and needs no work. The break lands only when it declares against 0.4.0.
-- **The migration is additive.** Add `OMBS.S.DG` to the emitted set. An implementation with no evidence of the practice reports it the way any unobserved practice is reported — as no evidence yet, never as a deficit (Appendix A.2.3).
+- **The migration is additive.** Add `OMBS.S.DG` and `OMBS.S.RV` to the emitted set. An implementation with no evidence of a practice reports it the way any unobserved practice is reported — as no evidence yet, never as a deficit (Appendix A.2.3). `OMBS.S.RV` in particular will read as no-evidence-yet for any programme whose projects all begin and end inside one unit; that is an accurate description of the programme, not of the learners.
 
-An adopter who cannot emit `OMBS.S.DG` and does not want to stay on 0.3.0 declares *Core (partial)* and names the missing dimension. That declaration is honest and it is not Core; the point of a spine is that it is the same spine everywhere, and a Core that means five practices at one adopter and six at another is the incomparability §1.7 exists to prevent.
+An adopter who cannot emit `OMBS.S.DG` or `OMBS.S.RV` and does not want to stay on 0.3.0 declares *Core (partial)* and names the missing dimensions. That declaration is honest and it is not Core; the point of a spine is that it is the same spine everywhere, and a Core that means five practices at one adopter and seven at another is the incomparability §1.7 exists to prevent.
 
 **Extended.** Core, plus every dimension of at least one domain, declared with the domain named: *Extended (Making)*, *Extended (Building)*, or *Extended (Making and Building)*.
 
@@ -152,18 +152,18 @@ The two domains overlap. A short film is made (it expresses for an audience) and
 
 OMBS has three structural components plus a cross-cutting layer:
 
-1. **Shared Practices (S)** — a spine of practices common to both domains: six unconditional (Define, Draft, Test, Diagnose, Iterate, Share) plus one conditional (AI-Independence, which applies only where AI tools were used). Every project worth assessing exercises at least three of the unconditional six. (§4)
+1. **Shared Practices (S)** — a spine of practices common to both domains: seven unconditional (Define, Draft, Test, Diagnose, Revisit, Iterate, Share) plus one conditional (AI-Independence, which applies only where AI tools were used). Every project worth assessing exercises at least three of the unconditional seven. (§4)
 2. **Making Domain (M)** — four dimensions specific to making. (§5)
 3. **Building Domain (B)** — four dimensions specific to building. (§6)
 4. **The evidence and provenance layer** — coded evidence forms, observer types, and admissibility rules that say what may count as a trace of a practice, who is competent to record it, and what their record warrants. It cuts across all three components rather than adding practices of its own. (§8.1)
 
-This gives 15 dimensions (7 + 4 + 4). `S.AI` further decomposes into four sub-dimensions (§4.7). Each dimension and sub-dimension has a four-band progression (K–2, 3–5, 6–8, 9–12) with one or more evidence descriptors per cell, yielding 93 leaf-level standard statements.
+This gives 16 dimensions (8 + 4 + 4). `S.AI` further decomposes into four sub-dimensions (§4.8). Each dimension and sub-dimension has a four-band progression (K–2, 3–5, 6–8, 9–12) with one or more evidence descriptors per cell, yielding 89 leaf-level standard statements.
 
 ### 2.3 Why two domains share a spine
 
 Earlier drafts tried a single domain with eight dimensions. Field review surfaced a recurring problem: educators teaching primarily *making*-heavy projects (writing, theater, art) found the *building*-heavy dimensions (durability, structure) awkward to apply, and vice versa. Forcing a single rubric onto both kinds of work produced poor evidence in either direction.
 
-Splitting into two domains with a shared practice spine solved this without losing coherence: the spine is what *every* making-or-building project shares (define, draft, test, diagnose, iterate, share), and each domain adds the dimensions where it has real evidentiary purchase. Projects can claim alignment to S only, S+M, S+B, or all three.
+Splitting into two domains with a shared practice spine solved this without losing coherence: the spine is what *every* making-or-building project shares (define, draft, test, diagnose, revisit, iterate, share), and each domain adds the dimensions where it has real evidentiary purchase. Projects can claim alignment to S only, S+M, S+B, or all three.
 
 ### 2.4 What OMBS is not
 
@@ -239,7 +239,7 @@ The evidence and provenance layer (§8.1) uses three namespaces that are not pra
 
 ## 4. Shared Practices (S)
 
-Six Shared Practices form the spine that runs through both domains. A project that exercises none of these does not satisfy OMBS. A seventh, `S.AI`, is **conditional** — it applies only where AI tools were used, and is reported as not applicable otherwise.
+Seven Shared Practices form the spine that runs through both domains. A project that exercises none of these does not satisfy OMBS. An eighth, `S.AI`, is **conditional** — it applies only where AI tools were used, and is reported as not applicable otherwise.
 
 ### 4.1 S.DF — Define
 
@@ -252,14 +252,6 @@ The Define practice is the antidote to busy work: it forces the learner to artic
 **Anchor:** The learner produces preliminary, low-stakes versions of the artifact — sketches, prototypes, outlines, mock-ups — that make assumptions visible before commitment to final form.
 
 Drafting is what makes iteration possible. A learner who jumps to final form forecloses revision. The standard expects drafts to be *kept*, not erased — they are evidence of practice.
-
-**Two shapes of draft, and they are not the same shape.** Component `.1` at every band is the *rough partial* draft: unfinished, provisional, standing in for the whole. Component `.2`, added in 0.4.0, is the *minimal end-to-end* version: small in scope but complete through every stage, start to finish, nothing skipped. A three-line song with a verse, a chorus, and an ending is a `.2`. A beautifully finished verse with no chorus and no ending is a `.1`, however polished.
-
-The distinction earns a code because the two find different problems. A partial draft finds problems inside the part you drafted. A minimal complete version finds the problems that live *between* the parts — the stage nobody had thought about, the join that does not join, the ending there is no time to reach. An adopter that tags a rough partial draft as `.2` has recorded the opposite of what the code says: `.1` is incomplete at full scope, `.2` is complete at small scope.
-
-The design rationale for asking about `.2` at all is that between-the-parts problems are cheaper to fix while the version is still small — but that is a *reason for the code*, not a finding this standard is reporting. The general form of the claim (that defects cost more the later they are found) is contested in the software-engineering literature it comes from, and OMBS has no evidence for it in the mediums this standard spans. `TODO(cite)` — no source is claimed for the cost asymmetry, and no descriptor below depends on it: `.2` is satisfied by producing the complete-at-small-scope version and saying what it showed, whether or not anything was cheaper.
-
-**Epistemic status.** `TODO(cite)` — no citation is offered for `OMBS.S.DR` component `.2`. The practice is well attested in craft and production traditions (a maquette, a toile, a read-through, a pilot bake) but the standard has not identified a peer-reviewed or canonical source that states it as a general practice, and none that places it at a grade band. Treat the four `.2` descriptors and their band placements as proposed observables. This is a declared gap, not an oversight; it is recorded in `standards.json` as `citationsTodo` on each of the four nodes and surfaced by `scripts/check-parity.mjs`.
 
 ### 4.3 S.TS — Test
 
@@ -292,19 +284,37 @@ It is also not the scientific method and not an engineering troubleshooting proc
 
 **Epistemic status — read before adopting.** The constructs behind Diagnose have empirical support; *these descriptors* do not. Chen and Klahr (1999) report that with "explicit training within domains, combined with probe questions," 7- to 10-year-olds learned and transferred the strategy for designing unconfounded experiments — which is why the one-change-at-a-time observable is placed at K–2 and 3–5 rather than held back to middle school. Two limits ride with it: the probe questions were part of the effective condition (probes alone were not), and the same study reports that transfer to remote situations *improved with age*, which is evidence against the bottom of the K–2 band rather than for it. Klahr and Carver (1988) show that debugging objectives, once made explicit, produce transfer to non-programming tasks — the result the medium-agnostic framing depends on. Zimmerman (2007) reviews the wider developmental picture and is the reason the 6–8 and 9–12 descriptors ask for a stated suspected cause and a ruled-out one rather than assuming either comes free with age. None of these studies measures the observables below, none was conducted on making and building work across mediums, and no study validates the band placements. `OMBS.S.DG` is offered as a proposed observable rather than a validated one. Adopters should treat evidence tagged to it as exploratory, and the band boundaries in particular as the part most likely to move.
 
-### 4.5 S.IT — Iterate
+### 4.5 S.RV — Revisit
+
+**Anchor:** After a piece of work has stopped — set aside, declared finished, or abandoned — the learner chooses to return to it, does further work on it, and can say what made them stop and what brought them back.
+
+Every other Shared Practice lives inside one stretch of work. Revisit is the only one that needs a gap. `S.IT` asks what a learner does with evidence while the work is open; `S.RV` asks whether work that closed ever opens again, and on what grounds. The two are separable in both directions: a learner can revise a draft five times in an afternoon on peer feedback and never revisit anything, and a learner can return to a comic abandoned five months ago without any test, any feedback, or any revision having driven it.
+
+What makes the return assessable is that the learner can account for both ends of the gap — what stopped the work, and what changed. "I got bored" is a start; "I stopped because I could not draw the dog running and it put me off opening it, and I came back because I learned motion lines and I want my cousin to read the whole thing" is the practice.
+
+**What Revisit is not.** Three misreadings would each turn this code into something OMBS does not measure, and all three are easy to fall into.
+
+- **It is not finishing what you were told to finish.** A learner directed back to an unfinished assignment has not exercised `S.RV`; they have complied. The return has to be the learner's choice, and the descriptors ask for the learner's own account of why *this* piece.
+- **It is not persistence as a virtue.** OMBS does not score how many projects a learner completes, and abandonment is a legitimate outcome of making. A learner who returns, works, decides the piece is not worth more effort, and says why has satisfied this practice in full — that is a reasoned close, and it is exactly as good evidence as a reasoned continuation. A code that rewarded only finishing would punish taste.
+- **It is not a memory or record-keeping test.** The learner does not have to have documented the abandonment at the time. The earlier state of the work is useful evidence where it survives, but the assessable act is the return and the account of it.
+
+Abandonment is not failure here. Interests are recurrent rather than continuous, and the periods when a practice lapses are part of its shape rather than a defect in the learner (Azevedo, 2011).
+
+**Epistemic status — read before adopting.** Azevedo (2011) is the closest grounding: a three-year ethnography describing long-term engagement as "a distinctive, recurrent pattern" and showing that interests have "birth, death, and changes in a person's engagement." That is the claim `S.RV` rests on — that stopping and resuming is the normal shape of sustained practice, not a deficit — and it is what makes a code for the *return* worth having. Barron (2006) supports the surrounding claim that learners self-initiate and sustain projects across settings and beyond what was assigned, identifying "the creation of new interactive activity contexts such as projects" among five self-initiated learning processes. Neither study measures the observables below. Azevedo's participants were hobbyist adults and adolescents, not a K–12 cohort across bands; Barron's abstract does not address returning to abandoned work at all, and it is cited only for self-initiation. `TODO(cite)` for the learner-level claim specifically: no source places revisiting at a grade band, and no study validates these four descriptors. `OMBS.S.RV` is offered as a proposed observable, and the K–2 band — where the gap a five-year-old can hold in mind is genuinely unknown — is the placement most in need of comment.
+
+### 4.6 S.IT — Iterate
 
 **Anchor:** The learner uses test results to revise, defending which feedback is acted on and which is set aside, with reasons.
 
 Iteration is not "make it again." It is *informed change*. The standard expects learners to articulate which evidence drove which revision. "I changed it because Mrs. Park said to" does not satisfy S.IT; "I cut the second example because three of five testers stopped reading there" does.
 
-### 4.6 S.SH — Share
+### 4.7 S.SH — Share
 
 **Anchor:** The learner makes the artifact and the process behind it accessible to an audience beyond the assessor, in a form appropriate to that audience.
 
 Sharing is what makes the work real. A standard that lets learners hand work only to the teacher reproduces the dynamic of school as a closed economy. Audiences may be other classes, families, online communities, clients of a community partner, or future learners — but must be specified and reached.
 
-### 4.7 S.AI — AI-Independence
+### 4.8 S.AI — AI-Independence
 
 **Anchor:** Where AI tools were used in producing the artifact, the learner can show what they kept, what they changed, and what they rejected, with reasons. Intention, voice, and the judgment behind tradeoffs remain the learner's.
 
@@ -312,19 +322,19 @@ The standard does not prohibit AI use; it asks whether the learner remained the 
 
 v0.2.0 stated this as a single dimension with one descriptor per band. That is enough to notice AI use and not enough to say anything specific about it: "the learner stayed the author" bundles four separable questions that can come apart. A learner can appraise outputs sharply while never having chosen the task. A learner can disclose AI use honestly and still delegate more of the work each week. v0.3.0 separates them.
 
-#### 4.7.1 What S.AI is not
+#### 4.8.1 What S.AI is not
 
 S.AI is **not AI literacy**. It does not assess what the learner understands about how models work, where they fail, who builds them, or what they cost society. That is a content domain, it is out of OMBS scope (§1.3), and it is covered by the UNESCO *AI Competency Framework for Students*. S.AI assesses one thing: whether, during the making of this artifact, the learner remained the source of choice. Every descriptor below is satisfied or not satisfied by looking at the work and its trace — never by asking the learner what they know about AI.
 
 It is also not a compliance check. A learner who followed every disclosure rule and delegated every decision satisfies `S.AI.AB` and fails `S.AI.DI`. That is the intended behavior: the sub-dimensions are separable on purpose, and a tool that collapses them back into one number has discarded the information the split exists to carry.
 
-#### 4.7.2 S.AI.DI — Direction
+#### 4.8.2 S.AI.DI — Direction
 
 **Anchor:** The learner, not the tool, decides what is to be made and what is asked of the tool. Requests made to an AI trace back to the learner's own stated intent.
 
 Direction is the forethought phase of self-regulated learning applied to a collaborator that will happily supply goals as well as outputs (Zimmerman, 2002). The question is not whether the learner writes good prompts — that is craft, and it is not what OMBS measures. The question is whose task it is. A learner who asks "what should I make" and builds the answer has produced an artifact without exercising Define. The 9–12 descriptor is the sharpest instrument here: naming what you deliberately *did not* delegate is the observable that separates a learner using a tool from a learner supervising one.
 
-#### 4.7.3 S.AI.AP — Appraisal
+#### 4.8.3 S.AI.AP — Appraisal
 
 **Anchor:** The learner judges each substantive AI output against criteria they can state, and the decision to keep, change, or reject it is recorded with its reason.
 
@@ -337,7 +347,7 @@ This is the kept/changed/rejected core of v0.2.0's `S.AI`, separated from disclo
 
 The failure mode this dimension exists to catch is documented outside education: over-reliance on an automated aid whose output is treated as more authoritative than its inputs support (Parasuraman & Riley, 1997).
 
-#### 4.7.4 S.AI.AB — Attribution
+#### 4.8.4 S.AI.AB — Attribution
 
 **Anchor:** The record maps parts of the artifact to where they came from — learner-authored, AI-generated, AI-assisted then revised, or sourced elsewhere — at a granularity a reader can check against the artifact.
 
@@ -345,7 +355,7 @@ Attribution is the dimension that makes the other three auditable. Without a per
 
 Attribution is stated as an evidence requirement, not an integrity rule. Whether undisclosed AI use is a violation is a local policy question OMBS takes no position on.
 
-#### 4.7.5 S.AI.TJ — Trajectory
+#### 4.8.5 S.AI.TJ — Trajectory
 
 **Anchor:** Across the work, what the learner delegates to the tool changes, and the learner can say what they took over and why.
 
@@ -420,12 +430,6 @@ A bridge tested only by walking gently across it is not tested. The standard exp
 
 Fit-for-use is the building-domain analogue of audience-fit in the making domain. The standard expects learners to put the build in the hands of the user it was designed for and observe — not ask. A learner who insists the build "works" while the user struggles to operate it has not exercised B.FN.
 
-**A build nobody can rebuild is finished, not fit for use.** Component `.1` asks whether the thing works for its user. Component `.2`, added in 0.4.0, asks whether enough of how it was made survives that someone else could make another one or repair this one. A costume that cannot be mended, a dish that cannot be cooked twice, a display that cannot be rebuilt after it is taken down — each works once and then stops being available to anyone.
-
-`.2` asks for the *smallest* record that would let a person who was not there rebuild or repair, not a complete account of everything that happened. §8.1's minimization rule governs here as everywhere: naming a form is permission to count a trace, never an instruction to collect one. A learner who names what they left out, and why leaving it out is safe, has demonstrated more of this practice than one who kept everything.
-
-**Epistemic status.** `TODO(cite)` — no citation is offered for `OMBS.B.FN` component `.2`. The obvious neighbouring literature is research reproducibility, which concerns the replication of published findings by other researchers and is a poor fit for a learner keeping enough of a recipe to mend a costume; borrowing it would overstate what is known. The practice is well attested in craft transmission (recipes, patterns, repair manuals, apprenticeship) and the standard has not identified a source that states it as a general practice or places it at a grade band. Treat the four `.2` descriptors and their band placements as proposed observables. Declared as `citationsTodo` in `standards.json` and surfaced by `scripts/check-parity.mjs`.
-
 ---
 
 ## 7. Grade-Band Progressions
@@ -441,9 +445,10 @@ Each table cell names what evidence looks like in that band. Cells include 1–3
 | Code | K–2 | 3–5 | 6–8 | 9–12 |
 |---|---|---|---|---|
 | **S.DF Define** | Names what the artifact is and one person it's for, with prompting. | Writes a one-sentence intent that names artifact, audience, and one success criterion. | Drafts intent independently with two or more success criteria; revises intent at least once. | Frames intent in tension with constraints; defends scope choices against feasible alternatives. |
-| **S.DR Draft** | Produces a sketch or rough version before final, when prompted; also makes a whole small version, start to finish, before the full one. | Produces ≥2 distinct drafts; can point to what changed; also completes a smaller version with every part present. | Produces drafts at multiple grain sizes (rough → refined); annotates choice points; runs a reduced-scope version through every stage to find the hardest one. | Drafts with explicit fork points (alternatives carried forward to test, not just the favored one); uses a complete-but-minimal version to prove what a partial draft cannot. |
+| **S.DR Draft** | Produces a sketch or rough version before final, when prompted. | Produces ≥2 distinct drafts; can point to what changed. | Produces drafts at multiple grain sizes (rough → refined); annotates choice points. | Drafts with explicit fork points (alternatives carried forward to test, not just the favored one). |
 | **S.TS Test** | Shows work to a person and notices a reaction; tries the least-certain part first, when prompted. | Tests against the success criterion from S.DF; records what happened; tests one thing the work depends on before building on it. | Tests against ≥2 criteria with a real audience or use scenario; distinguishes signal from noise; ranks assumptions by cost of late failure and tests the top one first. | Designs tests that could falsify the work; reports negative results faithfully; orders the work so the costliest assumption is tested first, and records the order beforehand. |
 | **S.DG Diagnose** | Changes one thing, keeps the rest the same, tries again, and says whether that change made a difference. | Narrows the problem to a smaller part that still shows it and tests that part alone. | Says what they think is causing it before changing anything; changes one thing at a time and records each try. | Keeps an unchanged copy to compare against; reports a cause they suspected first and ruled out, with the evidence. |
+| **S.RV Revisit** | Picks up their own work from several days ago and does more on it; says one reason for choosing it. | Returns by choice to work set aside; names what stopped them and what brought them back. | Names what stopped it, what changed since, and what they will do differently; a reasoned second setting-aside counts. | Chooses among abandoned projects on stated grounds; names one thing they can do now that they could not then. |
 | **S.IT Iterate** | Tries again after feedback, with help. | Names one change made and what feedback drove it. | Defends which feedback was acted on and which was set aside, with reasons. | Iterates across structural alternatives (not just polish); documents what was abandoned and why. |
 | **S.SH Share** | Presents to the class or family with support. | Adapts the artifact for an audience beyond the teacher. | Reaches an audience the learner identified; documents the audience's response. | Publishes to a sustained public audience with attention to access, rights, and follow-on use. |
 | **S.AI AI-Independence** | Points to one part the learner decided and one part a tool produced, with adult support. | Discloses where AI was used; names one kept and one changed-or-rejected output, each with a reason. | Keeps a record of prompts, outputs, and kept/changed/rejected decisions, with the reason in the learner's own words. | Defends that intent, voice, and key tradeoffs would still stand without the AI portion — or names what would be lost and why that loss is acceptable. |
@@ -473,7 +478,7 @@ The `S.AI` row above is the parent. Where an adopter's evidence supports it, rep
 | **B.MT Materials** | Picks from offered materials and explains a choice. | Compares two materials on one trait (strength, color, cost). | Selects materials by 2+ tradeoffs; revises after test. | Documents material choices with quantitative or comparative evidence; considers lifecycle. |
 | **B.ST Structure** | Names two parts and how they connect; says how they will join before making them. | Diagrams the build with parts and connections labeled; writes down beforehand what must be true where two parts meet. | Identifies a stress point or fragile coupling and addresses it; specifies a boundary in advance so either part can change alone. | Predicts system behavior from structure before test; explains observed deviation post-test; specifies a boundary precisely enough for someone else to build one side from it. |
 | **B.DR Durability** | Tries the build more than once and notices when it breaks. | Tests under one non-trivial condition (rougher use, longer time). | Tests against a misuse case the learner imagined. | Designs and reports failure tests; specifies operating envelope. |
-| **B.FN Function** | Gives the build to a user and watches what happens; tells someone the steps in order so they could make one too. | Records whether the user could use the build as intended; names one gap; records materials and step order well enough to rebuild or repair. | Iterates on observed-not-asked use evidence; distinguishes user error from design error; checks the rebuild record by having someone follow it. | Defines fit-for-use criteria pre-test; reports against them; recommends next-revision changes; retains the smallest record someone absent could rebuild from, and names what it leaves out. |
+| **B.FN Function** | Gives the build to a user and watches what happens. | Records whether the user could use the build as intended; names one gap. | Iterates on observed-not-asked use evidence; distinguishes user error from design error. | Defines fit-for-use criteria pre-test; reports against them; recommends next-revision changes. |
 
 ---
 
@@ -493,7 +498,7 @@ This section closes that gap by naming three coded objects: the **forms** a trac
 
 The design follows evidence-centered design's separation of the claim, the observations that warrant it, and the situations that elicit them (Mislevy, Steinberg, & Almond, 2003).
 
-**Verification runs within the resources already present.** Several 0.4.0 descriptors ask a learner to check something — that a part built to a specification fits (`OMBS.B.ST.912.2`), that another person can follow a rebuild record (`OMBS.B.FN.68.2`, `OMBS.B.FN.912.2`), that a kept baseline still behaves the old way (`OMBS.S.DG.912.1`). None of these requires a partner who is not already in the room, materials beyond those the build already used, or a device. A classmate, a family member, the learner rebuilding one side themselves from their own written specification, and a written or drawn record of a prior state all satisfy them. An adopter that reads these as requiring spare stock or a camera has added a cost the standard does not, and would systematically disadvantage the learners §1.2's design principles exist to protect (Vossoughi, Hooper, & Escudé, 2016).
+**Verification runs within the resources already present.** Several 0.4.0 descriptors ask a learner to check something — that a part built to a specification fits (`OMBS.B.ST.912.2`), that a kept baseline still behaves the old way (`OMBS.S.DG.912.1`), that work set aside months ago is still there to return to (`OMBS.S.RV.35.1`). None of these requires a partner who is not already in the room, materials beyond those the build already used, or a device. A classmate, a family member, the learner rebuilding one side themselves from their own written specification, and a written or drawn record of a prior state all satisfy them. An adopter that reads these as requiring spare stock or a camera has added a cost the standard does not, and would systematically disadvantage the learners §1.2's design principles exist to protect (Vossoughi, Hooper, & Escudé, 2016).
 
 **Minimization is normative.** Naming a form is permission to count a trace, never an instruction to collect one. An adopter retains the minimum record that satisfies a named form and no more: one admissible form recorded by one competent observer satisfies a node (§8.1.4), so an excerpt suffices wherever a complete record is not itself the evidence. OMBS never requires a learner to be identifiable beyond what the holding portfolio already requires, and never requires that a record be retained longer than the claim it supports is in use. Evidence linked to OMBS codes is typically subject to child-privacy law even though the codes are not (Appendix A.4).
 
@@ -590,10 +595,6 @@ Every component in `standards.json` carries an inline evidence block:
 - `OMBS.S.DR.35.1` — The learner produces at least two distinct drafts and can point to specific differences between them.
 - `OMBS.S.DR.68.1` — The learner produces drafts at multiple grain sizes (e.g., outline before paragraph, rough cardboard before final material) and annotates points where decisions were made.
 - `OMBS.S.DR.912.1` — The learner produces drafts that include explicit alternatives carried forward into testing, not only the path eventually chosen, and documents which alternatives were eliminated and on what evidence.
-- `OMBS.S.DR.K2.2` — The learner makes a whole small version of the work that goes all the way from start to finish before making the full one, and can show where it starts and where it ends.
-- `OMBS.S.DR.35.2` — The learner produces a version that is complete from beginning to end at a smaller size — every part present, none of them finished — before enlarging or refining any part, and names one part that is present but not yet done.
-- `OMBS.S.DR.68.2` — The learner produces a version that runs through every stage of the work at reduced scope, uses it to find which stage is hardest or least certain, and names that stage before expanding the work.
-- `OMBS.S.DR.912.2` — The learner produces a version small enough to finish early but complete through every stage, states what that version established that a partial draft could not, and expands the work only after the small version works end to end.
 
 #### OMBS.S.TS — Test
 
@@ -612,6 +613,13 @@ Every component in `standards.json` carries an inline evidence block:
 - `OMBS.S.DG.35.1` — The learner narrows the problem to a smaller part of the work that still shows it — one paragraph, one section, one component, one step — tests that part on its own, and records which part the problem is in.
 - `OMBS.S.DG.68.1` — Before making a change, the learner states what they think is causing the problem; then changes one thing at a time while leaving the rest as it was, recording for each try what was changed and what happened, so the result can be attributed to that change rather than to several at once.
 - `OMBS.S.DG.912.1` — The learner keeps an unchanged copy of the work that still shows the problem, compares it against the changed copy to confirm that the change is what fixed it, and reports at least one cause they suspected first and ruled out, naming the evidence that ruled it out.
+
+#### OMBS.S.RV — Revisit
+
+- `OMBS.S.RV.K2.1` — The learner picks up a piece of their own work that stopped at least several days earlier, does more on it, and says with prompting one reason they chose that piece.
+- `OMBS.S.RV.35.1` — The learner returns by their own choice to a piece of their own work that had been set aside, does further work on it, and names both what had stopped them and what brought them back.
+- `OMBS.S.RV.68.1` — Returning to a project they had abandoned, the learner names what stopped it, what has changed since that makes returning worth doing, and what they will do differently this time; if they work on it and then set it aside again, naming why satisfies this descriptor as fully as continuing does.
+- `OMBS.S.RV.912.1` — The learner chooses one abandoned project from among two or more candidates, states the grounds for choosing it over the others, does further work on it, and names at least one thing they can do now that they could not do when the work stopped.
 
 #### OMBS.S.IT — Iterate
 
@@ -730,10 +738,6 @@ Every component in `standards.json` carries an inline evidence block:
 - `OMBS.B.FN.35.1` — The learner records whether the user could use the build as intended and names at least one gap between intent and use.
 - `OMBS.B.FN.68.1` — The learner iterates on observed-not-asked evidence (what the user *did*, not what the user *said*) and distinguishes user error from design error.
 - `OMBS.B.FN.912.1` — The learner defines fit-for-use criteria before testing, reports against them after, and recommends specific next-revision changes with reasons.
-- `OMBS.B.FN.K2.2` — With prompting, the learner tells or shows another person the steps they used, in the order they used them, so that person could try to make one too.
-- `OMBS.B.FN.35.2` — The learner records what the build is made of and the order of the steps, in enough detail that someone else could make another one or repair a broken part.
-- `OMBS.B.FN.68.2` — The learner retains the materials, settings, and step order needed to rebuild or repair the build, checks that record by having another person follow it or by remaking one part from it, and notes what the record was missing.
-- `OMBS.B.FN.912.2` — The learner retains the smallest record from which a person who was not present could reproduce or repair the build, names what the record deliberately leaves out and why leaving it out is safe, and reports the result of one attempt to use it.
 
 ---
 
@@ -799,7 +803,7 @@ A crosswalk says where OMBS meets another framework. A boundary says where it de
 
 | OMBS | Framework | Boundary |
 |---|---|---|
-| S.AI and its sub-dimensions | UNESCO *AI Competency Framework for Students* | OMBS assesses whether the learner remained the source of choice while making something. It does not assess understanding of AI as subject matter — how models work, where they fail, their societal effects. That is AI literacy and belongs to UNESCO's framework (§1.3, §4.7.1). |
+| S.AI and its sub-dimensions | UNESCO *AI Competency Framework for Students* | OMBS assesses whether the learner remained the source of choice while making something. It does not assess understanding of AI as subject matter — how models work, where they fail, their societal effects. That is AI literacy and belongs to UNESCO's framework (§1.3, §4.8.1). |
 | M.CR, S.AI.AP, S.DG | CASEL Core SEL Competencies | Critique response, appraisal, and diagnosis are assessed as observable practices on a piece of work, not as dispositions or social-emotional competencies. `S.DG` in particular does not measure persistence, patience, or frustration tolerance: a calm learner who changes five things at once does not satisfy it, and a frustrated learner who changes one thing at a time does. Self-awareness and self-management belong to CASEL (§1.3, §4.4). |
 | S.DG | NGSS / NRC *Framework for K–12 Science Education* — Practice 3, *Planning and carrying out investigations*, **as exercised in science-content performance expectations** | A **partial** boundary. Two concessions first, because an earlier draft of this row overstated the separation. The Framework places engineering inside Practice 3 itself — "Engineers use investigation both to gain data essential for specifying design criteria or parameters and to test their designs" — and NGSS applies the practice to a learner's own prototype in 3-5-ETS1-3, which is crosswalked as an **overlap** in §9.1, not bounded. What remains bounded: `S.DG` assesses no disciplinary content, while an NGSS performance expectation bundles a practice with a core idea and is satisfied only by demonstrating both; Practice 3's science half — investigating a natural phenomenon to build explanatory knowledge — is outside `S.DG` entirely, and OMBS is not a substitute for it; and `S.DG` is medium-agnostic across four bands, so a learner diagnosing why a paragraph loses readers or why a sauce came out flat satisfies `S.DG` and no performance expectation at all. Reading this row as denying the 3-5-ETS1-3 overlap is a misreading (§1.3, §2.4, §4.4). |
 
@@ -819,7 +823,7 @@ A crosswalk says where OMBS meets another framework. A boundary says where it de
 
 **Compliance (in critique).** Acting on critique without engagement, simply because the critic said so. A failure mode of M.CR.
 
-**Conformance.** What it means for an implementation to be *OMBS-conformant* (§1.7). Two levels: **Core** — the six Shared Practices plus conditional `OMBS.S.AI`, each claim carrying an evidence form and one observer type and satisfying §8.1.3. **Extended** — Core plus every dimension of at least one named domain, taken whole. A self-declaration, not a certification; no body grants it.
+**Conformance.** What it means for an implementation to be *OMBS-conformant* (§1.7). Two levels: **Core** — the seven Shared Practices plus conditional `OMBS.S.AI`, each claim carrying an evidence form and one observer type and satisfying §8.1.3. **Extended** — Core plus every dimension of at least one named domain, taken whole. A self-declaration, not a certification; no body grants it.
 
 **Construct validity.** The degree to which a measurement of a competency actually measures that competency. OMBS evidence descriptors are designed for construct validity but have not yet been empirically validated; that work is pending.
 
@@ -857,13 +861,11 @@ A crosswalk says where OMBS meets another framework. A boundary says where it de
 
 **Grade band.** One of K–2, 3–5, 6–8, 9–12. Bands are developmental sketches, not gates.
 
-**Iteration.** Informed change driven by evidence from testing. Distinct from polish (refining without new information) and re-doing (starting over without using the prior result).
+**Iteration.** Informed change driven by evidence from testing. Distinct from polish (refining without new information) and re-doing (starting over without using the prior result). Distinct also from *revisit* (`OMBS.S.RV`), which crosses a gap: iteration happens inside work that is still open.
 
 **Making.** Practice of bringing into existence an artifact intended for an audience and shaped by a purpose. Defining concerns: audience, purpose, expression, response to critique.
 
 **Medium.** The material or modality of the artifact (text, video, code, physical object, performance, social experience).
-
-**Minimal end-to-end version.** A version of the work that is small in scope but complete through every stage, start to finish, with nothing skipped. `OMBS.S.DR` component `.2`. Contrast a *rough partial draft* (component `.1`), which is incomplete at full scope; a minimal end-to-end version is complete at small scope, and the two find different problems.
 
 **Misuse case.** A scenario in which a build is used outside its intended use, deliberately or accidentally. Designing for misuse cases is part of B.DR.
 
@@ -875,13 +877,17 @@ A crosswalk says where OMBS meets another framework. A boundary says where it de
 
 **Purpose.** The change the learner wants the artifact to produce in the audience (inform, persuade, move, entertain, instruct, provoke).
 
-**Reasoned keep.** An AI output the learner kept *and* recorded a reason for, referenced to their own audience, purpose, or success criterion. Evidences `OMBS.S.AI.AP`. Contrast *silent keep*.
+**Abandoned work.** A piece of the learner's own work that stopped — set aside, declared finished, or left — without an intention to continue. Abandonment is a legitimate outcome of making, not a failure, and OMBS issues no code for it. Returning to it is `OMBS.S.RV`.
 
-**Rebuild record.** The smallest retained account of materials, settings, and step order from which a person who was not present could reproduce or repair the build. `OMBS.B.FN` component `.2`. Governed by the minimization rule in §8.1: the smallest sufficient record, not a complete account of everything that happened.
+**Reasoned return.** A return to abandoned work that the learner chose and can account for: what stopped the work, and what changed. Evidences `OMBS.S.RV`. A learner who returns, works, and then sets the piece aside again with a stated reason has made a reasoned return; the practice is the reasoning across the gap, not the finishing.
+
+**Revisit.** Returning by choice to a piece of one's own work after it stopped, doing further work on it, and being able to say what made it stop and what brought one back (`OMBS.S.RV`). Distinct from *iteration*, which is informed change inside work that is still open.
+
+**Reasoned keep.** An AI output the learner kept *and* recorded a reason for, referenced to their own audience, purpose, or success criterion. Evidences `OMBS.S.AI.AP`. Contrast *silent keep*.
 
 **Risk-ordered testing.** Testing the assumption whose failure would cost the most before building the work that depends on it, with the ordering and its reason recorded before the test. `OMBS.S.TS` component `.2`. An assumption tested first and found sound is full evidence; what is assessed is the ordering decision, not the outcome.
 
-**Shared Practice.** A practice common to both making and building (Define, Draft, Test, Diagnose, Iterate, Share).
+**Shared Practice.** A practice common to both making and building (Define, Draft, Test, Diagnose, Revisit, Iterate, Share).
 
 **Silent keep.** An AI output the learner used without recording any judgment of it. Not evidence of appraisal and never tagged. A silent keep is a gap in the evidence, not a finding about the learner — OMBS issues no codes for absences.
 
@@ -904,6 +910,8 @@ A crosswalk says where OMBS meets another framework. A boundary says where it de
 Selected works that informed this standard. This is not an exhaustive review. Two entries — Parnas (1972) and Boehm (1988) — are cited as canonical statements of a *practice* (specifying a boundary before building to it; ordering work by what it would cost to be wrong late). They are engineering literature, they are not studies of children, and nothing in this standard treats them as evidence about learners or about grade bands. Where a developmental claim is unsupported, the text says `TODO(cite)` rather than borrowing their authority. Works cited by a specific code carry a DOI; those DOIs are the machine-readable `bibliography` block in [standards.json](standards.json), and `scripts/check-parity.mjs` asserts that every cited key resolves to an entry here.
 
 - Agency by Design / Project Zero. *Maker-Centered Learning: Empowering Young People to Shape Their Worlds.* Clapp, Ross, Ryan, Tishman. Jossey-Bass (2017).
+- Azevedo, Flávio S. "Lines of Practice: A Practice-Centered Theory of Interest Relationships." *Cognition and Instruction* 29, no. 2 (2011): 147–184. doi:10.1080/07370008.2011.556834.
+- Barron, Brigid. "Interest and Self-Sustained Learning as Catalysts of Development: A Learning Ecology Perspective." *Human Development* 49, no. 4 (2006): 193–224. doi:10.1159/000094368.
 - Blikstein, Paulo. "Digital Fabrication and 'Making' in Education: The Democratization of Invention." In *FabLab: Of Machines, Makers and Inventors*, edited by J. Walter-Herrmann and C. Büching. Bielefeld: Transcript Publishers, 2013.
 - Boehm, Barry W. "A spiral model of software development and enhancement." *Computer* 21, no. 5 (1988): 61–72. doi:10.1109/2.59.
 - Blikstein, Paulo, and Marcelo Worsley. "Children Are Not Hackers: Building a Culture of Powerful Ideas, Deep Learning, and Equity in the Maker Movement." In *Makeology: Makerspaces as Learning Environments* (Vol. 1), edited by K. Peppler, E. Halverson, and Y. B. Kafai. New York: Routledge, 2016, 64–79. doi:10.4324/9781315726519-5.
