@@ -99,7 +99,19 @@ for (const t of TARGETS) {
 const PUBLISHED = TARGETS.find((t) => !t.isDraft);
 const DRAFT = TARGETS.find((t) => t.isDraft);
 
-if (DRAFT && !(DRAFT.version > PUBLISHED.version)) {
+// Numeric segment compare. A string compare gets 0.10.0 < 0.9.0 wrong, and the
+// first version past x.9.0 is exactly when nobody is looking at the layout check.
+const cmpVersion = (a, b) => {
+  const pa = a.split(".").map(Number);
+  const pb = b.split(".").map(Number);
+  for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
+    const d = (pa[i] ?? 0) - (pb[i] ?? 0);
+    if (d !== 0) return d < 0 ? -1 : 1;
+  }
+  return 0;
+};
+
+if (DRAFT && cmpVersion(DRAFT.version, PUBLISHED.version) <= 0) {
   console.error(
     `[layout] ${DRAFT.versionDir}/ proposes ${DRAFT.version}, which does not sort after the published ${PUBLISHED.version}.\n` +
       "         A draft amends the published version; it cannot restate or precede it.",
@@ -210,6 +222,11 @@ function checkStandard({ versionDir, version: VERSION, isDraft }) {
   const anchorIds = new Set(units.map((u) => u.anchor));
   const allJsonCodes = new Set([...anchorIds, ...FORM_IDS, ...OBSERVER_IDS, ...RULE_IDS]);
 
+  // What the citation gate actually inspected, so the summary can say so
+  // rather than implying it swept every new code.
+  let newComponents = 0;
+  const citationTodos = [];
+
   // ------------------------------------- 3/4/5. ids, self-description, bands
 
   const COMPONENT_ID = /^OMBS\.[SMB]\.[A-Z]{2}(?:\.[A-Z]{2})?\.(K2|35|68|912)\.\d+$/;
@@ -240,6 +257,10 @@ function checkStandard({ versionDir, version: VERSION, isDraft }) {
       if (!BIBLIOGRAPHY[key]) {
         fail("citations", `${label} cites "${key}", which is not in standards.json bibliography`);
       }
+    }
+    if (unit.citationsTodo && unit.citations?.length) {
+      // Belt and braces are fine; silently claiming both a citation and a gap is not.
+      citationTodos.push(`${label} (dimension)`);
     }
 
     const bandsSeen = new Set();
@@ -274,6 +295,43 @@ function checkStandard({ versionDir, version: VERSION, isDraft }) {
       }
       if (typeof c.descriptor !== "string" || !c.descriptor.trim()) {
         fail("self-describe", `${c.id} has an empty descriptor`);
+      }
+
+      // Per-CODE citation gate, not per-dimension. Until 0.4.0 this fired only
+      // on `unit.introducedIn`, so a new component under an OLD dimension —
+      // OMBS.S.DR.68.2 under a dimension introduced in 0.1.0 — was structurally
+      // invisible to it, and sixteen uncited codes passed while the summary
+      // line claimed "codes new in <version> carry citations." The rule the
+      // failure text quotes is per code, so the check is now per code.
+      //
+      // A gap may be DECLARED rather than filled: `citationsTodo` is a written
+      // reason, surfaced in the summary and counted, so a flagged gap is loud
+      // and an unflagged absence fails. AGENTS.md prefers exactly that trade.
+      if (c.introducedIn && !/^\d+\.\d+\.\d+$/.test(c.introducedIn)) {
+        fail("citations", `${c.id} has introducedIn "${c.introducedIn}", which is not an x.y.z version`);
+      }
+      if (c.introducedIn && unit.introducedIn && cmpVersion(c.introducedIn, unit.introducedIn) < 0) {
+        fail(
+          "citations",
+          `${c.id} declares introducedIn ${c.introducedIn}, older than its dimension ${unit.anchor} (${unit.introducedIn}) — a component cannot predate the dimension that contains it`,
+        );
+      }
+      if (c.introducedIn === VERSION) {
+        newComponents += 1;
+        const cites = c.citations ?? [];
+        const todo = typeof c.citationsTodo === "string" && c.citationsTodo.trim();
+        if (!cites.length && !todo) {
+          fail(
+            "citations",
+            `${c.id} is introduced in ${VERSION} but carries neither citations nor a citationsTodo note (CONTRIBUTING.md requires at least one per new code; an unfilled gap must be declared, not omitted)`,
+          );
+        }
+        if (todo) citationTodos.push(c.id);
+        for (const key of cites) {
+          if (!BIBLIOGRAPHY[key]) {
+            fail("citations", `${c.id} cites "${key}", which is not in standards.json bibliography`);
+          }
+        }
       }
 
       const ev = c.evidence;
@@ -616,6 +674,9 @@ function checkStandard({ versionDir, version: VERSION, isDraft }) {
     rules: RULE_IDS.size,
     bibliography: Object.keys(BIBLIOGRAPHY).length,
     conformanceLevels: standards.conformance?.levels?.length ?? 0,
+    newDimensions: units.filter((u) => u.introducedIn === VERSION).length,
+    newComponents,
+    citationTodos,
   };
 }
 
@@ -646,6 +707,7 @@ if (DRAFT) {
 const n = (fn) => [...new Set(stats.map(fn))].join("/");
 const sum = (fn) => stats.reduce((a, s) => a + fn(s), 0);
 const DIRS = stats.map((s) => s.versionDir).join(" / ");
+const ALL_TODOS = stats.flatMap((s) => s.citationTodos);
 
 const CHECKS = [
   [
@@ -669,7 +731,10 @@ const CHECKS = [
   ["evidence-layer", `${n((s) => s.forms)} evidence forms, ${n((s) => s.observers)} observer types, ${n((s) => s.rules)} admissibility rules`],
   [
     "citations",
-    `${n((s) => s.bibliography)} bibliography entries carry a DOI or URL and appear in §11; codes new in ${n((s) => s.version)} carry citations`,
+    `${n((s) => s.bibliography)} bibliography entries carry a DOI or URL and appear in §11; ` +
+      `${n((s) => s.newDimensions)} dimensions + ${n((s) => s.newComponents)} components declaring introducedIn=${n((s) => s.version)} ` +
+      `each carry a citation or a declared gap` +
+      (ALL_TODOS.length ? ` (${ALL_TODOS.length} declared TODO(cite): ${ALL_TODOS.join(", ")})` : ""),
   ],
   [
     "conformance",

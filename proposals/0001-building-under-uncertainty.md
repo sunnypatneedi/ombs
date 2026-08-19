@@ -29,7 +29,8 @@ The last proposal of this class shows what that produces. Verified from the repo
 | PR #7 | "RFC v0.3.0 — evidence/provenance layer + S.AI sub-dimensions (**do not merge before 2026-08-26**)" — opened 2026-07-27, **merged 2026-07-28** |
 
 The pull request named the date it must not be merged before and was merged 29 days before it. The comment
-window it announced never closed. Nobody broke a rule that was being enforced; there was nobody to enforce it.
+window it announced never closed. The author broke a rule the author had written into the title of the author's
+own pull request, and there was no one whose job it was to notice.
 
 That is the precedent this proposal is trying to correct, so it states the correction as a condition on itself:
 
@@ -275,25 +276,53 @@ not earned, and that would be the more misleading claim.
 
 ## 5. Scope-guardrail defence
 
-### 5.1 Not NGSS SEP-3
+### 5.1 NGSS Practice 3 — a partial boundary, after a correction
 
-NRC (2012) Practice 3 is *Planning and carrying out investigations* — verified against the Framework text,
-nationalacademies.org/read/13165/chapter/7. Its control-of-variables strand and `S.DG` share a cognitive core,
-and this proposal **cites that research as grounding** (§6). Sharing a cognitive core is not sharing a scope.
+**An earlier revision of this proposal got this wrong, and the source it cited as verification is what refutes
+it.** That draft claimed the distinction was that "SEP-3 investigates a natural phenomenon to produce
+scientific knowledge, inside a science content domain." Both halves of that fail against primary sources:
 
-| | SEP-3 | `OMBS.S.DG` |
+1. The NRC Framework chapter this proposal cites puts engineering **inside Practice 3's own discussion**:
+   > "Engineers use investigation both to gain data essential for specifying design criteria or parameters and
+   > to test their designs."
+
+   (Verified verbatim at nationalacademies.org/read/13165/chapter/7, in the paragraph that opens "Planning for
+   controls is an important part of the design of an investigation.") Practice 3's object is therefore not only
+   a natural phenomenon and its purpose not only scientific knowledge.
+2. NGSS applies Practice 3 to a learner's **own prototype, for the purpose of improving it**, in
+   **3-5-ETS1-3**:
+   > "Plan and carry out fair tests in which variables are controlled and failure points are considered to
+   > identify aspects of a model or prototype that can be improved."
+
+   (Verified verbatim at nextgenscience.org/pe/3-5-ets1-3-engineering-design; its foundation-box practice is
+   "Planning and Carrying Out Investigations.") Controlled variables, on an artifact the learner made, to locate
+   what to fix — that is `S.DG`'s object, purpose, and technique, not a neighbouring one.
+
+So the honest position is not a clean boundary. It is a **crosswalk plus a narrower boundary**, and both now
+ship:
+
+- **`OMBS.S.DG` → `3-5-ETS1-3`, `overlaps`** is added to `ngss-eng-design` in `crosswalks.json`. This is
+  `S.DG`'s closest external match in the whole landscape, and it was previously unmapped while weaker
+  alignments (P21 Critical Thinking, Agency by Design *Look Closely*) had rows. That asymmetry understated in
+  one place in order to overstate in another; repo canon says map at the most specific level the source
+  supports.
+- **The `ngss-sep-3` boundary is rewritten** as `relation: partial-boundary`, carrying an explicit
+  `acknowledgedOverlap` block naming 3-5-ETS1-3 and pointing at the crosswalk, so no tool can read the row as
+  claiming there is no relationship.
+
+**What survives as a real boundary**, stated at its actual width:
+
+| | Bounded | Why |
 |---|---|---|
-| Object | A natural phenomenon | An artifact the learner made |
-| Purpose | Produce scientific knowledge | Repair the thing |
-| Domain | Science content | Any medium |
-| Requires | Investigation design, often measurement and instruments | A smaller setting; one change at a time |
-| Assesses content knowledge | Yes, embedded in a DCI | No — never |
+| Content assessment | Yes | An NGSS performance expectation bundles a practice with a disciplinary core idea and is satisfied only by demonstrating both. `S.DG` never asks what the learner knows about any domain. |
+| Practice 3's science half | Yes | Investigating a natural phenomenon to build explanatory knowledge is outside `S.DG` entirely. OMBS makes no claim on it and is not a substitute for it. |
+| Medium and range | Yes | 3-5-ETS1-3 is one performance expectation at one band. `S.DG` spans four bands and any medium: a learner diagnosing why a paragraph loses readers, why a sauce came out flat, or why a scene drags satisfies `S.DG` and no performance expectation at all. |
+| Controlled-variable testing of a learner's prototype | **No — conceded** | This is shared territory, and it is crosswalked as an overlap rather than bounded. |
 
-OMBS borrows the finding, not the content. This is the same relationship §1.5 already declares with NGSS
-Engineering Design: the *define / develop / optimize* spine informs the Shared Practices, and the science
-embedding is rejected. Consistent with that, `S.DG` is recorded as a **boundary** in `crosswalks.json`
-(`ngss-sep-3`, `relation: distinct-from`) rather than a crosswalk, so the distinction is machine-checkable and
-a tool that reads `S.DG` as a science-practice measure can be shown to have misread it.
+**`S.TS` was removed from the boundary row.** The earlier revision put `S.TS` in `distinct-from: ngss-sep-3`
+while the same file kept `S.TS → 3-5-ETS1-3: overlaps` carried from v0.3.0 — and 3-5-ETS1-3's foundational
+practice *is* Practice 3, so a consuming tool held a contradiction-shaped pair. The v0.3.0 `overlaps` row is
+correct and stands; the boundary is now scoped to `S.DG` alone.
 
 ### 5.2 Not CASEL self-management
 
@@ -316,8 +345,10 @@ stated in §4.4 and §9.7.
 §2.4: "OMBS is not a model of *engineering* — engineering practice is a subset of building practice with
 additional disciplinary norms (codes, ethics, professional review)."
 
-`S.DG` requires no hypothesis in a stated form, no instrument, no measurement, no documentation standard, and
-no domain knowledge. It requires two things a seven-year-old can do with a paper aeroplane and a novelist can
+`S.DG` requires no formal experimental design, no instrument, no measurement, no documentation standard, and
+no domain knowledge. (It does ask, from 6–8 on, for a stated suspected cause. An earlier revision said "no
+hypothesis in a stated form," which contradicted `OMBS.S.DG.68.1` on the page opposite; the claim is about
+experimental apparatus and formality, not about whether the learner says what they think is wrong.) It requires two things a seven-year-old can do with a paper aeroplane and a novelist can
 do with a chapter: make it smaller, change one thing. Engineering troubleshooting is one disciplinary
 elaboration of that, the way engineering design is one elaboration of `S.DF`. The elaboration is out of scope;
 the skeleton is exactly what OMBS is for.
@@ -332,15 +363,26 @@ components likewise stay inside the practices their parent dimensions already cl
 ## 6. Citations
 
 Every citation below was checked against a primary source before being written into the draft. What was fetched
-and what it returned is recorded in the loop's build notes. Anything that could not be confirmed is marked
-`TODO(cite)` in the text rather than stated as settled — there are currently none in `v0.4.0-draft/`.
+and what it returned is recorded in the loop's build notes.
+
+**There are sixteen declared `TODO(cite)` markers in `v0.4.0-draft/`, and that number is the point of this
+section.** An earlier revision of this proposal said there were none. That was literally true and misleading:
+`S.DG`'s three citations were never claimed to ground the four `.2` component families, and those sixteen codes
+had no citations at all — they were invisible to the checker because its citation gate fired only at dimension
+level, and their parent dimensions date from 0.1.0. The rule in `AGENTS.md` and `CONTRIBUTING.md` is per code.
+So: the gate now fires per code, the sixteen were failed by it, and each one is now either cited or carries a
+written, machine-readable reason it is not. A flagged gap is what the repo's rules prefer to an unflagged
+absence; a clean sweep those codes did not earn is worse than either.
 
 | Key | Reference | Verified against | Status |
 |---|---|---|---|
 | `chen-klahr-1999` | Chen, Zhe, and David Klahr. "All Other Things Being Equal: Acquisition and Transfer of the Control of Variables Strategy." *Child Development* 70, no. 5 (1999): 1098–1120. doi:10.1111/1467-8624.00081 | DOI resolves (302) to academic.oup.com/chidev/article/70/5/1098; Crossref metadata; publisher page — all three agree on title, authors, journal, year, volume, issue, pages | **Verified** |
 | `klahr-carver-1988` | Klahr, David, and Sharon McCoy Carver. "Cognitive objectives in a LOGO debugging curriculum: Instruction, learning, and transfer." *Cognitive Psychology* 20, no. 3 (1988): 362–404. doi:10.1016/0010-0285(88)90004-7 | DOI resolves (302) to Elsevier linkinghub PII 0010028588900047; Crossref and Semantic Scholar metadata agree | **Verified** |
 | `zimmerman-c-2007` | Zimmerman, Corinne. "The development of scientific thinking skills in elementary and middle school." *Developmental Review* 27, no. 2 (2007): 172–223. doi:10.1016/j.dr.2006.12.001 | DOI resolves (302) to Elsevier linkinghub PII S0273229706000797; Crossref and Semantic Scholar metadata agree | **Verified** |
-| — | NRC (2012), *A Framework for K–12 Science Education* — Practice 3 title, used in §5.1 | Framework chapter text at nationalacademies.org/read/13165/chapter/7 | **Verified**; already in §11 |
+| `parnas-1972` | Parnas, D. L. "On the criteria to be used in decomposing systems into modules." *Communications of the ACM* 15, no. 12 (1972): 1053–1058. doi:10.1145/361598.361623 | Crossref and Semantic Scholar agree on title, author, journal, year, volume, issue, pages | **Verified** |
+| `boehm-1988` | Boehm, Barry W. "A spiral model of software development and enhancement." *Computer* 21, no. 5 (1988): 61–72. doi:10.1109/2.59 | DOI resolves (302) to ieeexplore.ieee.org/document/59; Crossref gives *Computer* 21(5):61–72, 1988, ISSN 0018-9162, IEEE. **A conflict was found and resolved:** OpenAlex reports 1986, vol 11, issue 4, pp 14–24 for this DOI — that is the earlier *ACM SIGSOFT Software Engineering Notes* printing of the same paper, conflated onto the IEEE DOI. Crossref is the registration agency for this DOI and its record matches the resolution target, so the IEEE *Computer* 1988 details are used | **Verified, conflict resolved** |
+| — | NRC (2012), *A Framework for K–12 Science Education* — Practice 3 title **and its engineering sentence**, used in §5.1 | Framework chapter text at nationalacademies.org/read/13165/chapter/7; the sentence "Engineers use investigation both to gain data essential for specifying design criteria or parameters and to test their designs" quoted verbatim from Practice 3's own discussion | **Verified**; already in §11 |
+| — | NGSS **3-5-ETS1-3** performance-expectation text, used in §5.1 and §9.1 | nextgenscience.org/pe/3-5-ets1-3-engineering-design — PE text and foundation-box practice ("Planning and Carrying Out Investigations") quoted verbatim | **Verified** |
 
 **What each citation is doing, and what it is not.**
 
@@ -359,6 +401,31 @@ and what it returned is recorded in the loop's build notes. Anything that could 
 **Two different Zimmermans.** Barry J. Zimmerman (2002), cited by `S.AI.DI`, and Corinne Zimmerman (2007),
 cited by `S.DG`, are unrelated authors who would otherwise collide in a short-form citation. `STANDARD.md` §11
 carries a note saying so, and the bibliography key is `zimmerman-c-2007` rather than `zimmerman-2007`.
+
+**What Parnas and Boehm are, and are emphatically not.** They are engineering papers. They are cited as the
+canonical statements of two *practices* — specifying what each side of a boundary must provide and may assume
+before either side is built (Parnas), and ordering work by what it would cost to be wrong late (Boehm). They
+are **not evidence about children**, they say nothing about grade bands, and no descriptor's band placement
+rests on them. §11's preamble says this on the page, each bibliography entry carries a `note` saying it, and
+`standards.json` carries a `citationScope` field on every node that cites them so the limit is machine-readable
+rather than a matter of a reader's good faith. Reviewers who think even a scoped citation to software
+literature pulls a K–12 standard the wrong way should say so: the fallback is to drop both and add
+`OMBS.S.TS.*.2` and `OMBS.B.ST.*.2` to the `TODO(cite)` list, which costs nothing but honesty.
+
+### 6.1 The four declared gaps
+
+| Family | Status | Why |
+|---|---|---|
+| `OMBS.S.DG.*` | Cited | Chen & Klahr (1999), Klahr & Carver (1988), Zimmerman, C. (2007) — all verified. Band placements still flagged in §4.4's epistemic-status note. |
+| `OMBS.S.TS.*.2` risk-ordered testing | Cited for the practice, `TODO(cite)` for the learner claim | Boehm (1988) states the practice. Nothing places risk-ordering at a grade band, and no study validates the four descriptors. |
+| `OMBS.B.ST.*.2` boundary specification | Cited for the practice, `TODO(cite)` for the learner claim | Parnas (1972) states the practice. Nothing places boundary specification at a grade band, and no study validates the four descriptors. |
+| `OMBS.S.DR.*.2` minimal end-to-end version | **`TODO(cite)` — no citation offered** | The practice is plainly attested in craft and production traditions (a maquette, a toile, a read-through, a pilot bake), but no peer-reviewed or canonical source has been identified that states it generally or places it at a band. The nearest software sources would be a stretch and are not used. |
+| `OMBS.B.FN.*.2` reproducibility | **`TODO(cite)` — no citation offered** | The obvious neighbouring literature is research reproducibility, which concerns replication of published findings by researchers. Borrowing it for a learner keeping enough of a recipe to mend a costume would overstate what is known, so it is not borrowed. |
+
+A related softening: §4.2 previously asserted that between-the-parts problems "are cheapest to find early and
+most expensive to find late." That is the cost-of-change curve — a contested empirical claim from software
+engineering, with no evidence in the mediums OMBS spans. It now reads as design rationale for why the code
+exists, explicitly marked `TODO(cite)`, and no descriptor depends on it.
 
 ---
 
@@ -425,7 +492,7 @@ If comment says the two come apart, `S.DG.<band>.2` is available and additive.
 | `v0.4.0-draft/STANDARD.md` | v0.3.0 prose + `S.DG` (§4.4) + four second components + §1.7 six-practice Core and migration note + §2.2 counts (15 dimensions, 93 leaves) + §7 progressions + §8 descriptors + §9 crosswalks and boundaries + §10 glossary + §11 bibliography |
 | `v0.4.0-draft/standards.json` | Structural mirror; every new node self-describing with inline `evidence.forms` and `evidence.observer` |
 | `v0.4.0-draft/crosswalks.json` | `S.DG` crosswalk rows; `ngss-sep-3` boundary; `casel-sel` boundary extended |
-| `scripts/check-parity.mjs` | Layout check accepts one published directory plus one draft; all thirteen checks run against both |
+| `scripts/check-parity.mjs` | Layout check accepts one published directory plus one draft; all thirteen checks run against both; the citation gate now fires **per code** rather than per dimension, and the summary line states what it inspected |
 | `CHANGELOG.md` | `[Unreleased]` entry |
 
 `v0.3.0/` is byte-identical to `main`. Verified: `git diff --name-status origin/main` lists no path under
@@ -446,13 +513,24 @@ Two design choices worth review:
   it. A version with no declared spine fails rather than passing vacuously.
 - **README and `docs/` stay pinned to the published version.** They describe what is released. A draft that
   dragged them forward would make an unadopted proposal look shipped.
+- **The citation gate fires per code, not per dimension.** It previously tested `introducedIn` only on
+  dimensions, so a new component under an old dimension — `OMBS.S.DR.68.2`, under a dimension introduced in
+  0.1.0 — was structurally invisible to it while the summary line printed "codes new in 0.4.0 carry citations."
+  Sixteen uncited codes passed. Components now declare `introducedIn`, the gate fires on them, and a gap may be
+  *declared* with a written `citationsTodo` reason rather than filled. The summary now names the count and lists
+  every declared gap, so green cannot mean more than it checked. **The residual hole is stated in the script
+  header:** a new component that omits `introducedIn` inherits its dimension's and escapes the gate. An
+  internal-consistency checker has no baseline to catch that, the same class of limit as its inability to see a
+  code deleted from both files at once.
 
 ### 8.2 Evidence that the extended checker still catches things
 
-A green report from a checker edited in the same change is not evidence. Twenty-four mutations were applied to
-the draft directory, the published directory, and the repository root — one per check plus the layout hard-exit
-paths — and each was required to produce a non-zero exit **and** name the check that should have caught it.
-24/24 caught. The battery covers, among others: a second published directory; two drafts at once; a draft older
+A green report from a checker edited in the same change is not evidence. Mutations were applied to the draft
+directory, the published directory, and the repository root — one per check plus the layout hard-exit paths —
+and each was required to produce a non-zero exit **and** name the check that should have caught it. The battery
+was extended after review to cover the per-code citation gate and the numeric version compare. Every mutation is
+caught; the current count is in the loop's build notes, which also records that the first run of the battery had
+a bug in one mutation's undo step. The battery covers, among others: a second published directory; two drafts at once; a draft older
 than the published version; README drifting to the draft's version; a duplicate id; a node losing its evidence
 block; a missing band; a code in prose that is in no JSON; descriptor text drift; anchor-statement drift; a new
 dimension with no citation; a bibliography entry losing its DOI; Core silently dropping `S.DG`; a version with
@@ -473,6 +551,19 @@ mutation to `v0.3.0/` proving the published directory is still checked and not s
    hold it down to the smallest sufficient one. Does the descriptor language actually achieve that?
 5. **Is "Diagnose" the right word in translation?** Translators should say so before it is tagged.
 6. **Should the conformance break force `1.0.0`?** §4.4 argues no. The counter-case is worth hearing.
+7. **Is the NGSS relationship now stated at the right width?** §5.1 was rewritten after review found the earlier
+   version refuted by its own cited source. It now concedes the 3-5-ETS1-3 overlap and crosswalks it. Someone
+   who works with NGSS should check whether the residual boundary is still too generous to OMBS — or now too
+   modest.
+8. **Should `OMBS.S.TS.*.2` and `OMBS.B.ST.*.2` cite software-engineering papers at all?** Parnas (1972) and
+   Boehm (1988) state those two practices canonically and are scoped in the text to the practice only. The
+   alternative is four `TODO(cite)` families instead of two. §6 argues for the citations; a reviewer who thinks
+   any software citation pulls a K–12 standard the wrong way should say so.
+9. **Are the verification clauses affordable?** `B.ST.912.2` (a second person builds to the specification),
+   `B.FN.68.2` and `B.FN.912.2` (another person follows the record) and `S.DG.912.1` (a kept baseline copy)
+   presuppose a partner, spare materials, or a way of preserving a state. Every band has a low-resource,
+   non-physical path in §3's worked examples, but the standard should hear from people teaching without those
+   resources before this is adopted.
 
 ---
 

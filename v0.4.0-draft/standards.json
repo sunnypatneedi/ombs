@@ -437,7 +437,9 @@
               "domain": "S",
               "dimension": "OMBS.S.DR",
               "gradeBand": "K2",
+              "introducedIn": "0.4.0",
               "descriptor": "The learner makes a whole small version of the work that goes all the way from start to finish before making the full one, and can show where it starts and where it ends.",
+              "citationsTodo": "No citation offered. The practice is attested in craft and production traditions (a maquette, a toile, a read-through, a pilot bake) but no peer-reviewed or canonical source has been identified that states it generally or places it at a grade band. Declared gap, not an oversight. See STANDARD.md §4.2.",
               "evidence": {
                 "forms": [
                   "OMBS.EF.AR",
@@ -454,7 +456,9 @@
               "domain": "S",
               "dimension": "OMBS.S.DR",
               "gradeBand": "35",
+              "introducedIn": "0.4.0",
               "descriptor": "The learner produces a version that is complete from beginning to end at a smaller size — every part present, none of them finished — before enlarging or refining any part, and names one part that is present but not yet done.",
+              "citationsTodo": "No citation offered. The practice is attested in craft and production traditions (a maquette, a toile, a read-through, a pilot bake) but no peer-reviewed or canonical source has been identified that states it generally or places it at a grade band. Declared gap, not an oversight. See STANDARD.md §4.2.",
               "evidence": {
                 "forms": [
                   "OMBS.EF.AR",
@@ -472,7 +476,9 @@
               "domain": "S",
               "dimension": "OMBS.S.DR",
               "gradeBand": "68",
+              "introducedIn": "0.4.0",
               "descriptor": "The learner produces a version that runs through every stage of the work at reduced scope, uses it to find which stage is hardest or least certain, and names that stage before expanding the work.",
+              "citationsTodo": "No citation offered. The practice is attested in craft and production traditions (a maquette, a toile, a read-through, a pilot bake) but no peer-reviewed or canonical source has been identified that states it generally or places it at a grade band. Declared gap, not an oversight. See STANDARD.md §4.2.",
               "evidence": {
                 "forms": [
                   "OMBS.EF.AR",
@@ -491,7 +497,9 @@
               "domain": "S",
               "dimension": "OMBS.S.DR",
               "gradeBand": "912",
+              "introducedIn": "0.4.0",
               "descriptor": "The learner produces a version small enough to finish early but complete through every stage, states what that version established that a partial draft could not, and expands the work only after the small version works end to end.",
+              "citationsTodo": "No citation offered. The practice is attested in craft and production traditions (a maquette, a toile, a read-through, a pilot bake) but no peer-reviewed or canonical source has been identified that states it generally or places it at a grade band. Declared gap, not an oversight. See STANDARD.md §4.2.",
               "evidence": {
                 "forms": [
                   "OMBS.EF.AR",
@@ -589,7 +597,13 @@
               "domain": "S",
               "dimension": "OMBS.S.TS",
               "gradeBand": "K2",
+              "introducedIn": "0.4.0",
               "descriptor": "With prompting, the learner names the part they are least sure will work and tries that part first, before making the rest.",
+              "citations": [
+                "boehm-1988"
+              ],
+              "citationScope": "Grounds the practice only. The cited work is engineering literature and is not evidence about children; no source is claimed for the band placements, which are proposed observables. See STANDARD.md epistemic-status note.",
+              "citationsTodo": "Developmental claim only: no source places risk-ordered testing at a grade band, and none validates these descriptors. Boehm (1988) grounds the practice, not the learner claim. See STANDARD.md §4.3.",
               "evidence": {
                 "forms": [
                   "OMBS.EF.AR",
@@ -606,7 +620,13 @@
               "domain": "S",
               "dimension": "OMBS.S.TS",
               "gradeBand": "35",
+              "introducedIn": "0.4.0",
               "descriptor": "The learner names one thing the work depends on being true, tests that thing before building the parts that depend on it, and records what happened.",
+              "citations": [
+                "boehm-1988"
+              ],
+              "citationScope": "Grounds the practice only. The cited work is engineering literature and is not evidence about children; no source is claimed for the band placements, which are proposed observables. See STANDARD.md epistemic-status note.",
+              "citationsTodo": "Developmental claim only: no source places risk-ordered testing at a grade band, and none validates these descriptors. Boehm (1988) grounds the practice, not the learner claim. See STANDARD.md §4.3.",
               "evidence": {
                 "forms": [
                   "OMBS.EF.LA",
@@ -625,7 +645,13 @@
               "domain": "S",
               "dimension": "OMBS.S.TS",
               "gradeBand": "68",
+              "introducedIn": "0.4.0",
               "descriptor": "The learner lists at least two assumptions the work rests on, ranks them by what it would cost to find out late that one was wrong, records the ranking before testing, and tests the highest-cost assumption first.",
+              "citations": [
+                "boehm-1988"
+              ],
+              "citationScope": "Grounds the practice only. The cited work is engineering literature and is not evidence about children; no source is claimed for the band placements, which are proposed observables. See STANDARD.md epistemic-status note.",
+              "citationsTodo": "Developmental claim only: no source places risk-ordered testing at a grade band, and none validates these descriptors. Boehm (1988) grounds the practice, not the learner claim. See STANDARD.md §4.3.",
               "evidence": {
                 "forms": [
                   "OMBS.EF.LA",
@@ -644,7 +670,13 @@
               "domain": "S",
               "dimension": "OMBS.S.TS",
               "gradeBand": "912",
+              "introducedIn": "0.4.0",
               "descriptor": "Before substantial building begins, the learner records which assumption would waste the most effort if it failed late and why, tests that assumption first, and reports what the result changed about the plan — including the case where the assumption held and the ordering cost nothing.",
+              "citations": [
+                "boehm-1988"
+              ],
+              "citationScope": "Grounds the practice only. The cited work is engineering literature and is not evidence about children; no source is claimed for the band placements, which are proposed observables. See STANDARD.md epistemic-status note.",
+              "citationsTodo": "Developmental claim only: no source places risk-ordered testing at a grade band, and none validates these descriptors. Boehm (1988) grounds the practice, not the learner claim. See STANDARD.md §4.3.",
               "evidence": {
                 "forms": [
                   "OMBS.EF.LA",
@@ -677,7 +709,14 @@
               "domain": "S",
               "dimension": "OMBS.S.DG",
               "gradeBand": "K2",
-              "descriptor": "When something does not work, the learner tries it again after changing one thing, and says with prompting whether that change made a difference.",
+              "introducedIn": "0.4.0",
+              "descriptor": "When something does not work, the learner tries it again after changing one thing and keeping the rest the same, and says with prompting whether that change made a difference.",
+              "citations": [
+                "chen-klahr-1999",
+                "klahr-carver-1988",
+                "zimmerman-c-2007"
+              ],
+              "citationScope": "Grounds the practice and, for Chen & Klahr, the plausibility of the K-2/3-5 placement. No cited study measures these descriptors. See STANDARD.md §4.4.",
               "evidence": {
                 "forms": [
                   "OMBS.EF.AR",
@@ -694,7 +733,14 @@
               "domain": "S",
               "dimension": "OMBS.S.DG",
               "gradeBand": "35",
+              "introducedIn": "0.4.0",
               "descriptor": "The learner narrows the problem to a smaller part of the work that still shows it — one paragraph, one section, one component, one step — tests that part on its own, and records which part the problem is in.",
+              "citations": [
+                "chen-klahr-1999",
+                "klahr-carver-1988",
+                "zimmerman-c-2007"
+              ],
+              "citationScope": "Grounds the practice and, for Chen & Klahr, the plausibility of the K-2/3-5 placement. No cited study measures these descriptors. See STANDARD.md §4.4.",
               "evidence": {
                 "forms": [
                   "OMBS.EF.LA",
@@ -713,7 +759,14 @@
               "domain": "S",
               "dimension": "OMBS.S.DG",
               "gradeBand": "68",
+              "introducedIn": "0.4.0",
               "descriptor": "Before making a change, the learner states what they think is causing the problem; then changes one thing at a time while leaving the rest as it was, recording for each try what was changed and what happened, so the result can be attributed to that change rather than to several at once.",
+              "citations": [
+                "chen-klahr-1999",
+                "klahr-carver-1988",
+                "zimmerman-c-2007"
+              ],
+              "citationScope": "Grounds the practice and, for Chen & Klahr, the plausibility of the K-2/3-5 placement. No cited study measures these descriptors. See STANDARD.md §4.4.",
               "evidence": {
                 "forms": [
                   "OMBS.EF.LA",
@@ -732,7 +785,14 @@
               "domain": "S",
               "dimension": "OMBS.S.DG",
               "gradeBand": "912",
+              "introducedIn": "0.4.0",
               "descriptor": "The learner keeps an unchanged copy of the work that still shows the problem, compares it against the changed copy to confirm that the change is what fixed it, and reports at least one cause they suspected first and ruled out, naming the evidence that ruled it out.",
+              "citations": [
+                "chen-klahr-1999",
+                "klahr-carver-1988",
+                "zimmerman-c-2007"
+              ],
+              "citationScope": "Grounds the practice and, for Chen & Klahr, the plausibility of the K-2/3-5 placement. No cited study measures these descriptors. See STANDARD.md §4.4.",
               "evidence": {
                 "forms": [
                   "OMBS.EF.AR",
@@ -1839,7 +1899,13 @@
               "domain": "B",
               "dimension": "OMBS.B.ST",
               "gradeBand": "K2",
+              "introducedIn": "0.4.0",
               "descriptor": "Before making the parts, the learner says how two of them will join — what will touch what — and then makes the parts so they fit.",
+              "citations": [
+                "parnas-1972"
+              ],
+              "citationScope": "Grounds the practice only. The cited work is engineering literature and is not evidence about children; no source is claimed for the band placements, which are proposed observables. See STANDARD.md epistemic-status note.",
+              "citationsTodo": "Developmental claim only: no source places boundary specification at a grade band, and none validates these descriptors. Parnas (1972) grounds the practice, not the learner claim. See STANDARD.md §6.2.",
               "evidence": {
                 "forms": [
                   "OMBS.EF.AR",
@@ -1856,7 +1922,13 @@
               "domain": "B",
               "dimension": "OMBS.B.ST",
               "gradeBand": "35",
+              "introducedIn": "0.4.0",
               "descriptor": "Before building, the learner writes or draws what has to be true where two parts meet (size, shape, order, what is passed across), then checks the finished parts against that description.",
+              "citations": [
+                "parnas-1972"
+              ],
+              "citationScope": "Grounds the practice only. The cited work is engineering literature and is not evidence about children; no source is claimed for the band placements, which are proposed observables. See STANDARD.md epistemic-status note.",
+              "citationsTodo": "Developmental claim only: no source places boundary specification at a grade band, and none validates these descriptors. Parnas (1972) grounds the practice, not the learner claim. See STANDARD.md §6.2.",
               "evidence": {
                 "forms": [
                   "OMBS.EF.LA",
@@ -1874,7 +1946,9 @@
               "domain": "B",
               "dimension": "OMBS.B.ST",
               "gradeBand": "68",
+              "introducedIn": "0.4.0",
               "descriptor": "The learner specifies in advance what each side of a boundary between two parts must provide and what each may assume, so that either part can be changed without rebuilding the other, and reports whether a part built to the specification fitted.",
+              "citationScope": "Grounds the practice only. The cited work is engineering literature and is not evidence about children; no source is claimed for the band placements, which are proposed observables. See STANDARD.md epistemic-status note.",
               "evidence": {
                 "forms": [
                   "OMBS.EF.LA",
@@ -1886,14 +1960,24 @@
                   "OMBS.OB.WT",
                   "OMBS.OB.AT"
                 ]
-              }
+              },
+              "citations": [
+                "parnas-1972"
+              ],
+              "citationsTodo": "Developmental claim only: no source places boundary specification at a grade band, and none validates these descriptors. Parnas (1972) grounds the practice, not the learner claim. See STANDARD.md §6.2."
             },
             {
               "id": "OMBS.B.ST.912.2",
               "domain": "B",
               "dimension": "OMBS.B.ST",
               "gradeBand": "912",
+              "introducedIn": "0.4.0",
               "descriptor": "The learner specifies at least one boundary precisely enough that one side could be built from the specification alone, tests that claim by having a second person build to it or by rebuilding one side against the written specification without consulting the other, and records where the specification proved incomplete.",
+              "citations": [
+                "parnas-1972"
+              ],
+              "citationScope": "Grounds the practice only. The cited work is engineering literature and is not evidence about children; no source is claimed for the band placements, which are proposed observables. See STANDARD.md epistemic-status note.",
+              "citationsTodo": "Developmental claim only: no source places boundary specification at a grade band, and none validates these descriptors. Parnas (1972) grounds the practice, not the learner claim. See STANDARD.md §6.2.",
               "evidence": {
                 "forms": [
                   "OMBS.EF.LA",
@@ -2072,7 +2156,9 @@
               "domain": "B",
               "dimension": "OMBS.B.FN",
               "gradeBand": "K2",
+              "introducedIn": "0.4.0",
               "descriptor": "With prompting, the learner tells or shows another person the steps they used, in the order they used them, so that person could try to make one too.",
+              "citationsTodo": "No citation offered. Research-reproducibility literature concerns replication of published findings by other researchers and would overstate what is known about a learner keeping enough of a recipe to repair a build. Declared gap, not an oversight. See STANDARD.md §6.4.",
               "evidence": {
                 "forms": [
                   "OMBS.EF.OB",
@@ -2089,7 +2175,9 @@
               "domain": "B",
               "dimension": "OMBS.B.FN",
               "gradeBand": "35",
+              "introducedIn": "0.4.0",
               "descriptor": "The learner records what the build is made of and the order of the steps, in enough detail that someone else could make another one or repair a broken part.",
+              "citationsTodo": "No citation offered. Research-reproducibility literature concerns replication of published findings by other researchers and would overstate what is known about a learner keeping enough of a recipe to repair a build. Declared gap, not an oversight. See STANDARD.md §6.4.",
               "evidence": {
                 "forms": [
                   "OMBS.EF.LA",
@@ -2107,7 +2195,9 @@
               "domain": "B",
               "dimension": "OMBS.B.FN",
               "gradeBand": "68",
+              "introducedIn": "0.4.0",
               "descriptor": "The learner retains the materials, settings, and step order needed to rebuild or repair the build, checks that record by having another person follow it or by remaking one part from it, and notes what the record was missing.",
+              "citationsTodo": "No citation offered. Research-reproducibility literature concerns replication of published findings by other researchers and would overstate what is known about a learner keeping enough of a recipe to repair a build. Declared gap, not an oversight. See STANDARD.md §6.4.",
               "evidence": {
                 "forms": [
                   "OMBS.EF.LA",
@@ -2126,7 +2216,9 @@
               "domain": "B",
               "dimension": "OMBS.B.FN",
               "gradeBand": "912",
+              "introducedIn": "0.4.0",
               "descriptor": "The learner retains the smallest record from which a person who was not present could reproduce or repair the build, names what the record deliberately leaves out and why leaving it out is safe, and reports the result of one attempt to use it.",
+              "citationsTodo": "No citation offered. Research-reproducibility literature concerns replication of published findings by other researchers and would overstate what is known about a learner keeping enough of a recipe to repair a build. Declared gap, not an oversight. See STANDARD.md §6.4.",
               "evidence": {
                 "forms": [
                   "OMBS.EF.LA",
@@ -2210,6 +2302,18 @@
       "title": "The development of scientific thinking skills in elementary and middle school",
       "doi": "10.1016/j.dr.2006.12.001",
       "note": "Corinne Zimmerman, unrelated to Barry J. Zimmerman (zimmerman-2002)."
+    },
+    "parnas-1972": {
+      "citation": "Parnas, D. L. \"On the criteria to be used in decomposing systems into modules.\" Communications of the ACM 15, no. 12 (1972): 1053–1058.",
+      "title": "On the criteria to be used in decomposing systems into modules",
+      "doi": "10.1145/361598.361623",
+      "note": "Cited as the canonical statement of a practice — specifying what each side of a boundary must provide and may assume, before either side is built. Engineering literature, not a study of children; grounds no developmental or grade-band claim."
+    },
+    "boehm-1988": {
+      "citation": "Boehm, Barry W. \"A spiral model of software development and enhancement.\" Computer 21, no. 5 (1988): 61–72.",
+      "title": "A spiral model of software development and enhancement",
+      "doi": "10.1109/2.59",
+      "note": "Cited as the canonical statement of a practice — ordering work by what it would cost to be wrong late. Engineering literature, not a study of children; grounds no developmental or grade-band claim. Verified against Crossref, which is authoritative for this DOI: Computer 21(5):61-72, 1988. An OpenAlex record conflates this with the 1986 ACM SIGSOFT Software Engineering Notes 11(4):14-24 version of the same paper."
     }
   }
 }
