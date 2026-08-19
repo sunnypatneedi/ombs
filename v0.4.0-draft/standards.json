@@ -747,7 +747,7 @@
               "dimension": "OMBS.S.RV",
               "gradeBand": "K2",
               "introducedIn": "0.4.0",
-              "descriptor": "The learner picks up a piece of their own work that stopped at least several days earlier, does more on it, and says with prompting one reason they chose that piece.",
+              "descriptor": "Given a free choice of what to work on, the learner picks a piece of their own work that they had stopped and not worked on for at least a week, does more on it, and says with prompting one reason they picked that piece rather than starting something new.",
               "citations": [
                 "azevedo-2011",
                 "barron-2006"

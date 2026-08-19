@@ -114,8 +114,9 @@ So: **no software term appears in any evidence descriptor (§8) or glossary entr
 not "minimum viable product" — and verified by scan across all 93 descriptors and every glossary entry, both
 clean. That is where the commitment has to hold, because those are the strings a tool surfaces to a teacher or
 a family. The descriptors are written in the words a cook or a stage manager would use, and where the practice
-needed a name the glossary defines it in plain English — *minimal end-to-end version*, *smallest setting that
-still shows it*, *baseline copy*, *rebuild record*, *boundary specification*, *risk-ordered testing*.
+needed a name the glossary defines it in plain English — *smallest setting that still shows it*, *baseline
+copy*, *boundary specification*, *risk-ordered testing*, and for `S.RV` *abandoned work*, *reasoned return*
+and *revisit*.
 
 **An earlier revision of this proposal claimed the stronger thing — that no software term appears anywhere in
 the file — and that was never true**, including when it was first written. Three kinds of occurrence exist, and
@@ -308,11 +309,32 @@ however it is worded. These are illustrations for reviewers, not normative text,
 
 ### `OMBS.S.RV` — Revisit
 
-**K–2** *(picks up work stopped several days earlier; says one reason)*
-- **Non-physical (story).** A child returns to a story they dictated last week, asks the adult to read back what
-  is there, and adds an ending — "because I wanted the cat to get home."
-- **Physical.** A half-built block tower left standing since Friday; on Monday the child chooses it over the new
-  materials on the table and adds a roof.
+**K–2** *(free choice; work stopped and untouched for a week or more; one reason for picking it over something new)*
+- **Non-physical (story).** During free-choice time a child could start a new drawing and instead asks for the
+  story they dictated a fortnight ago, has the adult read back what is there, and adds an ending — "because I
+  wanted the cat to get home." The adult records that the choice was open and what the child said.
+- **Physical.** A half-built clay animal that has sat on the shelf since before half-term. Offered fresh clay,
+  the child asks for theirs back and adds the legs, saying it "wasn't finished."
+
+**6–8** *(names what stopped it, what changed, what they will do differently; a reasoned re-abandonment counts)*
+- **Non-physical (social/writing) — the original did not survive.** A learner ran a class newsletter that
+  stopped two terms ago; the shared drive it lived on belonged to a school they have since left, and none of the
+  issues survive. They restart it anyway: "It stopped because I was writing all of it and I burned out. What's
+  changed is Priya and Sam will each take a section. This time it's four pages, not eight." No earlier artifact
+  exists; the teacher who watched both the stopping and the restarting records it (`OMBS.EF.OB`). Whether this
+  satisfies `OMBS.S.RV.68.1` is **open question 3** — the descriptor says "a project," not "the object," and
+  the proposal deliberately does not decide it.
+- **Physical.** A go-kart abandoned when the steering jammed, restarted when a scrap bearing turns up; the
+  half-built frame is still in the garage, so `OMBS.EF.AR` carries the gap directly.
+
+**9–12** *(chooses among candidates on stated grounds; names a capability they did not have)*
+- **Non-physical (code).** Three shelved projects. The learner picks the one whose blocker was a database schema
+  they now know how to model — "the other two are still blocked on money and on access to the site" — and
+  names the capability: "I couldn't design a schema then. I can now."
+- **Music, original lost.** A song abandoned two years ago; the only recording was on a phone that died. The
+  learner chooses it over two other unfinished pieces because "it's the one I can still hear," rebuilds the
+  verse from memory, and names what they can now do that they could not then — "I can voice the chords instead
+  of just strumming them." Same open question as above, one band up.
 
 **3–5** *(names what stopped them and what brought them back)*
 - **Non-physical (music).** A song abandoned at one verse. Two months later: "I stopped because I couldn't
@@ -601,10 +623,11 @@ Diagnose, Close-the-Loop, Test-the-Risk, Design-the-Joins, and Reproduce as five
 
 **Rejected.** It takes OMBS to nineteen dimensions, past the twelve-row ceiling the project's own rubric
 guidance sets, and takes the Core spine from five practices to ten — every current adopter re-conforming
-against a doubled spine. The four practices that became components are genuinely *inside* dimensions that
-already exist: a minimal end-to-end version is a kind of draft, risk-ordering is a property of testing, a
-boundary specification is structure, and a rebuild record is fitness for use. Making them dimensions would say
-they are not, which is false.
+against a doubled spine. The practices that became components are genuinely *inside* dimensions that
+already exist: risk-ordering is a property of testing, and a boundary specification is structure. Making them
+dimensions would say they are not, which is false. (Two further candidates from that list — a minimal
+end-to-end version under `S.DR`, a rebuild record under `B.FN` — were components in an earlier revision and
+were cut for want of a citation; see §6.1. The same reasoning would have applied to them.)
 
 ### 7.2 Zero new dimensions — fold diagnosis into `S.IT`
 
@@ -635,8 +658,10 @@ The source material behind this proposal carries an exercise sequence and an art
 First Bad Version → Spike → Prototype → Walking Skeleton → Tracer Bullet → MVP → v1).
 
 **Rejected, and not a close call.** §1.6 is explicit that OMBS is a vocabulary, not a curriculum. The ladder is
-a good teaching sequence for one medium and it is software vocabulary throughout. `S.DR.<band>.2` keeps the one
-idea from it that generalises — complete at small scope — and leaves the eight rungs and all eight names out.
+a good teaching sequence for one medium and it is software vocabulary throughout. An earlier revision kept the
+one idea from it that generalises — complete at small scope — as `S.DR.<band>.2`; that component was later cut
+for want of a citation (§6.1), so nothing from the ladder survives in this proposal, and none of its eight names
+ever entered the standard.
 
 ### 7.5 A `.2` on `S.DG` for the retained baseline
 
@@ -709,10 +734,23 @@ mutation to `v0.3.0/` proving the published directory is still checked and not s
    score classroom evidence should answer from experience, not from the argument.
 2. **Are the band placements right?** K–2 one-change-at-a-time rests on Chen & Klahr's 7–10 range, which starts
    above the bottom of the band. Is one-change-at-a-time observable in a five-year-old, with prompting?
-3. **Does `S.DR.<band>.2` survive contact with a teacher?** The `.1`/`.2` distinction is sharp on paper.
-   Reviewers should try to tag real drafts with it and report where it blurred.
-4. **Is `B.FN.<band>.2` a privacy problem?** It asks for a retained record. §8.1's minimization rule is meant to
-   hold it down to the smallest sufficient one. Does the descriptor language actually achieve that?
+3. **Does a *rebuilt* return satisfy `OMBS.S.RV` at 6–8 and 9–12?** This is the question §8.1's equity note
+   deliberately leaves open, and it is the one with a real cost on both sides. A learner whose abandoned model
+   was thrown out, whose file was on a device that is gone, or who changed school between the stopping and the
+   returning, can still name what stopped the work, what changed, and what they will do differently — and can
+   start it again from memory. **If a rebuilt return counts**, `S.RV` stops silently tracking whether a learner
+   has somewhere to keep things, which matters because `S.RV` is now spine and its absence would otherwise
+   correlate with household stability across every Core portfolio. **If it does not count**, the code stays
+   tightly anchored to `OMBS.EF.AR` — the surviving artifact — and the gap is much harder to fake, because the
+   stopped work is its own evidence. The K–2 and 3–5 descriptors settle it for those bands by requiring the
+   piece itself. For 6–8 and 9–12 the wording says "a project," not "the object," and the proposal does not
+   decide what that means. Reviewers who teach in high-mobility settings, and reviewers who assess portfolios,
+   are likely to answer this differently; both answers should be on the record before it is fixed.
+4. **Is `OMBS.S.RV` distinguishable in a real classroom, or only on paper?** §2.3.1 constructs a case that
+   satisfies `S.RV` and no `S.IT` descriptor. That is an existence proof, not a frequency claim. If assessors in
+   practice cannot separate the two — if every return gets tagged `S.IT` as well — the distinction is
+   theoretical and `S.RV` belongs as a component under `S.IT` rather than as spine. The same test that would
+   defeat `S.DG` (§7.2) applies here and has not been run.
 5. **Is "Diagnose" the right word in translation?** Translators should say so before it is tagged.
 6. **Should the conformance break force `1.0.0`?** §4.4 argues no. The counter-case is worth hearing.
 7. **Is the NGSS relationship now stated at the right width?** §5.1 was rewritten after review found the earlier
@@ -723,11 +761,12 @@ mutation to `v0.3.0/` proving the published directory is still checked and not s
    Boehm (1988) state those two practices canonically and are scoped in the text to the practice only. The
    alternative is four `TODO(cite)` families instead of two. §6 argues for the citations; a reviewer who thinks
    any software citation pulls a K–12 standard the wrong way should say so.
-9. **Are the verification clauses affordable?** `B.ST.912.2` (a second person builds to the specification),
-   `B.FN.68.2` and `B.FN.912.2` (another person follows the record) and `S.DG.912.1` (a kept baseline copy)
-   presuppose a partner, spare materials, or a way of preserving a state. Every band has a low-resource,
-   non-physical path in §3's worked examples, but the standard should hear from people teaching without those
-   resources before this is adopted.
+9. **Are the verification clauses affordable?** `OMBS.B.ST.912.2` (a second person builds to the
+   specification) and `OMBS.S.DG.912.1` (a kept baseline copy) presuppose a partner or a way of preserving a
+   state. §8.1 argues both run within resources already present, and §3's worked examples give each band a
+   low-resource, non-physical path. Reviewers teaching without those resources should say whether that holds.
+   `OMBS.S.RV`'s cost is a different and larger thing — an environmental precondition rather than a check —
+   and it is treated separately in §8.1 and in question 3 above.
 
 ---
 
