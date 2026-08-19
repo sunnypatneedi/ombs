@@ -98,11 +98,33 @@ and writing. The practice underneath transfers; the vocabulary does not. §1.6 s
 a curriculum, and a K–12 standard that asks a second-grade teacher to record a "tracer bullet" has imported the
 jargon and lost the practice.
 
-So: **no software term appears in `v0.4.0-draft/STANDARD.md`.** Not "spike", not "walking skeleton", not
-"tracer bullet", not "regression test", not "minimum viable product". The descriptors are written in the words
-a cook or a stage manager would use. Where the practice needed a name, the glossary defines it in plain
-English — *minimal end-to-end version*, *smallest setting that still shows it*, *baseline copy*, *rebuild
-record*, *boundary specification*, *risk-ordered testing*.
+So: **no software term appears in any evidence descriptor (§8) or glossary entry (§10) of
+`v0.4.0-draft/STANDARD.md`.** Not "spike", not "walking skeleton", not "tracer bullet", not "regression test",
+not "minimum viable product" — and verified by scan across all 93 descriptors and every glossary entry, both
+clean. That is where the commitment has to hold, because those are the strings a tool surfaces to a teacher or
+a family. The descriptors are written in the words a cook or a stage manager would use, and where the practice
+needed a name the glossary defines it in plain English — *minimal end-to-end version*, *smallest setting that
+still shows it*, *baseline copy*, *rebuild record*, *boundary specification*, *risk-ordered testing*.
+
+**An earlier revision of this proposal claimed the stronger thing — that no software term appears anywhere in
+the file — and that was never true**, including when it was first written. Three kinds of occurrence exist, and
+all three are deliberate:
+
+1. **Inherited from v0.3.0, unchanged.** §2.1 lists "software systems" among the mediums a build may use, §6.2
+   names "module boundaries, data flow" as the software instance of structure, §6.3 gives "invalid input, empty
+   cases, slow networks" as software durability examples, and §8.1.1 offers "a commit message" and "version
+   history" as evidence forms. Software appears there as *one medium among many*, alongside poems, circuits and
+   community events. That is the medium-agnostic principle working, not jargon import — and removing it would
+   make the standard worse by implying software is not a medium OMBS covers.
+2. **New in 0.4.0, in epistemic-status prose.** §4.3 and §6.2 say that Boehm and Parnas are engineering papers
+   about software and are not evidence about children. Naming the literature is how the citation gets bounded;
+   an unnamed source would be a weaker disclosure, not a cleaner one.
+3. **New in 0.4.0, in §11 bibliography titles.** Article titles are quoted as published. Altering them to avoid
+   a word would be a fabrication.
+
+What the "do not import" rule actually forbids is coining *user-facing vocabulary* from software — a teacher
+being asked to record a "tracer bullet" or a "walking skeleton". Zero such terms were coined, and the eight-rung
+artifact ladder that carried them is rejected in §7.4.
 
 ---
 

@@ -1,6 +1,6 @@
 {
   "ombsVersion": "0.4.0",
-  "note": "Crosswalks indicate substantial overlap, not 1:1 equivalence. See STANDARD.md §9 for context. Boundaries (§9.7) name frameworks OMBS deliberately does NOT overlap, so an adopter can tell scope adjacency from scope claim.",
+  "note": "Crosswalks indicate substantial overlap, not 1:1 equivalence. See STANDARD.md §9 for context. Boundaries (§9.7) name where OMBS deliberately stops, so an adopter can tell scope adjacency from scope claim. A boundary carries a relation: \"distinct-from\" is a full boundary — OMBS makes no claim on that framework and does not overlap it. \"partial-boundary\" concedes a named overlap, carries an acknowledgedOverlap block pointing at the crosswalk that maps it, and bounds only what is left. A partial boundary never means \"no relationship\", and reading it that way is a misreading of the row.",
   "frameworks": [
     {
       "id": "ngss-eng-design",

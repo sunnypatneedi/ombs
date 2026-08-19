@@ -37,10 +37,25 @@
 // are asserted against the PUBLISHED directory only: README and the site
 // describe what is released, not what is proposed.
 //
-// What this CANNOT catch, by construction: a code removed from BOTH the prose
-// and the JSON in the same change. An internal-consistency checker has no
-// baseline to compare against, so green never means "nothing was deleted."
-// That remains PR review's job, permanently.
+// What this CANNOT catch, by construction. An internal-consistency checker has
+// no baseline to compare against, so green never means "nothing was lost." Both
+// of these remain PR review's job, permanently:
+//
+//   1. A code removed from BOTH the prose and the JSON in the same change.
+//      Nothing here would notice.
+//   2. A NEW component that omits `introducedIn`. The citation gate below fires
+//      on `introducedIn === VERSION`, so a node that simply leaves the field out
+//      inherits its dimension's version and is never asked for a citation. The
+//      run stays green and the only visible trace is the component count on the
+//      `citations` summary line moving down by one. `introducedIn` is required
+//      on new components by convention, not by this script, because making it
+//      mandatory on ALL components would force edits into published directories
+//      whose files must not change. A reviewer checking that new codes are cited
+//      should read the summary count, not the exit status.
+//
+// The second hole is the one that let sixteen uncited codes ship in the first
+// v0.4.0 draft, when the gate fired at dimension level only. Firing per code
+// closes the common case; it does not close this one.
 
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
