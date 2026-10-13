@@ -4,7 +4,9 @@ All notable changes to OMBS are documented here. Format follows [Keep a Changelo
 
 ## [Unreleased]
 
-> **Two unreleased things live here.** *Proposal 0001* below targets **0.4.0** and is not adopted. Everything from *"Draft for the 30-day public comment window"* onward describes the **0.3.0** draft. Neither version is tagged.
+> **Unreleased proposal only.** *Proposal 0001* below targets **0.4.0** and is not adopted. The **0.3.0** adoption record appears in its own version section below.
+
+- Reconciled the changelog with the v0.3.0 adoption record from `main`, preserving Proposal 0001 as unadopted and leaving both versions' standard files unchanged.
 
 ---
 
@@ -46,9 +48,26 @@ Filed as [`proposals/0001-building-under-uncertainty.md`](proposals/0001-buildin
 
 ---
 
-**Drafted for 0.3.0. Everything below this line is the 0.3.0 record.**
+## [0.3.0] — 2026-07-28 · adopted without the review its own governance requires
 
-> **Draft for the 30-day public comment window.** New dimensions and codes require steering review, 30 days of public comment, and a 2/3 majority (GOVERNANCE.md). Nothing below is adopted until that window closes. Version strings read `0.3.0` throughout so the draft is internally consistent and machine-checkable during review; the version is not tagged.
+**Read this before citing v0.3.0.** The block below replaces a note that described v0.3.0 as an unadopted draft awaiting a comment window. That description stopped being true on 2026-07-28 and the file did not say so until 2026-08-19.
+
+What the record shows, verified from this repository:
+
+| | |
+|---|---|
+| Issue #6 | "RFC v0.3.0 … (30-day comment window, closes 2026-08-26)" — opened 2026-07-27, **closed 2026-07-30**, on day 3 |
+| PR #7 | "RFC v0.3.0 … (**do not merge before 2026-08-26**)" — opened 2026-07-27, **merged 2026-07-28** |
+
+The pull request named the date it must not be merged before and was merged 29 days before it. The comment window it announced never ran to close. GOVERNANCE.md requires steering review and a 2/3 majority for new dimensions and codes; **no steering committee exists** — the project is in bootstrap stewardship and GOVERNANCE.md seats one only after v1.0 ships. So the vote had no body to hold it and the window had nobody to enforce it. Nobody broke a rule that was being enforced.
+
+**Therefore:** v0.3.0 is live on `main`, is the version `README.md` advertises, and **was adopted by its author without external review.** It is offered as a draft standard on that basis. Anyone weighing whether to build on it should read this paragraph as part of the version, not as an aside about it.
+
+The author is the sole maintainer, the only person who could merge it, and the founder of the only known adopter. That conflict is disclosed here rather than in a footnote because it is the reason the process failed rather than an incidental fact about it.
+
+**Tagged retroactively 2026-08-19** at `ca2b243`, the commit where the v0.3.0 spec files reached their final state on `main`. Before that date v0.3.0 carried no tag at all and would have become unreachable by name the moment the pre-1.0 convention moved `v0.3.0/` forward — the same hazard `v0.2.0` was rescued from on 2026-07-27.
+
+The content of the v0.3.0 release is unchanged and is described below.
 
 ### Added
 
