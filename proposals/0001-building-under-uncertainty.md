@@ -1,5 +1,7 @@
 # OMBS Proposal 0001 — Building under uncertainty
 
+> **Historical proposal, not the current v0.4.0 core.** See [the current core draft](../v0.4.0/STANDARD.md). Retained for context; the text below records the earlier proposal, not an adopted standard.
+
 **Status:** Proposed. Not adopted.
 **Author:** Sunny Patneedi
 **Filed:** 2026-08-19

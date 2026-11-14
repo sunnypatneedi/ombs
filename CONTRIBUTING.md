@@ -21,7 +21,7 @@ Thank you for considering a contribution. OMBS is a draft standard. Community re
 ## Pull request expectations
 
 - Cite sources for any substantive claim.
-- If the change affects machine-readable files (`standards.json`, `crosswalks.json`), update them in the same PR. CI verifies parity between the prose and the JSON.
+- If the change affects machine-readable files (`standards.json`, `crosswalks.json`), update them in the same PR. This applies to legacy encoded standards only. v0.4.0 is prose-only; it has no JSON schema. CI runs `node scripts/check-transition.mjs` to check the transition labels and core structure, not prose/JSON parity or educational validity.
 - Add a `CHANGELOG.md` entry under "Unreleased."
 - Sign off your commit (`git commit -s`) — the project follows Developer Certificate of Origin (DCO) v1.1.
 

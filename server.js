@@ -25,23 +25,8 @@ const mimeTypes = {
   '.woff2': 'font/woff2',
 };
 
-// The published data sits in a versioned directory that moves every release
-// (v0.1.0 -> v0.2.0 -> v0.3.0 ...). Resolve the newest one rather than naming
-// it: the previous hardcoded /v0.1.0/ path kept 404ing the viewer for two
-// releases after the directory was renamed, with no server-side error.
-function latestVersionDir() {
-  const semver = /^v(\d+)\.(\d+)\.(\d+)$/;
-  return fs
-    .readdirSync(ROOT, { withFileTypes: true })
-    .filter((e) => e.isDirectory() && semver.test(e.name))
-    .map((e) => e.name.match(semver).slice(1, 4).map(Number).concat(e.name))
-    .sort((a, b) => a[0] - b[0] || a[1] - b[1] || a[2] - b[2])
-    .map((v) => v[3])
-    .pop();
-}
-
-// Fall back to docs/, which carries a copy of the same data for GitHub Pages.
-const DATA_DIR = latestVersionDir() || 'docs';
+// The viewer is frozen at v0.3.0. v0.4.0 is prose-only and has no JSON.
+const DATA_DIR = 'v0.3.0';
 
 function send(res, status, type, body) {
   res.writeHead(status, { 'Content-Type': type });
