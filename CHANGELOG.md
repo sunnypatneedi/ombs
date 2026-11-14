@@ -4,6 +4,24 @@ All notable changes to OMBS are documented here. Format follows [Keep a Changelo
 
 ## [Unreleased]
 
+### v0.4.0 repository transition (proposed)
+
+- Point repository guidance to the prose-only core draft merged in PR #17 on
+  2026-11-11. That merge added only `v0.4.0/STANDARD.md`.
+- Label legacy viewers as frozen at v0.3.0 and retain their data unchanged.
+- Mark the earlier, incompatible Proposal 0001 as historical, not the current core.
+- Replace the default legacy parity invocation with explicit transition checks.
+- No release tag, governance adoption, schema, or substantive core changes in this patch.
+
+## [0.4.0] — core draft merged 2026-11-11
+
+The current core draft replaces the earlier structure with five maker practices,
+eight shifts without levels or grade bands, a four-part report and authorship/support
+language. No machine-readable layer ships with it. The standard remains a draft for
+community review. Design Guide: in preparation. Tool Guide: planned.
+
+## Historical proposal record (superseded as the v0.4.0 direction)
+
 > **Unreleased proposal only.** *Proposal 0001* below targets **0.4.0** and is not adopted. The **0.3.0** adoption record appears in its own version section below.
 
 - Reconciled the changelog with the v0.3.0 adoption record from `main`, preserving Proposal 0001 as unadopted and leaving both versions' standard files unchanged.

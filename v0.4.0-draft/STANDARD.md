@@ -1,5 +1,7 @@
 # Open Making and Building Standard (OMBS)
 
+> **Historical proposal, not the current v0.4.0 core.** See [the current core draft](../v0.4.0/STANDARD.md). Retained for context; the text below records the earlier proposal, not an adopted standard.
+
 **Version:** 0.4.0 (Draft)
 **Date:** 2026-08-19
 **License:** CC BY-SA 4.0

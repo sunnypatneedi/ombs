@@ -1,43 +1,42 @@
 # Open Making and Building Standard (OMBS)
 
-A research-grounded, openly licensed standard describing what it means to make and build well — across grade bands, mediums, and domains.
+An open framework for recognizing evidence of learner agency through making.
 
-**Status:** Draft v0.3.0 (July 2026)
-**License:** CC BY-SA 4.0
-**Latest version:** [v0.3.0/STANDARD.md](v0.3.0/STANDARD.md)
-**Machine-readable:** [v0.3.0/standards.json](v0.3.0/standards.json)
+**Status:** v0.4.0 draft for community review, not a validated assessment or certification.
+**Current core draft:** [v0.4.0/STANDARD.md](v0.4.0/STANDARD.md)
+**License:** [CC BY-SA 4.0](LICENSE.md)
 
-## Why this exists
+## What the core contains
 
-Existing K–12 standards do an excellent job describing *content knowledge* (CCSS, NGSS) and *digital practice* (ISTE). They do less well describing the cross-cutting practices of **making** (originating something for an audience and purpose) and **building** (constructing structures and systems that hold up under use).
+- Five maker practices: Define, Investigate, Make, Iterate, Share.
+- Eight shifts across a body of work, without universal levels or grade bands.
+- Reports connecting claim, evidence, context and interpretation.
+- Language for authorship, support, human confirmation and optional review.
 
-These practices appear in every domain — a poem, a robot, a science fair display, a Minecraft world, a community garden, a research paper. They are how learners convert understanding into artifacts the world can use. OMBS makes them assessable without flattening them into rubrics that miss what matters.
+OMBS is not a curriculum, rubric or assessment. The Design Guide is in preparation;
+the Tool Guide is planned. **No v0.4.0 machine-readable schema ships here.**
+Do not relabel the v0.3.0 codes, JSON or crosswalks as v0.4.0.
 
-## What's in scope
+## Earlier material
 
-- A conceptual model with two domains (Making, Building) sharing a five-practice spine
-- Anchor competencies and grade-band progressions (K–2, 3–5, 6–8, 9–12)
-- NGSS-style performance evidence descriptors
-- Machine-readable codes for use by curriculum, assessment, and AI tools
-- Crosswalks to NGSS Engineering Design, ISTE 2024, P21 4Cs, CCSS Writing, Agency by Design
+The [site](https://sunnypatneedi.github.io/ombs/) and its demo are frozen at v0.3.0.
+The [v0.3.0 directory](v0.3.0/) remains here to support those legacy tools;
+its [tagged snapshot](https://github.com/sunnypatneedi/ombs/tree/v0.3.0) remains citable.
+The incompatible [earlier v0.4 proposal](proposals/0001-building-under-uncertainty.md)
+is retained as historical material, not the current core draft.
 
-## What's out of scope
+## Review and verification
 
-- Subject-area content knowledge (use CCSS, NGSS, state standards)
-- Social-emotional learning competencies (use CASEL)
-- Understanding of AI as subject matter, i.e. AI literacy (use the UNESCO *AI Competency Framework for Students*, 2024) — distinct from `OMBS.S.AI`, which assesses whether the learner remained the source of choice while making
-- Career and technical credentials (use ASCA, industry frameworks)
+See [CONTRIBUTING.md](CONTRIBUTING.md) and [GOVERNANCE.md](GOVERNANCE.md).
+Run `node scripts/check-transition.mjs` for repository transition checks.
+These checks verify structure and labels, not educational validity, consent compliance,
+research claims, governance approval or a completed release. The legacy
+`check-parity.mjs` script remains historical tooling for the earlier encoded layout;
+it is not the v0.4.0 validator.
 
-## How to use
-
-- **Educators:** see [STANDARD.md](v0.3.0/STANDARD.md) §7 (Progressions) and §8 (Evidence Descriptors).
-- **Curriculum designers:** map units to OMBS codes; use [crosswalks.json](v0.3.0/crosswalks.json) to align with adopted standards.
-- **AI / ed-tech tools:** ingest [standards.json](v0.3.0/standards.json); cite codes in tags and recommendations.
-- **Researchers:** the standard is versioned; cite as `OMBS v0.3.0 (2026)`.
-
-## Governance
-
-This is a draft standard intended for community review and revision. See [GOVERNANCE.md](GOVERNANCE.md) for how decisions are made and [CONTRIBUTING.md](CONTRIBUTING.md) for how to propose changes.
+Open discussion: withdrawal and retention; attribution of mixed human/AI records;
+and the scope and independence of review. This packaging change does not resolve
+those design questions, create a release tag or change governance rules.
 
 ## Versioning
 
@@ -45,4 +44,6 @@ Semantic versioning. **Breaking changes** (rename/remove codes, change ID format
 
 ## Citation
 
-> Open Making and Building Standard (OMBS), v0.3.0. 2026. CC BY-SA 4.0.
+> Open Making and Building Standard (OMBS), v0.4.0, draft for community review. 2026. CC BY-SA 4.0.
+
+Cite the exact commit when referring to an evolving draft.
